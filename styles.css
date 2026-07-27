@@ -88,6 +88,7 @@ section{position:relative}
 .cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:38px;margin-top:110px}
 .vcard{background:var(--card);border-radius:13px;overflow:hidden;color:var(--dark)}
 .vcard img{width:100%;height:420px;object-fit:cover;filter:grayscale(1)}
+.vcard img.raw{filter:none}
 .vcard .in{padding:22px 26px 30px}
 .vcard .role{font-size:24px;line-height:1.33}
 .vcard .spec{font-size:16px;line-height:1.6}
