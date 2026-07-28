@@ -37,3 +37,5 @@ for (const a of assets) {
 }
 console.log(`Images: ${local.length} locales, ${ok} distantes, ${ko} en echec`);
 if (ko > 0) process.exit(1);
+
+// portrait officiel Yacine integre le 28/07/2026
