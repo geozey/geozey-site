@@ -325,8 +325,8 @@ form.on{display:block}
     </div>
     <div>
       <div class="t">Légal</div>
-      <span class="li">Mentions légales</span>
-      <span class="li">Politique RGPD</span>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="politique-rgpd.html">Politique RGPD</a>
     </div>
   </div>
   <hr>
@@ -543,7 +543,7 @@ form.on{display:block}
   document.getElementById('f-client').addEventListener('submit', function(e){ submit('client', e) });
   document.getElementById('f-expert').addEventListener('submit', function(e){ submit('expert', e) });
 
-  var p = q.get('profil');
+  var p = q.get('profil') || q.get('parcours');
   if(p === 'expert' || p === 'client') pick(p);
 })();
 </script>
