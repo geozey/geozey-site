@@ -6,7 +6,7 @@
 import { mkdir, copyFile, writeFile, readdir } from 'fs/promises';
 
 const ASSETS = process.env.ASSETS_SOURCE || 'https://geozey-site-three.vercel.app';
-const pages = ['index.html', 'manifeste.html', 'experts.html', 'interventions.html', 'styles.css'];
+const pages = ['index.html', 'manifeste.html', 'experts.html', 'interventions.html', 'styles.css', 'candidature.html', 'supabase-config.js'];
 const assets = ['logo.png','hero.jpg','p1.jpg','p2.jpg','p3.jpg','d1.jpg','d2.jpg','d3.jpg','stats.jpg','iter1.jpg','iter2.jpg','v1.jpg','v2.jpg','v3.jpg','v4.jpg'];
 
 await mkdir('public/assets', { recursive: true });
