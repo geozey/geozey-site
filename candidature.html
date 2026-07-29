@@ -539,6 +539,17 @@ form.on{display:block}
     btn.disabled = true;
 
     sync(kind, form, 'complet').then(function(){
+      // Notification : alerte interne + accuse de reception au candidat.
+      // Volontairement detachee du then principal : un echec d envoi ne doit jamais
+      // faire croire a la personne que sa candidature n a pas ete enregistree.
+      try{
+        fetch(CFG.url + '/functions/v1/notifier-candidature', {
+          method: 'POST', keepalive: true,
+          headers: {'Authorization': 'Bearer ' + CFG.anon, 'apikey': CFG.anon, 'Content-Type': 'application/json'},
+          body: JSON.stringify({ type: kind, session_id: SID, payload: payload })
+        }).catch(function(){});
+      }catch(err){}
+
       msg.className = 'msg ok';
       msg.innerHTML = '<b>Reçu.</b> Votre ' + (kind === 'client' ? 'brief' : 'profil') +
         ' est enregistré. Nous revenons vers vous sous 72 heures ouvrées.';
