@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /candidature.html
+
+Sitemap: https://geozey.com/sitemap.xml
