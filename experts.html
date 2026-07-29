@@ -24,6 +24,31 @@
 <meta name="twitter:title" content="Experts — Geozey">
 <meta name="twitter:description" content="Quelques visages de la cellule. Planning, PMO, contrôle de projet, document control sur nucléaire, oil and gas, éolien et défense.">
 <meta name="twitter:image" content="https://geozey.com/assets/hero.jpg">
+
+<style>
+/* Rangee equipe : gabarit commun, calque E-Marque en alternance ember / blanc */
+.rangee{display:grid;grid-template-columns:repeat(5,1fr);gap:26px;margin-top:44px}
+.rcard .ph{position:relative;aspect-ratio:1;overflow:hidden;background:#1e1e1e}
+.rcard .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04)}
+.rcard .ph .att{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:34px;letter-spacing:2px;color:#3b3b3b}
+/* filet a gauche puis sillage fin jusqu au glyphe */
+.rcard .ph::before{content:"";position:absolute;left:7%;right:7%;bottom:20%;height:1px;
+  background:linear-gradient(90deg,var(--cq) 0,var(--cq) 13%,rgba(255,255,255,.16) 13%,rgba(255,255,255,.16) 100%)}
+/* glyphe en bas a droite */
+.rcard .ph::after{content:"";position:absolute;right:6%;bottom:14%;width:13%;aspect-ratio:271/286;
+  background:var(--gq) center/contain no-repeat}
+.rcard.em{--cq:var(--ember);--gq:url(data:image/png;base64,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)}
+.rcard.bl{--cq:#fff;--gq:url(data:image/png;base64,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)}
+.rcard h3{font-size:24px;font-weight:400;line-height:1.25;margin:22px 0 10px;color:#fff}
+.rcard .sec{font-size:15px;line-height:1.5;color:#9a9a9a;margin:0 0 16px;min-height:45px}
+.rcard .tg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.rcard .tg span{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;
+  color:#c9c9c9;border:1px solid #575756;border-radius:20px;padding:7px 14px}
+.rcard .yr{display:inline-block;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--ember);border:1px solid var(--ember);border-radius:20px;padding:7px 14px}
+@media(max-width:1100px){.rangee{grid-template-columns:1fr 1fr;gap:20px}.rcard .sec{min-height:0}}
+@media(max-width:600px){.rangee{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -43,6 +68,49 @@
   <span class="kicker">Experts</span>
   <h1>Quelques visages de la cellule.</h1>
   <p class="lead">Geozey est un réseau sélectif. À chaque mission, un seul expert est proposé : le bon. Ou pas de réponse.</p>
+</section>
+
+
+<section class="txt bg-dark">
+  <p class="kicker">La rangée équipe</p>
+  <h2 style="font-size:38px;font-weight:400;line-height:1.25;margin:18px 0 0;max-width:900px">Cinq profils, un seul proposé par mission.</h2>
+  <div class="rangee">
+      <div class="rcard em">
+        <div class="ph"><img src="assets/v1.jpg" alt="Fondateur"></div>
+        <h3>Fondateur</h3>
+        <p class="sec">Oil &amp; gas, nucléaire, défense</p>
+        <div class="tg"><span>PMO</span><span>Planning</span></div>
+        <span class="yr">13 ans</span>
+      </div>
+      <div class="rcard bl">
+        <div class="ph"><img src="assets/v2.jpg" alt="Quality &amp; Planning"></div>
+        <h3>Quality &amp; Planning</h3>
+        <p class="sec">Nucléaire, O&amp;G, éolien · ITER, EACOP</p>
+        <div class="tg"><span>Quality</span><span>Planning</span></div>
+        <span class="yr">10+ ans</span>
+      </div>
+      <div class="rcard em">
+        <div class="ph"><img src="assets/v3.jpg" alt="Méthodes &amp; OPC"></div>
+        <h3>Méthodes &amp; OPC</h3>
+        <p class="sec">GC nucléaire, ferroviaire, batterie</p>
+        <div class="tg"><span>Méthodes</span><span>OPC</span></div>
+        <span class="yr">11 ans</span>
+      </div>
+      <div class="rcard bl">
+        <div class="ph"><span class="att">PE</span></div>
+        <h3>Planning EPC</h3>
+        <p class="sec">EPC, militaire, drones, pétrochimie</p>
+        <div class="tg"><span>Planning</span><span>P6</span></div>
+        <span class="yr">9 ans</span>
+      </div>
+      <div class="rcard em">
+        <div class="ph"><span class="att">AI</span></div>
+        <h3>Chief AI Officer</h3>
+        <p class="sec">Infra IA souveraine · sourcing, matching, reporting</p>
+        <div class="tg"><span>Infra IA</span><span>Matching</span></div>
+        <span class="yr">Propriétaire</span>
+      </div>
+  </div>
 </section>
 
 <section class="txt bg-light">
@@ -146,6 +214,22 @@
   <div class="btns-row">
     <a class="btn-white" href="candidature.html?profil=expert">Proposer mon profil
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="14.5" stroke="#FF4512"/><path d="M9 15h12m0 0-4-4m4 4-4 4" stroke="#FF4512" stroke-width="1.3"/></svg></a>
+    <div class="ecard">
+      <div class="top">
+        <div class="avatar">AI</div>
+        <div>
+          <span class="role">Chief AI Officer</span>
+          <h3 style="font-size:21px">Aurélien Queroy</h3>
+        </div>
+      </div>
+      <p class="bio">Construit et opère l'infrastructure IA souveraine de Geozey : sourcing des projets attribués, matching entre passeport mission et passeport profil, reporting automatisé. L'outil est propriétaire, hébergé sur les comptes Geozey, et il apprend de chaque mission.</p>
+      <div class="estats" style="grid-template-columns:1fr 1fr">
+        <div class="estat"><span class="k">Périmètre</span><span class="v">Infra IA souveraine</span></div>
+        <div class="estat"><span class="k">Moteurs</span><span class="v">Sourcing, matching, reporting</span></div>
+        <div class="estat"><span class="k">Socle</span><span class="v">Propriétaire, comptes Geozey</span></div>
+        <div class="estat"><span class="k">Données</span><span class="v">Hébergement Union européenne</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
