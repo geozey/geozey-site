@@ -61,9 +61,15 @@ drop policy if exists "formulaire public peut inserer" on public.qualifications;
 create policy "formulaire public peut inserer"
   on public.qualifications for insert to anon with check (true);
 
+-- FAILLE CORRIGEE : une policy update ouverte a anon permettait a n importe qui
+-- de modifier ou vider toute la table, la cle anon etant publique par construction.
+-- On restreint l update aux lignes encore ouvertes et recentes : une session en cours
+-- de saisie peut se completer, une candidature envoyee devient intouchable.
 drop policy if exists "formulaire public peut completer sa session" on public.qualifications;
 create policy "formulaire public peut completer sa session"
-  on public.qualifications for update to anon using (true) with check (true);
+  on public.qualifications for update to anon
+  using  (statut in ('ouvert','brouillon') and created_at > now() - interval '24 hours')
+  with check (statut in ('ouvert','brouillon','complet'));
 
 drop policy if exists "lecture reservee aux membres" on public.qualifications;
 create policy "lecture reservee aux membres"

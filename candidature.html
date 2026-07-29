@@ -384,16 +384,29 @@ form.on{display:block}
     });
   }
 
+  function visible(e){
+    var n = e;
+    while(n && n !== document.body){
+      if(n.classList && n.classList.contains('cond') && !n.classList.contains('on')) return false;
+      n = n.parentNode;
+    }
+    return true;
+  }
+
   function collect(form){
     var o = {}, remplis = 0, total = 0;
     Array.prototype.forEach.call(form.elements, function(e){
       if(!e.name) return;
-      total++;
       var v = (e.type === 'checkbox') ? e.checked : e.value;
       o[e.name] = v;
-      if(v !== '' && v !== false) remplis++;
+      // La progression ne compte que ce qui est demande ET affiche : sinon un dossier
+      // complet plafonne vers 50 pour cent et les seuils de relance sont faux.
+      if(e.required && visible(e)){
+        total++;
+        if(v !== '' && v !== false) remplis++;
+      }
     });
-    return { data: o, remplis: remplis, total: total };
+    return { data: o, remplis: remplis, total: Math.max(total, 1) };
   }
 
   function ligne(kind, form, statut){
@@ -436,8 +449,8 @@ form.on{display:block}
     document.getElementById('f-expert').className = kind === 'expert' ? 'on' : '';
     document.getElementById('q2').className = 'qstep on';
     wire(kind);
-    // Signal immediat : quelqu un vient d ouvrir le formulaire.
-    sync(kind, document.getElementById('f-' + kind), 'ouvert').catch(function(){});
+    // On ne cree JAMAIS de ligne ici : un formulaire vide ecraserait un brouillon existant,
+    // et un clic de passerelle antispam creerait une session fantome.
     document.getElementById('f-' + kind).scrollIntoView({behavior:'smooth', block:'start'});
   }
   document.getElementById('pick-client').onclick = function(){ pick('client') };
@@ -463,6 +476,7 @@ form.on{display:block}
     var s = document.getElementById('s-' + kind);
 
     function push(){
+      if(collect(form).remplis === 0) return;
       sync(kind, form, 'brouillon').then(function(){
         dernier = Date.now();
         s.textContent = 'Brouillon enregistré';
@@ -476,12 +490,14 @@ form.on{display:block}
     // Filet : si la personne ferme l onglet en cours de saisie, on garde l etat.
     window.addEventListener('pagehide', function(){
       if(!ready || !created || Date.now() - dernier < 2000) return;
-      var body = JSON.stringify(ligne(kind, form, 'brouillon'));
+      // sendBeacon ne sait faire que du POST : il tombait en conflit sur la cle unique.
+      // fetch keepalive survit a la fermeture de l onglet ET permet un PATCH.
       try{
-        navigator.sendBeacon(
-          CFG.url + '/rest/v1/' + CFG.table + '?session_id=eq.' + encodeURIComponent(SID) + '&apikey=' + CFG.anon,
-          new Blob([body], {type:'application/json'})
-        );
+        fetch(CFG.url + '/rest/v1/' + CFG.table + '?session_id=eq.' + encodeURIComponent(SID), {
+          method: 'PATCH', keepalive: true,
+          headers: {'apikey': CFG.anon, 'Authorization': 'Bearer ' + CFG.anon, 'Content-Type': 'application/json'},
+          body: JSON.stringify(ligne(kind, form, 'brouillon'))
+        });
       }catch(e){}
     });
   }
