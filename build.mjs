@@ -1,46 +1,38 @@
 // Build du site vitrine Geozey.
-// Les pages et le CSS sont versionnes a la racine de ce repo.
-// Les images versionnees dans assets/ font autorite.
-// Les images pas encore versionnees sont recuperees au build depuis ASSETS_SOURCE
-// (dependance transitoire, a supprimer image par image en les commitant ici).
-import { mkdir, copyFile, writeFile, readdir } from 'fs/promises';
+// Les pages, le CSS et les images sont tous versionnes dans ce depot.
+// Le build ne sort plus sur le reseau : il copie, puis il verifie.
+// Avant le 30/07/2026 il recuperait 9 images sur https://geozey.com, donc sur le
+// deploiement quil produisait lui meme. Un echec de deploiement aurait casse le
+// build suivant. Les images ont ete rapatriees, la circularite est supprimee.
+import { mkdir, copyFile, readdir, readFile } from "fs/promises";
 
-// Les images pas encore versionnees sont lues sur le domaine officiel, sous controle
-// Geozey, et non plus sur un projet Vercel tiers qu une suppression casserait.
-// Dette assumee : le build reste circulaire tant que les 11 images ne sont pas
-// commitees ici. Le rapatriement demande un acces disque : ni le sandbox (sans reseau)
-// ni le navigateur (CSP de GitHub) ne peuvent les transferer vers le depot.
-const ASSETS = process.env.ASSETS_SOURCE || 'https://geozey.com';
-const pages = ['index.html', 'manifeste.html', 'experts.html', 'interventions.html', 'styles.css', 'candidature.html', 'supabase-config.js', 'mentions-legales.html', 'politique-rgpd.html', 'favicon.svg', 'robots.txt', 'sitemap.xml'];
-const assets = ['logo.png','hero.jpg','p1.jpg','p2.jpg','p3.jpg','d1.jpg','d2.jpg','d3.jpg','stats.jpg','iter1.jpg','iter2.jpg','v1.jpg','v2.jpg','v3.jpg','v4.jpg'];
+const pages = ["index.html", "manifeste.html", "experts.html", "interventions.html", "styles.css", "candidature.html", "supabase-config.js", "mentions-legales.html", "politique-rgpd.html", "favicon.svg", "robots.txt", "sitemap.xml"];
 
-await mkdir('public/assets', { recursive: true });
+await mkdir("public/assets", { recursive: true });
 
 for (const p of pages) {
-  await copyFile(p, 'public/' + p);
-  console.log('SRC ' + p);
+  await copyFile(p, "public/" + p);
+  console.log("SRC " + p);
 }
 
-// Images versionnees dans le repo
-let local = [];
-try { local = await readdir('assets'); } catch { local = []; }
+const local = await readdir("assets");
 for (const a of local) {
-  await copyFile('assets/' + a, 'public/assets/' + a);
-  console.log('LOCAL ' + a);
+  await copyFile("assets/" + a, "public/assets/" + a);
+  console.log("LOCAL " + a);
 }
+console.log(`Images: ${local.length} versionnees, 0 distante`);
 
-// Images pas encore versionnees
-let ok = 0, ko = 0;
-for (const a of assets) {
-  if (local.includes(a)) continue;
-  try {
-    const r = await fetch(`${ASSETS}/assets/${a}`);
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    await writeFile('public/assets/' + a, Buffer.from(await r.arrayBuffer()));
-    ok++; console.log('IMG ' + a);
-  } catch (e) { ko++; console.warn('FAIL ' + a + ' : ' + e.message); }
+// Controle : toute image citee par une page doit exister dans assets/.
+// Les balises du carousel passent par loptimiseur Vercel, donc le chemin est
+// encode dans une query string, %2Fassets%2Fx.jpg. Les deux formes sont lues.
+const cites = new Set();
+for (const p of pages.filter(f => f.endsWith(".html") || f.endsWith(".css"))) {
+  const t = await readFile(p, "utf8");
+  for (const m of t.matchAll(/assets(?:\/|%2F)([A-Za-z0-9_.-]+\.(?:png|jpg|jpeg|svg|webp|avif))/g)) cites.add(m[1]);
 }
-console.log(`Images: ${local.length} locales, ${ok} distantes, ${ko} en echec`);
-if (ko > 0) process.exit(1);
-
-// portrait officiel Yacine integre le 28/07/2026
+const manquantes = [...cites].filter(a => !local.includes(a));
+if (manquantes.length) {
+  console.error("MANQUANTES dans assets/ : " + manquantes.join(", "));
+  process.exit(1);
+}
+console.log(`Controle: ${cites.size} images citees, toutes presentes`);
