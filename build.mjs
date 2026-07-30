@@ -5,7 +5,12 @@
 // (dependance transitoire, a supprimer image par image en les commitant ici).
 import { mkdir, copyFile, writeFile, readdir } from 'fs/promises';
 
-const ASSETS = process.env.ASSETS_SOURCE || 'https://geozey-site-three.vercel.app';
+// Les images pas encore versionnees sont lues sur le domaine officiel, sous controle
+// Geozey, et non plus sur un projet Vercel tiers qu une suppression casserait.
+// Dette assumee : le build reste circulaire tant que les 11 images ne sont pas
+// commitees ici. Le rapatriement demande un acces disque : ni le sandbox (sans reseau)
+// ni le navigateur (CSP de GitHub) ne peuvent les transferer vers le depot.
+const ASSETS = process.env.ASSETS_SOURCE || 'https://geozey.com';
 const pages = ['index.html', 'manifeste.html', 'experts.html', 'interventions.html', 'styles.css', 'candidature.html', 'supabase-config.js', 'mentions-legales.html', 'politique-rgpd.html', 'favicon.svg', 'robots.txt', 'sitemap.xml'];
 const assets = ['logo.png','hero.jpg','p1.jpg','p2.jpg','p3.jpg','d1.jpg','d2.jpg','d3.jpg','stats.jpg','iter1.jpg','iter2.jpg','v1.jpg','v2.jpg','v3.jpg','v4.jpg'];
 
