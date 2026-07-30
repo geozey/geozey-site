@@ -2,6 +2,24 @@
   "buildCommand": "node build.mjs",
   "outputDirectory": "public",
   "installCommand": "echo skip",
+  "images": {
+    "sizes": [
+      640,
+      828,
+      1200,
+      1600
+    ],
+    "formats": [
+      "image/avif",
+      "image/webp"
+    ],
+    "minimumCacheTTL": 604800,
+    "localPatterns": [
+      {
+        "pathname": "^/assets/.*$"
+      }
+    ]
+  },
   "headers": [
     {
       "source": "/(.*).html",
