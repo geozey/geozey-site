@@ -71,24 +71,17 @@ form.on{display:block}
 .blk{padding:28px 22px}
 .pick .tag{margin-bottom:16px}
 }
+
+.cks{display:flex;flex-wrap:wrap;gap:9px;margin-top:9px}
+.ck{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.ck input{position:absolute;opacity:0;width:0;height:0}
+.ck span{display:inline-block;padding:9px 15px;border:1px solid #cfcfcf;border-radius:2px;
+  font-size:13px;line-height:1.2;color:var(--ash);background:#fff;transition:all .15s ease;user-select:none}
+.ck input:checked + span{border-color:var(--ember);background:var(--ember);color:#fff}
+.ck input:focus-visible + span{outline:2px solid var(--ember);outline-offset:2px}
+.f.fw{grid-column:1 / -1}
+.hint{font-size:12.5px;color:var(--ash);margin-top:8px;line-height:1.5}
 </style>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="theme-color" content="#1e1e1e">
-<link rel="canonical" href="https://geozey.com/candidature.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Geozey">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:url" content="https://geozey.com/candidature.html">
-<meta property="og:title" content="Espace de qualification — Geozey">
-<meta property="og:description" content="Cadrez votre besoin en quelques champs, ou proposez votre profil à la cellule. Réponse sous 72 heures.">
-<meta property="og:image" content="https://geozey.com/assets/hero.jpg">
-<meta property="og:image:width" content="2200">
-<meta property="og:image:height" content="1467">
-<meta property="og:image:alt" content="Site industriel critique, univers Geozey">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Espace de qualification — Geozey">
-<meta name="twitter:description" content="Cadrez votre besoin en quelques champs, ou proposez votre profil à la cellule. Réponse sous 72 heures.">
-<meta name="twitter:image" content="https://geozey.com/assets/hero.jpg">
 </head>
 <body>
 
@@ -180,6 +173,10 @@ form.on{display:block}
         <label class="fld"><span class="k">Votre rôle <i>*</i></span><input name="role" required placeholder="Directeur de projet, acheteur, RH..."></label>
       </div>
       <div class="grid2">
+        <label class="fld"><span class="k">Spécialité recherchée <i>*</i></span><select name="specialite_cible" required><option value="">Sélectionner</option><option>Planning / Ordonnancement</option><option>PMO</option><option>Contrôle de projet / Cost control</option><option>Doc control</option><option>Méthodes</option><option>OPC</option><option>Quality management</option><option>Autre</option></select></label>
+        <label class="fld"><span class="k">Séniorité attendue</span><select name="seniorite_cible"><option value="">Sélectionner</option><option>Junior, moins de 5 ans</option><option>Confirmé, 5 à 10 ans</option><option>Senior, 10 à 15 ans</option><option>Expert, plus de 15 ans</option></select></label>
+      </div>
+      <div class="grid2">
         <label class="fld"><span class="k">Nom et prénom <i>*</i></span><input name="contact_nom" required></label>
         <label class="fld"><span class="k">Email professionnel <i>*</i></span><input type="email" name="email" required></label>
       </div>
@@ -204,9 +201,11 @@ form.on{display:block}
           <select name="duree"><option value="">Sélectionner</option><option>Moins de 3 mois</option><option>3 à 6 mois</option><option>6 à 12 mois</option><option>Plus de 12 mois</option><option>Non défini</option></select></label>
       </div>
       <div class="grid2">
-        <label class="fld"><span class="k">Outils requis</span><input name="outils" placeholder="Primavera P6, MS Project, Revit..."></label>
-        <label class="fld"><span class="k">Langues</span><input name="langues" placeholder="Français, anglais..."></label>
       </div>
+      <div class="fld fw"><span class="k">Outils requis</span><div class="cks"><label class="ck"><input type="checkbox" name="outils" value="Primavera P6"><span>Primavera P6</span></label><label class="ck"><input type="checkbox" name="outils" value="MS Project"><span>MS Project</span></label><label class="ck"><input type="checkbox" name="outils" value="Excel avancé"><span>Excel avancé</span></label><label class="ck"><input type="checkbox" name="outils" value="Power BI"><span>Power BI</span></label><label class="ck"><input type="checkbox" name="outils" value="Revit"><span>Revit</span></label><label class="ck"><input type="checkbox" name="outils" value="Navisworks"><span>Navisworks</span></label><label class="ck"><input type="checkbox" name="outils" value="Aconex"><span>Aconex</span></label><label class="ck"><input type="checkbox" name="outils" value="ProjectWise"><span>ProjectWise</span></label><label class="ck"><input type="checkbox" name="outils" value="SAP"><span>SAP</span></label><label class="ck"><input type="checkbox" name="outils" value="Autre"><span>Autre</span></label></div></div>
+      <div class="fld fw"><span class="k">Langues exigées</span><div class="cks"><label class="ck"><input type="checkbox" name="langues" value="Français"><span>Français</span></label><label class="ck"><input type="checkbox" name="langues" value="Anglais"><span>Anglais</span></label><label class="ck"><input type="checkbox" name="langues" value="Espagnol"><span>Espagnol</span></label><label class="ck"><input type="checkbox" name="langues" value="Arabe"><span>Arabe</span></label><label class="ck"><input type="checkbox" name="langues" value="Autre"><span>Autre</span></label></div></div>
+      <div class="fld fw"><span class="k">Habilitations requises</span><div class="cks"><label class="ck"><input type="checkbox" name="habilitations" value="Aucune"><span>Aucune</span></label><label class="ck"><input type="checkbox" name="habilitations" value="Confidentiel Défense"><span>Confidentiel Défense</span></label><label class="ck"><input type="checkbox" name="habilitations" value="Secret"><span>Secret</span></label><label class="ck"><input type="checkbox" name="habilitations" value="Accès site nucléaire / CEA"><span>Accès site nucléaire / CEA</span></label><label class="ck"><input type="checkbox" name="habilitations" value="Habilitation ferroviaire"><span>Habilitation ferroviaire</span></label></div><p class="hint">Laissez vide si aucune habilitation particulière n'est exigée.</p></div>
+      <div class="grid2" style="display:none"></div>
       <label class="fld"><span class="k">Budget ou fourchette de TJM</span><input name="budget" placeholder="Fourchette indicative, ou contrat-cadre existant"></label>
       <label class="fld"><span class="k">Contraintes particulières</span><textarea name="contraintes" placeholder="Habilitation défense, HSE, confidentialité, livrables en marque blanche..."></textarea></label>
     </div>
@@ -278,7 +277,7 @@ form.on{display:block}
       <div class="grid2">
         <label class="fld"><span class="k">Disponibilité <i>*</i></span>
           <select name="dispo" required><option value="">Sélectionner</option><option>Immédiate</option><option>Sous 1 mois</option><option>Sous 2 à 3 mois</option><option>À définir</option></select></label>
-        <label class="fld"><span class="k">Mobilité</span><input name="mobilite" placeholder="France, Europe, international..."></label>
+        <label class="fld"><span class="k">Mobilité</span><input name="mobilite" placeholder="France, Europe, international..."></label><label class="fld"><span class="k">Durée d'engagement recherchée</span><select name="duree_ok"><option value="">Sélectionner</option><option>Moins de 3 mois</option><option>3 à 6 mois</option><option>6 à 12 mois</option><option>Plus de 12 mois</option><option>Non défini</option></select></label><div class="fld fw"><span class="k">Présence acceptée</span><div class="cks"><label class="ck"><input type="checkbox" name="presence_ok" value="100 % sur site"><span>100 % sur site</span></label><label class="ck"><input type="checkbox" name="presence_ok" value="Hybride"><span>Hybride</span></label><label class="ck"><input type="checkbox" name="presence_ok" value="100 % à distance"><span>100 % à distance</span></label></div></div><div class="fld fw"><span class="k">Zones d'intervention acceptées</span><div class="cks"><label class="ck"><input type="checkbox" name="zones_ok" value="France"><span>France</span></label><label class="ck"><input type="checkbox" name="zones_ok" value="Europe"><span>Europe</span></label><label class="ck"><input type="checkbox" name="zones_ok" value="Koweït / Moyen-Orient"><span>Koweït / Moyen-Orient</span></label><label class="ck"><input type="checkbox" name="zones_ok" value="Afrique de l'Ouest"><span>Afrique de l'Ouest</span></label><label class="ck"><input type="checkbox" name="zones_ok" value="International"><span>International</span></label></div></div><div class="fld fw"><span class="k">Habilitations détenues</span><div class="cks"><label class="ck"><input type="checkbox" name="habilitations_exp" value="Aucune"><span>Aucune</span></label><label class="ck"><input type="checkbox" name="habilitations_exp" value="Confidentiel Défense"><span>Confidentiel Défense</span></label><label class="ck"><input type="checkbox" name="habilitations_exp" value="Secret"><span>Secret</span></label><label class="ck"><input type="checkbox" name="habilitations_exp" value="Accès site nucléaire / CEA"><span>Accès site nucléaire / CEA</span></label><label class="ck"><input type="checkbox" name="habilitations_exp" value="Habilitation ferroviaire"><span>Habilitation ferroviaire</span></label></div></div><div class="fld fw"><span class="k">Langues pratiquées</span><div class="cks"><label class="ck"><input type="checkbox" name="langues_exp" value="Français"><span>Français</span></label><label class="ck"><input type="checkbox" name="langues_exp" value="Anglais"><span>Anglais</span></label><label class="ck"><input type="checkbox" name="langues_exp" value="Espagnol"><span>Espagnol</span></label><label class="ck"><input type="checkbox" name="langues_exp" value="Arabe"><span>Arabe</span></label><label class="ck"><input type="checkbox" name="langues_exp" value="Autre"><span>Autre</span></label></div></div>
       </div>
     </div>
 
@@ -293,8 +292,8 @@ form.on{display:block}
         <label class="fld"><span class="k">Années d'expérience <i>*</i></span><input type="number" name="annees" min="0" max="50" required></label>
       </div>
       <div class="grid2">
-        <label class="fld"><span class="k">Secteurs</span><input name="secteurs" placeholder="Nucléaire, oil &amp; gas, éolien, ferroviaire..."></label>
-        <label class="fld"><span class="k">Outils maîtrisés</span><input name="outils" placeholder="Primavera P6, MS Project, Power BI..."></label>
+        <div class="fld fw"><span class="k">Secteurs couverts</span><div class="cks"><label class="ck"><input type="checkbox" name="secteurs" value="Nucléaire civil"><span>Nucléaire civil</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Nucléaire défense"><span>Nucléaire défense</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Oil &amp; gas"><span>Oil &amp; gas</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Énergie / ENR"><span>Énergie / ENR</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Eau / valorisation"><span>Eau / valorisation</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Ferroviaire"><span>Ferroviaire</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Industrie lourde"><span>Industrie lourde</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Bâtiment / génie civil"><span>Bâtiment / génie civil</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Autre"><span>Autre</span></label></div></div>
+        <div class="fld fw"><span class="k">Outils maîtrisés</span><div class="cks"><label class="ck"><input type="checkbox" name="outils_exp" value="Primavera P6"><span>Primavera P6</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="MS Project"><span>MS Project</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="Excel avancé"><span>Excel avancé</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="Power BI"><span>Power BI</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="Revit"><span>Revit</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="Navisworks"><span>Navisworks</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="Aconex"><span>Aconex</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="ProjectWise"><span>ProjectWise</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="SAP"><span>SAP</span></label><label class="ck"><input type="checkbox" name="outils_exp" value="Autre"><span>Autre</span></label></div></div>
       </div>
       <label class="fld"><span class="k">Projets marquants <i>*</i></span><textarea name="projets" required placeholder="Nom du projet, client final, votre rôle, périmètre, durée."></textarea></label>
       <label class="fld"><span class="k">Références professionnelles</span><textarea name="references" placeholder="Personnes qui peuvent témoigner de votre travail : nom, société, fonction."></textarea></label>
@@ -411,16 +410,37 @@ form.on{display:block}
   }
 
   function collect(form){
-    var o = {}, remplis = 0, total = 0;
+    var o = {}, remplis = 0, total = 0, groupes = {};
+
+    // Une case a cocher seule vaut un booleen : c est le consentement.
+    // Plusieurs cases partageant le meme name forment une LISTE de valeurs (secteurs,
+    // outils, habilitations...). Sans cette distinction, o[name] = e.checked ne garderait
+    // qu un booleen et toutes les valeurs cochees seraient perdues, ce qui rendrait le
+    // matching impossible alors que la personne a bien repondu.
+    Array.prototype.forEach.call(form.elements, function(e){
+      if(!e.name || e.type !== 'checkbox') return;
+      groupes[e.name] = (groupes[e.name] || 0) + 1;
+    });
+
     Array.prototype.forEach.call(form.elements, function(e){
       if(!e.name) return;
-      var v = (e.type === 'checkbox') ? e.checked : e.value;
-      o[e.name] = v;
+      if(e.type === 'checkbox'){
+        if(groupes[e.name] > 1){
+          if(!Array.isArray(o[e.name])) o[e.name] = [];
+          if(e.checked) o[e.name].push(e.value);
+        } else {
+          o[e.name] = e.checked;
+        }
+      } else {
+        o[e.name] = e.value;
+      }
       // La progression ne compte que ce qui est demande ET affiche : sinon un dossier
       // complet plafonne vers 50 pour cent et les seuils de relance sont faux.
       if(e.required && visible(e)){
+        var v = o[e.name];
+        var rempli = Array.isArray(v) ? v.length > 0 : (v !== '' && v !== false);
         total++;
-        if(v !== '' && v !== false) remplis++;
+        if(rempli) remplis++;
       }
     });
     return { data: o, remplis: remplis, total: Math.max(total, 1) };
@@ -539,17 +559,6 @@ form.on{display:block}
     btn.disabled = true;
 
     sync(kind, form, 'complet').then(function(){
-      // Notification : alerte interne + accuse de reception au candidat.
-      // Volontairement detachee du then principal : un echec d envoi ne doit jamais
-      // faire croire a la personne que sa candidature n a pas ete enregistree.
-      try{
-        fetch(CFG.url + '/functions/v1/notifier-candidature', {
-          method: 'POST', keepalive: true,
-          headers: {'Authorization': 'Bearer ' + CFG.anon, 'apikey': CFG.anon, 'Content-Type': 'application/json'},
-          body: JSON.stringify({ type: kind, session_id: SID, payload: payload })
-        }).catch(function(){});
-      }catch(err){}
-
       msg.className = 'msg ok';
       msg.innerHTML = '<b>Reçu.</b> Votre ' + (kind === 'client' ? 'brief' : 'profil') +
         ' est enregistré. Nous revenons vers vous sous 72 heures ouvrées.';
