@@ -471,8 +471,19 @@ form.on{display:block}
     if(!ready) return Promise.reject(new Error('config absente'));
     var body = ligne(kind, form, statut);
     if(!created){
-      return rest('POST', CFG.table, body, 'resolution=merge-duplicates,return=minimal')
-        .then(function(){ created = true; });
+      // PAS d upsert ici. Prefer: resolution=merge-duplicates fait un INSERT ON CONFLICT
+      // DO UPDATE, et Postgres exige alors de satisfaire AUSSI la policy UPDATE, dont le
+      // USING porte sur created_at. Sur la ligne candidate, la condition n est pas
+      // satisfaite et l ecriture est refusee : verifie en production, 401 code 42501 avec
+      // l en-tete, 201 sans lui, quel que soit le contenu envoye.
+      // Consequence si on le laisse : le formulaire n enregistre RIEN, en silence.
+      return rest('POST', CFG.table, body, 'return=minimal')
+        .then(function(){ created = true; })
+        .catch(function(){
+          // Cas residuel : la session existe deja (retour sur la page). On complete.
+          created = true;
+          return rest('PATCH', CFG.table + '?session_id=eq.' + encodeURIComponent(SID), body);
+        });
     }
     return rest('PATCH', CFG.table + '?session_id=eq.' + encodeURIComponent(SID), body);
   }
@@ -519,11 +530,15 @@ form.on{display:block}
         s.textContent = 'Brouillon enregistré';
       }).catch(function(){ s.textContent = ''; });
     }
-    form.addEventListener('input', function(){
+    function planifier(){
       clearTimeout(timer);
       s.textContent = 'Enregistrement...';
       timer = setTimeout(push, 1800);
-    });
+    }
+    // 'input' couvre la frappe, 'change' couvre les listes et les cases a cocher :
+    // six des dix axes de matching sont des cases, il ne faut pas en dependre d un seul.
+    form.addEventListener('input', planifier);
+    form.addEventListener('change', planifier);
     // Filet : si la personne ferme l onglet en cours de saisie, on garde l etat.
     window.addEventListener('pagehide', function(){
       if(!ready || !created || Date.now() - dernier < 2000) return;
