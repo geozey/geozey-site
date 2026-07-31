@@ -213,3 +213,107 @@ footer .logo-foot{height:44px}
 .vcard .tags{margin-top:22px}
 @media(max-width:1100px){.cards4{grid-template-columns:1fr 1fr}.vcard img{height:300px}}
 @media(max-width:620px){.cards4{grid-template-columns:1fr}}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE FIRST — passe du 31/07/2026
+   Signale par Yacine : sur telephone la barre superieure ne
+   proposait aucun choix. En cause, nav .links display:none dans
+   le palier 1100 px, sans rien pour le remplacer. La navigation
+   disparaissait purement et simplement.
+   Menu en CSS pur, sans JavaScript : une case a cocher masquee
+   pilote un panneau. Rien a charger, rien qui puisse echouer.
+   ══════════════════════════════════════════════════════════════ */
+
+.menu-toggle{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+.burger{display:none;margin-left:auto;width:44px;height:44px;flex:0 0 44px;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  cursor:pointer;border-radius:50%;transition:background .18s}
+.burger span{display:block;width:20px;height:1.6px;background:#fff;border-radius:2px;
+  transition:transform .22s ease,opacity .18s ease}
+.burger:hover{background:rgba(255,255,255,.12)}
+.menu-toggle:focus-visible + .links + .burger,
+.burger:focus-visible{outline:2px solid #FF4512;outline-offset:2px}
+
+@media(max-width:1100px){
+  /* la barre garde le logo a gauche, le bouton menu a droite */
+  nav{padding-right:6px}
+  .burger{display:flex}
+
+  /* le panneau remplace la liste masquee du palier existant */
+  nav .links{display:flex;position:fixed;top:0;left:0;right:0;bottom:0;
+    flex-direction:column;justify-content:center;align-items:flex-start;
+    gap:0;margin:0;padding:0 34px;background:#0d0d0d;
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:120}
+  .menu-toggle:checked ~ .links{opacity:1;visibility:visible;transform:none}
+  nav .links a{font-size:30px;font-weight:300;color:rgba(255,255,255,.72);
+    text-transform:none;letter-spacing:-.4px;padding:17px 0;width:100%;
+    border-bottom:1px solid rgba(255,255,255,.1)}
+  nav .links a.active{color:#fff;font-weight:500}
+  nav .links a:first-child{border-top:1px solid rgba(255,255,255,.1)}
+
+  /* la croix, et le bouton passe au dessus du panneau */
+  .burger{z-index:130;position:relative}
+  .menu-toggle:checked ~ .burger span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+  .menu-toggle:checked ~ .burger span:nth-child(2){opacity:0}
+  .menu-toggle:checked ~ .burger span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+
+  /* l appel a l action reste joignable, au bas du panneau */
+  .menu-toggle:checked ~ .pill-cta{position:fixed;left:34px;right:34px;bottom:46px;
+    z-index:130;justify-content:center;height:56px;font-size:17px}
+  body:has(.menu-toggle:checked){overflow:hidden}
+}
+
+/* ── Telephone. Le site etait dessine pour l ordinateur, les
+      tailles heritees etaient trop grandes et debordaient. ── */
+@media(max-width:620px){
+  nav{top:14px;left:12px;right:12px;height:50px;padding-left:16px}
+  nav .logo img{height:17px}
+  .pill-cta{font-size:0;padding:0 14px}
+  .pill-cta .arrow{margin:0}
+  .menu-toggle:checked ~ .pill-cta{font-size:17px;padding:0 22px}
+
+  .hero-band .logo-big{height:40px}
+  .hero-band .tagline{font-size:16px;line-height:1.45}
+  .manifesto h2{font-size:22px;line-height:1.32}
+  .experts-left h2,.chiffres h2,.interventions h2,.visages h2{font-size:25px}
+  .page-hero h1{font-size:27px;line-height:1.18}
+  .txt h2{font-size:21px}
+  .zero .triple{font-size:21px}
+
+  /* la carte du carousel occupait 86 vw, trop etroite pour lire */
+  .icard{width:92vw}
+  .icard .photo{height:210px}
+  .icard .panel{padding:22px 20px 28px}
+  .car-btn{width:38px;height:38px}
+  .car-btn.prev{left:4px}
+  .car-btn.next{right:4px}
+
+  .stat .v{font-size:34px}
+  .stat .l{font-size:16px}
+  .stats{gap:32px;padding-top:52px}
+  .stats-inline{gap:26px;flex-wrap:wrap}
+  .zd-grid,.fcols{grid-template-columns:1fr}
+  .collage{min-height:400px}
+  .collage .c1{width:56%;height:280px;top:40px}
+  .collage .c2{width:38%;height:170px}
+  .collage .c3{width:42%;height:210px;top:230px}
+  .proj .ph{min-height:200px}
+  .proj,.proj.rev{margin:22px 14px}
+
+  .hero-band,.manifesto,.experts-intro,.domaines,.expertises,.chiffres,.visages,
+  .zero,footer,.page-hero,.txt,.zerodelta,.cta-band,
+  .interventions .head,.carousel,.dots,.pill-more,.fbar{padding-left:16px;padding-right:16px}
+
+  /* aucune cible tactile sous 44 px, regle d accessibilite */
+  nav .links a,.btn-dark,.pill-cta,.pill-more,.car-btn,.dots span{min-height:44px}
+  .dots span{min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+}
+
+@media(max-width:400px){
+  .manifesto h2{font-size:20px}
+  .hero-band .logo-big{height:34px}
+  .icard{width:94vw}
+  .stat .v{font-size:29px}
+}
