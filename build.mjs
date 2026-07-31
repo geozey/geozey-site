@@ -25,6 +25,15 @@ console.log(`Images: ${local.length} versionnees, 0 distante`);
 // Controle : toute image citee par une page doit exister dans assets/.
 // Les balises du carousel passent par loptimiseur Vercel, donc le chemin est
 // encode dans une query string, %2Fassets%2Fx.jpg. Les deux formes sont lues.
+
+// Apercus des emails de campagne. Zone interne, exclue des moteurs par vercel.json.
+// Publies ici pour etre relus sans passer par Brevo, et pour servir d archive.
+try {
+  const mails = await readdir('emails');
+  await mkdir('public/emails', { recursive: true });
+  for (const m of mails) { await copyFile('emails/' + m, 'public/emails/' + m); console.log('MAIL ' + m); }
+} catch { console.log('pas de dossier emails'); }
+
 const cites = new Set();
 for (const p of pages.filter(f => f.endsWith(".html") || f.endsWith(".css"))) {
   const t = await readFile(p, "utf8");

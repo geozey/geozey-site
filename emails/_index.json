@@ -1,0 +1,80 @@
+[
+ {
+  "fichier": "CLIENTS-1-ouverture.html",
+  "objet": "Un projet attribue, un PMO a armer",
+  "objets_alternatifs": [
+   "Le planning tient ou il ne tient pas",
+   "Votre equipe projet est-elle complete"
+  ],
+  "preheader": "Planification, controle de projet, document control : renfort operationnel.",
+  "utm_campaign": "geozey_clients",
+  "utm_content": "j0",
+  "octets": 5833,
+  "caracteres_non_ascii": 0
+ },
+ {
+  "fichier": "CLIENTS-2-preuve.html",
+  "objet": "Nos equipes sur ITER et Arianeo",
+  "objets_alternatifs": [
+   "Le terrain sur lequel Geozey s&rsquo;engage",
+   "Ce que nos profils tiennent au quotidien"
+  ],
+  "preheader": "Le niveau d&rsquo;exigence sur lequel Geozey est deja engage.",
+  "utm_campaign": "geozey_clients",
+  "utm_content": "j3",
+  "octets": 5681,
+  "caracteres_non_ascii": 0
+ },
+ {
+  "fichier": "CLIENTS-3-cloture.html",
+  "objet": "Je garde la porte ouverte",
+  "objets_alternatifs": [
+   "Dernier message sur ce sujet",
+   "On en reparle quand le besoin se presente"
+  ],
+  "preheader": "Dernier message. Le besoin viendra peut-etre plus tard.",
+  "utm_campaign": "geozey_clients",
+  "utm_content": "j7",
+  "octets": 5549,
+  "caracteres_non_ascii": 0
+ },
+ {
+  "fichier": "PROFILS-1-ouverture.html",
+  "objet": "Votre profil PMO dans la cellule Geozey",
+  "objets_alternatifs": [
+   "Planificateur P6, on structure le vivier",
+   "Vos missions meritent mieux qu&rsquo;un CV en base"
+  ],
+  "preheader": "Planification, controle de projet, document control : on structure le vivier.",
+  "utm_campaign": "geozey_profils",
+  "utm_content": "j0",
+  "octets": 5725,
+  "caracteres_non_ascii": 0
+ },
+ {
+  "fichier": "PROFILS-2-preuve.html",
+  "objet": "Ou nos equipes interviennent, concretement",
+  "objets_alternatifs": [
+   "EACOP, ITER, Barracuda, EOLMED",
+   "Le terrain Geozey en quatre projets"
+  ],
+  "preheader": "Nucleaire, oil and gas, eolien, defense : le terrain Geozey.",
+  "utm_campaign": "geozey_profils",
+  "utm_content": "j3",
+  "octets": 5662,
+  "caracteres_non_ascii": 0
+ },
+ {
+  "fichier": "PROFILS-3-cloture.html",
+  "objet": "On garde votre profil de cote",
+  "objets_alternatifs": [
+   "Dernier message sur cette vague",
+   "Deux minutes, et on ne vous relance plus"
+  ],
+  "preheader": "Dernier message sur cette vague. Deux minutes suffisent.",
+  "utm_campaign": "geozey_profils",
+  "utm_content": "j7",
+  "octets": 5523,
+  "caracteres_non_ascii": 0
+ }
+]
