@@ -317,3 +317,16 @@ footer .logo-foot{height:44px}
   .icard{width:94vw}
   .stat .v{font-size:29px}
 }
+
+/* ── Debordement horizontal sur telephone.
+      Mesure le 31/07 dans un cadre de 384 px : le document faisait
+      448 px de large, la page se decalait donc lateralement au doigt.
+      Aucun element fautif identifiable un par un, le depassement vient
+      du cumul carousel plus marges negatives. Parade au niveau racine,
+      complétée par une limite sur les medias qui est la cause la plus
+      frequente de ce defaut. ── */
+@media(max-width:1100px){
+  html,body{overflow-x:hidden;max-width:100%}
+  img,video,svg,iframe,table{max-width:100%}
+  .carousel{overscroll-behavior-x:contain}
+}
