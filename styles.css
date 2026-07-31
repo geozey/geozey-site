@@ -330,3 +330,17 @@ footer .logo-foot{height:44px}
   img,video,svg,iframe,table{max-width:100%}
   .carousel{overscroll-behavior-x:contain}
 }
+
+/* ── Le panneau du menu ne faisait que 50 px de haut.
+      Cause : nav porte un backdrop-filter, et une propriete de filtre
+      cree un bloc conteneur pour ses descendants en position fixed.
+      Le panneau se calait donc sur la barre et non sur l ecran.
+      En mobile le flou est remplace par un fond opaque, ce qui rend
+      son plein ecran au panneau et allege le rendu sur telephone. ── */
+@media(max-width:1100px){
+  nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(0,0,0,.62)}
+  nav .links a{font-size:26px;line-height:1.25}
+}
+@media(max-width:400px){
+  nav .links a{font-size:23px;padding:15px 0}
+}
