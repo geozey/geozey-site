@@ -28,6 +28,13 @@ console.log(`Images: ${local.length} versionnees, 0 distante`);
 
 // Apercus des emails de campagne. Zone interne, exclue des moteurs par vercel.json.
 // Publies ici pour etre relus sans passer par Brevo, et pour servir d archive.
+// Application metier. Zone interne, exclue des moteurs par vercel.json.
+try {
+  const appf = await readdir('app');
+  await mkdir('public/app', { recursive: true });
+  for (const f of appf) { await copyFile('app/' + f, 'public/app/' + f); console.log('APP ' + f); }
+} catch { console.log('pas de dossier app'); }
+
 try {
   const mails = await readdir('emails');
   await mkdir('public/emails', { recursive: true });
