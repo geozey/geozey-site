@@ -22,10 +22,12 @@ body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg
 /* ---------- connexion ---------- */
 #login{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr}
 .lg-left{background:var(--charcoal);color:var(--pure);padding:56px 60px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.lg-left::before{content:'';position:absolute;inset:0;background:url('https://geozey.com/assets/hero.jpg') center/cover no-repeat;opacity:.22;filter:grayscale(1) contrast(1.1)}
 .lg-left::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--ember)}
-.wordmark{font-size:26px;font-weight:900;letter-spacing:8px;text-transform:uppercase}
-.wordmark em{color:var(--ember);font-style:normal}
-.lg-tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:6px}
+.lg-left > *{position:relative;z-index:1}
+.logo{height:34px;width:auto;display:block}
+.logo-sm{height:26px;width:auto;display:block}
+.lg-tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:8px}
 .lg-claim{font-size:30px;font-weight:700;line-height:1.28;max-width:15em}
 .lg-claim em{color:var(--ember);font-style:normal}
 .lg-sub{font-size:13px;color:#9A9A9A;margin-top:18px;max-width:26em;line-height:1.75}
@@ -111,10 +113,13 @@ footer em{color:var(--ember);font-style:normal}
 .frm{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 .frm .full{grid-column:1/-1}
 @media(max-width:900px){
- #login{grid-template-columns:1fr}
- .lg-left{padding:32px 24px;gap:28px}
- .lg-claim{font-size:23px}
- .lg-right{padding:32px 24px}
+ #login{grid-template-columns:1fr;min-height:0}
+ .lg-left{padding:26px 22px 30px;gap:18px;order:2;min-height:0}
+ .lg-claim{font-size:20px;max-width:none}
+ .lg-sub{font-size:12.5px;margin-top:12px;max-width:none}
+ .lg-foot{margin-top:4px}
+ .lg-right{padding:30px 22px 34px;order:1;min-height:100vh;align-items:flex-start}
+ .lg-box{max-width:none}
  header{padding:16px 20px;grid-template-columns:1fr;gap:12px}
  nav{padding:0 10px}
  main{padding:26px 16px 50px}
@@ -131,7 +136,7 @@ footer em{color:var(--ember);font-style:normal}
 <section id="login">
   <div class="lg-left">
     <div>
-      <div class="wordmark">GEOZ<em>EY</em></div>
+      <img class="logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
       <div class="lg-tag">Application metier</div>
     </div>
     <div>
@@ -160,7 +165,7 @@ footer em{color:var(--ember);font-style:normal}
 <div id="app" class="hide">
   <header>
     <div>
-      <div class="wordmark" style="font-size:20px;letter-spacing:7px">GEOZ<em>EY</em></div>
+      <img class="logo-sm" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
       <div class="lg-tag" id="hdSub">Application metier</div>
     </div>
     <div class="hd-r">
@@ -172,7 +177,7 @@ footer em{color:var(--ember);font-style:normal}
   <nav id="nav"></nav>
   <main id="vues"></main>
   <footer>
-    <span>GEOZ<em>EY</em> — application metier</span>
+    <span style="display:flex;align-items:center;gap:10px"><img src="https://geozey.com/assets/logo-light.png" alt="Geozey" style="height:14px;width:auto;opacity:.75"> application metier</span>
     <span id="ftMaj">Cache Boond</span>
   </footer>
 </div>
