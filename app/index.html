@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Application metier Geozey : vivier, missions et matching explicable. Acces reserve.">
+<meta property="og:title" content="Geozey — application metier">
+<meta property="og:description" content="Qualification, vivier et matching des profils PMO, planning et document control.">
+<meta property="og:image" content="https://geozey.com/assets/logo.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#000000">
+<title>Geozey — application metier</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pure:#FFFFFF;--ember:#FF4512;--charcoal:#000000;--haze:#E3E3E3;--iron:#282727;--ash:#575756;--ok:#1A5E3A;--warn:#B05D00;--ko:#AA1C00;--info:#003E8A;--border:#E3E3E3;--bg:#FAFAFA}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--charcoal);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono{font-family:'Roboto Mono',monospace}
+.hide{display:none!important}
+
+/* ---------- connexion ---------- */
+#login{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr}
+.lg-left{background:var(--charcoal);color:var(--pure);padding:56px 60px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.lg-left::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--ember)}
+.wordmark{font-size:26px;font-weight:900;letter-spacing:8px;text-transform:uppercase}
+.wordmark em{color:var(--ember);font-style:normal}
+.lg-tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:6px}
+.lg-claim{font-size:30px;font-weight:700;line-height:1.28;max-width:15em}
+.lg-claim em{color:var(--ember);font-style:normal}
+.lg-sub{font-size:13px;color:#9A9A9A;margin-top:18px;max-width:26em;line-height:1.75}
+.lg-foot{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#666}
+.lg-right{background:var(--pure);display:flex;align-items:center;justify-content:center;padding:48px 40px}
+.lg-box{width:100%;max-width:352px}
+.lg-h{font-size:20px;font-weight:700;margin-bottom:6px}
+.lg-p{font-size:12.5px;color:var(--ash);margin-bottom:28px}
+label{display:block;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:7px}
+input[type=email],input[type=password],input[type=text],input[type=number],select,textarea{width:100%;padding:11px 13px;border:1px solid var(--haze);border-radius:1px;font-family:inherit;font-size:13px;background:var(--pure);color:var(--charcoal);margin-bottom:16px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
+.btn{display:inline-block;width:100%;padding:12px 16px;background:var(--ember);color:var(--pure);border:none;border-radius:1px;font-family:'Roboto Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer}
+.btn:hover{background:#E63A0C}
+.btn:disabled{opacity:.5;cursor:default}
+.btn-sec{background:var(--pure);color:var(--charcoal);border:1px solid var(--haze)}
+.btn-sec:hover{background:#F4F4F4;border-color:var(--ash)}
+.lg-sep{display:flex;align-items:center;gap:12px;margin:20px 0;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ash)}
+.lg-sep::before,.lg-sep::after{content:'';flex:1;height:1px;background:var(--haze)}
+.msg{font-size:12px;padding:10px 12px;border-radius:1px;margin-bottom:16px;border-left:3px solid}
+.msg-ko{background:#FDECEA;border-color:var(--ko);color:var(--ko)}
+.msg-ok{background:#E9F5EE;border-color:var(--ok);color:var(--ok)}
+.msg-info{background:#EAF1FB;border-color:var(--info);color:var(--info)}
+
+/* ---------- application ---------- */
+header{background:var(--charcoal);color:var(--pure);padding:0 40px;display:grid;grid-template-columns:1fr auto;align-items:center;min-height:76px;border-bottom:3px solid var(--ember);gap:16px}
+.hd-r{display:flex;align-items:center;gap:16px;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash)}
+.hd-r b{color:var(--pure)}
+.role-tag{background:var(--ember);color:var(--pure);padding:3px 9px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:1px}
+.lnk{background:none;border:none;color:var(--ash);font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:0}
+.lnk:hover{color:var(--ember)}
+nav{background:var(--iron);padding:0 40px;display:flex;overflow-x:auto}
+nav button{background:none;border:none;color:var(--ash);font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:14px 18px;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer}
+nav button:hover{color:var(--pure)}
+nav button.on{color:var(--pure);border-bottom-color:var(--ember)}
+main{max-width:1180px;margin:0 auto;padding:36px 24px 72px}
+.s-label{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--ember);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.s-label span{flex:1;height:1px;background:var(--border)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--charcoal);border:2px solid var(--charcoal);border-radius:2px;overflow:hidden;margin-bottom:30px}
+.st{background:var(--pure);padding:17px 19px;display:flex;flex-direction:column;gap:3px}
+.st.dk{background:var(--iron)}
+.st-l{font-family:'Roboto Mono',monospace;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);font-weight:600}
+.st.dk .st-l{color:#777}
+.st-v{font-size:26px;font-weight:900;line-height:1}
+.st.dk .st-v{color:var(--ember)}
+.st-s{font-family:'Roboto Mono',monospace;font-size:9px;color:var(--ash)}
+.st.dk .st-s{color:#666}
+.tw{overflow-x:auto;border:1px solid var(--haze);background:var(--pure);margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{background:var(--charcoal);color:var(--pure)}
+thead th{padding:10px 13px;text-align:left;font-family:'Roboto Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--haze)}
+tbody tr:last-child{border-bottom:none}
+tbody tr.clic{cursor:pointer}
+tbody tr.clic:hover{background:#FAFAFA}
+tbody td{padding:10px 13px;vertical-align:top}
+td.m{font-family:'Roboto Mono',monospace;font-size:10.5px;color:var(--ember)}
+.bdg{display:inline-block;padding:3px 8px;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:1px}
+.b-ok{background:#D4EDDA;color:var(--ok)}
+.b-wip{background:#FFF3CD;color:var(--warn)}
+.b-ko{background:#F8D7DA;color:var(--ko)}
+.b-nt{background:var(--haze);color:var(--ash)}
+.b-in{background:#DDEEFF;color:var(--info)}
+.b-em{background:var(--ember);color:var(--pure)}
+.card{background:var(--pure);border:1px solid var(--haze);border-radius:1px;padding:22px;position:relative;overflow:hidden;margin-bottom:14px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ember)}
+.card h3{font-size:13px;font-weight:800;margin-bottom:12px}
+.vide{background:var(--pure);border:1px dashed var(--haze);padding:40px 24px;text-align:center;color:var(--ash);font-size:12.5px;border-radius:1px}
+.vide b{display:block;color:var(--charcoal);font-size:13px;margin-bottom:6px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.axe{display:grid;grid-template-columns:130px 1fr auto;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid #EFEFEF;font-size:12px}
+.axe:last-child{border-bottom:none}
+.axe-n{font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash);text-transform:uppercase;letter-spacing:1px}
+.bar{height:6px;background:var(--haze);border-radius:1px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ember)}
+.axe-v{font-family:'Roboto Mono',monospace;font-size:11px;font-weight:700;min-width:52px;text-align:right}
+.axe-d{grid-column:1/-1;font-size:11px;color:var(--ash);padding-left:0;margin-top:2px}
+.score{font-size:34px;font-weight:900;line-height:1}
+.elim{background:#FDECEA;border-left:3px solid var(--ko);padding:12px 14px;font-size:12px;color:var(--ko);margin-bottom:12px;border-radius:1px}
+.alerte{background:#FFF8E8;border-left:3px solid var(--warn);padding:12px 14px;font-size:12px;color:var(--warn);margin-bottom:12px;border-radius:1px}
+footer{background:var(--iron);color:#666;padding:22px 40px;display:flex;justify-content:space-between;gap:16px;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+footer em{color:var(--ember);font-style:normal}
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.frm .full{grid-column:1/-1}
+@media(max-width:900px){
+ #login{grid-template-columns:1fr}
+ .lg-left{padding:32px 24px;gap:28px}
+ .lg-claim{font-size:23px}
+ .lg-right{padding:32px 24px}
+ header{padding:16px 20px;grid-template-columns:1fr;gap:12px}
+ nav{padding:0 10px}
+ main{padding:26px 16px 50px}
+ .strip{grid-template-columns:1fr 1fr}
+ .g2,.g3,.frm{grid-template-columns:1fr}
+ footer{flex-direction:column;padding:20px}
+ .axe{grid-template-columns:100px 1fr auto;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ CONNEXION ============ -->
+<section id="login">
+  <div class="lg-left">
+    <div>
+      <div class="wordmark">GEOZ<em>EY</em></div>
+      <div class="lg-tag">Application metier</div>
+    </div>
+    <div>
+      <div class="lg-claim">Le bon profil, sur le bon chantier, <em>et la preuve</em> que c est le bon.</div>
+      <div class="lg-sub">Vivier, missions et matching explicable. Chaque point attribue est rattache a une reponse, des deux cotes, pour qu une proposition se defende ligne par ligne en rendez-vous.</div>
+    </div>
+    <div class="lg-foot">Donnees hebergees dans l Union europeenne · Acces reserve</div>
+  </div>
+  <div class="lg-right">
+    <div class="lg-box">
+      <div class="lg-h">Connexion</div>
+      <div class="lg-p">Administrateur, client ou expert du vivier.</div>
+      <div id="lgMsg"></div>
+      <label for="em">Adresse email</label>
+      <input type="email" id="em" autocomplete="email" placeholder="prenom@societe.fr">
+      <label for="mp">Mot de passe</label>
+      <input type="password" id="mp" autocomplete="current-password" placeholder="Votre mot de passe">
+      <button class="btn" id="bLogin">Se connecter</button>
+      <div class="lg-sep">ou</div>
+      <button class="btn btn-sec" id="bMagic">Recevoir un lien de connexion</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLICATION ============ -->
+<div id="app" class="hide">
+  <header>
+    <div>
+      <div class="wordmark" style="font-size:20px;letter-spacing:7px">GEOZ<em>EY</em></div>
+      <div class="lg-tag" id="hdSub">Application metier</div>
+    </div>
+    <div class="hd-r">
+      <span class="role-tag" id="hdRole">—</span>
+      <span id="hdUser">—</span>
+      <button class="lnk" id="bOut">Deconnexion</button>
+    </div>
+  </header>
+  <nav id="nav"></nav>
+  <main id="vues"></main>
+  <footer>
+    <span>GEOZ<em>EY</em> — application metier</span>
+    <span id="ftMaj">Cache Boond</span>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SB_URL = 'https://ggxanhkixhkmnknslotu.supabase.co';
+const SB_KEY = 'sb_publishable_a4mePDbVPl09uG6p1Iv0Lg_lJZCn3jC';
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+/* =========================================================================
+   MOTEUR DE MATCHING — report a l identique du cockpit valide le 30/07/2026.
+   Bareme sur 100, dix axes. Deux criteres eliminatoires passent AVANT le score.
+   L ecart de tarif est signale en alerte, il n est JAMAIS score.
+   Ne pas modifier les poids sans un nouveau cadrage.
+   ========================================================================= */
+const AXES = [
+  {cle:'specialite',    nom:'Specialite',    poids:25},
+  {cle:'habilitations', nom:'Habilitations', poids:15},
+  {cle:'secteur',       nom:'Secteur',       poids:14},
+  {cle:'outils',        nom:'Outils',        poids:14},
+  {cle:'seniorite',     nom:'Seniorite',     poids:12},
+  {cle:'presence',      nom:'Presence',      poids:6},
+  {cle:'zone',          nom:'Zone',          poids:5},
+  {cle:'langues',       nom:'Langues',       poids:5},
+  {cle:'duree',         nom:'Duree',         poids:4}
+];
+
+function norm(v){
+  return String(v==null?'':v).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+}
+function liste(v){
+  if(v==null) return [];
+  if(Array.isArray(v)) return v.filter(x=>x!=null&&String(x).trim()!=='');
+  return String(v).split(/[;,]/).map(s=>s.trim()).filter(Boolean);
+}
+function memeValeur(a,b){ return norm(a)!=='' && norm(a)===norm(b); }
+function contient(tab,v){ return tab.some(x=>memeValeur(x,v)); }
+
+function scorer(profil, mission){
+  const d = {};
+  const ajoute = (cle,obtenu,poids,detail)=>{ d[cle]={obtenu:Math.round(obtenu*10)/10,poids,detail}; };
+
+  const pSpe = AXES[0].poids;
+  if(!mission.specialite) ajoute('specialite',pSpe,pSpe,'Aucune specialite exigee, axe neutralise');
+  else if(memeValeur(profil.specialite,mission.specialite)) ajoute('specialite',pSpe,pSpe,'Specialite exacte : '+profil.specialite);
+  else ajoute('specialite',0,pSpe,'Specialite differente : '+(profil.specialite||'non renseignee')+' au lieu de '+mission.specialite);
+
+  const pHab = AXES[1].poids;
+  const habP = liste(profil.habilitations), habM = liste(mission.habilitations_requises);
+  const habManque = habM.filter(h=>!contient(habP,h));
+  if(habM.length===0) ajoute('habilitations',pHab,pHab,'Aucune habilitation exigee, axe neutralise');
+  else if(habManque.length===0) ajoute('habilitations',pHab,pHab,'Toutes detenues : '+habM.join(', '));
+  else ajoute('habilitations',pHab*(habM.length-habManque.length)/habM.length,pHab,(habM.length-habManque.length)+' sur '+habM.length+' detenues, manque '+habManque.join(', '));
+
+  const pSec = AXES[2].poids;
+  if(!mission.secteur) ajoute('secteur',pSec,pSec,'Aucun secteur exige, axe neutralise');
+  else if(memeValeur(profil.secteur,mission.secteur)||contient(liste(profil.secteurs),mission.secteur)) ajoute('secteur',pSec,pSec,'Secteur maitrise : '+mission.secteur);
+  else ajoute('secteur',0,pSec,'Secteur non couvert : '+mission.secteur);
+
+  const pOut = AXES[3].poids;
+  const outP = liste(profil.outils), outM = liste(mission.outils_requis);
+  const outManque = outM.filter(o=>!contient(outP,o));
+  if(outM.length===0) ajoute('outils',pOut,pOut,'Aucun outil exige, axe neutralise');
+  else ajoute('outils',pOut*(outM.length-outManque.length)/outM.length,pOut,
+    (outM.length-outManque.length)+' sur '+outM.length+' maitrises'+(outManque.length?' : manque '+outManque.join(', '):' : '+outM.join(', ')));
+
+  const pSen = AXES[4].poids;
+  const sP = Number(profil.seniorite_annees||0), sM = Number(mission.seniorite_min||0);
+  if(!sM) ajoute('seniorite',pSen,pSen,'Aucune anciennete exigee, axe neutralise');
+  else if(sP>=sM) ajoute('seniorite',pSen,pSen,sP+' ans pour '+sM+' demandes');
+  else ajoute('seniorite',pSen*Math.max(0,sP/sM),pSen,sP+' ans pour '+sM+' demandes, en dessous du seuil');
+
+  const pPre = AXES[5].poids;
+  if(!mission.presence) ajoute('presence',pPre,pPre,'Aucune contrainte de presence, axe neutralise');
+  else if(memeValeur(profil.presence,mission.presence)) ajoute('presence',pPre,pPre,'Presence compatible : '+mission.presence);
+  else ajoute('presence',0,pPre,'Presence attendue '+mission.presence+', profil en '+(profil.presence||'non renseigne'));
+
+  const pZon = AXES[6].poids;
+  if(!mission.zone) ajoute('zone',pZon,pZon,'Aucune zone exigee, axe neutralise');
+  else if(memeValeur(profil.zone,mission.zone)||contient(liste(profil.zones),mission.zone)) ajoute('zone',pZon,pZon,'Zone couverte : '+mission.zone);
+  else ajoute('zone',0,pZon,'Zone non couverte : '+mission.zone);
+
+  const pLan = AXES[7].poids;
+  const lanP = liste(profil.langues), lanM = liste(mission.langues_requises);
+  const lanManque = lanM.filter(l=>!contient(lanP,l));
+  if(lanM.length===0) ajoute('langues',pLan,pLan,'Aucune langue exigee, axe neutralise');
+  else ajoute('langues',pLan*(lanM.length-lanManque.length)/lanM.length,pLan,
+    (lanM.length-lanManque.length)+' sur '+lanM.length+(lanManque.length?', manque '+lanManque.join(', '):''));
+
+  const pDur = AXES[8].poids;
+  if(!mission.duree_mois) ajoute('duree',pDur,pDur,'Aucune duree precisee, axe neutralise');
+  else ajoute('duree',pDur,pDur,'Duree annoncee : '+mission.duree_mois+' mois');
+
+  let total = 0; AXES.forEach(a=>{ total += d[a.cle].obtenu; });
+  total = Math.round(total);
+
+  const motifs = [];
+  if(habManque.length>0) motifs.push('habilitation exigee non detenue : '+habManque.join(', '));
+  const zoneFrEu = mission.zone ? /(france|europe|union)/.test(norm(mission.zone)) : true;
+  if(zoneFrEu && profil.autorisation_travail === false) motifs.push('pas d autorisation de travail en France ou dans l Union europeenne');
+
+  let alerte = null;
+  if(mission.tjm_max && profil.tjm && Number(profil.tjm) > Number(mission.tjm_max)){
+    alerte = 'Tarif au-dessus du budget : '+profil.tjm+' contre '+mission.tjm_max+' annonces. Un tarif se negocie, il ne disqualifie pas.';
+  }
+  return {total, detail:d, ecarte:motifs.length>0, motifs, alerte};
+}
+
+function classer(profils, mission){
+  return profils.map(p=>({profil:p, r:scorer(p,mission)}))
+    .sort((a,b)=>{
+      if(a.r.ecarte !== b.r.ecarte) return a.r.ecarte ? 1 : -1;
+      return b.r.total - a.r.total;
+    });
+}
+
+/* ================= etat ================= */
+let ME = null, DATA = {profils:[], societes:[], contacts:[], missions:[], qualifs:[]}, VUE = 'flux';
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function message(txt, type){
+  $('#lgMsg').innerHTML = '<div class="msg msg-'+type+'">'+esc(txt)+'</div>';
+}
+
+/* ================= connexion ================= */
+$('#bLogin').onclick = async () => {
+  const email = $('#em').value.trim(), pass = $('#mp').value;
+  if(!email || !pass){ message('Renseignez votre email et votre mot de passe.','ko'); return; }
+  $('#bLogin').disabled = true;
+  const {error} = await sb.auth.signInWithPassword({email, password:pass});
+  $('#bLogin').disabled = false;
+  if(error){ message('Connexion refusee. Verifiez vos identifiants.','ko'); return; }
+  demarrer();
+};
+$('#bMagic').onclick = async () => {
+  const email = $('#em').value.trim();
+  if(!email){ message('Renseignez votre email pour recevoir un lien.','ko'); return; }
+  $('#bMagic').disabled = true;
+  const {error} = await sb.auth.signInWithOtp({email, options:{emailRedirectTo:location.href}});
+  $('#bMagic').disabled = false;
+  message(error ? 'Envoi impossible pour le moment.' : 'Lien envoye. Ouvrez votre boite mail.', error ? 'ko' : 'ok');
+};
+$('#bOut').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+
+/* ================= chargement ================= */
+async function demarrer(){
+  const {data:{user}} = await sb.auth.getUser();
+  if(!user) return;
+  const {data:profil} = await sb.from('app_users').select('*').eq('id', user.id).maybeSingle();
+  if(!profil){
+    message('Votre compte existe mais aucun role ne lui est rattache. Demandez a Yacine de vous ouvrir l acces.','info');
+    await sb.auth.signOut();
+    return;
+  }
+  ME = profil;
+  $('#login').classList.add('hide');
+  $('#app').classList.remove('hide');
+  $('#hdRole').textContent = ME.role;
+  $('#hdUser').textContent = ME.nom || ME.email;
+  $('#hdSub').textContent = ME.role==='admin' ? 'Vivier, missions et matching' : (ME.role==='client' ? 'Vos missions et propositions' : 'Votre passeport');
+  await charger();
+  construireNav();
+  rendre();
+}
+
+async function charger(){
+  const [p,s,c,m,q] = await Promise.all([
+    sb.from('cache_profils').select('*').order('nom'),
+    sb.from('cache_societes').select('*').order('nom'),
+    sb.from('cache_contacts').select('*').order('nom'),
+    sb.from('missions').select('*').order('cree_le',{ascending:false}),
+    sb.from('qualifications').select('*').order('created_at',{ascending:false}).limit(200)
+  ]);
+  DATA.profils   = p.data || [];
+  DATA.societes  = s.data || [];
+  DATA.contacts  = c.data || [];
+  DATA.missions  = m.data || [];
+  DATA.qualifs   = q.error ? [] : (q.data || []);
+  const {data:j} = await sb.from('sync_journal').select('fait_le').order('fait_le',{ascending:false}).limit(1);
+  if(j && j[0]) $('#ftMaj').textContent = 'Cache Boond au ' + new Date(j[0].fait_le).toLocaleDateString('fr-FR');
+}
+
+function construireNav(){
+  const onglets = ME.role==='admin'
+    ? [['flux','Flux'],['vivier','Vivier'],['missions','Missions'],['matching','Matching'],['methode','Methode']]
+    : ME.role==='client'
+      ? [['missions','Mes missions'],['methode','Methode']]
+      : [['passeport','Mon passeport'],['methode','Methode']];
+  VUE = onglets[0][0];
+  $('#nav').innerHTML = onglets.map(([k,l])=>'<button data-v="'+k+'">'+l+'</button>').join('');
+  $('#nav').querySelectorAll('button').forEach(b=>{
+    b.onclick = ()=>{ VUE = b.dataset.v; rendre(); };
+  });
+}
+
+/* ================= rendu ================= */
+function rendre(){
+  $('#nav').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.v===VUE));
+  const v = $('#vues');
+  if(VUE==='flux')      v.innerHTML = vueFlux();
+  if(VUE==='vivier')    v.innerHTML = vueVivier();
+  if(VUE==='missions')  v.innerHTML = vueMissions();
+  if(VUE==='matching'){ v.innerHTML = vueMatching(); brancherMatching(); }
+  if(VUE==='methode')   v.innerHTML = vueMethode();
+  if(VUE==='passeport') v.innerHTML = vuePasseport();
+  if(VUE==='missions')  brancherMission();
+}
+
+function vueFlux(){
+  const joignables = DATA.profils.filter(p=>p.email).length;
+  const clients = DATA.societes.filter(s=>norm(s.etat)==='client').length;
+  return '<div class="strip">'
+   + st('Qualifications', DATA.qualifs.length, 'depuis le formulaire')
+   + st('Vivier', DATA.profils.length, joignables+' joignables', true)
+   + st('Societes', DATA.societes.length, clients+' clients')
+   + st('Missions', DATA.missions.length, DATA.missions.filter(m=>m.statut==='ouverte').length+' ouvertes', true)
+   + '</div>'
+   + '<div class="s-label">Qualifications entrantes<span></span></div>'
+   + (DATA.qualifs.length===0
+      ? vide('Aucune qualification a ce jour','Le formulaire est en ligne et fonctionne, il n a simplement pas encore ete rempli. Tant qu il n y a pas de trafic, cet ecran restera vide.')
+      : tableau(['Recu le','Nom','Specialite','Origine','Etat'], DATA.qualifs.map(q=>[
+          q.created_at ? new Date(q.created_at).toLocaleDateString('fr-FR') : '',
+          esc([q.prenom,q.nom].filter(Boolean).join(' ')) || 'anonyme',
+          esc(q.specialite||''), esc(q.utm_source||q.origine||'direct'),
+          '<span class="bdg '+(q.complet?'b-ok':'b-wip')+'">'+(q.complet?'complet':'en cours')+'</span>'
+        ])));
+}
+
+function vueVivier(){
+  if(DATA.profils.length===0) return vide('Vivier vide','Le cache Boond n a pas encore ete alimente.');
+  return '<div class="s-label">Vivier, lu depuis le cache Boond<span></span></div>'
+   + tableau(['Nom','Titre','Specialite','Outils','Joignable','Origine'], DATA.profils.map(p=>[
+      '<b>'+esc((p.nom||'')+' '+(p.prenom||''))+'</b>',
+      esc(p.titre||''), esc(p.specialite||''),
+      (p.outils||[]).map(o=>'<span class="bdg b-nt">'+esc(o)+'</span>').join(' ') || '<span style="color:#999">non renseigne</span>',
+      p.email ? '<span class="bdg b-ok">oui</span>' : '<span class="bdg b-ko">a completer</span>',
+      '<span class="bdg b-in">'+esc(p.type_boond)+'</span>'
+     ]))
+   + '<div class="card"><h3>Ce que dit cet ecran</h3><p style="font-size:12px;color:var(--ash)">'
+   + DATA.profils.filter(p=>!p.email).length + ' profils sur ' + DATA.profils.length
+   + ' n ont ni email ni telephone. Ils sont exploitables pour le matching, qui ne juge que les competences declarees, mais pas pour etre contactes. '
+   + 'C est la raison d etre de l espace expert du palier C : chacun completera sa propre fiche.</p></div>';
+}
+
+function vueMissions(){
+  const soc = Object.fromEntries(DATA.societes.map(s=>[s.boond_id, s.nom]));
+  const liste = DATA.missions.length===0
+    ? vide('Aucune mission enregistree','Creez une mission pour lancer un matching. Sans besoin decrit, le moteur n a rien a comparer.')
+    : tableau(['Reference','Intitule','Client','Specialite','Zone','Statut'], DATA.missions.map(m=>[
+        '<span class="m">'+esc(m.reference||'—')+'</span>', '<b>'+esc(m.intitule)+'</b>',
+        esc(soc[m.societe_boond_id]||'—'), esc(m.specialite||''), esc(m.zone||m.ville||''),
+        '<span class="bdg '+(m.statut==='ouverte'?'b-ok':'b-nt')+'">'+esc(m.statut)+'</span>'
+      ]));
+  if(ME.role!=='admin') return '<div class="s-label">Vos missions<span></span></div>'+liste;
+  return '<div class="s-label">Missions et besoins clients<span></span></div>' + liste
+   + '<div class="card"><h3>Nouvelle mission</h3><div class="frm">'
+   + ch('mIntitule','Intitule','text','Planificateur P6 pour EACOP')
+   + selSoc()
+   + ch('mSpecialite','Specialite','text','Planning P6 / PMO')
+   + ch('mSecteur','Secteur','text','Oil and Gas')
+   + ch('mZone','Zone','text','France')
+   + ch('mOutils','Outils requis, separes par des virgules','text','P6 primavera, ACONEX')
+   + ch('mHab','Habilitations requises, separees par des virgules','text','Nucleaire civil')
+   + ch('mLangues','Langues requises, separees par des virgules','text','Francais, Anglais')
+   + ch('mSeniorite','Anciennete minimale en annees','number','5')
+   + ch('mDuree','Duree en mois','number','12')
+   + ch('mTjm','Budget journalier maximum','number','600')
+   + ch('mPresence','Presence','text','Sur site')
+   + '<div class="full"><button class="btn" id="bMission" style="width:auto;padding:12px 28px">Enregistrer la mission</button></div>'
+   + '</div><div id="mMsg" style="margin-top:12px"></div></div>';
+}
+
+function vueMatching(){
+  if(DATA.missions.length===0) return vide('Aucune mission a matcher','Creez d abord une mission dans l onglet Missions.');
+  return '<div class="s-label">Moteur de matching<span></span></div>'
+   + '<div class="card"><h3>Choisir une mission</h3>'
+   + '<select id="selMission">'+DATA.missions.map(m=>'<option value="'+m.id+'">'+esc(m.intitule)+'</option>').join('')+'</select>'
+   + '</div><div id="resMatch"></div>';
+}
+
+function brancherMatching(){
+  const sel = $('#selMission'); if(!sel) return;
+  const calc = () => {
+    const m = DATA.missions.find(x=>x.id===sel.value);
+    if(!m) return;
+    const rang = classer(DATA.profils, m);
+    $('#resMatch').innerHTML = rang.map((e,i)=>ficheScore(e,i)).join('');
+  };
+  sel.onchange = calc; calc();
+}
+
+function ficheScore(e,i){
+  const p = e.profil, r = e.r;
+  const nom = esc((p.nom||'')+' '+(p.prenom||''));
+  return '<div class="card">'
+   + '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px">'
+   +   '<div><h3 style="margin-bottom:2px">'+(i+1)+'. '+nom+'</h3>'
+   +   '<div style="font-size:11.5px;color:var(--ash)">'+esc(p.titre||'')+'</div></div>'
+   +   '<div style="text-align:right"><div class="score" style="color:'+(r.ecarte?'var(--ko)':'var(--ember)')+'">'+r.total+'</div>'
+   +   '<div class="mono" style="font-size:9px;color:var(--ash);letter-spacing:2px">SUR 100</div></div>'
+   + '</div>'
+   + (r.ecarte ? '<div class="elim"><b>Ecarte</b> — '+esc(r.motifs.join(' ; '))+'. Son score reel reste affiche : le message utile est que ce profil correspond mais qu il est inexploitable, et pourquoi.</div>' : '')
+   + (r.alerte ? '<div class="alerte">'+esc(r.alerte)+'</div>' : '')
+   + AXES.map(a=>{
+       const d = r.detail[a.cle];
+       return '<div class="axe"><div class="axe-n">'+a.nom+'</div>'
+        + '<div class="bar"><i style="width:'+Math.round(100*d.obtenu/d.poids)+'%"></i></div>'
+        + '<div class="axe-v">'+d.obtenu+' / '+d.poids+'</div>'
+        + '<div class="axe-d">'+esc(d.detail)+'</div></div>';
+     }).join('')
+   + '</div>';
+}
+
+function vuePasseport(){
+  const moi = DATA.profils[0];
+  if(!moi) return vide('Aucune fiche rattachee a votre compte','Demandez a Yacine de rattacher votre compte a votre fiche du vivier.');
+  return '<div class="s-label">Mon passeport<span></span></div>'
+   + '<div class="card"><h3>'+esc((moi.nom||'')+' '+(moi.prenom||''))+'</h3>'
+   + '<div class="axe"><div class="axe-n">Titre</div><div>'+esc(moi.titre||'non renseigne')+'</div><div></div></div>'
+   + '<div class="axe"><div class="axe-n">Specialite</div><div>'+esc(moi.specialite||'non renseignee')+'</div><div></div></div>'
+   + '<div class="axe"><div class="axe-n">Outils</div><div>'+((moi.outils||[]).join(', ')||'non renseignes')+'</div><div></div></div>'
+   + '<div class="axe"><div class="axe-n">Email</div><div>'+esc(moi.email||'a completer')+'</div><div></div></div>'
+   + '<div class="axe"><div class="axe-n">Telephone</div><div>'+esc(moi.telephone||'a completer')+'</div><div></div></div>'
+   + '</div>'
+   + '<div class="card"><h3>Mise a jour</h3><p style="font-size:12px;color:var(--ash)">La modification de votre fiche arrive au palier C. Pour l instant, signalez toute correction a Yacine.</p></div>';
+}
+
+function vueMethode(){
+  return '<div class="s-label">Comment le score est calcule<span></span></div>'
+   + '<div class="card"><h3>Un score defendable, pas une boite noire</h3>'
+   + '<p style="font-size:12.5px;color:var(--ash);margin-bottom:14px">Le moteur est deterministe : aucune part d aleatoire, aucun modele entraine. '
+   + 'Chaque point attribue est rattache a une reponse du formulaire, des deux cotes. C est ce qui permet de justifier une proposition en rendez-vous, ligne par ligne, '
+   + 'et d expliquer aussi pourquoi un profil n a pas ete retenu.</p>'
+   + tableau(['Axe','Poids','Regle appliquee'], AXES.map(a=>[
+      '<b>'+a.nom+'</b>', '<span class="m">'+a.poids+'</span>', regleTexte(a.cle)
+     ]))
+   + '</div>'
+   + '<div class="card"><h3>Deux criteres eliminatoires</h3>'
+   + '<p style="font-size:12.5px;color:var(--ash)">Un profil qui ne detient pas une habilitation exigee est ecarte : sur un site nucleaire ou un programme defense, '
+   + 'l habilitation n est pas negociable et aucun point ailleurs ne la compense. Un profil sans autorisation de travail en France ou dans l Union europeenne est ecarte '
+   + 'de la meme facon sur une mission situee en France. Un profil ecarte passe derriere tous les autres, meme avec un score parfait, et son score reel reste affiche.</p></div>'
+   + '<div class="card"><h3>Ce que le score ne dit pas</h3>'
+   + '<p style="font-size:12.5px;color:var(--ash)">Le score mesure la correspondance declaree, pas la qualite d un expert. Les projets marquants et les references restent '
+   + 'en texte libre et se lisent, ils ne se notent pas. Un profil a 72 avec les bons chantiers derriere lui vaut mieux qu un profil a 85 sans reference verifiable. '
+   + 'Le score sert a classer une liste courte, pas a decider seul. L ecart de tarif est signale en alerte et n est jamais score : un tarif se negocie.</p></div>';
+}
+
+function regleTexte(cle){
+  const t = {
+    specialite:'Tout ou rien. La specialite du profil doit correspondre exactement a celle attendue.',
+    habilitations:'Au prorata des habilitations detenues. Toute habilitation manquante declenche aussi l ecartement.',
+    secteur:'Tout ou rien sur le secteur d activite de la mission.',
+    outils:'Au prorata des outils maitrises parmi ceux exiges.',
+    seniorite:'Plein si l anciennete atteint le seuil, au prorata en dessous.',
+    presence:'Tout ou rien : sur site, hybride ou a distance.',
+    zone:'Tout ou rien sur la zone geographique.',
+    langues:'Au prorata des langues exigees et maitrisees.',
+    duree:'Neutre : la duree est affichee, elle ne penalise pas.'
+  };
+  return t[cle] || '';
+}
+
+/* ================= creation de mission ================= */
+function brancherMission(){
+  const b = $('#bMission'); if(!b) return;
+  b.onclick = async () => {
+    const intitule = $('#mIntitule').value.trim();
+    if(!intitule){ $('#mMsg').innerHTML = '<div class="msg msg-ko">L intitule est obligatoire.</div>'; return; }
+    const arr = id => { const v = $('#'+id).value.trim(); return v ? v.split(',').map(s=>s.trim()).filter(Boolean) : null; };
+    const num = id => { const v = $('#'+id).value; return v===''? null : Number(v); };
+    b.disabled = true;
+    const {data:{user}} = await sb.auth.getUser();
+    const soc = $('#mSociete').value;
+    const {error} = await sb.from('missions').insert({
+      reference:'MIS-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase(),
+      intitule,
+      societe_boond_id: soc ? Number(soc) : null,
+      specialite:$('#mSpecialite').value.trim()||null,
+      secteur:$('#mSecteur').value.trim()||null,
+      zone:$('#mZone').value.trim()||null,
+      outils_requis:arr('mOutils'),
+      habilitations_requises:arr('mHab'),
+      langues_requises:arr('mLangues'),
+      seniorite_min:num('mSeniorite'),
+      duree_mois:num('mDuree'),
+      tjm_max:num('mTjm'),
+      presence:$('#mPresence').value.trim()||null,
+      cree_par:user.id
+    });
+    b.disabled = false;
+    if(error){ $('#mMsg').innerHTML = '<div class="msg msg-ko">Enregistrement refuse : '+esc(error.message)+'</div>'; return; }
+    await charger(); rendre();
+  };
+}
+
+/* ================= briques ================= */
+function st(l,v,s,dk){ return '<div class="st'+(dk?' dk':'')+'"><div class="st-l">'+l+'</div><div class="st-v">'+v+'</div><div class="st-s">'+s+'</div></div>'; }
+function vide(t,p){ return '<div class="vide"><b>'+esc(t)+'</b>'+esc(p)+'</div>'; }
+function tableau(cols, lignes){
+  return '<div class="tw"><table><thead><tr>'+cols.map(c=>'<th>'+c+'</th>').join('')+'</tr></thead><tbody>'
+   + lignes.map(l=>'<tr>'+l.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')
+   + '</tbody></table></div>';
+}
+function ch(id,lab,type,ph){ return '<div><label for="'+id+'">'+lab+'</label><input type="'+type+'" id="'+id+'" placeholder="'+ph+'"></div>'; }
+function selSoc(){
+  return '<div><label for="mSociete">Client</label><select id="mSociete"><option value="">Non precise</option>'
+   + DATA.societes.filter(s=>norm(s.etat)==='client').map(s=>'<option value="'+s.boond_id+'">'+esc(s.nom)+'</option>').join('')
+   + '</select></div>';
+}
+
+/* ================= amorce ================= */
+sb.auth.onAuthStateChange((_e, session) => { if(session) demarrer(); });
+demarrer();
+</script>
+</body>
+</html>
