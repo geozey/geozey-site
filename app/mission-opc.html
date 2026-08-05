@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Geozey — Mission OPC, matching du vivier</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pure:#FFFFFF;--ember:#FF4512;--charcoal:#000000;--haze:#E3E3E3;--iron:#282727;--ash:#575756;--ok:#1A5E3A;--warn:#B05D00;--ko:#AA1C00;--info:#003E8A;--border:#E3E3E3;--bg:#FAFAFA}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--charcoal);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.mono{font-family:'Roboto Mono',monospace}
+header{background:var(--charcoal);color:var(--pure);padding:0 48px;display:grid;grid-template-columns:1fr auto;align-items:center;min-height:88px;border-bottom:3px solid var(--ember);gap:20px}
+.logo{height:30px;width:auto;display:block}
+.tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:7px}
+.hd-r{text-align:right;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash);line-height:1.8}
+.hd-r b{color:var(--ember)}
+.intro{background:var(--iron);color:var(--pure);padding:30px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;align-items:start}
+.intro-l{font-family:'Roboto Mono',monospace;font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.intro-v{font-size:14px;font-weight:700;line-height:1.4}
+.intro-s{font-size:11px;color:#999;margin-top:4px;line-height:1.6}
+main{max-width:1140px;margin:0 auto;padding:44px 24px 40px}
+.section{margin-bottom:48px}
+.s-label{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--ember);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.s-label span{flex:1;height:1px;background:var(--border)}
+p{margin-bottom:14px}
+p.lead{font-size:14px;line-height:1.75}
+.card{background:var(--pure);border:1px solid var(--haze);border-radius:1px;padding:24px;position:relative;overflow:hidden;margin-bottom:14px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ember)}
+.card h3{font-size:13px;font-weight:800;margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px}
+.cite{background:var(--pure);border-left:3px solid var(--ember);padding:18px 22px;font-size:13px;line-height:1.8;margin-bottom:16px;border-radius:1px;border-top:1px solid var(--haze);border-right:1px solid var(--haze);border-bottom:1px solid var(--haze)}
+.cite b{display:block;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:10px;font-weight:700}
+.signal{background:var(--charcoal);color:var(--pure);border-left:4px solid var(--ember);padding:26px 30px;margin-bottom:26px}
+.signal h3{font-size:14px;font-weight:800;margin-bottom:10px}
+.signal p{color:#CFCFCF;font-size:12.5px;margin-bottom:10px}
+.signal b{color:var(--pure)}
+.signal p:last-child{margin-bottom:0}
+.tw{overflow-x:auto;border:1px solid var(--haze);background:var(--pure);margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{background:var(--charcoal);color:var(--pure)}
+thead th{padding:10px 13px;text-align:left;font-family:'Roboto Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--haze)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:11px 13px;vertical-align:top}
+td.m{font-family:'Roboto Mono',monospace;font-size:11px;color:var(--ember);font-weight:700}
+tr.top{background:#FFF6F3}
+.bdg{display:inline-block;padding:3px 8px;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:1px}
+.b-ok{background:#D4EDDA;color:var(--ok)}
+.b-wip{background:#FFF3CD;color:var(--warn)}
+.b-ko{background:#F8D7DA;color:var(--ko)}
+.b-nt{background:var(--haze);color:var(--ash)}
+.b-em{background:var(--ember);color:var(--pure)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ul{margin:0 0 14px 18px}
+li{margin-bottom:8px}
+footer{background:var(--iron);color:#666;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-top:40px}
+footer em{color:var(--ember);font-style:normal}
+@media(max-width:900px){
+ header{padding:20px 22px;grid-template-columns:1fr;gap:14px}
+ .hd-r{text-align:left}
+ .intro{padding:24px 22px;grid-template-columns:1fr 1fr;gap:20px}
+ main{padding:30px 18px}
+ .g2{grid-template-columns:1fr}
+ footer{flex-direction:column;align-items:flex-start;gap:10px;padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <img class="logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
+    <div class="tag">Mission OPC · matching du vivier</div>
+  </div>
+  <div class="hd-r">
+    <b>5 aout 2026</b><br>
+    Reference MIS-20260805-OPC1<br>
+    Geozey x egery Tech
+  </div>
+</header>
+
+<div class="intro">
+  <div>
+    <div class="intro-l">Origine</div>
+    <div class="intro-v">LinkedIn</div>
+    <div class="intro-s">Detectee le 05/08 a 11:28, non cherchee</div>
+  </div>
+  <div>
+    <div class="intro-l">Lieu et date</div>
+    <div class="intro-v">Marseille, septembre</div>
+    <div class="intro-s">Sud de la France, demarrage annonce</div>
+  </div>
+  <div>
+    <div class="intro-l">Critere bloquant</div>
+    <div class="intro-v">Primavera P6</div>
+    <div class="intro-s">Declare indispensable par le client</div>
+  </div>
+  <div>
+    <div class="intro-l">Profil propose</div>
+    <div class="intro-v">Alexandru Kis</div>
+    <div class="intro-s">89 sur 100, deja base a Marseille</div>
+  </div>
+</div>
+
+<main>
+
+<div class="section">
+  <div class="s-label">La mission, telle qu elle a ete formulee<span></span></div>
+  <p class="lead">Yacine s est positionne le 5 aout a 07h26 sur une opportunite publiee par OPC, Pilotage de Projets. La reponse est arrivee le meme jour a 11h28. Voici les criteres, sans reformulation.</p>
+  <div class="cite">
+    <b>Reponse du donneur d ordre, 5 aout 11h28</b>
+    La mission se deroule dans le sud de la France, aux alentours de Marseille, avec un demarrage prevu en septembre. La maitrise de Primavera est indispensable, et le client recherche une personne deja basee en France. Si vous remplissez ces criteres et que cette opportunite vous interesse, vous pouvez nous envoyer votre CV. Nous le transmettrons simplement a notre partenaire, qui est en charge du recrutement et prendra directement contact avec les profils retenus.
+  </div>
+  <p>Rien n a ete ajoute a ces criteres. Ce que le message ne dit pas, budget, duree, secteur, habilitations, reste vide dans la fiche mission et n entre donc pas dans le calcul.</p>
+  <p>Une remarque de fond avant le classement : le donneur d ordre est un intermediaire qui transmet a un partenaire recruteur. Geozey n est pas en relation directe avec le client final, ce qui limite la marge et la maitrise du process. C est une piste, pas encore un mandat.</p>
+</div>
+
+<div class="section">
+  <div class="s-label">Le classement du vivier<span></span></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Rang</th><th>Profil</th><th>Score</th><th>Specialite</th><th>Primavera P6</th><th>Localisation</th><th>Joignable</th></tr></thead>
+      <tbody>
+        <tr class="top"><td class="m">1</td><td><b>KIS Alexandru</b></td><td class="m">89</td><td>Planning</td><td><span class="bdg b-ok">oui</span></td><td><b>Marseille 13015</b></td><td><span class="bdg b-ok">oui</span></td></tr>
+        <tr><td class="m">2</td><td>MOMBEINI Mojtaba</td><td class="m">89</td><td>Planning</td><td><span class="bdg b-ok">oui</span></td><td><span class="bdg b-nt">inconnue</span></td><td><span class="bdg b-ko">non</span></td></tr>
+        <tr><td class="m">3</td><td>AIMI Lionel</td><td class="m">89</td><td>Planning</td><td><span class="bdg b-ok">oui</span></td><td><span class="bdg b-nt">inconnue</span></td><td><span class="bdg b-ko">non</span></td></tr>
+        <tr><td class="m">4</td><td>QURESHI Mohammad J.</td><td class="m">75</td><td>Planning</td><td><span class="bdg b-ko">non</span></td><td><span class="bdg b-nt">inconnue</span></td><td><span class="bdg b-ko">non</span></td></tr>
+        <tr><td class="m">5</td><td>BARTHELEMY Gaelle</td><td class="m">50</td><td>Document Control</td><td><span class="bdg b-ko">non</span></td><td>Vinon-sur-Verdon</td><td><span class="bdg b-ok">oui</span></td></tr>
+        <tr><td class="m">6</td><td>KADDOUR, OBSER, EL-GHABZOURI, DUCOEUR</td><td class="m">50</td><td>PMO et OPC</td><td><span class="bdg b-ko">non</span></td><td><span class="bdg b-nt">inconnue</span></td><td><span class="bdg b-ko">non</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Trois profils sont a egalite parfaite sur les criteres declares. Ce qui departage Alexandru Kis n est pas le score, c est le reste : il est deja base a Marseille, ce qui repond directement a la demande d une personne basee en France et proche du site, et c est le seul des trois dont on ait les coordonnees.</p>
+</div>
+
+<div class="card">
+  <h3>Le profil a proposer</h3>
+  <div class="g2">
+    <div>
+      <p style="margin-bottom:8px"><b>Alexandru Kis</b><br>PMO &amp; Logistical Support</p>
+      <p style="font-size:12px;color:var(--ash);margin-bottom:0">Prestataire externe chez EKIUM, rattache au 87 avenue Ibrahim Ali, 13015 Marseille. Primavera P6. Interventions EKIUM EACOP de 2022 a 2026, et Verkor.</p>
+    </div>
+    <div>
+      <p style="font-size:12px;margin-bottom:6px"><span class="mono" style="color:var(--ash)">EMAIL</span><br>dans sa fiche BoondManager</p>
+      <p style="font-size:12px;margin-bottom:6px"><span class="mono" style="color:var(--ash)">MOBILE</span><br>dans sa fiche BoondManager</p>
+      <p style="font-size:11px;color:var(--ash);margin-bottom:0">Coordonnees completes dans BoondManager, relevees dans sa signature de mail du 30 juin 2026. Volontairement non reproduites ici.</p>
+    </div>
+  </div>
+</div>
+
+<div class="signal">
+  <h3>Ce que cette premiere mission reelle a revele, et c est le plus utile</h3>
+  <p>Au premier passage, le moteur a rendu un classement <b>faux</b>. Il placait Mohammad Qureshi en tete a 75 alors qu il ne maitrise pas Primavera, et reléguait Alexandru Kis en deuxieme a 64 alors qu il coche tout.</p>
+  <p>La cause a ete isolee : l axe Specialite vaut 25 points en tout ou rien et compare des libelles au caractere pres. Qureshi etait enregistre en <b>Planning</b>, ce qui tombait pile sur le libelle de la mission. Kis etait en <b>Planning P6 / PMO</b>, Mombeini en <b>Planning / Scheduling</b>, Aimi en <b>Planning EPC</b>. Tous les trois perdaient 25 points pour une difference de vocabulaire, pas de competence.</p>
+  <p>Ce n est donc <b>pas le bareme qui est en cause, c est la qualite des libelles</b>. La preuve a ete faite en normalisant les seules specialites, sans toucher a un seul poids : Kis remonte a 89 et prend la premiere place, Qureshi redescend quatrieme. Le bareme reste intact.</p>
+  <p>Correction retenue : le champ <b>titre</b> garde le libelle riche que lit un humain, le champ <b>specialite</b> devient une valeur de referentiel ferme que compare la machine, avec quatre valeurs, Planning, PMO, Document Control et OPC. Aucune information n est perdue.</p>
+</div>
+
+<div class="section">
+  <div class="s-label">Ce que cela dit du vivier<span></span></div>
+  <p>Neuf profils, dont trois seulement maitrisent Primavera P6, et un seul de ces trois est joignable. C est la mesure la plus honnete de l etat du vivier aujourd hui.</p>
+  <ul>
+    <li><b>Sept profils sur neuf n ont ni adresse ni telephone.</b> Ils sont exploitables pour un classement, qui ne juge que les competences declarees, mais pas pour etre contactes. Sur cette mission, cela ecarte deux profils a 89 sur 100.</li>
+    <li><b>La localisation manque presque partout.</b> Or le client demande explicitement une personne basee en France et proche de Marseille. Sans ce champ, le moteur ne peut pas trancher et c est la connaissance de Yacine qui a fait la difference.</li>
+    <li><b>Aucun profil ne porte de tarif ni de disponibilite.</b> Impossible donc de dire lequel est libre en septembre, qui est la question suivante que posera le partenaire recruteur.</li>
+  </ul>
+  <p>Ces trois manques sont exactement ce que le pipeline entretien vers vivier viendrait combler, en partant des transcriptions Meet plutot que d une saisie manuelle.</p>
+</div>
+
+<div class="section">
+  <div class="s-label">Ce qui est propose<span></span></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Action</th><th>Qui</th><th>Pourquoi maintenant</th></tr></thead>
+      <tbody>
+        <tr><td><b>Confirmer la disponibilite d Alexandru Kis en septembre</b></td><td>Yacine</td><td>Le demarrage est annonce en septembre, c est la premiere question qui bloquera tout le reste</td></tr>
+        <tr><td>Envoyer son CV a OPC</td><td>Yacine</td><td>Le donneur d ordre a explicitement demande un CV pour transmettre au partenaire</td></tr>
+        <tr><td>Recuperer les coordonnees de Mombeini et Aimi</td><td>Yacine</td><td>Deux profils a 89 sur 100 sont inexploitables faute de pouvoir les joindre</td></tr>
+        <tr><td>Normaliser les specialites du referentiel</td><td>egery</td><td>Prêt a passer, evite que l incident se reproduise sur chaque nouveau profil</td></tr>
+        <tr><td>Contraindre la saisie a une liste fermee</td><td>egery</td><td>La contrainte doit etre posee a la saisie, pas rattrapee au calcul</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--ash)">Aucun contact n a ete pris avec qui que ce soit. Ce document est une aide a la decision, les envois restent a la main de Yacine.</p>
+</div>
+
+</main>
+
+<footer>
+  <span style="display:flex;align-items:center;gap:10px"><img src="https://geozey.com/assets/logo-light.png" alt="Geozey" style="height:14px;width:auto;opacity:.75"> mission OPC, matching du vivier</span>
+  <span>5 aout 2026 · <em>Confidentiel</em></span>
+</footer>
+
+</body>
+</html>
