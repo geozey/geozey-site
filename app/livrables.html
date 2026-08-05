@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Geozey x egery Tech, espace livrables. Etat de la mission pre-cession au 5 aout 2026.">
+<meta property="og:title" content="Geozey x egery Tech, espace livrables">
+<meta property="og:description" content="Ce qui est en ligne, ce qui attend une decision, ce qui reste a construire.">
+<meta property="og:image" content="https://geozey.com/assets/logo.png">
+<meta property="og:type" content="website">
+<title>Geozey — espace livrables au 5 aout 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pure:#FFFFFF;--ember:#FF4512;--charcoal:#000000;--haze:#E3E3E3;--iron:#282727;--ash:#575756;--ok:#1A5E3A;--warn:#B05D00;--ko:#AA1C00;--info:#003E8A;--border:#E3E3E3;--bg:#FAFAFA}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--charcoal);font-size:13.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'Roboto Mono',monospace}
+header{background:var(--charcoal);color:var(--pure);padding:0 48px;display:grid;grid-template-columns:1fr auto;align-items:center;min-height:92px;border-bottom:3px solid var(--ember);gap:20px}
+.logo{height:30px;width:auto;display:block}
+.tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:7px}
+.hd-r{text-align:right;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash);line-height:1.9}
+.hd-r b{color:var(--ember)}
+.intro{background:var(--iron);color:var(--pure);padding:30px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;align-items:start}
+.intro-l{font-family:'Roboto Mono',monospace;font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.intro-v{font-size:14px;font-weight:700;line-height:1.4}
+.intro-s{font-size:11px;color:#999;margin-top:4px;line-height:1.6}
+main{max-width:1080px;margin:0 auto;padding:44px 24px 30px}
+.section{margin-bottom:50px}
+.s-label{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--ember);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.s-label span{flex:1;height:1px;background:var(--border)}
+p{margin-bottom:15px}
+p.lead{font-size:14.5px;line-height:1.8}
+h2{font-size:19px;font-weight:700;margin-bottom:14px;line-height:1.35}
+h3{font-size:14px;font-weight:800;margin-bottom:10px}
+.card{background:var(--pure);border:1px solid var(--haze);border-radius:1px;padding:24px;position:relative;overflow:hidden;margin-bottom:14px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ember)}
+.geste{background:var(--pure);border:1px solid var(--haze);border-left:3px solid var(--ember);padding:20px 22px;margin-bottom:12px;border-radius:1px}
+.geste-n{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;color:var(--ember);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.geste h3{margin-bottom:8px}
+.geste p{font-size:12.5px;color:var(--ash);margin-bottom:0}
+.geste p b{color:var(--charcoal)}
+.signal{background:var(--charcoal);color:var(--pure);border-left:4px solid var(--ember);padding:26px 30px;margin-bottom:26px}
+.signal h3{font-size:14.5px;margin-bottom:11px}
+.signal p{color:#CFCFCF;font-size:12.5px;margin-bottom:11px}
+.signal b{color:var(--pure)}
+.signal p:last-child{margin-bottom:0}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--charcoal);border:2px solid var(--charcoal);border-radius:2px;overflow:hidden;margin-bottom:32px}
+.st{background:var(--pure);padding:18px 20px;display:flex;flex-direction:column;gap:3px}
+.st.dk{background:var(--iron)}
+.st-l{font-family:'Roboto Mono',monospace;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);font-weight:600}
+.st.dk .st-l{color:#777}
+.st-v{font-size:27px;font-weight:900;line-height:1}
+.st.dk .st-v{color:var(--ember)}
+.st-s{font-family:'Roboto Mono',monospace;font-size:9px;color:var(--ash)}
+.st.dk .st-s{color:#666}
+.tw{overflow-x:auto;border:1px solid var(--haze);background:var(--pure);margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{background:var(--charcoal);color:var(--pure)}
+thead th{padding:10px 13px;text-align:left;font-family:'Roboto Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--haze)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:11px 13px;vertical-align:top}
+td.m{font-family:'Roboto Mono',monospace;font-size:10.5px;color:var(--ember)}
+.bdg{display:inline-block;padding:3px 8px;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:1px;white-space:nowrap}
+.b-ok{background:#D4EDDA;color:var(--ok)}
+.b-wip{background:#FFF3CD;color:var(--warn)}
+.b-ko{background:#F8D7DA;color:var(--ko)}
+.b-nt{background:var(--haze);color:var(--ash)}
+.b-in{background:#DDEEFF;color:var(--info)}
+.lien{display:inline-block;background:var(--ember);color:var(--pure);text-decoration:none;font-family:'Roboto Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border-radius:1px;margin-top:6px}
+.lien:hover{background:#E63A0C}
+ul{margin:0 0 15px 18px}
+li{margin-bottom:9px}
+footer{background:var(--iron);color:#666;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-top:40px}
+footer em{color:var(--ember);font-style:normal}
+@media(max-width:900px){
+ header{padding:20px 22px;grid-template-columns:1fr;gap:14px}
+ .hd-r{text-align:left}
+ .intro{padding:24px 22px;grid-template-columns:1fr 1fr;gap:20px}
+ .strip{grid-template-columns:1fr 1fr}
+ main{padding:30px 18px}
+ h2{font-size:17px}
+ footer{flex-direction:column;align-items:flex-start;gap:10px;padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <img class="logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
+    <div class="tag">Espace livrables · Geozey x egery Tech</div>
+  </div>
+  <div class="hd-r">
+    <b>Mis a jour le 5 aout 2026</b><br>
+    Accompagnement pre-cession, mois 5<br>
+    Point du 6 aout, 10h30
+  </div>
+</header>
+
+<div class="intro">
+  <div>
+    <div class="intro-l">En ligne</div>
+    <div class="intro-v">Site, formulaire, app</div>
+    <div class="intro-s">Tous verifies ce matin, aucun incident</div>
+  </div>
+  <div>
+    <div class="intro-l">Nouveau</div>
+    <div class="intro-v">Application metier</div>
+    <div class="intro-s">Vivier, missions et matching explicable</div>
+  </div>
+  <div>
+    <div class="intro-l">Trouve</div>
+    <div class="intro-v">Une mission reelle</div>
+    <div class="intro-s">Marseille, septembre, Primavera P6</div>
+  </div>
+  <div>
+    <div class="intro-l">Attendu de vous</div>
+    <div class="intro-v">Six decisions</div>
+    <div class="intro-s">Detaillees plus bas, aucune ne prend 10 minutes</div>
+  </div>
+</div>
+
+<main>
+
+<div class="section">
+  <div class="s-label">Ce qui a change depuis le dernier point<span></span></div>
+  <h2>Le CRM que vous payez tous les mois contient enfin votre portefeuille, et l application sait le lire.</h2>
+  <p class="lead">Deux journees de travail, les 4 et 5 aout. BoondManager est passe de quatre societes sans mouvement depuis le 16 juin a un referentiel complet et verifie. Une application metier a trois roles a ete construite au-dessus, et la premiere mission reelle est deja passee dans le moteur de matching.</p>
+  <div class="strip">
+    <div class="st"><div class="st-l">Societes</div><div class="st-v">22</div><div class="st-s">dont 17 SIRET verifies</div></div>
+    <div class="st dk"><div class="st-l">Contacts</div><div class="st-v">18</div><div class="st-s">rattaches a leur societe</div></div>
+    <div class="st"><div class="st-l">Vivier</div><div class="st-v">10</div><div class="st-s">profils experts</div></div>
+    <div class="st dk"><div class="st-l">Doutes leves</div><div class="st-v">5</div><div class="st-s">sur le referentiel</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="s-label">L application metier<span></span></div>
+  <div class="card">
+    <h3>Trois roles, un moteur qui s explique</h3>
+    <p>L application remplace le cockpit ferme par un acces a comptes. Trois populations, trois vues : vous voyez tout, un client maitre d oeuvre ne voit que ses missions et les profils qu on lui propose, un expert du vivier ne voit que sa fiche. Le code d acces unique est abandonne : il ne savait pas distinguer trois roles.</p>
+    <p>Le moteur de matching a ete repris a l identique. Bareme sur cent points repartis sur dix axes, deux criteres eliminatoires qui passent avant le score, habilitation exigee non detenue et absence d autorisation de travail. L ecart de tarif est signale en alerte mais jamais note, parce qu un tarif se negocie.</p>
+    <p>Chaque point attribue est rattache a une reponse, des deux cotes, et affiche sa raison en clair. C est ce qui permet de defendre une proposition en rendez-vous, ligne par ligne, et d expliquer aussi pourquoi un profil n a pas ete retenu.</p>
+    <a class="lien" href="https://geozey.com/app/">Ouvrir l application</a>
+  </div>
+  <div class="card">
+    <h3>Le cloisonnement a ete prouve, pas affirme</h3>
+    <p>Un visiteur non authentifie a ete teste sur les sept tables, y compris les candidatures : zero ligne visible partout. Toute tentative d ecriture est refusee par la base elle-meme. Vos donnees de vivier ne sont accessibles a personne sans compte.</p>
+  </div>
+</div>
+
+<div class="signal">
+  <h3>Une mission reelle est arrivee pendant qu on travaillait</h3>
+  <p>Le 5 aout a 11h28, en reponse a votre positionnement du matin, OPC Pilotage de Projets a precise ses criteres : <b>sud de la France aux alentours de Marseille, demarrage en septembre, maitrise de Primavera indispensable, personne deja basee en France.</b></p>
+  <p>Le moteur a tourne sur votre vivier. Trois profils ressortent a egalite a 89 sur 100. Ce qui les departage n est pas le score : <b>Alexandru Kis est le seul des trois a etre deja base a Marseille, et le seul dont on ait les coordonnees.</b> C est le profil a proposer.</p>
+  <p>Attention toutefois : le donneur d ordre est un intermediaire qui transmet a un partenaire recruteur. C est une piste serieuse, pas encore un mandat.</p>
+</div>
+
+<div class="section">
+  <div class="s-label">Ce que cette mission a revele sur le vivier<span></span></div>
+  <p class="lead">Faire tourner le moteur sur un cas reel a mis au jour un defaut qu aucun test theorique n aurait montre, et une faiblesse de fond du vivier.</p>
+  <div class="card">
+    <h3>Le moteur classait a l envers, et ce n etait pas sa faute</h3>
+    <p>Au premier passage, un profil <b>sans</b> Primavera arrivait premier, et Alexandru Kis deuxieme alors qu il coche tout. La cause : l axe Specialite compare des libelles au caractere pres. Kis etait enregistre en Planning P6 slash PMO, un autre en Planning tout court. Vingt-cinq points perdus pour une difference de vocabulaire, pas de competence.</p>
+    <p>La correction porte sur les donnees et non sur le bareme, qui n a pas ete touche. Le libelle riche reste visible pour vous, tandis que la machine compare desormais une valeur de liste fermee : Planning, PMO, Document Control, OPC.</p>
+  </div>
+  <div class="card">
+    <h3>Sept profils sur dix ne sont pas joignables</h3>
+    <p>Ils sont exploitables pour un classement, qui ne juge que les competences declarees, mais pas pour etre contactes. Sur la mission OPC, cela ecarte deux profils qui affichaient pourtant 89 sur 100.</p>
+    <p>S y ajoutent deux manques qui bloqueront la prochaine question du client : presque aucun profil ne porte de localisation, alors que la mission en exige une, et aucun ne porte de tarif ni de disponibilite.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="s-label">Les six decisions qui vous appartiennent<span></span></div>
+
+  <div class="geste">
+    <div class="geste-n">Decision 1 · quelques minutes</div>
+    <h3>Confirmer la disponibilite d Alexandru Kis en septembre</h3>
+    <p>C est la question qui conditionne tout le reste sur la mission OPC. Ses coordonnees sont dans sa fiche BoondManager. Si vous voulez avancer, le donneur d ordre attend simplement un CV.</p>
+  </div>
+
+  <div class="geste">
+    <div class="geste-n">Decision 2 · dix minutes</div>
+    <h3>Creer votre compte administrateur sur l application</h3>
+    <p>Un agent ne cree pas de compte et ne saisit aucun mot de passe, c est un choix de securite tenu depuis le debut. Le geste se fait dans Supabase, puis il faut rattacher le compte a son role. <b>Sans ce geste, vous ne pouvez pas ouvrir l application.</b></p>
+  </div>
+
+  <div class="geste">
+    <div class="geste-n">Decision 3 · vous seul detenez l information</div>
+    <h3>Les coordonnees de quatre experts du vivier</h3>
+    <p>Mojtaba Mombeini, Assim El-Ghabzouri, Christine Ducoeur et Mohammad Qureshi. Recherche faite sans succes dans vos mails, vos contacts et votre Drive : ces noms viennent du referentiel interne, pas d un echange. Deux d entre eux sortent a 89 sur 100 sur la mission en cours.</p>
+  </div>
+
+  <div class="geste">
+    <div class="geste-n">Decision 4 · une minute</div>
+    <h3>Trancher deux societes du referentiel</h3>
+    <p><b>BRAVA</b> et <b>NEOLYS</b> restent sans identifiant fiable. Le numero releve sur le contrat BRAVA appartient en realite a LIBRA PROJECTS, et les trois societes nommees NEOLYS au registre exercent toutes une autre activite que l ingenierie.</p>
+  </div>
+
+  <div class="geste">
+    <div class="geste-n">Decision 5 · deux minutes</div>
+    <h3>Ouvrir le depot de l application a egery</h3>
+    <p>L application est publiee sur geozey.com faute d acces au depot geozey-app. Ajouter contrat-cloud en collaborateur permettrait de la remettre a sa place definitive sur app.geozey.com, comme cela a deja ete fait pour le site.</p>
+  </div>
+
+  <div class="geste">
+    <div class="geste-n">Decision 6 · a preciser de vive voix</div>
+    <h3>Le serveur OVH, et ce qu il doit devenir</h3>
+    <p>La panne du 4 aout n a touche aucun de vos services : le site, le formulaire, l application et le cockpit sont ailleurs et ont ete verifies. Le rapport OVH conclut a une configuration a corriger, pas a une panne materielle. Avant d intervenir, il faut savoir ce que contient cette machine et a quoi vous la destinez.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="s-label">Etat de la chaine, du visiteur au placement<span></span></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Maillon</th><th>Etat</th><th>Ce qu il faut savoir</th></tr></thead>
+      <tbody>
+        <tr><td><b>Site vitrine</b></td><td><span class="bdg b-ok">en ligne</span></td><td>Sept pages, navigation mobile refaite, verifie ce matin</td></tr>
+        <tr><td><b>Formulaire de qualification</b></td><td><span class="bdg b-ok">en ligne</span></td><td>Ecrit en base et notifie. Aucune candidature deposee a ce jour</td></tr>
+        <tr><td><b>Referentiel BoondManager</b></td><td><span class="bdg b-ok">charge</span></td><td>Reconstitue depuis 195 contrats, verifie au registre</td></tr>
+        <tr><td><b>Application metier</b></td><td><span class="bdg b-ok">en ligne</span></td><td>Attend la creation de votre compte pour etre ouverte</td></tr>
+        <tr><td><b>Moteur de matching</b></td><td><span class="bdg b-ok">eprouve</span></td><td>Valide sur cinq profils pieges, puis sur une mission reelle</td></tr>
+        <tr><td><b>Campagnes email</b></td><td><span class="bdg b-wip">en brouillon</span></td><td>Six campagnes pretes, domaine authentifie, aucun envoi</td></tr>
+        <tr><td><b>Espaces client et expert</b></td><td><span class="bdg b-in">a construire</span></td><td>Paliers suivants, une fois le socle ouvert</td></tr>
+        <tr><td><b>Acces API BoondManager</b></td><td><span class="bdg b-ko">bloque</span></td><td>Question a poser a l editeur, contournement en place</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12.5px;color:var(--ash)">Sur l acces API : les identifiants existaient deja sur votre compte et n avaient jamais servi. L appel est accepte mais refuse par une clef d agence introuvable cote editeur. En attendant, le referentiel est charge par export, ce qui donne exactement le meme resultat dans l application.</p>
+</div>
+
+<div class="section">
+  <div class="s-label">Ce qui vient ensuite<span></span></div>
+  <p class="lead">Une fois votre compte cree, l application s ouvre sur des donnees reelles et le prochain palier peut demarrer : l espace client maitre d oeuvre, puis l espace expert ou chacun met a jour sa propre fiche.</p>
+  <p>Ce dernier point resout de lui-meme le probleme des coordonnees manquantes. Et si vous enregistrez vos entretiens, les transcriptions peuvent pre-remplir les fiches en citant le passage exact d ou vient chaque information, pour que vous validiez au lieu de saisir.</p>
+  <p>Un point de franchise pour finir : une application ne cree pas de trafic. Le formulaire fonctionne mais personne ne l a rempli, tandis que les candidatures arrivent par LinkedIn et que la mission du jour vient de la aussi. Le canal qui produit aujourd hui est LinkedIn, et c est la que l effort d acquisition doit porter.</p>
+</div>
+
+</main>
+
+<footer>
+  <span style="display:flex;align-items:center;gap:10px"><img src="https://geozey.com/assets/logo-light.png" alt="Geozey" style="height:14px;width:auto;opacity:.75"> espace livrables</span>
+  <span>5 aout 2026 · <em>Confidentiel</em></span>
+</footer>
+
+</body>
+</html>
