@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Preview des trois espaces - Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/app/app-ui.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#1e1e1e">
+<style>
+.roles{display:flex;gap:8px;padding:0 30px 26px;flex-wrap:wrap}
+.roles button{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;padding:9px 15px;border-radius:20px;border:1px solid rgba(255,255,255,.28);background:transparent;color:rgba(255,255,255,.6);cursor:pointer}
+.roles button.on{background:var(--ember);border-color:var(--ember);color:#fff}
+.amenu a{cursor:pointer}
+.prow{cursor:pointer;transition:background .15s}
+.prow:hover{background:rgba(30,30,30,.03)}
+.prow .go{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ember);opacity:0;transition:opacity .15s}
+.prow:hover .go{opacity:1}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:520px;max-width:92vw;background:#fff;box-shadow:-4px 0 24px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .26s ease;z-index:300;overflow-y:auto;padding:44px 40px 60px}
+.drawer.on{transform:none}
+.drawer .x{position:absolute;top:26px;right:30px;font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);background:none;border:0;cursor:pointer}
+.veil{position:fixed;inset:0;background:rgba(30,30,30,.42);opacity:0;visibility:hidden;transition:opacity .26s;z-index:290}
+.veil.on{opacity:1;visibility:visible}
+.flash{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:15px 26px;border-radius:27px;font-size:15px;opacity:0;transition:all .24s;z-index:400}
+.flash.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body class="app-shell">
+<div class="shell">
+  <div class="aside">
+    <div class="brand">
+      <img src="/assets/logo.png" alt="Geozey">
+      <div class="r" id="rlabel">Espace administrateur</div>
+    </div>
+    <div class="roles">
+      <button data-r="admin" class="on">Admin</button>
+      <button data-r="client">Client</button>
+      <button data-r="expert">Expert</button>
+    </div>
+    <div class="amenu" id="menu"></div>
+    <div class="who" id="who"></div>
+  </div>
+  <div class="main">
+    <div class="mtop" id="top"></div>
+    <div class="mwrap" id="vue"></div>
+  </div>
+</div>
+<div class="veil" id="veil"></div>
+<div class="drawer" id="drawer"></div>
+<div class="flash" id="flash"></div>
+<script>
+const PROFILS = [
+{i:'AK',n:'Alexandru Kis',t:'Planning P6 / PMO',s:'Marseille 13015 - ressource Geozey',sc:89,l:'Recommande',tg:[['P6 Primavera',1],['Deja sur place',0],['EPC',0]],ax:[['Specialite','25 / 25','Planning, exactement la specialite demandee'],['Outils','14 / 14','Primavera P6 declare, critere annonce comme indispensable'],['Zone','5 / 5','Deja base a Marseille, aucune mobilite a financer'],['Habilitations','15 / 15','Aucune habilitation exigee sur cette mission, axe neutralise'],['Secteur','6 / 14','Experience EPC transferable, pas d antecedent sur ce secteur precis'],['Seniorite','12 / 12','Anciennete au-dessus du minimum demande'],['Langues','0 / 5','Aucune langue declaree, axe compte a zero'],['Presence','6 / 6','Sur site accepte'],['Duree','4 / 4','Aucune duree precisee, axe neutralise']],src:'Fiche Boond ressource 13, converti le 06/08/2026. Coordonnees relevees dans sa signature de mail du 30/06/2026.'},
+{i:'HH',n:'Hamza Hachim',t:'Project Planner, OLYMPE Industries',s:'Autorisation France confirmee le 30/07',sc:78,l:'Second choix',tg:[['P6 Professional',1],['P6 EPPM',1],['Dessalement',0],['Mobilite a organiser',0]],ax:[['Specialite','25 / 25','Planning, specialite demandee'],['Outils','14 / 14','Deux certifications Primavera P6'],['Zone','0 / 5','Mobilite a organiser, pas encore base dans la zone'],['Habilitations','15 / 15','Aucune habilitation exigee, axe neutralise'],['Secteur','8 / 14','EPCC dessalement, proche de l EPC industriel'],['Seniorite','12 / 12','Anciennete suffisante'],['Langues','0 / 5','Non declarees'],['Presence','0 / 6','Presence sur site non confirmee'],['Duree','4 / 4','Axe neutralise']],src:'Candidat Boond 14, cree le 06/08/2026. Message LinkedIn du 30/07 a 16h03, CV recu par mail.'},
+{i:'MM',n:'Manal Mara',t:'Ingenieure planification, JESA',s:'Sans autorisation de travail en France',sc:71,l:'Ecartee',off:1,tg:[['P6 Primavera',1],['EPC et EPCM',0],['Commissioning',0]],ax:[['Specialite','25 / 25','Planification, specialite demandee'],['Outils','14 / 14','Primavera P6 sur projets EPC et EPCM'],['Zone','0 / 5','Hors zone'],['Habilitations','15 / 15','Axe neutralise'],['Secteur','9 / 14','Industriel lourd, transferable'],['Seniorite','8 / 12','Anciennete un cran sous le maximum'],['Langues','0 / 5','Non declarees'],['Presence','0 / 6','Non confirmee'],['Duree','4 / 4','Axe neutralise']],src:'Message LinkedIn du 30/07 a 18h01 : ne dispose pas d autorisation de travail en France. Motif eliminatoire sur une mission situee en France.'}
+];
+const ENTREES = [
+['Hamza Hachim','Project Planner, OLYMPE Industries','Planning','P6 Professional et EPPM','France','confirmee le 30/07','em','Vivier'],
+['Abderrahim El Alaoui','Chef de projet independant','PMO','positionne sur Dunkerque','France','naturalise 2017','f','En cours'],
+['Ismail Ezzamzami','Hydro Extrusion','Ingenieur Arts et Metiers','','France','','em','Vivier'],
+['Manal Mara','JESA, planification EPC et EPCM','Planning','Primavera P6','Aucune','declare le 30/07','n','Ecarte'],
+['Mahmoud Ziane','Planificateur de projet','Planning','','Visa touristique','arrivee septembre','n','En attente']
+];
+const MISSIONS = [
+['MIS-20260805-OPC1','Planificateur Primavera P6, region marseillaise','Demarrage septembre, sur site. Primavera P6 annonce comme indispensable, personne deja basee en France.','2 profils proposes','Meilleur score 89','em'],
+['MIS-20260729-DK1','Renfort PMO, usine de batteries, Dunkerque','Trois ans, mobilite sur site exigee. Donneur d ordre, budget et nombre de postes restent a qualifier.','1 profil positionne','A qualifier','n']
+];
+const AXES = [['Specialite',25],['Habilitations',15],['Secteur',14],['Outils',14],['Seniorite',12],['Presence',6],['Zone',5],['Langues',5],['Duree',4]];
+const ROLES = {
+admin:{lab:'Espace administrateur',who:'<b>Yacine Djebrouni</b><span>President - Geozey<br>Acces complet</span>',menu:[['flux','Flux entrant'],['vivier','Vivier'],['missions','Missions'],['matching','Matching'],['methode','Methode']]},
+client:{lab:'Espace client',who:'<b>EKIUM</b><span>Maitre d oeuvre<br>Contact Geozey - Yacine</span>',menu:[['cmission','Ma mission'],['cpropos','Propositions'],['methode','Methode']]},
+expert:{lab:'Espace expert',who:'<b>Alexandru Kis</b><span>Planning P6 / PMO<br>Ressource Geozey</span>',menu:[['passeport','Mon passeport'],['positions','Mes positionnements'],['methode','Methode']]}
+};
+let ROLE='admin', VUE='flux';
+const $=s=>document.querySelector(s);
+function pill(c,t){return '<span class=\'pill-s '+c+'\'>'+t+'</span>';}
+function kpi(a){return '<div class=\'kpis\'>'+a.map(x=>'<div><span class=\'k\'>'+x[0]+'</span><span class=\'v'+(x[3]?' em':'')+'\'>'+x[1]+'</span><div class=\'s\'>'+x[2]+'</div></div>').join('')+'</div>';}
+function ligne(p,idx){return '<div class=\'prow\' data-p=\''+idx+'\'>'
++'<div class=\'av '+(p.off?'gr':(idx===0?'em':''))+'\'>'+p.i+'</div>'
++'<div class=\'id\'><h3>'+p.n+'</h3><div class=\'sub\'>'+p.t+' - '+p.s+'</div>'
++'<div class=\'tg\'>'+p.tg.map(t=>'<span'+(t[1]?' class=\'em\'':'')+'>'+t[0]+'</span>').join('')+'</div>'
++'<div class=\'go\' style=\'margin-top:12px\'>Voir le detail du score</div></div>'
++'<div class=\'sc\'><div class=\'n'+(p.off?' off':'')+'\'>'+p.sc+'</div><div class=\'l\'>'+p.l+'</div>'
++'<div class=\'b\'><i class=\''+(p.off?'off':'')+'\' style=\'width:'+p.sc+'%\'></i></div></div></div>';}
+const VUES = {
+flux:()=>({h:'Flux entrant',m:'Vendredi 6 aout 2026 - cache Boond a jour',b:'Nouvelle mission',c:
+kpi([['Vivier','12','8 joignables'],['Missions ouvertes','2','Marseille et Dunkerque',1],['Societes','6','dont 1 client actif'],['Entrees du jour','3','qualifiees depuis LinkedIn']])
++'<span class=\'kicker\'>Ce qui est arrive aujourd hui</span><table class=\'tbl\'><thead><tr><th>Profil</th><th>Specialite</th><th>Autorisation</th><th>Origine</th><th>Etat</th></tr></thead><tbody>'
++ENTREES.map(e=>'<tr><td>'+e[0]+'<span class=\'s\'>'+e[1]+'</span></td><td>'+e[2]+(e[3]?'<span class=\'s\'>'+e[3]+'</span>':'')+'</td><td>'+e[4]+(e[5]?'<span class=\'s\'>'+e[5]+'</span>':'')+'</td><td>LinkedIn</td><td>'+pill(e[6],e[7])+'</td></tr>').join('')
++'</tbody></table><div class=\'note\'><p><b>Trois profils sur cinq sont entres au vivier.</b> Les deux autres sont ecartes sur une phrase de la personne elle meme, datee et citee dans sa fiche Boond. Sans ce motif ecrit, les memes profils reviendraient dans six mois.</p></div>'}),
+vivier:()=>({h:'Vivier',m:'12 profils - 8 joignables - source Boond',b:'Exporter',c:
+'<span class=\'kicker\'>Classement sur la mission de Marseille</span>'+PROFILS.map(ligne).join('')
++'<div class=\'note\'><p><b>Un profil ecarte garde son score reel et passe derriere tous les autres.</b> Manal Mara obtient 71 sur les competences, mais l autorisation de travail est eliminatoire sur une mission situee en France. Cliquez une ligne pour voir le detail des neuf axes.</p></div>'}),
+missions:()=>({h:'Missions',m:'2 ouvertes - 0 fermee',b:'Nouvelle mission',c:
+'<div class=\'g2\'>'+MISSIONS.map(m=>'<div class=\'card-o\'><span class=\'ref\'>'+m[0]+'</span><h3>'+m[1]+'</h3><p>'+m[2]+'</p><div class=\'f\'>'+pill(m[5],m[3])+pill('n',m[4])+'</div></div>').join('')+'</div>'}),
+matching:()=>({h:'Matching',m:'MIS-20260805-OPC1 - 12 profils compares sur 9 axes',b:'Proposer au client',c:
+PROFILS.map(ligne).join('')+'<div class=\'panel\'><span class=\'kicker\'>Pourquoi Alexandru Kis passe devant</span>'
++PROFILS[0].ax.slice(0,5).map(a=>'<div class=\'wrow\'><span class=\'a\'>'+a[0]+'</span><span class=\'p\'>'+a[1]+'</span><span class=\'t\'>'+a[2]+'</span></div>').join('')+'</div>'}),
+methode:()=>({h:'Methode',m:'Un score defendable, pas une boite noire',b:'',c:
+'<p style=\'font-size:17px;line-height:1.7;color:var(--ash);max-width:800px\'>Le moteur est deterministe : aucune part d aleatoire, aucun modele entraine. Chaque point attribue est rattache a une reponse, des deux cotes. C est ce qui permet de justifier une proposition en rendez-vous, ligne par ligne, et d expliquer aussi pourquoi un profil n a pas ete retenu.</p>'
++'<table class=\'tbl\'><thead><tr><th>Axe</th><th>Poids</th></tr></thead><tbody>'+AXES.map(a=>'<tr><td>'+a[0]+'</td><td>'+a[1]+' points</td></tr>').join('')+'</tbody></table>'
++'<div class=\'note\'><p><b>Deux criteres sont eliminatoires.</b> Une habilitation exigee non detenue, et l absence d autorisation de travail sur une mission situee en France. Un profil ecarte passe derriere tous les autres, meme avec un score parfait, et son score reel reste affiche.</p></div>'}),
+cmission:()=>({h:'Planificateur Primavera P6,<br>region marseillaise',m:'MIS-20260805-OPC1 - demarrage septembre - sur site',b:'Valider un profil',c:
+kpi([['Profils examines','12','tout le vivier Geozey'],['Proposes','2','au-dessus de 75',1],['Meilleur score','89','sur 100'],['Delai de reponse','4 j','depuis votre demande']])
++'<span class=\'kicker\'>Ou en est votre mission</span><div class=\'step\'>'
++'<div class=\'done\'><b>Besoin recu</b><span>5 aout, 11h28 - vos criteres</span></div>'
++'<div class=\'done\'><b>Vivier passe au moteur</b><span>5 aout - 12 profils compares sur 9 axes</span></div>'
++'<div class=\'now\'><b>Deux profils proposes</b><span>6 aout - en attente de votre retour</span></div>'
++'<div><b>Entretien a organiser</b><span>a votre main</span></div>'
++'<div><b>Contractualisation</b><span>apres validation</span></div></div>'
++'<div class=\'note\'><p><b>Vous ne voyez que vos missions et les profils qu on vous propose.</b> Jamais le vivier complet, jamais les scores obtenus sur les missions d un autre client.</p></div>'}),
+cpropos:()=>({h:'Propositions',m:'2 profils au-dessus de 75 - cliquez pour le detail',b:'Valider un profil',c:
+PROFILS.slice(0,2).map(ligne).join('')+'<div class=\'panel\'><span class=\'kicker\'>Pourquoi Alexandru Kis passe devant</span>'
++PROFILS[0].ax.slice(0,5).map(a=>'<div class=\'wrow\'><span class=\'a\'>'+a[0]+'</span><span class=\'p\'>'+a[1]+'</span><span class=\'t\'>'+a[2]+'</span></div>').join('')+'</div>'}),
+passeport:()=>({h:'Mon passeport',m:'Ce que les clients voient de vous quand une mission sort',b:'Completer ma fiche',c:
+'<div class=\'jauge\'><div class=\'b\'><i style=\'width:72%\'></i></div><div class=\'n\'>72 %</div></div>'
++'<p style=\'font-size:17px;line-height:1.7;color:var(--ash);max-width:780px\'>Une fiche complete est proposee plus souvent, parce que le moteur ne note que ce qui est declare. Trois champs manquent, ils valent 23 points sur les missions ouvertes en ce moment.</p>'
++'<div class=\'g3\'>'
++[['Habilitations','Nucleaire civil, ATEX, defense. Une habilitation manquante est eliminatoire, aucun point ailleurs ne la compense.','15 points','2 min'],['Langues','Beaucoup de projets EPC se pilotent en anglais. Sans declaration, l axe est compte a zero.','5 points','1 min'],['Disponibilite','La date a partir de laquelle vous pouvez demarrer. Sans elle, vous n apparaissez pas dans les recherches urgentes.','3 points','30 s']]
+  .map(m=>'<div class=\'blk\'><span class=\'kicker\' style=\'margin:0\'>A completer</span><h3>'+m[0]+'</h3><p>'+m[1]+'</p><div class=\'f\'><span class=\'pt\'>'+m[2]+'</span><span class=\'tm\'>'+m[3]+'</span></div></div>').join('')+'</div>'
++'<div class=\'ecard\' style=\'margin-top:48px;padding:38px 40px\'><div class=\'top\'><div class=\'avatar ember\'>AK</div><div><span class=\'role\'>Passeport expert</span><h3>Alexandru Kis</h3></div></div><div class=\'estats\'>'
++[['Titre','Planning P6 / PMO'],['Specialite','Planning'],['Outils','Primavera P6'],['Zone','Marseille, 13015'],['Statut','Ressource Geozey'],['Habilitations','a completer',1],['Langues','a completer',1],['Disponibilite','a completer',1]]
+  .map(e=>'<div class=\'estat\'><span class=\'k\'>'+e[0]+'</span><span class=\'v\''+(e[2]?' style=\'color:var(--ember)\'':'')+'>'+e[1]+'</span></div>').join('')+'</div></div>'}),
+positions:()=>({h:'Mes positionnements',m:'1 proposition en cours - 1 mission manquee',b:'Completer ma fiche',c:
+'<div class=\'g2\'>'
++'<div class=\'card-o\'><span class=\'ref\'>MIS-20260805-OPC1</span><h3>Planificateur P6, region marseillaise</h3><p>Demarrage septembre, sur site. Vous avez ete propose au client le 6 aout.</p><div class=\'f\'>'+pill('f','Propose - score 89')+pill('n','en attente client')+'</div></div>'
++'<div class=\'card-o\'><span class=\'ref\'>MIS-20260729-DK1</span><h3>Renfort PMO, usine de batteries, Dunkerque</h3><p>Trois ans, mobilite sur site exigee. Vous n avez pas ete propose : la mobilite Dunkerque n est pas declaree dans votre fiche.</p><div class=\'f\'>'+pill('n','Non propose')+pill('n','modifiable')+'</div></div></div>'
++'<div class=\'note\'><p><b>La raison d un non-positionnement vous est donnee.</b> Ici, un champ vide, que vous pouvez corriger vous meme. Chaque champ que vous remplissez est un champ que Geozey ne saisit pas a votre place.</p></div>'})
+};
+function rendre(){
+  const r=ROLES[ROLE];
+  $('#rlabel').textContent=r.lab;
+  $('#who').innerHTML=r.who+'<a href=\'#\' id=\'reset\'>Revenir au debut</a>';
+  $('#menu').innerHTML=r.menu.map(m=>'<a data-v=\''+m[0]+'\' class=\''+(m[0]===VUE?'on':'')+'\'>'+m[1]+'</a>').join('');
+  const v=(VUES[VUE]||VUES[r.menu[0][0]])();
+  $('#top').innerHTML='<div><h1>'+v.h+'</h1><div class=\'meta\'>'+v.m+'</div></div>'+(v.b?'<a class=\'btn-white-sm\' id=\'act\' href=\'#\'>'+v.b+' <svg width=\'22\' height=\'22\' viewBox=\'0 0 22 22\' fill=\'none\'><circle cx=\'11\' cy=\'11\' r=\'10.5\' stroke=\'#1e1e1e\'/><path d=\'M7 11h8m0 0-3-3m3 3-3 3\' stroke=\'#1e1e1e\' stroke-width=\'1.2\'/></svg></a>':'');
+  $('#vue').innerHTML=v.c;
+  brancher();
+}
+function brancher(){
+  document.querySelectorAll('#menu a').forEach(a=>a.onclick=e=>{e.preventDefault();VUE=a.dataset.v;rendre();window.scrollTo(0,0);});
+  document.querySelectorAll('.prow').forEach(p=>p.onclick=()=>ouvrir(PROFILS[+p.dataset.p]));
+  const act=$('#act'); if(act) act.onclick=e=>{e.preventDefault();flash('Action de demonstration. Le palier B branchera ce bouton sur la base.');};
+  const rs=$('#reset'); if(rs) rs.onclick=e=>{e.preventDefault();VUE=ROLES[ROLE].menu[0][0];rendre();window.scrollTo(0,0);};
+}
+function ouvrir(p){
+  if(!p) return;
+  $('#drawer').innerHTML='<button class=\'x\' id=\'fermer\'>Fermer</button>'
+   +'<div class=\'top\' style=\'display:flex;gap:22px;align-items:center;margin-bottom:26px\'><div class=\'avatar '+(p.off?'':'ember')+'\'>'+p.i+'</div><div><span class=\'role\'>'+p.l+'</span><h3 style=\'font-size:26px;font-weight:400;margin-top:4px\'>'+p.n+'</h3></div></div>'
+   +'<p style=\'font-size:16px;line-height:1.6;color:var(--ash);margin-bottom:28px\'>'+p.t+'<br>'+p.s+'</p>'
+   +'<div style=\'display:flex;align-items:baseline;gap:14px;margin-bottom:30px\'><span style=\'font-size:58px;font-weight:400;line-height:1'+(p.off?';color:#b4b2a9':'')+'\'>'+p.sc+'</span><span class=\'kicker\' style=\'margin:0\'>sur 100</span></div>'
+   +'<span class=\'kicker\'>Le detail des neuf axes</span>'
+   +p.ax.map(a=>'<div class=\'wrow\' style=\'grid-template-columns:130px 70px 1fr\'><span class=\'a\'>'+a[0]+'</span><span class=\'p\'>'+a[1]+'</span><span class=\'t\'>'+a[2]+'</span></div>').join('')
+   +'<div class=\'note\'><p><b>D ou vient cette fiche.</b> '+p.src+'</p></div>';
+  $('#drawer').classList.add('on'); $('#veil').classList.add('on');
+  $('#fermer').onclick=fermer;
+}
+function fermer(){$('#drawer').classList.remove('on');$('#veil').classList.remove('on');}
+function flash(t){const f=$('#flash');f.textContent=t;f.classList.add('on');clearTimeout(window.__t);window.__t=setTimeout(()=>f.classList.remove('on'),3200);}
+$('#veil').onclick=fermer;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fermer();});
+document.querySelectorAll('.roles button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.roles button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); ROLE=b.dataset.r; VUE=ROLES[ROLE].menu[0][0]; fermer(); rendre(); window.scrollTo(0,0);
+});
+rendre();
+</script>
+</body>
+</html>
