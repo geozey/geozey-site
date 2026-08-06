@@ -128,6 +128,8 @@ footer em{color:var(--ember);font-style:normal}
  footer{flex-direction:column;padding:20px}
  .axe{grid-template-columns:100px 1fr auto;gap:8px}
 }
+.lnk-mp{display:block;width:100%;margin-top:14px;background:none;border:none;color:var(--ash);font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-align:center;padding:6px}
+.lnk-mp:hover{color:var(--ember)}
 </style>
 </head>
 <body>
@@ -157,6 +159,17 @@ footer em{color:var(--ember);font-style:normal}
       <button class="btn" id="bLogin">Se connecter</button>
       <div class="lg-sep">ou</div>
       <button class="btn btn-sec" id="bMagic">Recevoir un lien de connexion</button>
+      <button class="lnk lnk-mp" id="bOubli">Definir ou changer mon mot de passe</button>
+    </div>
+    <div class="lg-box hide" id="boxMdp">
+      <div class="lg-h">Votre mot de passe</div>
+      <div class="lg-p">Choisissez-le maintenant. Huit caracteres minimum. Il ne transite par personne d autre que vous.</div>
+      <div id="mdpMsg"></div>
+      <label for="mp1">Nouveau mot de passe</label>
+      <input type="password" id="mp1" autocomplete="new-password" placeholder="Huit caracteres minimum">
+      <label for="mp2">Confirmation</label>
+      <input type="password" id="mp2" autocomplete="new-password" placeholder="Le meme, pour verifier">
+      <button class="btn" id="bMdp">Enregistrer le mot de passe</button>
     </div>
   </div>
 </section>
@@ -322,6 +335,37 @@ $('#bMagic').onclick = async () => {
   $('#bMagic').disabled = false;
   message(error ? 'Envoi impossible pour le moment.' : 'Lien envoye. Ouvrez votre boite mail.', error ? 'ko' : 'ok');
 };
+$('#bOubli').onclick = async () => {
+  const email = $('#em').value.trim();
+  if(!email){ message('Renseignez votre email, le lien vous y sera envoye.','ko'); return; }
+  $('#bOubli').disabled = true;
+  const {error} = await sb.auth.resetPasswordForEmail(email, {redirectTo: location.origin + location.pathname});
+  $('#bOubli').disabled = false;
+  message(error ? 'Envoi impossible pour le moment.' : 'Lien envoye. Ouvrez votre boite mail, vous choisirez votre mot de passe en revenant ici.', error ? 'ko' : 'ok');
+};
+
+function messageMdp(txt, type){
+  $('#mdpMsg').innerHTML = '<div class="msg msg-'+type+'">'+esc(txt)+'</div>';
+}
+
+function ouvrirDefinitionMdp(){
+  $('#login').classList.remove('hide');
+  document.querySelectorAll('#login .lg-box')[0].classList.add('hide');
+  $('#boxMdp').classList.remove('hide');
+}
+
+$('#bMdp').onclick = async () => {
+  const a = $('#mp1').value, b = $('#mp2').value;
+  if(a.length < 8){ messageMdp('Huit caracteres minimum.','ko'); return; }
+  if(a !== b){ messageMdp('Les deux saisies different.','ko'); return; }
+  $('#bMdp').disabled = true;
+  const {error} = await sb.auth.updateUser({password: a});
+  $('#bMdp').disabled = false;
+  if(error){ messageMdp('Enregistrement refuse : '+error.message,'ko'); return; }
+  messageMdp('Mot de passe enregistre. Vous entrez dans l application.','ok');
+  setTimeout(demarrer, 900);
+};
+
 $('#bOut').onclick = async () => { await sb.auth.signOut(); location.reload(); };
 
 /* ================= chargement ================= */
@@ -591,7 +635,11 @@ function selSoc(){
 }
 
 /* ================= amorce ================= */
-sb.auth.onAuthStateChange((_e, session) => { if(session) demarrer(); });
+const RETOUR_RECOVERY = /type=recovery/.test(location.hash) || /type=recovery/.test(location.search);
+sb.auth.onAuthStateChange((evenement, session) => {
+  if(evenement === 'PASSWORD_RECOVERY' || (RETOUR_RECOVERY && session)){ ouvrirDefinitionMdp(); return; }
+  if(session) demarrer();
+});
 demarrer();
 </script>
 </body>
