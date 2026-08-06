@@ -1,370 +1,364 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Geozey - espaces client et expert, preview</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Espaces client et expert - Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#1e1e1e">
 <style>
-:root{--pure:#FFFFFF;--ember:#FF4512;--charcoal:#000000;--haze:#E3E3E3;--iron:#282727;--ash:#575756;--ok:#1A5E3A;--warn:#B05D00;--ko:#AA1C00;--bg:#FAFAFA;--sand:#F5F4F1}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--charcoal);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
-header{background:var(--charcoal);color:var(--pure);padding:0 48px;display:grid;grid-template-columns:1fr auto;align-items:center;min-height:88px;border-bottom:3px solid var(--ember);gap:20px}
-.logo{height:30px;width:auto;display:block}
-.tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:7px}
-.hd-r{text-align:right;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash);line-height:1.8}
-.hd-r b{color:var(--ember)}
-main{max-width:1240px;margin:0 auto;padding:44px 24px 40px}
-.section{margin-bottom:56px}
-.s-label{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--ember);margin-bottom:20px;display:flex;align-items:center;gap:14px}
-.s-label span{flex:1;height:1px;background:var(--haze)}
-p{margin-bottom:14px}
-p.lead{font-size:14px;line-height:1.75;max-width:860px}
-.card{background:var(--pure);border:1px solid var(--haze);padding:24px;position:relative;overflow:hidden;margin-bottom:14px}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ember)}
-.card h3{font-size:13px;font-weight:800;margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px}
-.app{border:1px solid var(--haze);background:var(--pure);display:grid;grid-template-columns:212px 1fr;min-height:560px;margin-bottom:16px}
-.side{background:var(--charcoal);color:var(--pure);padding:22px 0;display:flex;flex-direction:column}
-.side-top{padding:0 20px 22px;border-bottom:1px solid #2a2a2a;margin-bottom:16px}
-.side-logo{height:22px;display:block;margin-bottom:9px}
-.side-role{font-family:'Roboto Mono',monospace;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ember)}
-.nav a{display:flex;align-items:center;gap:11px;padding:11px 20px;color:#B9B9B9;text-decoration:none;font-size:12.5px;border-left:3px solid transparent}
-.nav a.on{background:#1c1c1c;color:var(--pure);border-left-color:var(--ember)}
-.nav a .ic{width:15px;height:15px;border:1.5px solid currentColor;flex:0 0 15px;opacity:.75}
-.nav a.on .ic{border-color:var(--ember);opacity:1}
-.side-foot{margin-top:auto;padding:18px 20px 0;border-top:1px solid #2a2a2a;font-family:'Roboto Mono',monospace;font-size:9px;color:#6a6a6a;line-height:1.8}
-.side-foot b{color:#B9B9B9;display:block;font-weight:400;letter-spacing:.5px;text-transform:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px}
-.body{padding:0;display:flex;flex-direction:column}
-.top{border-bottom:1px solid var(--haze);padding:18px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.top h2{font-size:17px;font-weight:700;letter-spacing:-.2px}
-.top .sub{font-size:11.5px;color:var(--ash);margin-top:2px}
-.btn{background:var(--ember);color:var(--pure);border:none;padding:9px 17px;font-family:'Roboto Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
-.btn-g{background:none;color:var(--charcoal);border:1px solid var(--haze)}
-.wrap{padding:22px 26px;flex:1}
-.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--haze);border:1px solid var(--haze);margin-bottom:24px}
-.kpi>div{background:var(--pure);padding:15px 17px}
-.kpi .k-l{font-family:'Roboto Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:7px}
-.kpi .k-v{font-size:23px;font-weight:700;line-height:1.1;letter-spacing:-.5px}
-.kpi .k-s{font-size:10.5px;color:var(--ash);margin-top:4px}
-.kpi .em{color:var(--ember)}
-.row{border:1px solid var(--haze);background:var(--pure);margin-bottom:9px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:15px 18px;align-items:center}
-.row:hover{border-color:var(--ash)}
-.av{width:38px;height:38px;background:var(--sand);border:1px solid var(--haze);display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;font-weight:700;color:var(--ash)}
-.r-n{font-size:13.5px;font-weight:700;margin-bottom:2px}
-.r-s{font-size:11.5px;color:var(--ash)}
-.r-t{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
-.chip{font-family:'Roboto Mono',monospace;font-size:8.5px;letter-spacing:.8px;text-transform:uppercase;padding:3px 7px;background:var(--sand);color:var(--ash);border:1px solid var(--haze)}
-.chip.em{background:#FFF1EC;color:#8C2409;border-color:#FFD3C6}
-.sc{text-align:right;min-width:104px}
-.sc-v{font-family:'Roboto Mono',monospace;font-size:22px;font-weight:700;line-height:1;letter-spacing:-1px}
-.sc-l{font-family:'Roboto Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ash);margin-top:4px}
-.bar{height:3px;background:var(--haze);margin-top:8px;position:relative}
-.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ember)}
-.bdg{display:inline-block;padding:3px 8px;font-family:'Roboto Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-.b-ok{background:#D4EDDA;color:var(--ok)}
-.b-wip{background:#FFF3CD;color:var(--warn)}
-.b-ko{background:#F8D7DA;color:var(--ko)}
-.b-nt{background:var(--sand);color:var(--ash);border:1px solid var(--haze)}
-.b-em{background:var(--ember);color:var(--pure)}
-.tl{border-left:2px solid var(--haze);padding-left:20px;margin:4px 0 0}
-.tl li{list-style:none;position:relative;padding-bottom:15px;font-size:12px}
-.tl li::before{content:'';position:absolute;left:-26px;top:4px;width:9px;height:9px;background:var(--pure);border:2px solid var(--haze)}
-.tl li.done::before{background:var(--ember);border-color:var(--ember)}
-.tl li.now::before{border-color:var(--ember)}
-.tl b{display:block;font-size:12.5px}
-.tl span{color:var(--ash);font-size:11px}
-.axe{display:grid;grid-template-columns:132px 46px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--haze);align-items:center;font-size:12px}
-.axe:last-child{border:none}
-.axe-n{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ash)}
-.axe-p{font-family:'Roboto Mono',monospace;font-weight:700;text-align:right}
-.axe-t{color:var(--ash);font-size:11.5px}
-.prog{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.prog-b{flex:1;height:6px;background:var(--haze);position:relative}
-.prog-b i{position:absolute;left:0;top:0;bottom:0;background:var(--ember)}
-.prog-v{font-family:'Roboto Mono',monospace;font-size:13px;font-weight:700}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.miss{border:1px solid var(--haze);padding:16px 18px;background:var(--pure)}
-.miss .m-r{font-family:'Roboto Mono',monospace;font-size:9.5px;color:var(--ember);font-weight:700;letter-spacing:.5px}
-.miss .m-i{font-size:13.5px;font-weight:700;margin:6px 0 8px;line-height:1.35}
-.miss .m-d{font-size:11.5px;color:var(--ash);line-height:1.6}
-.miss .m-f{margin-top:13px;padding-top:12px;border-top:1px solid var(--haze);display:flex;justify-content:space-between;align-items:center}
-table{width:100%;border-collapse:collapse;font-size:12px}
-thead tr{background:var(--charcoal);color:var(--pure)}
-thead th{padding:10px 13px;text-align:left;font-family:'Roboto Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600}
-tbody tr{border-bottom:1px solid var(--haze)}
-tbody td{padding:11px 13px;vertical-align:top}
-.tw{border:1px solid var(--haze);background:var(--pure);margin-bottom:14px;overflow-x:auto}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--haze);background:var(--pure)}
-.cmp>div{padding:20px 22px}
-.cmp>div:first-child{border-right:1px solid var(--haze);background:var(--sand)}
-.cmp h4{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:13px}
-.cmp ul{margin-left:16px}
-.cmp li{margin-bottom:8px;font-size:12.5px}
-footer{background:var(--iron);color:#666;padding:26px 48px;display:flex;justify-content:space-between;gap:20px;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-top:40px}
-footer em{color:var(--ember);font-style:normal}
-@media(max-width:1000px){
-header{padding:20px 22px;grid-template-columns:1fr}
-.hd-r{text-align:left}
-main{padding:28px 16px}
-.app{grid-template-columns:1fr}
-.side{flex-direction:row;flex-wrap:wrap;padding:16px}
-.side-top{border:none;padding:0 0 12px;width:100%}
-.nav{display:flex;flex-wrap:wrap}
-.nav a{padding:8px 12px;border-left:none;border-bottom:3px solid transparent}
-.nav a.on{border-left:none;border-bottom-color:var(--ember)}
-.side-foot{display:none}
-.kpi{grid-template-columns:1fr 1fr}
-.g2,.g3,.cmp{grid-template-columns:1fr}
-.cmp>div:first-child{border-right:none;border-bottom:1px solid var(--haze)}
-.row{grid-template-columns:1fr;gap:12px}
-.sc{text-align:left}
+.ui{background:#fff;border-radius:13px;box-shadow:0 4px 4px rgba(0,0,0,.25);overflow:hidden;display:grid;grid-template-columns:238px 1fr;margin-top:44px}
+.ui-side{background:var(--dark);padding:34px 0;display:flex;flex-direction:column}
+.ui-side .brand{padding:0 26px 26px}
+.ui-side .brand img{height:19px}
+.ui-side .brand .r{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember);margin-top:12px}
+.ui-nav a{display:block;padding:14px 26px;color:rgba(255,255,255,.62);font-size:16px;font-weight:300;border-left:2px solid transparent}
+.ui-nav a.on{color:#fff;font-weight:500;border-left-color:var(--ember);background:rgba(255,255,255,.04)}
+.ui-side .who{margin-top:auto;padding:26px 26px 0;border-top:1px solid rgba(255,255,255,.12)}
+.ui-side .who b{display:block;font-size:16px;font-weight:400;color:#fff}
+.ui-side .who span{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a8a8a;display:block;margin-top:6px;line-height:1.9}
+.ui-top{padding:34px 40px 30px;border-bottom:1px solid rgba(30,30,30,.14);display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.ui-top h3{font-size:32px;font-weight:400;line-height:1.25}
+.ui-top .meta{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ash);margin-top:12px}
+.ui-wrap{padding:36px 40px 44px}
+.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;border-bottom:1px solid rgba(30,30,30,.14);padding-bottom:32px;margin-bottom:36px}
+.kpi4 .k{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);display:block;margin-bottom:10px}
+.kpi4 .v{font-size:38px;line-height:1;font-weight:400}
+.kpi4 .v.em{color:var(--ember)}
+.kpi4 .s{font-size:14px;color:var(--ash);margin-top:8px}
+.prow{display:flex;gap:26px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(30,30,30,.14)}
+.prow:last-of-type{border-bottom:0}
+.prow .av{width:72px;height:72px;border-radius:13px;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:20px;letter-spacing:2px;flex:none}
+.prow .av.em{background:var(--ember)}
+.prow .id{flex:1;min-width:0}
+.prow .id h4{font-size:22px;font-weight:400;line-height:1.3}
+.prow .id .sub{font-size:15px;color:var(--ash);margin-top:4px}
+.prow .tg{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.prow .tg span{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ash);border:1px solid rgba(30,30,30,.3);border-radius:20px;padding:7px 14px}
+.prow .tg span.em{color:var(--ember);border-color:var(--ember)}
+.prow .sc{text-align:right;flex:none;width:132px}
+.prow .sc .n{font-size:52px;line-height:1;font-weight:400}
+.prow .sc .l{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-top:8px}
+.prow .sc .b{height:2px;background:rgba(30,30,30,.16);margin-top:14px;position:relative}
+.prow .sc .b i{position:absolute;inset:0 auto 0 0;background:var(--ember)}
+.why{background:#ececec;border-radius:13px;padding:32px 34px;margin-top:34px}
+.why .kicker{margin-bottom:20px}
+.wrow{display:grid;grid-template-columns:190px 74px 1fr;gap:22px;padding:13px 0;border-bottom:1px solid rgba(30,30,30,.14);align-items:baseline}
+.wrow:last-child{border-bottom:0}
+.wrow .a{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash)}
+.wrow .p{font-family:'Roboto Mono',monospace;font-size:16px}
+.wrow .t{font-size:15px;line-height:1.55}
+.step{margin-top:40px;border-left:1px solid rgba(30,30,30,.2);padding-left:28px}
+.step div{position:relative;padding-bottom:26px}
+.step div::before{content:"";position:absolute;left:-34px;top:6px;width:11px;height:11px;border-radius:50%;background:#fff;border:1px solid rgba(30,30,30,.3)}
+.step div.done::before{background:var(--ember);border-color:var(--ember)}
+.step div.now::before{border-color:var(--ember);border-width:2px}
+.step b{display:block;font-size:18px;font-weight:400}
+.step span{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);display:block;margin-top:6px}
+.jauge{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+.jauge .b{flex:1;height:3px;background:rgba(30,30,30,.16);position:relative}
+.jauge .b i{position:absolute;inset:0 auto 0 0;background:var(--ember)}
+.jauge .n{font-size:38px;font-weight:400;line-height:1}
+.manque{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:36px 0 10px}
+.manque .m{background:#ececec;border-radius:13px;padding:28px 30px 30px;display:flex;flex-direction:column}
+.manque .m h4{font-size:22px;font-weight:400;margin:16px 0 12px}
+.manque .m p{font-size:15px;line-height:1.55;color:var(--ash)}
+.manque .m .f{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center}
+.manque .m .pt{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ember);border:1px solid var(--ember);border-radius:20px;padding:7px 14px}
+.manque .m .tm{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash)}
+.pos{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:24px}
+.pos .p{border:1px solid rgba(30,30,30,.2);border-radius:13px;padding:28px 30px}
+.pos .p .ref{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember)}
+.pos .p h4{font-size:22px;font-weight:400;margin:14px 0 12px;line-height:1.3}
+.pos .p p{font-size:15px;line-height:1.6;color:var(--ash)}
+.pos .p .f{margin-top:22px;padding-top:20px;border-top:1px solid rgba(30,30,30,.14);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.ecarts{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;margin-top:56px}
+.ecarts .e{padding:28px 0;border-top:1px solid rgba(255,255,255,.18)}
+.ecarts .e .n{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember);display:block;margin-bottom:14px}
+.ecarts .e h4{font-size:24px;font-weight:400;margin-bottom:12px}
+.ecarts .e p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.6)}
+.ecarts .e p b{color:#fff;font-weight:400}
+@media(max-width:1100px){
+.ui{grid-template-columns:1fr}
+.ui-side{padding:24px 0 20px}
+.ui-nav{display:flex;flex-wrap:wrap;padding:0 12px}
+.ui-nav a{padding:10px 14px;border-left:0;border-bottom:2px solid transparent}
+.ui-nav a.on{border-left:0;border-bottom-color:var(--ember)}
+.ui-side .who{display:none}
+.ui-top{padding:26px 24px 22px}
+.ui-top h3{font-size:24px}
+.ui-wrap{padding:26px 24px 32px}
+.kpi4{grid-template-columns:1fr 1fr;gap:24px}
+.kpi4 .v{font-size:30px}
+.prow{flex-wrap:wrap}
+.prow .sc{text-align:left;width:auto}
+.prow .sc .n{font-size:40px}
+.manque,.pos,.ecarts{grid-template-columns:1fr}
+.wrow{grid-template-columns:1fr;gap:4px}
 }
 </style>
 </head>
 <body>
-<header>
-  <div>
-    <img class="logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
-    <div class="tag">Espaces client et expert - preview</div>
+<nav>
+  <a class="logo" href="/index.html"><img src="/assets/logo.png" alt="Geozey"></a>
+  <input type="checkbox" id="menu-mobile" class="menu-toggle" aria-hidden="true">
+  <label for="menu-mobile" class="burger" aria-label="Ouvrir le menu" role="button" tabindex="0"><span></span><span></span><span></span></label>
+  <div class="links">
+    <a href="/index.html">Accueil</a>
+    <a href="/experts.html">Experts</a>
+    <a href="/manifeste.html">Manifeste</a>
+    <a href="/interventions.html">Interventions</a>
   </div>
-  <div class="hd-r">
-    <b>6 aout 2026</b><br>
-    Maquette, non connectee aux donnees<br>
-    Geozey x egery Tech
-  </div>
-</header>
+  <a class="pill-cta" href="/app/">Ouvrir l application
+    <span class="arrow"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10.5" stroke="#f1f1f1"/><path d="M7 11h8m0 0-3-3m3 3-3 3" stroke="#f1f1f1" stroke-width="1.2"/></svg></span></a>
+</nav>
 
-<main>
+<section class="page-hero ph-dark">
+  <span class="kicker">Application metier - preview</span>
+  <h1>Les espaces client et expert.</h1>
+  <p class="lead">Le poste de pilotage est livre. Les deux autres portes existent dans le code, mais ce sont des coquilles. Voici ce qu elles doivent devenir.</p>
+</section>
 
-<div class="section">
-  <div class="s-label">Ce que ces deux espaces sont aujourd hui<span></span></div>
-  <p class="lead">Le palier A a livre le poste de pilotage de Yacine. Les deux autres roles existent dans le code, mais ce sont des coquilles. Autant le dire franchement avant de montrer la suite.</p>
-  <div class="cmp">
-    <div>
-      <h4>Etat reel du code</h4>
-      <ul>
-        <li><b>Client</b> : deux onglets, un tableau de missions filtre par les regles de securite, et la page Methode. Aucun profil propose n est visible. Un espace client qui ne montre pas les propositions n a pas d usage.</li>
-        <li><b>Expert</b> : un onglet, sa fiche en lecture seule. Le code lit la premiere ligne renvoyee, ce qui ne fonctionne que parce que la securite n en renvoie qu une. Juste, mais par effet de bord.</li>
-        <li>Navigation en onglets texte, tableaux bruts, aucune fiche de detail, aucun tri, aucune recherche.</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Ce que montre cette preview</h4>
-      <ul>
-        <li><b>Client</b> : ses missions avec leur avancement, les profils proposes avec le score et sa justification, et l action attendue de lui.</li>
-        <li><b>Expert</b> : son passeport avec un taux de completude, ce qui manque et pourquoi c est important, et les missions ou il est positionne.</li>
-        <li>Navigation laterale, en-tete de page, indicateurs, lignes cliquables, scores lisibles. Le vocabulaire d un produit, pas d un rapport.</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<section class="txt bg-white">
+  <span class="kicker">Le constat</span>
+  <h2>Deux roles declares, deux ecrans vides.</h2>
+  <p>Cote <b>client</b>, deux onglets : un tableau de missions filtre par les regles de securite, et la page Methode. Aucun profil propose n est visible. Un espace client qui ne montre pas les propositions n a pas d usage.</p>
+  <p>Cote <b>expert</b>, un seul onglet, sa fiche en lecture seule. Le code lit la premiere ligne renvoyee par la base, ce qui ne fonctionne que parce que la securite n en renvoie qu une. Le resultat est juste, mais par effet de bord.</p>
+  <p class="punch">Ce qui suit utilise la charte du site, pas une interpretation : memes composants, memes arrondis, meme typographie.</p>
+</section>
 
-<div class="section">
-  <div class="s-label">Espace client, vue maitre d oeuvre<span></span></div>
-  <div class="app">
-    <div class="side">
-      <div class="side-top">
-        <img class="side-logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
-        <div class="side-role">Espace client</div>
+<section class="txt bg-light">
+  <span class="kicker">Espace client</span>
+  <h2>Ce que voit un maitre d oeuvre.</h2>
+  <p>Ses missions, les profils qu on lui propose, la raison du classement, et l action attendue de lui. Jamais le vivier complet.</p>
+
+  <div class="ui">
+    <div class="ui-side">
+      <div class="brand">
+        <img src="/assets/logo.png" alt="Geozey">
+        <div class="r">Espace client</div>
       </div>
-      <div class="nav">
-        <a href="#" class="on"><span class="ic"></span>Mes missions</a>
-        <a href="#"><span class="ic"></span>Propositions</a>
-        <a href="#"><span class="ic"></span>Mes experts</a>
-        <a href="#"><span class="ic"></span>Documents</a>
-        <a href="#"><span class="ic"></span>Methode</a>
+      <div class="ui-nav">
+        <a href="#" class="on">Mes missions</a>
+        <a href="#">Propositions</a>
+        <a href="#">Mes experts</a>
+        <a href="#">Documents</a>
+        <a href="#">Methode</a>
       </div>
-      <div class="side-foot">
+      <div class="who">
         <b>EKIUM</b>
-        Maitre d oeuvre<br>
-        Contact Geozey : Yacine
+        <span>Maitre d oeuvre<br>Contact Geozey - Yacine</span>
       </div>
     </div>
-    <div class="body">
-      <div class="top">
+    <div>
+      <div class="ui-top">
         <div>
-          <h2>Planificateur Primavera P6, region marseillaise</h2>
-          <div class="sub">MIS-20260805-OPC1 - demarrage septembre - sur site</div>
+          <h3>Planificateur Primavera P6,<br>region marseillaise</h3>
+          <div class="meta">MIS-20260805-OPC1 - demarrage septembre - sur site</div>
         </div>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-g">Exporter</button>
-          <button class="btn">Valider un profil</button>
-        </div>
+        <a class="btn-white-sm" href="#">Valider un profil
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10.5" stroke="#1e1e1e"/><path d="M7 11h8m0 0-3-3m3 3-3 3" stroke="#1e1e1e" stroke-width="1.2"/></svg></a>
       </div>
-      <div class="wrap">
-        <div class="kpi">
-          <div><div class="k-l">Profils examines</div><div class="k-v">12</div><div class="k-s">tout le vivier</div></div>
-          <div><div class="k-l">Proposes</div><div class="k-v em">2</div><div class="k-s">au-dessus de 75</div></div>
-          <div><div class="k-l">Meilleur score</div><div class="k-v">89</div><div class="k-s">sur 100</div></div>
-          <div><div class="k-l">Delai de reponse</div><div class="k-v">4 j</div><div class="k-s">depuis la demande</div></div>
+      <div class="ui-wrap">
+        <div class="kpi4">
+          <div><span class="k">Profils examines</span><span class="v">12</span><div class="s">tout le vivier</div></div>
+          <div><span class="k">Proposes</span><span class="v em">2</span><div class="s">au-dessus de 75</div></div>
+          <div><span class="k">Meilleur score</span><span class="v">89</span><div class="s">sur 100</div></div>
+          <div><span class="k">Delai de reponse</span><span class="v">4 j</span><div class="s">depuis la demande</div></div>
         </div>
-        <div class="s-label" style="margin-bottom:14px">Profils proposes<span></span></div>
-        <div class="row">
-          <div class="av">AK</div>
-          <div>
-            <div class="r-n">Alexandru Kis</div>
-            <div class="r-s">Planning P6 / PMO - Marseille 13015 - disponible</div>
-            <div class="r-t">
-              <span class="chip em">P6 primavera</span>
-              <span class="chip">Deja sur place</span>
-              <span class="chip">EPC</span>
-            </div>
+        <span class="kicker">Profils proposes</span>
+        <div class="prow">
+          <div class="av em">AK</div>
+          <div class="id">
+            <h4>Alexandru Kis</h4>
+            <div class="sub">Planning P6 / PMO - Marseille 13015 - disponible</div>
+            <div class="tg"><span class="em">P6 Primavera</span><span>Deja sur place</span><span>EPC</span></div>
           </div>
           <div class="sc">
-            <div class="sc-v">89</div>
-            <div class="sc-l">Recommande</div>
-            <div class="bar"><i style="width:89%"></i></div>
+            <div class="n">89</div>
+            <div class="l">Recommande</div>
+            <div class="b"><i style="width:89%"></i></div>
           </div>
         </div>
-        <div class="row">
+        <div class="prow">
           <div class="av">HH</div>
-          <div>
-            <div class="r-n">Hamza Hachim</div>
-            <div class="r-s">Project Planner - autorisation France confirmee</div>
-            <div class="r-t">
-              <span class="chip em">P6 professional</span>
-              <span class="chip em">P6 EPPM</span>
-              <span class="chip">Dessalement</span>
-              <span class="chip">Mobilite a organiser</span>
-            </div>
+          <div class="id">
+            <h4>Hamza Hachim</h4>
+            <div class="sub">Project Planner - autorisation France confirmee</div>
+            <div class="tg"><span class="em">P6 Professional</span><span class="em">P6 EPPM</span><span>Dessalement</span><span>Mobilite a organiser</span></div>
           </div>
           <div class="sc">
-            <div class="sc-v">78</div>
-            <div class="sc-l">Second choix</div>
-            <div class="bar"><i style="width:78%"></i></div>
+            <div class="n">78</div>
+            <div class="l">Second choix</div>
+            <div class="b"><i style="width:78%"></i></div>
           </div>
         </div>
-        <div class="card" style="margin-top:20px">
-          <h3>Pourquoi Alexandru Kis passe devant</h3>
-          <div class="axe"><div class="axe-n">Specialite</div><div class="axe-p">25 / 25</div><div class="axe-t">Planning, exactement la specialite demandee</div></div>
-          <div class="axe"><div class="axe-n">Outils</div><div class="axe-p">14 / 14</div><div class="axe-t">Primavera P6 declare, critere annonce comme indispensable</div></div>
-          <div class="axe"><div class="axe-n">Zone</div><div class="axe-p">5 / 5</div><div class="axe-t">Deja base a Marseille, aucune mobilite a financer</div></div>
-          <div class="axe"><div class="axe-n">Habilitations</div><div class="axe-p">15 / 15</div><div class="axe-t">Aucune habilitation exigee sur cette mission, axe neutralise</div></div>
-          <div class="axe"><div class="axe-n">Secteur</div><div class="axe-p">6 / 14</div><div class="axe-t">Experience EPC transferable, pas d antecedent sur ce secteur precis</div></div>
+        <div class="why">
+          <span class="kicker">Pourquoi Alexandru Kis passe devant</span>
+          <div class="wrow"><span class="a">Specialite</span><span class="p">25 / 25</span><span class="t">Planning, exactement la specialite demandee</span></div>
+          <div class="wrow"><span class="a">Outils</span><span class="p">14 / 14</span><span class="t">Primavera P6 declare, critere annonce comme indispensable</span></div>
+          <div class="wrow"><span class="a">Zone</span><span class="p">5 / 5</span><span class="t">Deja base a Marseille, aucune mobilite a financer</span></div>
+          <div class="wrow"><span class="a">Habilitations</span><span class="p">15 / 15</span><span class="t">Aucune habilitation exigee sur cette mission, axe neutralise</span></div>
+          <div class="wrow"><span class="a">Secteur</span><span class="p">6 / 14</span><span class="t">Experience EPC transferable, pas d antecedent sur ce secteur precis</span></div>
         </div>
-        <div class="s-label" style="margin:26px 0 14px">Ou en est la mission<span></span></div>
-        <ul class="tl">
-          <li class="done"><b>Besoin recu</b><span>5 aout, 11h28 - criteres transmis par le donneur d ordre</span></li>
-          <li class="done"><b>Vivier passe au moteur</b><span>5 aout - 12 profils compares sur 9 axes</span></li>
-          <li class="now"><b>Deux profils proposes</b><span>6 aout - en attente de votre retour</span></li>
-          <li><b>Entretien a organiser</b><span>a votre main</span></li>
-          <li><b>Contractualisation</b><span>apres validation</span></li>
-        </ul>
+        <div class="step">
+          <div class="done"><b>Besoin recu</b><span>5 aout, 11h28 - criteres du donneur d ordre</span></div>
+          <div class="done"><b>Vivier passe au moteur</b><span>5 aout - 12 profils compares sur 9 axes</span></div>
+          <div class="now"><b>Deux profils proposes</b><span>6 aout - en attente de votre retour</span></div>
+          <div><b>Entretien a organiser</b><span>a votre main</span></div>
+          <div><b>Contractualisation</b><span>apres validation</span></div>
+        </div>
       </div>
     </div>
   </div>
-  <p style="font-size:12px;color:var(--ash)">Le client ne voit que ses missions et les profils qu on lui propose. Jamais le vivier complet, jamais les scores des autres missions. Le cloisonnement est deja en place dans la base, il reste a le traduire a l ecran.</p>
-</div>
-<div class="section">
-  <div class="s-label">Espace expert, vue freelance du vivier<span></span></div>
-  <div class="app">
-    <div class="side">
-      <div class="side-top">
-        <img class="side-logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
-        <div class="side-role">Espace expert</div>
+</section>
+<section class="txt bg-white">
+  <span class="kicker">Espace expert</span>
+  <h2>Ce que voit un freelance du vivier.</h2>
+  <p>Sa fiche, ce qui lui manque et ce que ca lui coute, et les missions ou il est positionne. Chaque champ qu il remplit est un champ que Yacine ne saisit pas.</p>
+  <div class="ui">
+    <div class="ui-side">
+      <div class="brand">
+        <img src="/assets/logo.png" alt="Geozey">
+        <div class="r">Espace expert</div>
       </div>
-      <div class="nav">
-        <a href="#" class="on"><span class="ic"></span>Mon passeport</a>
-        <a href="#"><span class="ic"></span>Mes positionnements</a>
-        <a href="#"><span class="ic"></span>Disponibilite</a>
-        <a href="#"><span class="ic"></span>Documents</a>
-        <a href="#"><span class="ic"></span>Methode</a>
+      <div class="ui-nav">
+        <a href="#" class="on">Mon passeport</a>
+        <a href="#">Mes positionnements</a>
+        <a href="#">Disponibilite</a>
+        <a href="#">Documents</a>
+        <a href="#">Methode</a>
       </div>
-      <div class="side-foot">
+      <div class="who">
         <b>Alexandru Kis</b>
-        Planning P6 / PMO<br>
-        Ressource Geozey
+        <span>Planning P6 / PMO<br>Ressource Geozey</span>
       </div>
     </div>
-    <div class="body">
-      <div class="top">
+    <div>
+      <div class="ui-top">
         <div>
-          <h2>Mon passeport</h2>
-          <div class="sub">Ce que les clients voient de vous quand une mission sort</div>
+          <h3>Mon passeport</h3>
+          <div class="meta">Ce que les clients voient de vous quand une mission sort</div>
         </div>
-        <button class="btn">Completer ma fiche</button>
+        <a class="btn-white-sm" href="#">Completer ma fiche
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10.5" stroke="#1e1e1e"/><path d="M7 11h8m0 0-3-3m3 3-3 3" stroke="#1e1e1e" stroke-width="1.2"/></svg></a>
       </div>
-      <div class="wrap">
-        <div class="prog">
-          <div class="prog-b"><i style="width:72%"></i></div>
-          <div class="prog-v">72 %</div>
+      <div class="ui-wrap">
+        <div class="jauge">
+          <div class="b"><i style="width:72%"></i></div>
+          <div class="n">72 %</div>
         </div>
-        <p style="font-size:12px;color:var(--ash);margin-bottom:22px">Une fiche complete est proposee plus souvent, parce que le moteur ne note que ce qui est declare. Trois champs manquent, ils valent 23 points au total sur les missions ouvertes en ce moment.</p>
-        <div class="g3" style="margin-bottom:24px">
-          <div class="miss">
-            <div class="m-r">A completer</div>
-            <div class="m-i">Habilitations</div>
-            <div class="m-d">Nucleaire civil, ATEX, defense. Une habilitation manquante est eliminatoire sur certaines missions, aucun point ailleurs ne la compense.</div>
-            <div class="m-f"><span class="bdg b-ko">15 points</span><span style="font-size:11px;color:var(--ash)">2 min</span></div>
+        <p style="font-size:16px;line-height:1.6;color:var(--ash);max-width:760px">Une fiche complete est proposee plus souvent, parce que le moteur ne note que ce qui est declare. Trois champs manquent, ils valent 23 points sur les missions ouvertes en ce moment.</p>
+        <div class="manque">
+          <div class="m">
+            <span class="kicker" style="margin:0">A completer</span>
+            <h4>Habilitations</h4>
+            <p>Nucleaire civil, ATEX, defense. Une habilitation manquante est eliminatoire, aucun point ailleurs ne la compense.</p>
+            <div class="f"><span class="pt">15 points</span><span class="tm">2 min</span></div>
           </div>
-          <div class="miss">
-            <div class="m-r">A completer</div>
-            <div class="m-i">Langues</div>
-            <div class="m-d">Beaucoup de projets EPC se pilotent en anglais. Sans declaration, l axe est compte a zero.</div>
-            <div class="m-f"><span class="bdg b-wip">5 points</span><span style="font-size:11px;color:var(--ash)">1 min</span></div>
+          <div class="m">
+            <span class="kicker" style="margin:0">A completer</span>
+            <h4>Langues</h4>
+            <p>Beaucoup de projets EPC se pilotent en anglais. Sans declaration, l axe est compte a zero.</p>
+            <div class="f"><span class="pt">5 points</span><span class="tm">1 min</span></div>
           </div>
-          <div class="miss">
-            <div class="m-r">A completer</div>
-            <div class="m-i">Disponibilite</div>
-            <div class="m-d">Date a partir de laquelle vous pouvez demarrer. Sans elle, vous n apparaissez pas dans les recherches urgentes.</div>
-            <div class="m-f"><span class="bdg b-wip">3 points</span><span style="font-size:11px;color:var(--ash)">30 s</span></div>
+          <div class="m">
+            <span class="kicker" style="margin:0">A completer</span>
+            <h4>Disponibilite</h4>
+            <p>La date a partir de laquelle vous pouvez demarrer. Sans elle, vous n apparaissez pas dans les recherches urgentes.</p>
+            <div class="f"><span class="pt">3 points</span><span class="tm">30 s</span></div>
           </div>
         </div>
-        <div class="card">
-          <h3>Ma fiche</h3>
-          <div class="axe"><div class="axe-n">Titre</div><div class="axe-p" style="text-align:left;font-family:inherit;font-weight:400">Planning P6 / PMO</div><div class="axe-t"><span class="bdg b-ok">verifie</span></div></div>
-          <div class="axe"><div class="axe-n">Specialite</div><div class="axe-p" style="text-align:left;font-family:inherit;font-weight:400">Planning</div><div class="axe-t"><span class="bdg b-ok">verifie</span></div></div>
-          <div class="axe"><div class="axe-n">Outils</div><div class="axe-p" style="text-align:left;font-family:inherit;font-weight:400">P6 primavera</div><div class="axe-t"><span class="bdg b-ok">verifie</span></div></div>
-          <div class="axe"><div class="axe-n">Zone</div><div class="axe-p" style="text-align:left;font-family:inherit;font-weight:400">Marseille, 13015</div><div class="axe-t"><span class="bdg b-ok">verifie</span></div></div>
-          <div class="axe"><div class="axe-n">Habilitations</div><div class="axe-p" style="text-align:left;font-family:inherit;font-weight:400;color:var(--ash)">non renseignees</div><div class="axe-t"><span class="bdg b-ko">a completer</span></div></div>
-          <div class="axe"><div class="axe-n">Langues</div><div class="axe-p" style="text-align:left;font-family:inherit;font-weight:400;color:var(--ash)">non renseignees</div><div class="axe-t"><span class="bdg b-wip">a completer</span></div></div>
-        </div>
-        <div class="s-label" style="margin:26px 0 14px">Mes positionnements<span></span></div>
-        <div class="g2">
-          <div class="miss">
-            <div class="m-r">MIS-20260805-OPC1</div>
-            <div class="m-i">Planificateur P6, region marseillaise</div>
-            <div class="m-d">Demarrage septembre, sur site. Vous avez ete propose au client le 6 aout.</div>
-            <div class="m-f"><span class="bdg b-em">Propose - score 89</span><span style="font-size:11px;color:var(--ash)">en attente client</span></div>
+        <div class="ecard" style="margin-top:40px;padding:34px 36px">
+          <div class="top">
+            <div class="avatar ember">AK</div>
+            <div>
+              <span class="role">Passeport expert</span>
+              <h3>Alexandru Kis</h3>
+            </div>
           </div>
-          <div class="miss">
-            <div class="m-r">MIS-20260729-DK1</div>
-            <div class="m-i">Renfort PMO, usine de batteries, Dunkerque</div>
-            <div class="m-d">Trois ans, mobilite sur site exigee. Vous n avez pas ete propose : la mobilite Dunkerque n est pas declaree dans votre fiche.</div>
-            <div class="m-f"><span class="bdg b-nt">Non propose</span><span style="font-size:11px;color:var(--ash)">modifiable</span></div>
+          <div class="estats">
+            <div class="estat"><span class="k">Titre</span><span class="v">Planning P6 / PMO</span></div>
+            <div class="estat"><span class="k">Specialite</span><span class="v">Planning</span></div>
+            <div class="estat"><span class="k">Outils</span><span class="v">Primavera P6</span></div>
+            <div class="estat"><span class="k">Zone</span><span class="v">Marseille, 13015</span></div>
+            <div class="estat"><span class="k">Habilitations</span><span class="v" style="color:var(--ember)">a completer</span></div>
+            <div class="estat"><span class="k">Langues</span><span class="v" style="color:var(--ember)">a completer</span></div>
+          </div>
+        </div>
+        <span class="kicker" style="margin-top:44px">Mes positionnements</span>
+        <div class="pos">
+          <div class="p">
+            <span class="ref">MIS-20260805-OPC1</span>
+            <h4>Planificateur P6, region marseillaise</h4>
+            <p>Demarrage septembre, sur site. Vous avez ete propose au client le 6 aout.</p>
+            <div class="f"><span class="tag ember">Propose - score 89</span><span class="tm" style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash)">en attente client</span></div>
+          </div>
+          <div class="p">
+            <span class="ref">MIS-20260729-DK1</span>
+            <h4>Renfort PMO, usine de batteries, Dunkerque</h4>
+            <p>Trois ans, mobilite sur site exigee. Vous n avez pas ete propose : la mobilite Dunkerque n est pas declaree dans votre fiche.</p>
+            <div class="f"><span class="tag">Non propose</span><span class="tm" style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash)">modifiable</span></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <p style="font-size:12px;color:var(--ash)">L expert ne voit que sa propre fiche et ses propres positionnements. L interet pour Geozey est direct : chaque champ complete par l expert est un champ que Yacine ne saisit pas, et quatre profils du vivier n ont aujourd hui ni mail ni telephone.</p>
-</div>
+</section>
 
-<div class="section">
-  <div class="s-label">Les six ecarts avec un produit<span></span></div>
-  <div class="tw">
-  <table>
-    <thead><tr><th>Ecart</th><th>Etat actuel</th><th>Ce qu il faut</th></tr></thead>
-    <tbody>
-      <tr><td><b>Navigation</b></td><td>Onglets texte en haut, aucun repere de contexte</td><td>Barre laterale persistante, role et societe affiches en permanence</td></tr>
-      <tr><td><b>Hierarchie</b></td><td>Tout est en cartes blanches identiques, rien ne ressort</td><td>En-tete de page, indicateurs, corps. Trois niveaux de lecture</td></tr>
-      <tr><td><b>Tableaux</b></td><td>Tableaux bruts, sans tri ni recherche ni fiche de detail</td><td>Lignes cliquables, panneau lateral de detail, tri et filtre</td></tr>
-      <tr><td><b>Score</b></td><td>Un nombre dans une cellule</td><td>Nombre, barre, libelle, et le detail des axes en un clic</td></tr>
-      <tr><td><b>Actions</b></td><td>Aucune action possible pour le client ni pour l expert</td><td>Valider un profil, completer sa fiche, declarer une disponibilite</td></tr>
-      <tr><td><b>Charte</b></td><td>La charte est appliquee comme sur un document imprime</td><td>Meme charte, vocabulaire produit : densite, etats, survol, focus</td></tr>
-    </tbody>
-  </table>
+<section class="txt bg-dark">
+  <span class="kicker">Les six ecarts</span>
+  <h2>La charte n etait pas en cause. La grammaire, si.</h2>
+  <p style="color:rgba(255,255,255,.7);max-width:780px">L application appliquait la charte comme on met en page un rapport imprime : angles droits, titres gras, texte a 13 pixels, aucune respiration. Le site, lui, arrondit a 13 pixels, ecrit ses titres en graisse normale a 36 et respire sur 140.</p>
+  <div class="ecarts">
+    <div class="e"><span class="n">01</span><h4>Navigation</h4><p>Onglets texte en haut, aucun repere de contexte. <b>Il faut une barre laterale persistante, avec le role et la societe toujours visibles.</b></p></div>
+    <div class="e"><span class="n">02</span><h4>Hierarchie</h4><p>Tout en cartes blanches identiques, rien ne ressort. <b>Il faut trois niveaux : en-tete de page, indicateurs, corps.</b></p></div>
+    <div class="e"><span class="n">03</span><h4>Tableaux</h4><p>Tableaux bruts, sans tri ni recherche ni fiche de detail. <b>Il faut des lignes cliquables et un panneau lateral.</b></p></div>
+    <div class="e"><span class="n">04</span><h4>Score</h4><p>Un nombre dans une cellule. <b>Il faut le nombre, la barre, le libelle, et le detail des axes en un clic.</b></p></div>
+    <div class="e"><span class="n">05</span><h4>Actions</h4><p>Aucune action possible pour le client ni pour l expert. <b>Valider un profil, completer sa fiche, declarer une disponibilite.</b></p></div>
+    <div class="e"><span class="n">06</span><h4>Charte</h4><p>Angles droits, graisses lourdes, densite de rapport. <b>Arrondis 13, graisse 400, tailles du site, pastilles Roboto Mono.</b></p></div>
   </div>
-  <p class="lead">Rien de tout cela ne demande de changer la charte de Louise Lenepveu. Le noir, l ember, la Roboto Mono et les angles droits restent. Ce qui change, c est la grammaire : une application se parcourt, un rapport se lit.</p>
-</div>
+</section>
 
-</main>
+<section class="cta-band" style="background:var(--ember);color:#fff">
+  <span class="kicker">Suite</span>
+  <h2>Palier B et palier C.</h2>
+  <p>Le palier B ouvre l espace client avec les propositions. Le palier C ouvre l espace expert avec la mise a jour du passeport. Les deux s appuient sur le cloisonnement deja en place dans la base.</p>
+  <div class="btns-row">
+    <a class="btn-white" href="/app/">Ouvrir l application
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="14.5" stroke="#FF4512"/><path d="M9 15h12m0 0-4-4m4 4-4 4" stroke="#FF4512" stroke-width="1.3"/></svg></a>
+  </div>
+</section>
 
 <footer>
-  <div>Geozey <em>x</em> egery Tech - preview des espaces client et expert - 6 aout 2026</div>
-  <div>Maquette - donnees reelles du vivier - aucune valeur inventee</div>
+  <img class="logo-foot" src="/assets/logo.png" alt="Geozey">
+  <hr>
+  <div class="fcols">
+    <div class="tagline-f">Cellule d elite<br>pour les projets<br>industriels critiques.</div>
+    <div>
+      <div class="t">Navigation</div>
+      <a href="/manifeste.html">Manifeste</a>
+      <a href="/interventions.html">Interventions</a>
+      <a href="/experts.html">Experts</a>
+      <a href="/candidature.html">Contact</a>
+    </div>
+    <div>
+      <div class="t">Application</div>
+      <a href="/app/">Espace metier</a>
+      <a href="/app/livrables.html">Livrables</a>
+      <a href="/app/mission-opc.html">Mission OPC</a>
+    </div>
+    <div>
+      <div class="t">Legal</div>
+      <a href="/mentions-legales.html">Mentions legales</a>
+      <a href="/politique-rgpd.html">Politique RGPD</a>
+    </div>
+  </div>
+  <hr>
+  <p class="copy">2026 Geozey - Preview interne - Zero Delta</p>
 </footer>
 
 </body>
