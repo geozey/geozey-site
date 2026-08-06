@@ -184,6 +184,7 @@ footer em{color:var(--ember);font-style:normal}
     <div class="hd-r">
       <span class="role-tag" id="hdRole">—</span>
       <span id="hdUser">—</span>
+      <button class="lnk" id="bMdpApp">Mot de passe</button>
       <button class="lnk" id="bOut">Deconnexion</button>
     </div>
   </header>
@@ -366,6 +367,8 @@ $('#bMdp').onclick = async () => {
   setTimeout(demarrer, 900);
 };
 
+$('#bMdpApp').onclick = () => { $('#app').classList.add('hide'); ouvrirDefinitionMdp(); };
+
 $('#bOut').onclick = async () => { await sb.auth.signOut(); location.reload(); };
 
 /* ================= chargement ================= */
@@ -380,6 +383,8 @@ async function demarrer(){
   }
   ME = profil;
   $('#login').classList.add('hide');
+  $('#boxMdp').classList.add('hide');
+  document.querySelectorAll('#login .lg-box')[0].classList.remove('hide');
   $('#app').classList.remove('hide');
   $('#hdRole').textContent = ME.role;
   $('#hdUser').textContent = ME.nom || ME.email;
