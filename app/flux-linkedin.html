@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Geozey - Flux entrant LinkedIn, qualification</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pure:#FFFFFF;--ember:#FF4512;--charcoal:#000000;--haze:#E3E3E3;--iron:#282727;--ash:#575756;--ok:#1A5E3A;--warn:#B05D00;--ko:#AA1C00;--border:#E3E3E3;--bg:#FAFAFA}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--charcoal);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+header{background:var(--charcoal);color:var(--pure);padding:0 48px;display:grid;grid-template-columns:1fr auto;align-items:center;min-height:88px;border-bottom:3px solid var(--ember);gap:20px}
+.logo{height:30px;width:auto;display:block}
+.tag{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-top:7px}
+.hd-r{text-align:right;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash);line-height:1.8}
+.hd-r b{color:var(--ember)}
+.intro{background:var(--iron);color:var(--pure);padding:30px 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;align-items:start}
+.intro-l{font-family:'Roboto Mono',monospace;font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+.intro-v{font-size:14px;font-weight:700;line-height:1.4}
+.intro-s{font-size:11px;color:#999;margin-top:4px;line-height:1.6}
+main{max-width:1140px;margin:0 auto;padding:44px 24px 40px}
+.section{margin-bottom:48px}
+.s-label{font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--ember);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.s-label span{flex:1;height:1px;background:var(--border)}
+p{margin-bottom:14px}
+p.lead{font-size:14px;line-height:1.75}
+.card{background:var(--pure);border:1px solid var(--haze);border-radius:1px;padding:24px;position:relative;overflow:hidden;margin-bottom:14px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ember)}
+.card h3{font-size:13px;font-weight:800;margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px}
+.cite{background:var(--pure);border-left:3px solid var(--ember);padding:18px 22px;font-size:13px;line-height:1.8;margin-bottom:16px;border-radius:1px;border-top:1px solid var(--haze);border-right:1px solid var(--haze);border-bottom:1px solid var(--haze)}
+.cite b{display:block;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:10px;font-weight:700}
+.signal{background:var(--charcoal);color:var(--pure);border-left:4px solid var(--ember);padding:26px 30px;margin-bottom:26px}
+.signal h3{font-size:14px;font-weight:800;margin-bottom:10px}
+.signal p{color:#CFCFCF;font-size:12.5px;margin-bottom:10px}
+.signal b{color:var(--pure)}
+.signal p:last-child{margin-bottom:0}
+.tw{overflow-x:auto;border:1px solid var(--haze);background:var(--pure);margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{background:var(--charcoal);color:var(--pure)}
+thead th{padding:10px 13px;text-align:left;font-family:'Roboto Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--haze)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:11px 13px;vertical-align:top}
+td.m{font-family:'Roboto Mono',monospace;font-size:11px;color:var(--ember);font-weight:700}
+tr.top{background:#FFF6F3}
+.bdg{display:inline-block;padding:3px 8px;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:1px}
+.b-ok{background:#D4EDDA;color:var(--ok)}
+.b-wip{background:#FFF3CD;color:var(--warn)}
+.b-ko{background:#F8D7DA;color:var(--ko)}
+.b-nt{background:var(--haze);color:var(--ash)}
+.b-em{background:var(--ember);color:var(--pure)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+footer{background:var(--iron);color:#666;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-top:40px}
+footer em{color:var(--ember);font-style:normal}
+@media(max-width:900px){
+header{padding:20px 22px;grid-template-columns:1fr;gap:14px}
+.hd-r{text-align:left}
+.intro{padding:24px 22px;grid-template-columns:1fr 1fr;gap:20px}
+main{padding:30px 18px}
+.g2{grid-template-columns:1fr}
+footer{flex-direction:column;align-items:flex-start;gap:10px;padding:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div>
+<img class="logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
+<div class="tag">Flux entrant LinkedIn - qualification</div>
+</div>
+<div class="hd-r">
+<b>6 aout 2026</b><br>
+Lecture de la messagerie du 25 juin au 5 aout<br>
+Geozey x egery Tech
+</div>
+</header>
+
+<div class="intro">
+<div><div class="intro-l">Ce qui a ete lu</div><div class="intro-v">11 conversations</div><div class="intro-s">Boite prioritaire, 8 fils lus en entier</div></div>
+<div><div class="intro-l">Retenu pour le vivier</div><div class="intro-v">3 profils</div><div class="intro-s">Autorisation de travail France verifiee</div></div>
+<div><div class="intro-l">Ecarte</div><div class="intro-v">3 profils</div><div class="intro-s">Pas d autorisation de travail, motif ecrit</div></div>
+<div><div class="intro-l">Cote commercial</div><div class="intro-v">3 contacts</div><div class="intro-s">Un rendez vous demain, un projet detecte</div></div>
+</div>
+
+<main>
+
+<div class="section">
+<div class="s-label">Pourquoi ce document<span></span></div>
+<p class="lead">Le vivier Geozey comptait dix profils au 5 aout. Ils viennent tous de Boond. Or la matiere premiere reelle n est pas dans Boond, elle arrive chaque jour dans la messagerie LinkedIn de Yacine et n en ressort jamais. Ce document est le premier passage de ce flux au tamis : qui entre au vivier, qui est ecarte et sur quel motif ecrit, qui releve du commercial et pas du recrutement.</p>
+<p>Aucune information n a ete inventee ni deduite. Chaque ligne ci dessous provient d un message date, cite dans la colonne de preuve. Les profils ecartes le sont sur une phrase de la personne elle meme, jamais sur une supposition.</p>
+</div>
+
+<div class="section">
+<div class="s-label">Les trois profils qui entrent au vivier<span></span></div>
+<div class="tw">
+<table>
+<thead><tr><th>Profil</th><th>Poste actuel</th><th>Specialite</th><th>Autorisation France</th><th>Contact</th><th>Preuve</th></tr></thead>
+<tbody>
+<tr class="top"><td class="m">Hamza HACHIM</td><td>Project Planner, OLYMPE Industries</td><td>Planning, certifie Primavera P6 Professional et P6 EPPM, projets EPCC dessalement</td><td><span class="bdg b-ok">Oui</span></td><td>hamzahachim09@gmail.com</td><td>30/07 16:56, il repond oui a la question posee. CV recu par mail, confirme par Yacine le 04/08. Cree dans Boond le 06/08, candidat 14</td></tr>
+<tr class="top"><td class="m">Abderrahim EL ALAOUI</td><td>Chef de projet independant</td><td>Chef de projet, positionne sur le besoin PMO Dunkerque</td><td><span class="bdg b-ok">Oui</span></td><td>abder.elalaoui@gmail.com<br>+33 7 68 02 40 77</td><td>29/07 10:48, naturalise francais depuis 2017. Cree dans Boond le 06/08, candidat 15</td></tr>
+<tr><td class="m">Ismail EZZAMZAMI</td><td>Hydro Extrusion</td><td>Ingenieur Arts et Metiers, non specialise planning</td><td><span class="bdg b-ok">Oui</span></td><td>smailzamzami@gmail.com</td><td>Visio menee le 01/08. Ecarte du besoin en cours le 04/08, le client demandait plus d experience. Reste au vivier. Cree dans Boond le 06/08, candidat 16</td></tr>
+</tbody>
+</table>
+</div>
+<p>Hamza HACHIM est le seul des trois a cocher la competence bloquante des missions actuelles, Primavera P6, et il la coche avec deux certifications.</p>
+</div>
+
+<div class="section">
+<div class="s-label">Les trois profils ecartes, et le motif exact<span></span></div>
+<div class="tw">
+<table>
+<thead><tr><th>Profil</th><th>Ce qu il apporte</th><th>Motif d ecartement</th><th>Suite</th></tr></thead>
+<tbody>
+<tr><td class="m">Manal MARA</td><td>Ingenieure planification chez JESA, Primavera P6 sur projets EPC et EPCM, phases engineering, procurement, construction, commissioning</td><td>30/07 18:01, ne dispose pas d autorisation de travail en France</td><td><span class="bdg b-wip">A garder</span> Competence rare, a rappeler si une mission hors France se presente</td></tr>
+<tr><td class="m">Mahmoud ZIANE</td><td>Planificateur de projet, CV transmis</td><td>04/08 11:04, visa Schengen touristique uniquement, arrivee en France prevue en septembre</td><td><span class="bdg b-nt">En attente</span> Rien a faire avant qu il regularise</td></tr>
+<tr><td class="m">Ibrahim MZOUGHI</td><td>Senior QA QC Engineer, solaire photovoltaique et centrales electriques</td><td>04/08 09:44, jamais voyage en dehors de la Tunisie</td><td><span class="bdg b-ko">Hors perimetre</span> Metier QA QC, en dehors du coeur PMO planning</td></tr>
+</tbody>
+</table>
+</div>
+<p>Ces trois lignes valent d etre gardees telles quelles. Sans elles, les memes profils reviendront dans six mois et il faudra reposer la meme question.</p>
+</div>
+
+<div class="section">
+<div class="s-label">Le point qui ne peut pas attendre<span></span></div>
+<div class="signal">
+<h3>Un rendez vous a ete manque, et personne n a repondu depuis</h3>
+<p>Abderrahim EL ALAOUI et Yacine avaient cale une visio le <b>mardi 4 aout a 11h00</b>, invitation envoyee et confirmee des deux cotes le 29 juillet. Le 4 aout a 11h02, Abderrahim ecrit : <b>Bonjour, vous vous connectez ?</b></p>
+<p>Ce message est reste sans reponse. C est le dernier de la conversation.</p>
+<p>Il ne s agit pas d un candidat parmi d autres. C est le seul profil deja positionne sur le besoin PMO de Dunkerque, il est naturalise francais donc sans friction administrative, et il avait declare le projet interessant.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="s-label">Une deuxieme mission apparait dans les echanges<span></span></div>
+<div class="card">
+<h3>Dunkerque, usine de batteries pour vehicules electriques</h3>
+<p>Le 29 juillet a 10h50, Yacine decrit lui meme le besoin a Abderrahim. Les elements sont donc de premiere main, pas reconstitues.</p>
+<div class="cite">
+<b>Message de Yacine, 29 juillet 10h50</b>
+C est un gros projet sur dunkerque pour usine a construire pour les batteries de vehicules electriques. j ai une connaissance sur place qui recrute et renforce l equipe PMO. Le projet demarre debut aout pour une duree de 3 ans donc on est vraiment sur le debut du projet ce qui est interessant on ne part pas sur un projet en cours. donc il faut etre mobile pour s installer sur dunkerque sur la duree.
+</div>
+<p>Ce qui est etabli : lieu Dunkerque, secteur gigafactory batteries, besoin PMO en renfort d equipe, demarrage debut aout, duree annoncee trois ans, mobilite sur site exigee. Ce qui n est pas etabli et n a donc pas ete ecrit dans la fiche : le nom du donneur d ordre, le budget, le nombre de postes, la date limite.</p>
+<p>Mission ouverte le 06/08/2026 sous la reference MIS-20260729-DK1, au meme titre que la mission OPC de Marseille.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="s-label">Ce qui releve du commercial et pas du recrutement<span></span></div>
+<div class="tw">
+<table>
+<thead><tr><th>Contact</th><th>Nature</th><th>Etat</th><th>Prochaine echeance</th></tr></thead>
+<tbody>
+<tr class="top"><td class="m">Benoit Nelaton</td><td>Orano, secteur nucleaire. Prospect client</td><td>Echange engage, coordonnees donnees le 05/08</td><td><span class="bdg b-em">Vendredi 7 aout 10h00</span> appel confirme des deux cotes</td></tr>
+<tr><td class="m">Guillaume Charvet</td><td>Prospect client, projet Haliotis</td><td>Relance envoyee par Yacine le 03/08 sur les besoins ouverts a date</td><td><span class="bdg b-wip">Sans reponse</span> relance a prevoir</td></tr>
+<tr><td class="m">Corentin Morel</td><td>Contact reseau, pas un candidat. Fait remonter les besoins de son propre responsable</td><td>Relation ancienne et active. A deja qualifie un besoin planning P6 anglais, cinq a huit ans d experience minimum</td><td><span class="bdg b-nt">A entretenir</span> il a propose son aide a deux reprises</td></tr>
+</tbody>
+</table>
+</div>
+<p>Ces trois la n ont rien a faire dans le vivier des experts. Ils vont dans le CRM, cote societes et contacts. Les melanger reviendrait a fausser le matching en comptant des donneurs d ordre comme des ressources disponibles.</p>
+</div>
+
+<div class="section">
+<div class="s-label">Ce que ce passage montre du systeme<span></span></div>
+<p class="lead">Onze conversations, une heure de lecture, et il en sort trois profils qualifies, une mission entiere, un rendez vous manque et trois pistes commerciales. Rien de tout cela n etait dans Boond ce matin.</p>
+<p>C est exactement le point traite dans la reponse sur l abonnement Workspace : la matiere existe deja, elle n est simplement jamais capturee. Aujourd hui elle a ete capturee a la main. La suite logique est que ce tamis tourne seul et depose les fiches pre remplies, avec la citation d origine en regard de chaque champ pour que Yacine valide en un coup d oeil au lieu de saisir.</p>
+</div>
+
+<div class="section">
+<div class="s-label">Ce qui attend une decision<span></span></div>
+<div class="g2">
+<div class="card"><h3>1. Repondre a Abderrahim</h3><p>Le rendez vous manque du 4 aout. Une reponse aujourd hui, un creneau propose.</p></div>
+<div class="card"><h3>2. Qualifier la mission Dunkerque</h3><p>Nom du donneur d ordre, nombre de postes, date limite. La fiche est ouverte mais vide sur ces points.</p></div>
+<div class="card"><h3>3. Preparer l appel Orano</h3><p>Vendredi 7 aout a 10h00. Premier contact nucleaire du portefeuille.</p></div>
+<div class="card"><h3>4. Basculer les contacts commerciaux dans le CRM</h3><p>Nelaton, Charvet et Morel cote societes et contacts, pas cote vivier.</p></div>
+</div>
+</div>
+
+</main>
+
+<footer>
+<div>Geozey <em>x</em> egery Tech - flux entrant LinkedIn - 6 aout 2026</div>
+<div>Document interne - aucune donnee inventee - chaque ligne citee</div>
+</footer>
+
+</body>
+</html>
