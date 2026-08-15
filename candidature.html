@@ -145,7 +145,7 @@ form.on{display:block}
         <svg viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="14.5" stroke="currentColor"/><path d="M9 15h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.3"/></svg></span>
     </button>
     <button type="button" class="pick" id="pick-expert" aria-pressed="false">
-      <img class="ph" src="assets/p3.jpg" alt="Illustration, ingenieur sur site industriel">
+      <img class="ph" src="assets/v3.jpg?v=2" alt="Illustration, ingenieur sur site industriel">
       <span class="tag">Expert</span>
       <h3>Je suis un profil</h3>
       <p>Je souhaite rejoindre la cellule, en freelance, en portage salarial ou en CDI de chantier.</p>
@@ -269,12 +269,12 @@ form.on{display:block}
         </select></label>
       <div class="cond" id="e-free">
         <div class="grid2">
-          <label class="fld"><span class="k">TJM souhaité (€ HT)</span><input type="number" name="tjm" min="200" max="1500" step="10" placeholder="450"></label>
+          <label class="fld"><span class="k">TJM souhaité (€ HT)</span><input type="number" name="tjm" min="200" max="1500" step="1" placeholder="450"></label>
           <label class="fld"><span class="k">SIREN de votre structure</span><input name="siren" inputmode="numeric"></label>
         </div>
       </div>
       <div class="cond" id="e-cdic">
-        <label class="fld" style="max-width:50%"><span class="k">Rémunération brute annuelle souhaitée (€)</span><input type="number" name="salaire" min="25000" max="200000" step="1000" placeholder="65000"></label>
+        <label class="fld" style="max-width:50%"><span class="k">Rémunération brute annuelle souhaitée (€)</span><input type="number" name="salaire" min="25000" max="200000" step="1" placeholder="65000"></label>
       </div>
       <div class="grid2">
         <label class="fld"><span class="k">Disponibilité <i>*</i></span>
@@ -291,7 +291,7 @@ form.on{display:block}
       <div class="grid2">
         <label class="fld"><span class="k">Spécialité principale <i>*</i></span>
           <select name="specialite" required><option value="">Sélectionner</option><option>Planning / Ordonnancement</option><option>PMO</option><option>Contrôle de projet / Cost control</option><option>Doc control</option><option>Méthodes</option><option>OPC</option><option>Quality management</option><option>Autre</option></select></label>
-        <label class="fld"><span class="k">Années d'expérience <i>*</i></span><input type="number" name="annees" min="0" max="50" required></label>
+        <label class="fld"><span class="k">Années d'expérience <i>*</i></span><input type="number" name="annees" min="0" max="50" step="any" required></label>
       </div>
       <div class="grid2">
         <div class="fld fw"><span class="k">Secteurs couverts</span><div class="cks"><label class="ck"><input type="checkbox" name="secteurs" value="Nucléaire civil"><span>Nucléaire civil</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Nucléaire défense"><span>Nucléaire défense</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Oil &amp; gas"><span>Oil &amp; gas</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Énergie / ENR"><span>Énergie / ENR</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Eau / valorisation"><span>Eau / valorisation</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Ferroviaire"><span>Ferroviaire</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Industrie lourde"><span>Industrie lourde</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Bâtiment / génie civil"><span>Bâtiment / génie civil</span></label><label class="ck"><input type="checkbox" name="secteurs" value="Autre"><span>Autre</span></label></div></div>
