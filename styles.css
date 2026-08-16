@@ -21,7 +21,7 @@ section{position:relative}
 .hero-band .tagline{font-size:24px;line-height:1.5;text-align:right;max-width:640px;margin-left:auto}
 .scroll-down{position:absolute;right:40px;bottom:36px;color:#fff}
 .manifesto{background:var(--ember);color:#fff;padding:26vh 140px 20vh}
-.manifesto h2{font-size:40px;line-height:1.25;font-weight:400;max-width:1010px;margin-bottom:64px}
+.manifesto h1{font-size:40px;line-height:1.25;font-weight:400;max-width:1010px;margin-bottom:64px}
 .manifesto hr{border:0;border-top:1px solid rgba(255,255,255,.7);width:1100px;max-width:100%}
 .manifesto .btns{display:flex;gap:29px;margin:36px 0;flex-wrap:wrap}
 .btn-white{display:inline-flex;gap:12px;align-items:center;background:#fff;color:var(--ember);font-size:20px;padding:10px 14px 10px 22px;border-radius:27px}
@@ -172,7 +172,7 @@ nav .links{display:none}
 .collage .c1{width:48%;height:380px;top:60px}
 .collage .c2{width:30%;height:220px;right:4%}
 .collage .c3{width:34%;height:280px;top:300px;right:0}
-.manifesto h2{font-size:28px}
+.manifesto h1{font-size:28px}
 .experts-left h2,.chiffres h2,.interventions h2,.visages h2{font-size:32px}
 .page-hero h1{font-size:34px}
 .txt h2{font-size:26px}
@@ -197,7 +197,7 @@ footer .logo-foot{height:44px}
 .pmeta{grid-template-columns:1fr}
 }
 
-/* ── Rangee de visages : cinq cartes et calque E-Marque en alternance ember / blanc ── */
+/* ── Rangee equipe : gabarit commun, calque E-Marque en alternance ember / blanc ── */
 .cards4{grid-template-columns:repeat(5,1fr);gap:26px}
 .vcard{position:relative}
 .vcard img{height:340px}
@@ -276,7 +276,7 @@ footer .logo-foot{height:44px}
 
   .hero-band .logo-big{height:40px}
   .hero-band .tagline{font-size:16px;line-height:1.45}
-  .manifesto h2{font-size:22px;line-height:1.32}
+  .manifesto h1{font-size:22px;line-height:1.32}
   .experts-left h2,.chiffres h2,.interventions h2,.visages h2{font-size:25px}
   .page-hero h1{font-size:27px;line-height:1.18}
   .txt h2{font-size:21px}
@@ -312,7 +312,7 @@ footer .logo-foot{height:44px}
 }
 
 @media(max-width:400px){
-  .manifesto h2{font-size:20px}
+  .manifesto h1{font-size:20px}
   .hero-band .logo-big{height:34px}
   .icard{width:94vw}
   .stat .v{font-size:29px}
