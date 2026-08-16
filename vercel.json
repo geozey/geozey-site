@@ -2,6 +2,7 @@
   "buildCommand": "node build.mjs",
   "outputDirectory": "public",
   "installCommand": "echo skip",
+  "cleanUrls": true,
   "images": {
     "sizes": [
       640,
