@@ -41,6 +41,13 @@ try {
   for (const m of mails) { await copyFile('emails/' + m, 'public/emails/' + m); console.log('MAIL ' + m); }
 } catch { console.log('pas de dossier emails'); }
 
+// Rubrique blog. Pages publiques, indexees, meme charte que le reste du site.
+try {
+  const blogf = await readdir('blog');
+  await mkdir('public/blog', { recursive: true });
+  for (const b of blogf) { await copyFile('blog/' + b, 'public/blog/' + b); console.log('BLOG ' + b); }
+} catch { console.log('pas de dossier blog'); }
+
 const cites = new Set();
 for (const p of pages.filter(f => f.endsWith(".html") || f.endsWith(".css"))) {
   const t = await readFile(p, "utf8");
