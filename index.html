@@ -285,5 +285,6 @@ var car=document.getElementById('car'),dots=document.querySelectorAll('#cardots 
 if(car){car.addEventListener('scroll',function(){var i=Math.round(car.scrollLeft/1030);dots.forEach(function(d,j){d.classList.toggle('on',j===Math.min(i,dots.length-1))});},{passive:true});}
 </script>
 
+<script src="i18n.js" defer></script>
 </body>
 </html>
