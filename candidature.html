@@ -302,6 +302,9 @@ form.on{display:block}
       <div class="grid2">
         
         <label class="fld"><span class="k">CV en ligne (lien)</span><input type="url" name="cv" placeholder="Facultatif"></label>
+        <label class="fld"><span class="k">Deposer votre CV</span><input type="file" name="cv_fichier" id="cv_fichier" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><span class="k" id="cvAide">Format PDF ou Word, 8 Mo maximum. Le lien ci-dessus reste possible si vous preferez.</span><span class="k" id="cvEtat"></span></label>
+        <input type="hidden" name="cv_storage_path">
+        <input type="hidden" name="cv_nom_fichier">
       </div>
     </div>
 
@@ -554,6 +557,59 @@ form.on{display:block}
           body: JSON.stringify(ligne(kind, form, 'brouillon'))
         });
       }catch(e){}
+    });
+  }
+
+  /* ---------- Depot direct du CV : hors du cycle debounce du texte ---------- */
+  var TYPES_CV = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+  var EXT_CV = /\.(pdf|doc|docx)$/i;
+  var TAILLE_MAX_CV = 8388608;
+
+  function nettoieNomFichier(nom){
+    return nom.replace(/[^A-Za-z0-9.\-_]/g, '_');
+  }
+
+  function verifieCV(f){
+    if(f.size > TAILLE_MAX_CV) return 'Fichier trop volumineux : 8 Mo maximum.';
+    if(!EXT_CV.test(f.name) || (f.type && TYPES_CV.indexOf(f.type) === -1)) return 'Format non accepte : seuls le PDF et le Word sont acceptes.';
+    return null;
+  }
+
+  var champCV = document.getElementById('cv_fichier');
+  var etatCV = document.getElementById('cvEtat');
+  if(champCV){
+    champCV.addEventListener('change', function(){
+      var f = champCV.files && champCV.files[0];
+      if(!f) return;
+      var erreur = verifieCV(f);
+      if(erreur){ etatCV.textContent = erreur; champCV.value = ''; return; }
+      if(!ready){ etatCV.textContent = 'Configuration indisponible, depot impossible.'; return; }
+      etatCV.textContent = 'Envoi du CV en cours...';
+      var chemin = SID + '/' + Date.now() + '-' + nettoieNomFichier(f.name);
+      fetch(CFG.url + '/storage/v1/object/candidatures-cv/' + chemin, {
+        method: 'POST',
+        headers: {
+          'apikey': CFG.anon,
+          'Authorization': 'Bearer ' + CFG.anon,
+          'Content-Type': f.type || 'application/octet-stream'
+        },
+        body: f
+      }).then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        var form = champCV.form;
+        if(form.elements['cv_storage_path']) form.elements['cv_storage_path'].value = chemin;
+        if(form.elements['cv_nom_fichier']) form.elements['cv_nom_fichier'].value = f.name;
+        return sync('expert', form, 'brouillon').then(function(){
+          return rest('PATCH', CFG.table + '?session_id=eq.' + encodeURIComponent(SID), {
+            cv_storage_path: chemin,
+            cv_nom_fichier: f.name
+          });
+        });
+      }).then(function(){
+        etatCV.textContent = 'CV depose : ' + f.name;
+      }).catch(function(){
+        etatCV.textContent = 'Le depot du CV a echoue. Le lien ci-dessus reste possible.';
+      });
     });
   }
 
