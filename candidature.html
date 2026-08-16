@@ -160,6 +160,7 @@ form.on{display:block}
       <div class="sect">01 · Votre société</div>
       <h3>Qui êtes-vous</h3>
       <hr>
+      <label class="fld"><span class="k">Email professionnel <i>*</i></span><input type="email" name="email" required></label>
       <div class="grid2">
         <label class="fld"><span class="k">Société <i>*</i></span><input name="societe" required></label>
         <label class="fld"><span class="k">SIREN</span><input name="siren" inputmode="numeric" placeholder="9 chiffres"></label>
@@ -180,7 +181,6 @@ form.on{display:block}
       </div>
       <div class="grid2">
         <label class="fld"><span class="k">Nom et prénom <i>*</i></span><input name="contact_nom" required></label>
-        <label class="fld"><span class="k">Email professionnel <i>*</i></span><input type="email" name="email" required></label>
       </div>
       <label class="fld" style="max-width:50%"><span class="k">Téléphone</span><input type="tel" name="tel"></label>
     </div>
@@ -215,6 +215,7 @@ form.on{display:block}
     <div class="blk">
       <div class="sect">03 · Validation</div>
       <label class="cbx" style="margin-bottom:26px"><input type="checkbox" name="rgpd" required><span>J'accepte que Geozey traite ces informations pour répondre à ma demande. Elles ne sont utilisées à aucune autre fin.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden"><label>Ne pas remplir<input type="text" name="site_web_confirmation" tabindex="-1" autocomplete="off"></label></div>
       <div class="send">
         <button type="submit" class="btn-ember">Envoyer le brief
           <svg viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="14.5" stroke="#fff"/><path d="M9 15h12m0 0-4-4m4 4-4 4" stroke="#fff" stroke-width="1.3"/></svg></button>
@@ -227,37 +228,23 @@ form.on{display:block}
   <!-- ============ PARCOURS EXPERT ============ -->
   <form id="f-expert" novalidate style="margin-top:37px">
     <div class="blk">
-      <div class="sect">01 · Autorisation de travail</div>
-      <h3>Le préalable</h3>
-      <p class="intro">Geozey contractualise via une société française. Nous ne prenons en charge aucune démarche de visa ou d'autorisation de travail. Répondre non ne vous exclut pas : votre profil sera conservé pour les missions à l'étranger.</p>
-      <hr>
-      <label class="fld" style="max-width:640px"><span class="k">Disposez-vous d'une autorisation de travail en France ou dans l'Union européenne ? <i>*</i></span>
-        <select name="autorisation" id="e-autorisation" required>
-          <option value="">Sélectionner</option>
-          <option value="oui">Oui, je peux travailler en France ou dans l'UE</option>
-          <option value="non">Non, je ne dispose pas de cette autorisation</option>
-        </select></label>
-      <div class="warn" id="e-warn">Sans autorisation de travail en France ou dans l'UE, nous ne pourrons pas contractualiser dans l'immédiat. Vous pouvez tout de même transmettre votre profil : il sera conservé pour les missions à l'étranger, sans engagement de notre part.</div>
-    </div>
-
-    <div class="blk">
-      <div class="sect">02 · Votre identité</div>
+      <div class="sect">01 · Votre identité</div>
       <h3>Qui vous êtes</h3>
       <hr>
-      <div class="grid2">
-        <label class="fld"><span class="k">Prénom <i>*</i></span><input name="prenom" required></label>
-        <label class="fld"><span class="k">Nom <i>*</i></span><input name="nom" required></label>
-      </div>
       <div class="grid2">
         <label class="fld"><span class="k">Email <i>*</i></span><input type="email" name="email" required></label>
         <label class="fld"><span class="k">Téléphone <i>*</i></span><input type="tel" name="tel" required></label>
       </div>
-      <label class="fld"><span class="k">Profil LinkedIn <i>*</i></span><input type="url" name="linkedin" required placeholder="https://www.linkedin.com/in/...">
+      <div class="grid2">
+        <label class="fld"><span class="k">Prénom <i>*</i></span><input name="prenom" required></label>
+        <label class="fld"><span class="k">Nom <i>*</i></span><input name="nom" required></label>
+      </div>
+      <label class="fld"><span class="k">Profil LinkedIn</span><input type="text" name="linkedin" placeholder="linkedin.com/in/votre-profil, facultatif">
         <span class="hint">Les candidatures accompagnées d'un profil LinkedIn sont traitées en priorité : c'est ce qui nous permet de vérifier vos environnements projet.</span></label>
     </div>
 
     <div class="blk">
-      <div class="sect">03 · Votre statut</div>
+      <div class="sect">02 · Votre statut</div>
       <h3>Le cadre que vous cherchez</h3>
       <hr>
       <label class="fld" style="max-width:640px"><span class="k">Vous recherchez <i>*</i></span>
@@ -269,7 +256,7 @@ form.on{display:block}
         </select></label>
       <div class="cond" id="e-free">
         <div class="grid2">
-          <label class="fld"><span class="k">TJM souhaité (€ HT)</span><input type="number" name="tjm" min="200" max="1500" step="1" placeholder="450"></label>
+          <label class="fld"><span class="k">TJM souhaité (€ HT)</span><input type="number" name="tjm" min="200" step="1" placeholder="450"></label>
           <label class="fld"><span class="k">SIREN de votre structure</span><input name="siren" inputmode="numeric"></label>
         </div>
       </div>
@@ -284,7 +271,7 @@ form.on{display:block}
     </div>
 
     <div class="blk">
-      <div class="sect">04 · Votre expertise</div>
+      <div class="sect">03 · Votre expertise</div>
       <h3>Ce que vous avez tenu</h3>
       <p class="intro">Nous regardons les projets et les références avant le CV. Nommez les chantiers, les clients finaux et votre périmètre réel.</p>
       <hr>
@@ -300,7 +287,7 @@ form.on{display:block}
       <label class="fld"><span class="k">Projets marquants <i>*</i></span><textarea name="projets" required placeholder="Nom du projet, client final, votre rôle, périmètre, durée."></textarea></label>
       <label class="fld"><span class="k">Références professionnelles</span><textarea name="references" placeholder="Personnes qui peuvent témoigner de votre travail : nom, société, fonction."></textarea></label>
       <div class="grid2">
-        
+
         <label class="fld"><span class="k">CV en ligne (lien)</span><input type="url" name="cv" placeholder="Facultatif"></label>
         <label class="fld"><span class="k">Deposer votre CV</span><input type="file" name="cv_fichier" id="cv_fichier" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><span class="k" id="cvAide">Format PDF ou Word, 8 Mo maximum. Le lien ci-dessus reste possible si vous preferez.</span><span class="k" id="cvEtat"></span></label>
         <input type="hidden" name="cv_storage_path">
@@ -309,8 +296,23 @@ form.on{display:block}
     </div>
 
     <div class="blk">
+      <div class="sect">04 · Autorisation de travail</div>
+      <h3>Le préalable</h3>
+      <p class="intro">Geozey contractualise via une société française. Nous ne prenons en charge aucune démarche de visa ou d'autorisation de travail. Répondre non ne vous exclut pas : votre profil sera conservé pour les missions à l'étranger.</p>
+      <hr>
+      <label class="fld" style="max-width:640px"><span class="k">Disposez-vous d'une autorisation de travail en France ou dans l'Union européenne ? <i>*</i></span>
+        <select name="autorisation" id="e-autorisation" required>
+          <option value="">Sélectionner</option>
+          <option value="oui">Oui, je peux travailler en France ou dans l'UE</option>
+          <option value="non">Non, je ne dispose pas de cette autorisation</option>
+        </select></label>
+      <div class="warn" id="e-warn">Sans autorisation de travail en France ou dans l'UE, nous ne pourrons pas contractualiser dans l'immédiat. Vous pouvez tout de même transmettre votre profil : il sera conservé pour les missions à l'étranger, sans engagement de notre part.</div>
+    </div>
+
+    <div class="blk">
       <div class="sect">05 · Validation</div>
       <label class="cbx" style="margin-bottom:26px"><input type="checkbox" name="rgpd" required><span>J'accepte que Geozey conserve ces informations pour me proposer des missions.</span></label>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden"><label>Ne pas remplir<input type="text" name="site_web_confirmation" tabindex="-1" autocomplete="off"></label></div>
       <div class="send">
         <button type="submit" class="btn-ember">Envoyer mon profil
           <svg viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="14.5" stroke="#fff"/><path d="M9 15h12m0 0-4-4m4 4-4 4" stroke="#fff" stroke-width="1.3"/></svg></button>
@@ -626,6 +628,7 @@ form.on{display:block}
   function submit(kind, e){
     e.preventDefault();
     var form = e.target;
+    if(form.elements['site_web_confirmation'] && form.elements['site_web_confirmation'].value){ return; }
     if(!form.checkValidity()){ form.reportValidity(); return; }
     var btn = form.querySelector('button[type=submit]');
     var msg = document.getElementById('m-' + kind);
