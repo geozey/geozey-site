@@ -166,12 +166,12 @@
       "permanent": false
     },
     {
-      "source": "/app/preview-espaces.html",
+      "source": "/app/preview-expert.html",
       "destination": "/",
       "permanent": false
     },
     {
-      "source": "/app/preview-expert.html",
+      "source": "/app/preview-espaces.html",
       "destination": "/",
       "permanent": false
     }
