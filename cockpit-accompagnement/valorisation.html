@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Rapport de valorisation multi méthodes, Geozey</title>
+<title>Rapport de valorisation multi-méthodes, Geozey</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://geozey.com/styles.css">
 <style>
+:root{--ember-ink:#C42F09}
 .doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
 .doc-table table{width:100%;border-collapse:collapse;font-size:14.5px}
 .doc-table thead tr{background:var(--dark);color:#fff}
@@ -33,6 +34,12 @@
 .src-list{font-size:13px;line-height:1.8;opacity:.85}
 .src-list a{color:inherit}
 .hl{font-family:'Roboto Mono',monospace;font-size:13px;letter-spacing:.5px}
+nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.5);color:#f1f1f1;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
+footer .copy{color:rgba(255,255,255,.72)}
+@media(max-width:900px){nav .doc-now{display:none}}
 @media (max-width:900px){.page-hero{padding:110px 24px 50px}.txt{padding:40px 24px}}
 </style>
 </head>
@@ -59,22 +66,29 @@
 })();
 </script>
 
-<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+<nav>
+  <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <span class="doc-now">04 · Rapport de valorisation</span>
+  <div class="doc-steps">
+    <a href="/cockpit-accompagnement/cdc-infra-ia" title="Cahier des charges infra IA et CAIO externalisé">← Précédent</a>
+    <a href="/cockpit-accompagnement/due-diligence" title="Synthèse de due diligence interne">Suivant →</a>
+  </div>
+</nav>
 
 <section class="page-hero ph-dark">
-  <span class="kicker">Sprint 1, accompagnement pré cession Alvo</span>
-  <h1>Rapport de valorisation multi méthodes GEOZEY</h1>
-  <p class="lead">Document de travail établi par Alvo pour le compte de GEOZEY SASU dans le cadre du contrat d'accompagnement pré cession. Version du 17 août 2026. Ce document n'est ni une expertise indépendante ni une garantie de prix.</p>
+  <span class="kicker">Sprint 1, accompagnement pré-cession Alvo</span>
+  <h1>Rapport de valorisation multi-méthodes GEOZEY</h1>
+  <p class="lead">Document de travail établi par Alvo pour le compte de GEOZEY SASU dans le cadre du contrat d’accompagnement pré-cession. Version du 17 août 2026. Ce document n’est ni une expertise indépendante ni une garantie de prix.</p>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Avertissements obligatoires</span>
   <h2>Statut et limites de ce document</h2>
   <div class="notebox">
-    <p><strong>Document de travail Alvo.</strong> Ce rapport est produit par Alvo pour son client GEOZEY dans le cadre du contrat d'accompagnement pré cession, Sprint 1. Il ne s'agit pas d'une expertise indépendante au sens d'un commissaire aux apports ou d'un expert judiciaire, et il ne constitue en aucun cas une garantie de prix de cession.</p>
-    <p><strong>Base comptable provisoire.</strong> Les données financières s'appuient sur le rapport d'audit financier Reggio Partners du 24 avril 2026, encore qualifié de provisoire à ce stade, ainsi que sur une analyse interne des fichiers FEC 2024 et 2025. L'exercice 2023 n'a pas pu être retraité faute de FEC disponible.</p>
-    <p><strong>Hypothèses prévisionnelles non validées.</strong> Le prévisionnel 2026 à 2028 utilisé dans la méthode DCF et dans une des deux assiettes de la méthode des multiples a été construit le 13 août 2026 comme hypothèse de travail interne. Il n'a pas été validé par le dirigeant de GEOZEY à la date de ce rapport. Toute valeur qui en découle est conditionnelle, pas acquise.</p>
-    <p><strong>Aucun caractère contractuel de prix.</strong> Les fourchettes présentées ici sont un point de départ de négociation pour la suite de la mission Alvo, pas un prix de cession, pas une offre, pas un engagement d'Alvo ni de GEOZEY.</p>
+    <p><strong>Document de travail Alvo.</strong> Ce rapport est produit par Alvo pour son client GEOZEY dans le cadre du contrat d’accompagnement pré-cession, Sprint 1. Il ne s’agit pas d’une expertise indépendante au sens d’un commissaire aux apports ou d’un expert judiciaire, et il ne constitue en aucun cas une garantie de prix de cession.</p>
+    <p><strong>Base comptable provisoire.</strong> Les données financières s’appuient sur le rapport d’audit financier Reggio Partners du 24 avril 2026, encore qualifié de provisoire à ce stade, ainsi que sur une analyse interne des fichiers FEC 2024 et 2025. L’exercice 2023 n’a pas pu être retraité faute de FEC disponible.</p>
+    <p><strong>Hypothèses prévisionnelles non validées.</strong> Le prévisionnel 2026 à 2028 utilisé dans la méthode DCF et dans une des deux assiettes de la méthode des multiples a été construit le 13 août 2026 comme hypothèse de travail interne. Il n’a pas été validé par le dirigeant de GEOZEY à la date de ce rapport. Toute valeur qui en découle est conditionnelle, pas acquise.</p>
+    <p><strong>Aucun caractère contractuel de prix.</strong> Les fourchettes présentées ici sont un point de départ de négociation pour la suite de la mission Alvo, pas un prix de cession, pas une offre, pas un engagement d’Alvo ni de GEOZEY.</p>
   </div>
   <div class="badgerow">
     <span class="badge warn">Document de travail Alvo</span>
@@ -87,10 +101,10 @@
 <section class="txt bg-dark">
   <span class="kicker">Analyse FEC 2023, postérieure à la première version de ce rapport</span>
   <h2>Ce que le FEC 2023 change</h2>
-  <p>L'analyse du fichier FEC 2023, réalisée après la première version de ce rapport, apporte trois faits nouveaux qui n'y figuraient pas et qui modifient le diagnostic. Ils sont repris dans le raisonnement de la fourchette de valorisation plus loin dans ce document.</p>
+  <p>L’analyse du fichier FEC 2023, réalisée après la première version de ce rapport, apporte trois faits nouveaux qui n’y figuraient pas et qui modifient le diagnostic. Ils sont repris dans le raisonnement de la fourchette de valorisation plus loin dans ce document.</p>
 
   <div class="notebox on-dark">
-    <p><strong>Fait A, concentration client 2023.</strong> EKIUM pèse 420 925 € de chiffre d'affaires, soit 52,2 % du CA 2023. Project Management Organisation pèse 246 550 €, soit 30,6 %. Bourbon Offshore Gaia pèse 86 100 €, soit 10,7 %. Ces trois clients représentent à eux seuls 93,5 % du chiffre d'affaires 2023. Cette donnée était totalement absente de la première version de ce rapport.</p>
+    <p><strong>Fait A, concentration client 2023.</strong> EKIUM pèse 420 925 € de chiffre d’affaires, soit 52,2 % du CA 2023. Project Management Organisation pèse 246 550 €, soit 30,6 %. Bourbon Offshore Gaia pèse 86 100 €, soit 10,7 %. Ces trois clients représentent à eux seuls 93,5 % du chiffre d’affaires 2023. Cette donnée était totalement absente de la première version de ce rapport.</p>
   </div>
 
   <div class="doc-table on-dark">
@@ -106,8 +120,8 @@
   </div>
 
   <div class="notebox on-dark">
-    <p><strong>Fait B, rémunération du dirigeant.</strong> Elle s'établissait à 88 345 € en 2023, contre 33 251 € en 2025, charges sociales comprises : elle a été divisée par plus de deux et demi en deux exercices. Il faut le dire sans le maquiller, l'EBITDA 2025 de 3 k€ est en partie soutenu par cette baisse de rémunération. Retraité d'une rémunération de marché ramenée au niveau observé en 2023, l'EBITDA normatif 2025 devient <strong>négatif</strong>.</p>
-    <p><strong>Fait C, explication chiffrée de la chute d'EBITDA.</strong> L'EBITDA publié passe de 117 k€ en 2023 à 3 k€ en 2025. Cette chute s'explique par deux mouvements mesurés sur le FEC : l'effondrement du taux de marge sur sous-traitance, de 35,9 % en 2023 à 18,0 % en 2025, soit 71 339 € de marge perdue, et la baisse du chiffre d'affaires de 806 à 717 k€, soit moins 88 570 €. Les frais généraux ont baissé de 45 909 € sur la même période, ils ne sont pas en cause. Les retraitements identifiés par ailleurs sont marginaux et stables d'un exercice à l'autre.</p>
+    <p><strong>Fait B, rémunération du dirigeant.</strong> Elle s’établissait à 88 345 € en 2023, contre 33 251 € en 2025, charges sociales comprises : elle a été divisée par plus de deux et demi en deux exercices. Il faut le dire sans le maquiller, l’EBITDA 2025 de 3 k€ est en partie soutenu par cette baisse de rémunération. Retraité d’une rémunération de marché ramenée au niveau observé en 2023, l’EBITDA normatif 2025 devient <strong>négatif</strong>.</p>
+    <p><strong>Fait C, explication chiffrée de la chute d’EBITDA.</strong> L’EBITDA publié passe de 117 k€ en 2023 à 3 k€ en 2025. Cette chute s’explique par deux mouvements mesurés sur le FEC : l’effondrement du taux de marge sur sous-traitance, de 35,9 % en 2023 à 18,0 % en 2025, soit 71 339 € de marge perdue, et la baisse du chiffre d’affaires de 806 à 717 k€, soit moins 88 570 €. Les frais généraux ont baissé de 45 909 € sur la même période, ils ne sont pas en cause. Les retraitements identifiés par ailleurs sont marginaux et stables d’un exercice à l’autre.</p>
   </div>
 
   <h3 style="font-weight:400;margin-top:32px">EBITDA normatif consolidé, retenu dans tout ce rapport</h3>
@@ -136,14 +150,14 @@
   <div class="badgerow">
     <span class="badge ko">Concentration client, 93,5 % sur trois comptes</span>
     <span class="badge warn">Rémunération dirigeant divisée par plus de 2,5</span>
-    <span class="badge off">Chute d'EBITDA expliquée et tarifaire</span>
+    <span class="badge off">Chute d’EBITDA expliquée et tarifaire</span>
   </div>
 </section>
 
 <section class="txt bg-light">
   <span class="kicker">Données certifiées, source unique</span>
   <h2>Comptes 2023 à 2025 et retraitements EBITDA</h2>
-  <p>Les chiffres ci dessous proviennent exclusivement du rapport Reggio Partners du 24 avril 2026 pour les comptes 2023 à 2025, et de la note DAF interne d'analyse des FEC 2024 et 2025 pour les retraitements. Aucun chiffre n'est recalculé à ce stade, ils sont repris tels quels.</p>
+  <p>Les chiffres ci-dessous proviennent exclusivement du rapport Reggio Partners du 24 avril 2026 pour les comptes 2023 à 2025, et de la note DAF interne d’analyse des FEC 2024 et 2025 pour les retraitements. Aucun chiffre n’est recalculé à ce stade, ils sont repris tels quels.</p>
   <div class="badgerow">
     <span class="badge ok">Reggio Partners, 24 avril 2026</span>
     <span class="badge ok">Analyse FEC 2024 et 2025</span>
@@ -153,11 +167,11 @@
     <table>
       <thead><tr><th>Indicateur, en k€</th><th>2023</th><th>2024</th><th>2025</th></tr></thead>
       <tbody>
-        <tr><td>Chiffre d'affaires</td><td>806</td><td>738</td><td>717</td></tr>
+        <tr><td>Chiffre d’affaires</td><td>806</td><td>738</td><td>717</td></tr>
         <tr><td>Marge sur coûts variables</td><td>289</td><td>201</td><td>129</td></tr>
         <tr><td>Frais généraux</td><td>172</td><td>128</td><td>126</td></tr>
         <tr><td>EBITDA publié</td><td>117</td><td>73</td><td>3</td></tr>
-        <tr><td>Marge d'EBITDA</td><td>14,5 %</td><td>9,9 %</td><td>0,4 %</td></tr>
+        <tr><td>Marge d’EBITDA</td><td>14,5 %</td><td>9,9 %</td><td>0,4 %</td></tr>
         <tr><td>Besoin en fonds de roulement</td><td>52</td><td>70</td><td>-18</td></tr>
         <tr><td>Trésorerie fin de période</td><td>124</td><td>35</td><td>49</td></tr>
         <tr><td>Capitaux propres</td><td>201</td><td>58</td><td>57</td></tr>
@@ -168,7 +182,7 @@
     </table>
   </div>
 
-  <p>La dégradation de marge sur trois exercices est continue, pas accidentelle : 14,5 %, puis 9,9 %, puis 0,4 %. En 2025, la marge sur coûts variables (129) couvre à peine les frais généraux (126), ce qui explique l'EBITDA quasi nul de l'exercice.</p>
+  <p>La dégradation de marge sur trois exercices est continue, pas accidentelle : 14,5 %, puis 9,9 %, puis 0,4 %. En 2025, la marge sur coûts variables (129) couvre à peine les frais généraux (126), ce qui explique l’EBITDA quasi nul de l’exercice.</p>
 
   <h3 style="font-weight:400;margin-top:36px">Retraitements EBITDA, analyse FEC 2024 et 2025</h3>
   <div class="doc-table">
@@ -185,8 +199,8 @@
   </div>
 
   <div class="notebox">
-    <p><strong>Aucun retraitement certain identifié.</strong> L'examen ligne à ligne des FEC 2024 et 2025 ne fait apparaître aucune écriture qualifiable avec certitude de charge personnelle ou strictement non récurrente. Le seul retraitement retenu au niveau "probable" est la location de véhicule, 11 880 € en 2025, ce qui porte l'EBITDA normatif 2025 à environ 15 k€ au mieux.</p>
-    <p><strong>Le point central à traiter honnêtement dans les deux sens : la rémunération du dirigeant.</strong> Elle s'établit à 33 251 € en 2025, charges sociales comprises, contre 88 345 € en 2023, soit une rémunération divisée par plus de deux et demi en deux exercices (fait B, voir la section « Ce que le FEC 2023 change » en tête de rapport). Ce n'est plus une hypothèse, c'est un écart mesuré sur pièce. Deux lectures s'opposent et doivent toutes les deux figurer dans ce rapport : d'un côté, si l'on raisonne en retraitement classique de cession (l'acquéreur reprend l'outil et se rémunère comme il l'entend), ce niveau bas n'appelle aucun ajustement et peut même être vu comme un point favorable au repreneur individuel. De l'autre côté, si l'on raisonne en société autonome devant survivre au départ du fondateur, un acquéreur prudent devra budgéter un salaire de marché pour un dirigeant remplacant, et le niveau observé en 2023, 88 345 €, constitue une référence concrète et documentée de ce que coûte réellement le poste, bien au delà des 33 k€ de 2025. Cette normalisation à la hausse de la charge de personnel dirigeant réduit mécaniquement l'EBITDA normatif : retraité d'une rémunération ramenée au niveau 2023, l'EBITDA normatif 2025 devient négatif. Ce point n'est pas tranché avec le dirigeant à la date de ce rapport et pèse directement sur la partie basse de toutes les méthodes qui suivent.</p>
+    <p><strong>Aucun retraitement certain identifié.</strong> L’examen ligne à ligne des FEC 2024 et 2025 ne fait apparaître aucune écriture qualifiable avec certitude de charge personnelle ou strictement non récurrente. Le seul retraitement retenu au niveau "probable" est la location de véhicule, 11 880 € en 2025, ce qui porte l’EBITDA normatif 2025 à environ 15 k€ au mieux.</p>
+    <p><strong>Le point central à traiter honnêtement dans les deux sens : la rémunération du dirigeant.</strong> Elle s’établit à 33 251 € en 2025, charges sociales comprises, contre 88 345 € en 2023, soit une rémunération divisée par plus de deux et demi en deux exercices (fait B, voir la section « Ce que le FEC 2023 change » en tête de rapport). Ce n’est plus une hypothèse, c’est un écart mesuré sur pièce. Deux lectures s’opposent et doivent toutes les deux figurer dans ce rapport : d’un côté, si l’on raisonne en retraitement classique de cession (l’acquéreur reprend l’outil et se rémunère comme il l’entend), ce niveau bas n’appelle aucun ajustement et peut même être vu comme un point favorable au repreneur individuel. De l’autre côté, si l’on raisonne en société autonome devant survivre au départ du fondateur, un acquéreur prudent devra budgéter un salaire de marché pour un dirigeant remplaçant, et le niveau observé en 2023, 88 345 €, constitue une référence concrète et documentée de ce que coûte réellement le poste, bien au-delà des 33 k€ de 2025. Cette normalisation à la hausse de la charge de personnel dirigeant réduit mécaniquement l’EBITDA normatif : retraité d’une rémunération ramenée au niveau 2023, l’EBITDA normatif 2025 devient négatif. Ce point n’est pas tranché avec le dirigeant à la date de ce rapport et pèse directement sur la partie basse de toutes les méthodes qui suivent.</p>
   </div>
 
   <h3 style="font-weight:400;margin-top:36px">Prévisionnel 2026 à 2028, hypothèse de travail non validée</h3>
@@ -200,19 +214,19 @@
       </tbody>
     </table>
   </div>
-  <p>Ce prévisionnel a été construit le 13 août 2026 comme hypothèse de travail interne, non validée par le dirigeant. Par ailleurs, le dirigeant annonce de son côté un rythme 2026 d'environ 800 k€ de CA, donnée déclarative, non recoupée dans ce rapport.</p>
+  <p>Ce prévisionnel a été construit le 13 août 2026 comme hypothèse de travail interne, non validée par le dirigeant. Par ailleurs, le dirigeant annonce de son côté un rythme 2026 d’environ 800 k€ de CA, donnée déclarative, non recoupée dans ce rapport.</p>
   <div class="badgerow">
     <span class="badge warn">Prévisionnel non validé</span>
     <span class="badge off">CA 2026 à 800 k€, donnée déclarative du dirigeant</span>
   </div>
 
-  <p>Définition contractuelle retenue dans tout ce rapport : les valeurs calculées ci après s'entendent en valeur d'entreprise (VE). La valeur des titres (VT) s'obtient en ajoutant la trésorerie nette, 49 k€ fin 2025, en l'absence de toute dette financière sur les trois exercices.</p>
+  <p>Définition contractuelle retenue dans tout ce rapport : les valeurs calculées ci-après s’entendent en valeur d’entreprise (VE). La valeur des titres (VT) s’obtient en ajoutant la trésorerie nette, 49 k€ fin 2025, en l’absence de toute dette financière sur les trois exercices.</p>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Méthode 1 sur 3</span>
   <h2>Multiples, deux assiettes côte à côte</h2>
-  <p>La fourchette de multiples retenue provient du benchmark de comparables GEOZEY, avec ses décotes de taille déjà documentées : fourchette sectorielle "bureau d'études généraliste" de 4,0x à 7,0x l'EBITDA, compressée de 0,5x à 1x du fait d'un EBITDA très inférieur au seuil de 500 k€ relevé par l'étude sectorielle, soit une fourchette nette de 3,0x à 6,5x, avant même la décote de taille Nexco de -45 % applicable à la tranche 500 k€ à 1 M€ de CA. Cette même fourchette nette est appliquée ici à deux assiettes d'EBITDA très différentes, pour montrer honnêtement l'écart entre la situation actuelle et le pari du plan.</p>
+  <p>La fourchette de multiples retenue provient du benchmark de comparables GEOZEY, avec ses décotes de taille déjà documentées : fourchette sectorielle "bureau d’études généraliste" de 4,0x à 7,0x l’EBITDA, compressée de 0,5x à 1x du fait d’un EBITDA très inférieur au seuil de 500 k€ relevé par l’étude sectorielle, soit une fourchette nette de 3,0x à 6,5x, avant même la décote de taille Nexco de -45 % applicable à la tranche 500 k€ à 1 M€ de CA. Cette même fourchette nette est appliquée ici à deux assiettes d’EBITDA très différentes, pour montrer honnêtement l’écart entre la situation actuelle et le pari du plan.</p>
 
   <div class="doc-table">
     <table>
@@ -237,18 +251,18 @@
   </div>
 
   <div class="notebox">
-    <p><strong>Assiette réelle, à dire sans le maquiller.</strong> Appliquée à l'EBITDA normatif 2025 réel, la méthode des multiples donne une valeur d'entreprise très faible, de l'ordre de 45 à 98 k€. C'est la traduction directe d'une marge d'EBITDA tombée à 0,4 % en 2025. Aucun artifice de calcul ne peut faire disparaître ce résultat, il est la conséquence arithmétique d'un EBITDA proche de zéro.</p>
-    <p><strong>Assiette prévisionnelle, qui porte l'essentiel de la valeur.</strong> Appliquée à l'EBITDA moyen du plan 2026 à 2028, la même fourchette de multiples donne une valeur nettement plus élevée, de l'ordre de 621 à 1 346 k€. Ce résultat est entièrement conditionnel à l'exécution du redressement de marge de 22 % vers 28 % sur trois exercices, hypothèse non validée par le dirigeant à ce jour. Il ne doit pas être lu comme une valeur d'aujourd'hui, mais comme ce que vaudrait GEOZEY si le plan se réalisait tel que modélisé.</p>
+    <p><strong>Assiette réelle, à dire sans le maquiller.</strong> Appliquée à l’EBITDA normatif 2025 réel, la méthode des multiples donne une valeur d’entreprise très faible, de l’ordre de 45 à 98 k€. C’est la traduction directe d’une marge d’EBITDA tombée à 0,4 % en 2025. Aucun artifice de calcul ne peut faire disparaître ce résultat, il est la conséquence arithmétique d’un EBITDA proche de zéro.</p>
+    <p><strong>Assiette prévisionnelle, qui porte l’essentiel de la valeur.</strong> Appliquée à l’EBITDA moyen du plan 2026 à 2028, la même fourchette de multiples donne une valeur nettement plus élevée, de l’ordre de 621 à 1 346 k€. Ce résultat est entièrement conditionnel à l’exécution du redressement de marge de 22 % vers 28 % sur trois exercices, hypothèse non validée par le dirigeant à ce jour. Il ne doit pas être lu comme une valeur d’aujourd’hui, mais comme ce que vaudrait GEOZEY si le plan se réalisait tel que modélisé.</p>
   </div>
 </section>
 
 <section class="txt bg-dark">
   <span class="kicker">Méthode 2 sur 3</span>
   <h2>DCF, flux construits depuis le prévisionnel</h2>
-  <p>Les flux de trésorerie disponibles sont construits à partir du prévisionnel 2026 à 2028, avec un besoin en fonds de roulement normalisé, des investissements faibles et un impôt sur les sociétés à 25 %. La société de services n'a pas d'actifs immobilisés significatifs, la sous-traitance représentant plus des trois quarts de ses achats : les dotations aux amortissements sont retenues comme négligeables, si bien que le résultat d'exploitation est assimilé à l'EBITDA pour le calcul de l'impôt.</p>
+  <p>Les flux de trésorerie disponibles sont construits à partir du prévisionnel 2026 à 2028, avec un besoin en fonds de roulement normalisé, des investissements faibles et un impôt sur les sociétés à 25 %. La société de services n’a pas d’actifs immobilisés significatifs, la sous-traitance représentant plus des trois quarts de ses achats : les dotations aux amortissements sont retenues comme négligeables, si bien que le résultat d’exploitation est assimilé à l’EBITDA pour le calcul de l’impôt.</p>
 
   <div class="notebox on-dark">
-    <p><strong>Hypothèses retenues, calculs de l'analyste à partir du prévisionnel ci-dessus.</strong> Chiffre d'affaires : 717 k€ en 2025, puis 753, 828 et 911 k€ sur 2026 à 2028 selon les taux de croissance du plan. Investissements de maintenance estimés à 1 % du CA, en l'absence de plan d'investissement détaillé fourni. Besoin en fonds de roulement normalisé à 5 % du CA, un lissage volontaire de la forte volatilité observée sur trois exercices (52, 70 puis moins 18 k€), le dernier exercice n'étant pas représentatif à lui seul. Impôt sur les sociétés à 25 % du résultat d'exploitation, assimilé à l'EBITDA. Valeur terminale calculée par croissance perpétuelle prudente, entre 1,5 % et 2 % maximum.</p>
+    <p><strong>Hypothèses retenues, calculs de l’analyste à partir du prévisionnel ci-dessus.</strong> Chiffre d’affaires : 717 k€ en 2025, puis 753, 828 et 911 k€ sur 2026 à 2028 selon les taux de croissance du plan. Investissements de maintenance estimés à 1 % du CA, en l’absence de plan d’investissement détaillé fourni. Besoin en fonds de roulement normalisé à 5 % du CA, un lissage volontaire de la forte volatilité observée sur trois exercices (52, 70 puis moins 18 k€), le dernier exercice n’étant pas représentatif à lui seul. Impôt sur les sociétés à 25 % du résultat d’exploitation, assimilé à l’EBITDA. Valeur terminale calculée par croissance perpétuelle prudente, entre 1,5 % et 2 % maximum.</p>
   </div>
 
   <div class="doc-table on-dark">
@@ -256,7 +270,7 @@
       <thead><tr><th>Flux, en k€</th><th>2026</th><th>2027</th><th>2028</th></tr></thead>
       <tbody>
         <tr><td>EBITDA du plan</td><td>161</td><td>210</td><td>250</td></tr>
-        <tr><td>Résultat net d'impôt, IS à 25 %</td><td>121</td><td>158</td><td>188</td></tr>
+        <tr><td>Résultat net d’impôt, IS à 25 %</td><td>121</td><td>158</td><td>188</td></tr>
         <tr><td>Investissements, 1 % du CA</td><td>8</td><td>8</td><td>9</td></tr>
         <tr><td>Variation de BFR normalisé</td><td>2</td><td>4</td><td>4</td></tr>
         <tr><td>Flux de trésorerie disponible</td><td>111</td><td>145</td><td>174</td></tr>
@@ -264,21 +278,21 @@
     </table>
   </div>
 
-  <h3 style="font-weight:400">Taux d'actualisation, sourcé</h3>
-  <p>Pour une TPE de services comme GEOZEY, le taux d'actualisation usuel se décompose en un taux sans risque proche de 1,5 % à 2 % et une prime de risque spécifique. Selon Caudia, cabinet spécialisé dans l'évaluation TPE-PME, un taux de 10 % est considéré comme faible et un taux de 30 % comme élevé pour une PME non cotée, la majorité des PME françaises se situant plutôt entre 10 % et 13 % avant primes spécifiques. Selon ValorPME, des primes spécifiques additionnelles de 2 à 5 points s'ajoutent lorsque la société cumule illiquidité, dépendance à un dirigeant clé et concentration client, exactement le profil de risque documenté pour GEOZEY dans le benchmark de comparables : dépendance totale à un dirigeant unique, concentration client désormais quantifiée par le FEC 2023 (trois clients, EKIUM 52,2 %, Project Management Organisation 30,6 %, Bourbon Offshore Gaia 10,7 %, représentant 93,5 % du CA), et dégradation continue de la marge sur trois exercices, aujourd'hui expliquée et tarifaire plutôt que structurelle (fait C). Ces facteurs cumulés justifient de retenir la partie haute des pratiques observées, soit une fourchette de 15 % à 25 %, taux central retenu de 20 % pour le calcul de base.</p>
-  <p class="src-list">Sources : <a href="https://caudia.fr/actualites/calcul-wacc-cout-capital-evaluations-tpe-pme">Caudia, Déterminer le coût du capital dans vos évaluations TPE-PME</a>, <a href="https://valor-pme.com/ressources/taux-actualisation-calcul">ValorPME, Taux d'actualisation, définition, formule et calcul</a>.</p>
+  <h3 style="font-weight:400">Taux d’actualisation, sourcé</h3>
+  <p>Pour une TPE de services comme GEOZEY, le taux d’actualisation usuel se décompose en un taux sans risque proche de 1,5 % à 2 % et une prime de risque spécifique. Selon Caudia, cabinet spécialisé dans l’évaluation TPE-PME, un taux de 10 % est considéré comme faible et un taux de 30 % comme élevé pour une PME non cotée, la majorité des PME françaises se situant plutôt entre 10 % et 13 % avant primes spécifiques. Selon ValorPME, des primes spécifiques additionnelles de 2 à 5 points s’ajoutent lorsque la société cumule illiquidité, dépendance à un dirigeant clé et concentration client, exactement le profil de risque documenté pour GEOZEY dans le benchmark de comparables : dépendance totale à un dirigeant unique, concentration client désormais quantifiée par le FEC 2023 (trois clients, EKIUM 52,2 %, Project Management Organisation 30,6 %, Bourbon Offshore Gaia 10,7 %, représentant 93,5 % du CA), et dégradation continue de la marge sur trois exercices, aujourd’hui expliquée et tarifaire plutôt que structurelle (fait C). Ces facteurs cumulés justifient de retenir la partie haute des pratiques observées, soit une fourchette de 15 % à 25 %, taux central retenu de 20 % pour le calcul de base.</p>
+  <p class="src-list">Sources : <a href="https://caudia.fr/actualites/calcul-wacc-cout-capital-evaluations-tpe-pme">Caudia, Déterminer le coût du capital dans vos évaluations TPE-PME</a>, <a href="https://valor-pme.com/ressources/taux-actualisation-calcul">ValorPME, Taux d’actualisation, définition, formule et calcul</a>.</p>
 
-  <h3 style="font-weight:400;margin-top:32px">Valeur d'entreprise centrale</h3>
+  <h3 style="font-weight:400;margin-top:32px">Valeur d’entreprise centrale</h3>
   <div class="notebox on-dark">
-    <p>Au taux central de 20 % et à une croissance perpétuelle de 1,75 %, le plan 2026 à 2028 tel que présenté donne une valeur d'entreprise DCF d'environ <strong>857 k€</strong>. Ce résultat est directement comparable à l'ambition de valorisation 2028 du cockpit de pilotage GEOZEY, mais il repose intégralement sur un prévisionnel non validé par le dirigeant : ce n'est pas une valeur d'aujourd'hui.</p>
+    <p>Au taux central de 20 % et à une croissance perpétuelle de 1,75 %, le plan 2026 à 2028 tel que présenté donne une valeur d’entreprise DCF d’environ <strong>857 k€</strong>. Ce résultat est directement comparable à l’ambition de valorisation 2028 du cockpit de pilotage GEOZEY, mais il repose intégralement sur un prévisionnel non validé par le dirigeant : ce n’est pas une valeur d’aujourd’hui.</p>
   </div>
 
-  <h3 style="font-weight:400;margin-top:32px">Sensibilité croisée, taux d'actualisation et niveau d'exécution du plan de marge</h3>
-  <p>Trois scénarios d'exécution du plan de marge sont croisés avec cinq taux d'actualisation. Prudent : la moitié seulement de l'amélioration de marge visée est atteinte. Central : le plan se réalise tel que présenté. Optimiste : le plan est dépassé de 30 %, un scénario cohérent avec le rythme de CA 2026 d'environ 800 k€ annoncé par le dirigeant.</p>
+  <h3 style="font-weight:400;margin-top:32px">Sensibilité croisée, taux d’actualisation et niveau d’exécution du plan de marge</h3>
+  <p>Trois scénarios d’exécution du plan de marge sont croisés avec cinq taux d’actualisation. Prudent : la moitié seulement de l’amélioration de marge visée est atteinte. Central : le plan se réalise tel que présenté. Optimiste : le plan est dépassé de 30 %, un scénario cohérent avec le rythme de CA 2026 d’environ 800 k€ annoncé par le dirigeant.</p>
 
   <div class="doc-table on-dark">
     <table>
-      <thead><tr><th>Taux d'actualisation</th><th>Prudent, 50 % du plan</th><th>Central, plan tel que présenté</th><th>Optimiste, plan plus 30 %</th></tr></thead>
+      <thead><tr><th>Taux d’actualisation</th><th>Prudent, 50 % du plan</th><th>Central, plan tel que présenté</th><th>Optimiste, plan plus 30 %</th></tr></thead>
       <tbody>
         <tr><td>15 %</td><td>596 k€</td><td>1 220 k€</td><td>1 590 k€</td></tr>
         <tr><td>18 %</td><td>481 k€</td><td>969 k€</td><td>1 282 k€</td></tr>
@@ -288,13 +302,13 @@
       </tbody>
     </table>
   </div>
-  <p>Cette sensibilité illustre un point de méthode connu : dans un DCF, une variation du taux d'actualisation de quelques points modifie fortement la valeur obtenue. Ici, l'écart entre le scénario le plus prudent au taux le plus élevé (326 k€) et le scénario le plus optimiste au taux le plus faible (1 590 k€) est d'un facteur supérieur à 4, ce qui confirme que le DCF seul ne peut pas servir de point d'ancrage unique tant que le plan n'est pas validé.</p>
+  <p>Cette sensibilité illustre un point de méthode connu : dans un DCF, une variation du taux d’actualisation de quelques points modifie fortement la valeur obtenue. Ici, l’écart entre le scénario le plus prudent au taux le plus élevé (326 k€) et le scénario le plus optimiste au taux le plus faible (1 590 k€) est d’un facteur supérieur à 4, ce qui confirme que le DCF seul ne peut pas servir de point d’ancrage unique tant que le plan n’est pas validé.</p>
 </section>
 
 <section class="txt bg-light">
   <span class="kicker">Méthode 3 sur 3</span>
-  <h2>Patrimoniale, un plancher, pas une valeur d'entreprise de services</h2>
-  <p>L'actif net comptable retenu est celui des capitaux propres au 31 décembre 2025, soit 57 k€. Aucune donnée de bilan détaillée (immobilisations, provisions, valeur de marché des actifs) n'a été fournie pour cette mission au delà des données certifiées listées plus haut : ce montant est donc retenu tel quel, sans correction supplémentaire, faute d'éléments pour en justifier une.</p>
+  <h2>Patrimoniale, un plancher, pas une valeur d’entreprise de services</h2>
+  <p>L’actif net comptable retenu est celui des capitaux propres au 31 décembre 2025, soit 57 k€. Aucune donnée de bilan détaillée (immobilisations, provisions, valeur de marché des actifs) n’a été fournie pour cette mission au-delà des données certifiées listées plus haut : ce montant est donc retenu tel quel, sans correction supplémentaire, faute d’éléments pour en justifier une.</p>
 
   <div class="doc-table">
     <table>
@@ -302,20 +316,20 @@
       <tbody>
         <tr><td>Actif net comptable, capitaux propres 2025</td><td>57</td></tr>
         <tr><td>dont trésorerie nette, incluse dans les capitaux propres, aucune dette</td><td>49</td></tr>
-        <tr><td>Valeur d'entreprise patrimoniale équivalente, capitaux propres moins trésorerie nette</td><td>environ 8</td></tr>
+        <tr><td>Valeur d’entreprise patrimoniale équivalente, capitaux propres moins trésorerie nette</td><td>environ 8</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="notebox">
-    <p><strong>Pourquoi cette méthode ne capture pas la valeur d'une société de services.</strong> GEOZEY n'a pas d'actifs corporels significatifs : la sous-traitance représente plus des trois quarts de ses achats, l'essentiel de la valeur de l'entreprise réside dans le savoir-faire du dirigeant, les relations avec des donneurs d'ordre de premier plan (Ekium, Snef, Veolia, Engie, Razel-Bec, Vinci) et la capacité à mobiliser des consultants qualifiés sur des missions de pilotage de projet dans des secteurs exigeants. Aucun de ces éléments ne figure au bilan. La méthode patrimoniale donne ici une valeur d'entreprise quasi nulle, environ 8 k€ une fois la trésorerie nette retirée, ce qui est cohérent avec sa nature : elle mesure ce que vaudrait la société si elle cessait son activité et liquidait son bilan, pas ce que vaut sa capacité à générer des missions futures. Elle sert de plancher de référence, pas de méthode principale.</p>
+    <p><strong>Pourquoi cette méthode ne capture pas la valeur d’une société de services.</strong> GEOZEY n’a pas d’actifs corporels significatifs : la sous-traitance représente plus des trois quarts de ses achats, l’essentiel de la valeur de l’entreprise réside dans le savoir-faire du dirigeant, les relations avec des donneurs d’ordre de premier plan (Ekium, Snef, Veolia, Engie, Razel-Bec, Vinci) et la capacité à mobiliser des consultants qualifiés sur des missions de pilotage de projet dans des secteurs exigeants. Aucun de ces éléments ne figure au bilan. La méthode patrimoniale donne ici une valeur d’entreprise quasi nulle, environ 8 k€ une fois la trésorerie nette retirée, ce qui est cohérent avec sa nature : elle mesure ce que vaudrait la société si elle cessait son activité et liquidait son bilan, pas ce que vaut sa capacité à générer des missions futures. Elle sert de plancher de référence, pas de méthode principale.</p>
   </div>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Synthèse</span>
   <h2>Fourchette finale raisonnée</h2>
-  <p>Les trois méthodes convergent vers des ordres de grandeur très différents selon l'assiette et les hypothèses retenues : de 8 k€ pour le plancher patrimonial, à 45 à 98 k€ pour les multiples appliqués à l'EBITDA réel 2025, jusqu'à 621 k€ à plus de 1,3 M€ pour les multiples et le DCF appliqués au plan 2026 à 2028 non validé. Cet écart n'est pas une erreur de méthode, il est le résultat honnête d'une société dont la rentabilité actuelle est proche de zéro et dont le plan de redressement, s'il se réalise, changerait radicalement la donne.</p>
+  <p>Les trois méthodes convergent vers des ordres de grandeur très différents selon l’assiette et les hypothèses retenues : de 8 k€ pour le plancher patrimonial, à 45 à 98 k€ pour les multiples appliqués à l’EBITDA réel 2025, jusqu’à 621 k€ à plus de 1,3 M€ pour les multiples et le DCF appliqués au plan 2026 à 2028 non validé. Cet écart n’est pas une erreur de méthode, il est le résultat honnête d’une société dont la rentabilité actuelle est proche de zéro et dont le plan de redressement, s’il se réalise, changerait radicalement la donne.</p>
 
   <div class="doc-table">
     <table>
@@ -330,15 +344,15 @@
   </div>
 
   <div class="notebox">
-    <p><strong>Fourchette de valeur d'entreprise retenue à ce jour : 150 k€ à 450 k€, valeur centrale indicative autour de 250 à 300 k€.</strong> Cette fourchette reste cohérente avec celle du benchmark de comparables GEOZEY (150 k€ à 350 k€, décotes de taille documentées), tout en intégrant à la marge le signal des méthodes fondées sur le plan 2026-2028, fortement pondéré à la baisse tant que ce plan n'est pas exécuté.</p>
-    <p><strong>Fourchette de valeur des titres, après ajout de la trésorerie nette de 49 k€ et en l'absence de toute dette financière : 200 k€ à 500 k€, valeur centrale indicative autour de 300 à 350 k€.</strong></p>
-    <p><strong>Facteur de décote à part entière : la concentration client, fait A.</strong> Trois clients pèsent 93,5 % du chiffre d'affaires 2023 : EKIUM pour 420 925 €, soit 52,2 %, Project Management Organisation pour 246 550 €, soit 30,6 %, et Bourbon Offshore Gaia pour 86 100 €, soit 10,7 %. Cette concentration extrême est un facteur de décote à part entière, indépendant du niveau d'EBITDA retenu : elle justifie à elle seule le maintien d'une fourchette de multiples compressée et d'un taux d'actualisation en partie haute des pratiques observées. Elle fait déjà partie des facteurs pris en compte dans la fourchette retenue ci-dessus, mais elle doit être présentée comme telle, explicitement, à tout acquéreur.</p>
-    <p><strong>Ce qui sépare le bas du haut de cette fourchette : l'exécution du plan de remontée de marge, et deux faits nouveaux issus du FEC 2023 qui jouent en sens inverse.</strong> Le bas de la fourchette correspond à une société qui reste sur sa trajectoire actuelle, EBITDA normatif proche de zéro, marge sur coûts variables qui couvre à peine les frais généraux. Le fait B tire ce bas de fourchette encore plus bas : la rémunération du dirigeant a été divisée par plus de deux et demi entre 2023 (88 345 €) et 2025 (33 251 €), et l'EBITDA normatif 2025 retraité d'une rémunération de marché ramenée au niveau 2023 devient négatif. Le haut de la fourchette suppose que le taux de marge sur sous-traitance remonte réellement vers son niveau de 2023. Or ce niveau n'est pas une hypothèse de plan : le fait C montre que 35,9 % de marge sur sous-traitance a déjà été tenu en 2023, avant de retomber à 18,0 % en 2025, soit 71 339 € de marge perdue, sur un effet en grande partie tarifaire et non structurel, les frais généraux ayant même baissé de 45 909 € sur la période. C'est ce qui rend le plan de redressement défendable devant un acquéreur, et c'est ce qui soutient le haut de la fourchette.</p>
-    <p><strong>La fourchette finale ne bouge pas malgré ces deux faits nouveaux : ils jouent en sens inverse et se compensent, l'un tirant le bas vers le bas, l'autre soutenant le haut.</strong> La fourchette de valeur d'entreprise reste 150 à 450 k€, et la fourchette de valeur des titres reste 200 à 500 k€.</p>
+    <p><strong>Fourchette de valeur d’entreprise retenue à ce jour : 150 k€ à 450 k€, valeur centrale indicative autour de 250 à 300 k€.</strong> Cette fourchette reste cohérente avec celle du benchmark de comparables GEOZEY (150 k€ à 350 k€, décotes de taille documentées), tout en intégrant à la marge le signal des méthodes fondées sur le plan 2026-2028, fortement pondéré à la baisse tant que ce plan n’est pas exécuté.</p>
+    <p><strong>Fourchette de valeur des titres, après ajout de la trésorerie nette de 49 k€ et en l’absence de toute dette financière : 200 k€ à 500 k€, valeur centrale indicative autour de 300 à 350 k€.</strong></p>
+    <p><strong>Facteur de décote à part entière : la concentration client, fait A.</strong> Trois clients pèsent 93,5 % du chiffre d’affaires 2023 : EKIUM pour 420 925 €, soit 52,2 %, Project Management Organisation pour 246 550 €, soit 30,6 %, et Bourbon Offshore Gaia pour 86 100 €, soit 10,7 %. Cette concentration extrême est un facteur de décote à part entière, indépendant du niveau d’EBITDA retenu : elle justifie à elle seule le maintien d’une fourchette de multiples compressée et d’un taux d’actualisation en partie haute des pratiques observées. Elle fait déjà partie des facteurs pris en compte dans la fourchette retenue ci-dessus, mais elle doit être présentée comme telle, explicitement, à tout acquéreur.</p>
+    <p><strong>Ce qui sépare le bas du haut de cette fourchette : l’exécution du plan de remontée de marge, et deux faits nouveaux issus du FEC 2023 qui jouent en sens inverse.</strong> Le bas de la fourchette correspond à une société qui reste sur sa trajectoire actuelle, EBITDA normatif proche de zéro, marge sur coûts variables qui couvre à peine les frais généraux. Le fait B tire ce bas de fourchette encore plus bas : la rémunération du dirigeant a été divisée par plus de deux et demi entre 2023 (88 345 €) et 2025 (33 251 €), et l’EBITDA normatif 2025 retraité d’une rémunération de marché ramenée au niveau 2023 devient négatif. Le haut de la fourchette suppose que le taux de marge sur sous-traitance remonte réellement vers son niveau de 2023. Or ce niveau n’est pas une hypothèse de plan : le fait C montre que 35,9 % de marge sur sous-traitance a déjà été tenu en 2023, avant de retomber à 18,0 % en 2025, soit 71 339 € de marge perdue, sur un effet en grande partie tarifaire et non structurel, les frais généraux ayant même baissé de 45 909 € sur la période. C’est ce qui rend le plan de redressement défendable devant un acquéreur, et c’est ce qui soutient le haut de la fourchette.</p>
+    <p><strong>La fourchette finale ne bouge pas malgré ces deux faits nouveaux : ils jouent en sens inverse et se compensent, l’un tirant le bas vers le bas, l’autre soutenant le haut.</strong> La fourchette de valeur d’entreprise reste 150 à 450 k€, et la fourchette de valeur des titres reste 200 à 500 k€.</p>
   </div>
 
-  <h3 style="font-weight:400;margin-top:36px">Positionnement de l'ambition du cockpit de pilotage</h3>
-  <p>Le cockpit de pilotage GEOZEY vise un EBITDA de 80 à 150 k€ et une valorisation de 800 k€ à 1,2 M€ à horizon 2028. Cette ambition se situe nettement au dessus de la fourchette raisonnée retenue aujourd'hui, 150 k€ à 450 k€ de valeur d'entreprise. Le DCF central bâti sur le plan tel que présenté (857 k€, taux d'actualisation de 20 %) atterrit précisément dans la zone basse de cette ambition, ce qui montre que l'objectif du cockpit n'est pas hors d'atteinte, mais qu'il correspond au scénario où le plan de redressement de marge se réalise intégralement, pas à la situation actuelle de GEOZEY. C'est un objectif conditionnel à documenter et à piloter sur les trois prochains exercices, pas une valeur d'aujourd'hui, et il devra être recalculé à mesure que le plan sera exécuté ou révisé.</p>
+  <h3 style="font-weight:400;margin-top:36px">Positionnement de l’ambition du cockpit de pilotage</h3>
+  <p>Le cockpit de pilotage GEOZEY vise un EBITDA de 80 à 150 k€ et une valorisation de 800 k€ à 1,2 M€ à horizon 2028. Cette ambition se situe nettement au-dessus de la fourchette raisonnée retenue aujourd’hui, 150 k€ à 450 k€ de valeur d’entreprise. Le DCF central bâti sur le plan tel que présenté (857 k€, taux d’actualisation de 20 %) atterrit précisément dans la zone basse de cette ambition, ce qui montre que l’objectif du cockpit n’est pas hors d’atteinte, mais qu’il correspond au scénario où le plan de redressement de marge se réalise intégralement, pas à la situation actuelle de GEOZEY. C’est un objectif conditionnel à documenter et à piloter sur les trois prochains exercices, pas une valeur d’aujourd’hui, et il devra être recalculé à mesure que le plan sera exécuté ou révisé.</p>
 
   <div class="badgerow">
     <span class="badge ember">Fourchette VE 150 à 450 k€</span>
@@ -350,7 +364,7 @@
 <footer>
   <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
   <hr>
-  <p class="copy">Geozey x Alvo, rapport de valorisation multi méthodes, Sprint 1 pré cession, 17 août 2026, confidentiel, document de travail sans caractère contractuel.</p>
+  <p class="copy">Geozey x Alvo, rapport de valorisation multi-méthodes, Sprint 1 pré-cession, 17 août 2026, confidentiel, document de travail sans caractère contractuel.</p>
 </footer>
 
 </body>
