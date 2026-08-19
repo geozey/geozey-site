@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Plan d'optimisation des marges et stratégie de diversification client, Geozey</title>
+<title>Plan d’optimisation des marges et stratégie de diversification client, Geozey</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://geozey.com/styles.css">
 <style>
+:root{--ember-ink:#C42F09}
 .doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
 .doc-table table{width:100%;border-collapse:collapse;font-size:14.5px}
 .doc-table thead tr{background:var(--dark);color:#fff}
@@ -26,6 +27,12 @@
 .txt{padding:70px 140px}
 .note-src{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--ash);margin-top:10px}
 .callout{margin:28px 0}
+nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.5);color:#f1f1f1;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
+footer .copy{color:rgba(255,255,255,.72)}
+@media(max-width:900px){nav .doc-now{display:none}}
 @media (max-width:900px){.page-hero{padding:90px 24px 50px}.txt{padding:44px 24px}}
 </style>
 </head>
@@ -52,45 +59,52 @@
 })();
 </script>
 
-<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+<nav>
+  <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <span class="doc-now">06 · Plan de marges</span>
+  <div class="doc-steps">
+    <a href="/cockpit-accompagnement/due-diligence" title="Synthèse de due diligence interne">← Précédent</a>
+    <a href="/cockpit-accompagnement/playbook" title="Playbook commercial">Suivant →</a>
+  </div>
+</nav>
 
 <section class="page-hero ph-dark">
   <span class="kicker">Sprint 3, DAF Geozey, dossier de cession</span>
-  <h1>Plan d'optimisation des marges et stratégie de diversification client</h1>
-  <p class="lead">Deux livrables, une seule cause. La marge s'est effondrée parce qu'un modèle très concentré a laissé filer le coût de la sous-traitance. Ce document dit d'où vient la perte, ce qu'il faut faire pour la reprendre, et ce que vaut chaque point de marge et chaque point de diversification au moment de vendre.</p>
+  <h1>Plan d’optimisation des marges et stratégie de diversification client</h1>
+  <p class="lead">Deux livrables, une seule cause. La marge s’est effondrée parce qu’un modèle très concentré a laissé filer le coût de la sous-traitance. Ce document dit d’où vient la perte, ce qu’il faut faire pour la reprendre, et ce que vaut chaque point de marge et chaque point de diversification au moment de vendre.</p>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Méthode et lecture du document</span>
   <h2>Ce qui est calculé, ce qui est estimé</h2>
-  <p>Toutes les données financières viennent des fichiers FEC 2023, 2024 et 2025, retraitées dans la note interne de retraitements d'EBITDA. La fourchette de valeur d'entreprise vient de la note interne de benchmark de comparables. Les données de sourcing et de pipeline de missions viennent du cockpit interne Geozey, mémoire à jour au 17/08/2026.</p>
+  <p>Toutes les données financières viennent des fichiers FEC 2023, 2024 et 2025, retraitées dans la note interne de retraitements d’EBITDA. La fourchette de valeur d’entreprise vient de la note interne de benchmark de comparables. Les données de sourcing et de pipeline de missions viennent du cockpit interne Geozey, mémoire à jour au 17/08/2026.</p>
   <p>Trois niveaux de preuve sont utilisés dans tout le document et signalés par une pastille :</p>
   <p>
-    <span class="badge ok">Calculé</span> un chiffre qui sort directement d'une identité comptable sur le FEC, sans hypothèse.
+    <span class="badge ok">Calculé</span> un chiffre qui sort directement d’une identité comptable sur le FEC, sans hypothèse.
     <span class="badge warn">Estimé</span> un chiffre qui applique une hypothèse explicite, énoncée à chaque fois, à une base calculée.
-    <span class="badge off">Hypothèse non validée</span> un chiffre qui vient du prévisionnel ou d'un raisonnement de marché, pas encore tranché par le dirigeant.
+    <span class="badge off">Hypothèse non validée</span> un chiffre qui vient du prévisionnel ou d’un raisonnement de marché, pas encore tranché par le dirigeant.
   </p>
-  <p class="note-src">Aucun chiffre de ce document n'est inventé. Quand une donnée manque (concentration client 2024 et 2025, marge par mission), le document le dit et explique pourquoi le calcul n'est pas possible en l'état. Le benchmark de comparables et les retraitements d'EBITDA sont fournis en fichiers séparés, hors de cet espace.</p>
+  <p class="note-src">Aucun chiffre de ce document n’est inventé. Quand une donnée manque (concentration client 2024 et 2025, marge par mission), le document le dit et explique pourquoi le calcul n’est pas possible en l’état. Le benchmark de comparables et les retraitements d’EBITDA sont fournis en fichiers séparés, hors de cet espace.</p>
 </section>
 
 <section class="txt bg-light">
-  <span class="kicker">Partie 1, plan d'optimisation des marges</span>
-  <h2>Trois exercices, une trajectoire qui s'inverse</h2>
+  <span class="kicker">Partie 1, plan d’optimisation des marges</span>
+  <h2>Trois exercices, une trajectoire qui s’inverse</h2>
   <div class="stats-inline">
-    <div class="stat"><span class="v">806 → 717 k€</span><span class="l">Chiffre d'affaires 2023 à 2025</span></div>
+    <div class="stat"><span class="v">806 → 717 k€</span><span class="l">Chiffre d’affaires 2023 à 2025</span></div>
     <div class="stat"><span class="v">117 → 3 k€</span><span class="l">EBITDA publié 2023 à 2025</span></div>
     <div class="stat"><span class="v">35,9 → 18,0 %</span><span class="l">Taux de marge sur sous-traitance</span></div>
   </div>
-  <p>Le chiffre d'affaires a baissé de 11,0 % en deux ans. L'EBITDA, lui, a baissé de 97,4 % sur la même période. Un écart de cette ampleur ne s'explique pas par le seul repli d'activité. Il s'explique par un changement de modèle économique, mesurable poste par poste sur les trois FEC.</p>
+  <p>Le chiffre d’affaires a baissé de 11,0 % en deux ans. L’EBITDA, lui, a baissé de 97,4 % sur la même période. Un écart de cette ampleur ne s’explique pas par le seul repli d’activité. Il s’explique par un changement de modèle économique, mesurable poste par poste sur les trois FEC.</p>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Diagnostic chiffré</span>
-  <h2>D'où vient exactement la perte de marge</h2>
-  <p>La décomposition ci-dessous est une identité comptable, pas une estimation. EBITDA = Chiffre d'affaires moins sous-traitance (compte 604) moins le reste des charges (personnel, charges externes hors sous-traitance, impôts et taxes, regroupé sous le terme Reliquat). Chaque colonne se vérifie en additionnant les trois effets, qui retombent exactement sur la variation d'EBITDA publiée.</p>
+  <h2>D’où vient exactement la perte de marge</h2>
+  <p>La décomposition ci-dessous est une identité comptable, pas une estimation. EBITDA = Chiffre d’affaires moins sous-traitance (compte 604) moins le reste des charges (personnel, charges externes hors sous-traitance, impôts et taxes, regroupé sous le terme Reliquat). Chaque colonne se vérifie en additionnant les trois effets, qui retombent exactement sur la variation d’EBITDA publiée.</p>
   <div class="doc-table">
     <table>
-      <thead><tr><th>Transition</th><th>Effet chiffre d'affaires</th><th>Effet coût de sous-traitance</th><th>Effet frais généraux (reliquat)</th><th>Variation d'EBITDA</th></tr></thead>
+      <thead><tr><th>Transition</th><th>Effet chiffre d’affaires</th><th>Effet coût de sous-traitance</th><th>Effet frais généraux (reliquat)</th><th>Variation d’EBITDA</th></tr></thead>
       <tbody>
         <tr><td>2023 → 2024</td><td>-67 989 €</td><td>-19 561 €</td><td>+43 550 €</td><td>-44 000 € (117 → 73 k€)</td></tr>
         <tr><td>2024 → 2025</td><td>-20 581 €</td><td>-51 778 €</td><td>+2 359 €</td><td>-70 000 € (73 → 3 k€)</td></tr>
@@ -98,39 +112,39 @@
       </tbody>
     </table>
   </div>
-  <p><span class="badge ok">Calculé</span> Le premier facteur, de loin, est la marge : <strong>-71 339 € sur la période, soit 62,6 % de la chute totale d'EBITDA</strong>. Le taux de sous-traitance rapporté au chiffre d'affaires est passé de 64,1 % en 2023 à 72,7 % en 2024 puis 82,0 % en 2025. Geozey reverse une part de plus en plus grande de chaque euro facturé à ses sous-traitants.</p>
-  <p><span class="badge ok">Calculé</span> Le deuxième facteur est la baisse de chiffre d'affaires : <strong>-88 570 € d'effet brut</strong>, CA en repli de 806 à 717 k€. Cet effet se recoupe en partie avec le premier, il est isolé ici pour distinguer l'effet volume de l'effet taux.</p>
-  <p><span class="badge ok">Calculé</span> Le troisième facteur, les frais généraux, n'est PAS en cause. Le Reliquat a baissé de 45 909 € sur la période, amortissant une partie de la chute plutôt que l'aggravant. La rémunération du dirigeant, en particulier, est passée de 88 345 € en 2023 à 33 251 € en 2025 : elle a allégé les charges, elle ne les a pas alourdies.</p>
-  <p><span class="badge ko">Non calculable en l'état</span> Les FEC ne permettent pas d'isoler l'effet prix de vente (TJM facturé au client) de l'effet coût d'achat (TJM payé au freelance) : les comptes 706 (ventes) et 604 (achats de prestations) sont agrégés sur l'année, sans détail par mission ni par jour facturé. Il n'est pas non plus possible de prouver un effet de mix de missions (certaines plus consommatrices de sous-traitance que d'autres) sans le détail mission par mission, qui n'existe pas dans la comptabilité générale. Ce que l'on peut affirmer avec certitude, c'est le résultat net : le modèle s'est inversé, sans que le FEC seul dise si c'est le prix de vente qui a reculé, le coût d'achat qui a grimpé, ou les deux. Le plan ci-dessous agit sur les deux leviers en parallèle, précisément parce que la cause exacte n'est pas isolable sans revue mission par mission.</p>
+  <p><span class="badge ok">Calculé</span> Le premier facteur, de loin, est la marge : <strong>-71 339 € sur la période, soit 62,6 % de la chute totale d’EBITDA</strong>. Le taux de sous-traitance rapporté au chiffre d’affaires est passé de 64,1 % en 2023 à 72,7 % en 2024 puis 82,0 % en 2025. Geozey reverse une part de plus en plus grande de chaque euro facturé à ses sous-traitants.</p>
+  <p><span class="badge ok">Calculé</span> Le deuxième facteur est la baisse de chiffre d’affaires : <strong>-88 570 € d’effet brut</strong>, CA en repli de 806 à 717 k€. Cet effet se recoupe en partie avec le premier, il est isolé ici pour distinguer l’effet volume de l’effet taux.</p>
+  <p><span class="badge ok">Calculé</span> Le troisième facteur, les frais généraux, n’est PAS en cause. Le Reliquat a baissé de 45 909 € sur la période, amortissant une partie de la chute plutôt que l’aggravant. La rémunération du dirigeant, en particulier, est passée de 88 345 € en 2023 à 33 251 € en 2025 : elle a allégé les charges, elle ne les a pas alourdies.</p>
+  <p><span class="badge ko">Non calculable en l’état</span> Les FEC ne permettent pas d’isoler l’effet prix de vente (TJM facturé au client) de l’effet coût d’achat (TJM payé au freelance) : les comptes 706 (ventes) et 604 (achats de prestations) sont agrégés sur l’année, sans détail par mission ni par jour facturé. Il n’est pas non plus possible de prouver un effet de mix de missions (certaines plus consommatrices de sous-traitance que d’autres) sans le détail mission par mission, qui n’existe pas dans la comptabilité générale. Ce que l’on peut affirmer avec certitude, c’est le résultat net : le modèle s’est inversé, sans que le FEC seul dise si c’est le prix de vente qui a reculé, le coût d’achat qui a grimpé, ou les deux. Le plan ci-dessous agit sur les deux leviers en parallèle, précisément parce que la cause exacte n’est pas isolable sans revue mission par mission.</p>
 </section>
 
 <section class="txt bg-dark">
   <div class="dcard">
     <span class="tag ember">Le point le plus important</span>
-    <h3>35,9 % n'est pas une hypothèse, c'est un niveau déjà tenu</h3>
+    <h3>35,9 % n’est pas une hypothèse, c’est un niveau déjà tenu</h3>
     <hr>
-    <p>Ce plan ne demande pas à Geozey d'inventer une performance qu'elle n'a jamais connue. En 2023, avec la même activité, les mêmes clients, le même modèle de sous-traitance, la société a facturé avec un taux de marge de 35,9 %. Ce chiffre est calculé, sourcé, contrôlé ligne à ligne sur le FEC 2023, à un écart de 375 € près sur l'EBITDA total. Revenir vers ce niveau n'est pas un pari sur l'avenir. C'est la restauration d'un état déjà prouvé, à une date connue, sur les mêmes comptes clients pour l'essentiel (EKIUM, SNEF, Veolia, Engie, Razel-Bec, Vinci, Bourbon). L'argument à porter devant un acquéreur n'est donc pas "nous pensons pouvoir progresser", mais "nous savons que ce niveau existe, nous l'avons déjà tenu, et voici comment nous y retournons".</p>
+    <p>Ce plan ne demande pas à Geozey d’inventer une performance qu’elle n’a jamais connue. En 2023, avec la même activité, les mêmes clients, le même modèle de sous-traitance, la société a facturé avec un taux de marge de 35,9 %. Ce chiffre est calculé, sourcé, contrôlé ligne à ligne sur le FEC 2023, à un écart de 375 € près sur l’EBITDA total. Revenir vers ce niveau n’est pas un pari sur l’avenir. C’est la restauration d’un état déjà prouvé, à une date connue, sur les mêmes comptes clients pour l’essentiel (EKIUM, SNEF, Veolia, Engie, Razel-Bec, Vinci, Bourbon). L’argument à porter devant un acquéreur n’est donc pas "nous pensons pouvoir progresser", mais "nous savons que ce niveau existe, nous l’avons déjà tenu, et voici comment nous y retournons".</p>
   </div>
 </section>
 
 <section class="txt bg-light">
-  <span class="kicker">Leviers d'action</span>
+  <span class="kicker">Leviers d’action</span>
   <h2>Six leviers chiffrés, du plus simple au plus stratégique</h2>
-  <p>Chaque gain est estimé à partir d'une base de calcul explicite, dérivée des FEC. La conversion utilisée dans tout ce tableau : un point de taux de marge sur sous-traitance équivaut, sur la base du CA 2025 figé (717 410 €) et à frais généraux inchangés, à environ 7 174 € d'EBITDA. Cette conversion sert de fil rouge, elle n'invente aucun chiffre nouveau, elle reformule ceux du diagnostic.</p>
+  <p>Chaque gain est estimé à partir d’une base de calcul explicite, dérivée des FEC. La conversion utilisée dans tout ce tableau : un point de taux de marge sur sous-traitance équivaut, sur la base du CA 2025 figé (717 410 €) et à frais généraux inchangés, à environ 7 174 € d’EBITDA. Cette conversion sert de fil rouge, elle n’invente aucun chiffre nouveau, elle reformule ceux du diagnostic.</p>
   <div class="doc-table">
     <table>
       <thead><tr><th>Levier</th><th>Base de calcul</th><th>Gain annuel estimé</th><th>Difficulté</th></tr></thead>
       <tbody>
-        <tr><td>Plancher de marge par mission</td><td>Ramener l'ensemble du book de 18,0 % vers 21 à 23 %, soit 3 à 5 points, en refusant les missions les plus diluantes.</td><td><strong>21 500 € à 36 000 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge ok">Faible</span> règle interne, applicable immédiatement</td></tr>
-        <tr><td>Renégociation du TJM d'achat freelance</td><td>3 à 5 % de baisse sur le volume d'achat 2025 (588 409 €, compte 604).</td><td><strong>17 650 € à 29 420 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge warn">Moyenne</span> pouvoir de négociation limité si le profil est rare</td></tr>
-        <tr><td>Revalorisation du TJM de vente à l'indexation</td><td>2 à 3 % d'indexation sur le CA 2025 (717 410 €), répercutée quasi intégralement en marge car le coût d'achat ne suit pas au même rythme.</td><td><strong>14 300 € à 21 500 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge warn">Moyenne</span> dépend de l'acceptation client</td></tr>
-        <tr><td>Arbitrage missions longues sécurisantes / missions courtes mieux margées</td><td>Non chiffrable avec les FEC agrégés, aucune marge par mission disponible. Exemple concret à trancher : la mission Dunkerque (PMO batteries, 3 ans annoncés) sécurise le carnet mais sa marge réelle n'est pas connue à ce stade.</td><td><strong>Non chiffré</strong> <span class="badge ko">Donnée manquante</span></td><td><span class="badge ko">Élevée</span> arbitrage stratégique, nécessite un suivi de marge par mission à mettre en place</td></tr>
-        <tr><td>Facturation des prestations annexes</td><td>40 à 50 % de refacturation de la ligne déplacements, missions, réceptions (22 888 € en 2025), si elle n'est pas déjà refacturée en totalité (point à vérifier avec le dirigeant).</td><td><strong>9 000 € à 11 400 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge ok">Faible</span> question de process de facturation</td></tr>
-        <tr><td>Réduction du portage improductif</td><td>10 à 15 journées par an de temps dirigeant aujourd'hui non facturées, converties en temps facturable au TJM moyen pratiqué de 700 €, sans coût de sous-traitance associé.</td><td><strong>7 000 € à 10 500 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge warn">Moyenne</span> le dirigeant est la seule personne clé, son temps est contraint</td></tr>
+        <tr><td>Plancher de marge par mission</td><td>Ramener l’ensemble du book de 18,0 % vers 21 à 23 %, soit 3 à 5 points, en refusant les missions les plus diluantes.</td><td><strong>21 500 € à 36 000 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge ok">Faible</span> règle interne, applicable immédiatement</td></tr>
+        <tr><td>Renégociation du TJM d’achat freelance</td><td>3 à 5 % de baisse sur le volume d’achat 2025 (588 409 €, compte 604).</td><td><strong>17 650 € à 29 420 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge warn">Moyenne</span> pouvoir de négociation limité si le profil est rare</td></tr>
+        <tr><td>Revalorisation du TJM de vente à l’indexation</td><td>2 à 3 % d’indexation sur le CA 2025 (717 410 €), répercutée quasi intégralement en marge car le coût d’achat ne suit pas au même rythme.</td><td><strong>14 300 € à 21 500 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge warn">Moyenne</span> dépend de l’acceptation client</td></tr>
+        <tr><td>Arbitrage missions longues sécurisantes / missions courtes mieux margées</td><td>Non chiffrable avec les FEC agrégés, aucune marge par mission disponible. Exemple concret à trancher : la mission Dunkerque (PMO batteries, 3 ans annoncés) sécurise le carnet mais sa marge réelle n’est pas connue à ce stade.</td><td><strong>Non chiffré</strong> <span class="badge ko">Donnée manquante</span></td><td><span class="badge ko">Élevée</span> arbitrage stratégique, nécessite un suivi de marge par mission à mettre en place</td></tr>
+        <tr><td>Facturation des prestations annexes</td><td>40 à 50 % de refacturation de la ligne déplacements, missions, réceptions (22 888 € en 2025), si elle n’est pas déjà refacturée en totalité (point à vérifier avec le dirigeant).</td><td><strong>9 000 € à 11 400 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge ok">Faible</span> question de process de facturation</td></tr>
+        <tr><td>Réduction du portage improductif</td><td>10 à 15 journées par an de temps dirigeant aujourd’hui non facturées, converties en temps facturable au TJM moyen pratiqué de 700 €, sans coût de sous-traitance associé.</td><td><strong>7 000 € à 10 500 €</strong> <span class="badge warn">Estimé</span></td><td><span class="badge warn">Moyenne</span> le dirigeant est la seule personne clé, son temps est contraint</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="note-src">Total des cinq leviers chiffrables : environ 69 450 € à 108 820 € de gain annuel estimé, en régime de croisière. Cet ordre de grandeur est cohérent avec l'écart entre le taux de marge 2025 (18,0 %) et la cible 2028 du prévisionnel (28 %), soit environ 72 k€ sur une base de CA figée à 717 k€ (voir trajectoire ci-dessous). Les leviers ne s'additionnent pas strictement, certains se recoupent, mais l'ordre de grandeur converge.</p>
+  <p class="note-src">Total des cinq leviers chiffrables : environ 69 450 € à 108 820 € de gain annuel estimé, en régime de croisière. Cet ordre de grandeur est cohérent avec l’écart entre le taux de marge 2025 (18,0 %) et la cible 2028 du prévisionnel (28 %), soit environ 72 k€ sur une base de CA figée à 717 k€ (voir trajectoire ci-dessous). Les leviers ne s’additionnent pas strictement, certains se recoupent, mais l’ordre de grandeur converge.</p>
 </section>
 
 <section class="txt bg-white">
@@ -140,7 +154,7 @@
     <span class="tag ember">Plancher de marge</span>
     <h3>25 % minimum, soit 175 € par jour facturé</h3>
     <hr>
-    <p>Aucune nouvelle mission ne se signe sous un taux de marge de 25 % sur sous-traitance. Sur la base du TJM moyen pratiqué par Geozey (environ 700 €), cela représente un écart minimal de <strong>175 € par jour</strong> entre le TJM facturé au client et le TJM payé au freelance. En dessous de ce plancher, la mission n'est pas signée sauf dérogation écrite et motivée du dirigeant.</p>
+    <p>Aucune nouvelle mission ne se signe sous un taux de marge de 25 % sur sous-traitance. Sur la base du TJM moyen pratiqué par Geozey (environ 700 €), cela représente un écart minimal de <strong>175 € par jour</strong> entre le TJM facturé au client et le TJM payé au freelance. En dessous de ce plancher, la mission n’est pas signée sauf dérogation écrite et motivée du dirigeant.</p>
     <p>Ce seuil est choisi volontairement entre les deux bornes connues : au-dessus du niveau de crise mesuré en 2025 (18,0 %), en dessous du niveau déjà tenu en 2023 (35,9 %). Il laisse de la marge de manœuvre commerciale tout en interdisant de revivre 2025.</p>
   </div>
 </section>
@@ -148,11 +162,11 @@
 <section class="txt bg-light">
   <span class="kicker">Trajectoire 2026, 2027, 2028</span>
   <h2>Ce que vaut un point de marge</h2>
-  <p><span class="badge off">Hypothèse non validée</span> Le prévisionnel de Geozey vise une remontée du taux de marge de 22 % en 2026 vers 28 % en 2028. Cette hypothèse n'a pas encore été validée par le dirigeant. Elle reste, à 28 %, en dessous du niveau réellement tenu en 2023 (35,9 %), ce qui en fait une cible prudente, pas une cible optimiste.</p>
-  <p>Simulation à CA et frais généraux figés au niveau 2025 (717 410 € de CA, 126 001 € de reliquat), pour isoler le seul effet du taux de marge. C'est une simplification volontaire : elle ne présume aucune croissance de CA, celle-ci fait l'objet de la partie 2 de ce document.</p>
+  <p><span class="badge off">Hypothèse non validée</span> Le prévisionnel de Geozey vise une remontée du taux de marge de 22 % en 2026 vers 28 % en 2028. Cette hypothèse n’a pas encore été validée par le dirigeant. Elle reste, à 28 %, en dessous du niveau réellement tenu en 2023 (35,9 %), ce qui en fait une cible prudente, pas une cible optimiste.</p>
+  <p>Simulation à CA et frais généraux figés au niveau 2025 (717 410 € de CA, 126 001 € de reliquat), pour isoler le seul effet du taux de marge. C’est une simplification volontaire : elle ne présume aucune croissance de CA, celle-ci fait l’objet de la partie 2 de ce document.</p>
   <div class="doc-table">
     <table>
-      <thead><tr><th>Exercice</th><th>Taux de marge visé</th><th>EBITDA estimé</th><th>Delta vs 2025</th><th>Impact estimé sur la valeur d'entreprise</th></tr></thead>
+      <thead><tr><th>Exercice</th><th>Taux de marge visé</th><th>EBITDA estimé</th><th>Delta vs 2025</th><th>Impact estimé sur la valeur d’entreprise</th></tr></thead>
       <tbody>
         <tr><td>2025, réel</td><td>18,0 % <span class="badge ok">Calculé</span></td><td>3 k€ <span class="badge ok">Publié</span></td><td>n/a</td><td>n/a</td></tr>
         <tr><td>2026</td><td>22 % <span class="badge off">Hypothèse</span></td><td>~32 k€</td><td>+29 k€</td><td>+87 k€ à +188 k€ (centre ~138 k€)</td></tr>
@@ -161,14 +175,14 @@
       </tbody>
     </table>
   </div>
-  <p><span class="badge warn">Estimé</span> La conversion en valeur utilise le multiple net retenu par le rapport de valorisation (méthode A), pour le profil de Geozey : 3,0x à 6,5x l'EBITDA, centre 4,75x, après compression liée à la petite taille de la société. Sur cette base, <strong>un point de taux de marge sur sous-traitance vaut environ 21 500 € à 46 600 € de valeur d'entreprise, centre 34 000 €</strong>, calculé sur 7 174 € d'EBITDA additionnel par point (base CA 2025 figée).</p>
-  <p class="note-src">Ces impacts de valeur sont incrémentaux et s'ajoutent à la fourchette de base du rapport de valorisation (150 k€ à 350 k€, centre 220 à 250 k€, calculée sur l'EBITDA moyen des trois derniers exercices). Ils ne remplacent pas cette fourchette, ils montrent son sens de variation si le plan de marge est exécuté. La sensibilité au multiple retenu est forte : c'est pourquoi une fourchette est donnée à chaque ligne, jamais un chiffre unique.</p>
+  <p><span class="badge warn">Estimé</span> La conversion en valeur utilise le multiple net retenu par le rapport de valorisation (méthode A), pour le profil de Geozey : 3,0x à 6,5x l’EBITDA, centre 4,75x, après compression liée à la petite taille de la société. Sur cette base, <strong>un point de taux de marge sur sous-traitance vaut environ 21 500 € à 46 600 € de valeur d’entreprise, centre 34 000 €</strong>, calculé sur 7 174 € d’EBITDA additionnel par point (base CA 2025 figée).</p>
+  <p class="note-src">Ces impacts de valeur sont incrémentaux et s’ajoutent à la fourchette de base du rapport de valorisation (150 k€ à 350 k€, centre 220 à 250 k€, calculée sur l’EBITDA moyen des trois derniers exercices). Ils ne remplacent pas cette fourchette, ils montrent son sens de variation si le plan de marge est exécuté. La sensibilité au multiple retenu est forte : c’est pourquoi une fourchette est donnée à chaque ligne, jamais un chiffre unique.</p>
 </section>
 
 <section class="txt bg-dark">
   <span class="kicker">Partie 2, stratégie de diversification client</span>
-  <h2>Le risque n'est pas théorique, il est déjà mesuré</h2>
-  <p style="color:#fff">En 2023, seule année où la répartition du chiffre d'affaires par client a été recalculée sur le FEC, trois clients pèsent 93,5 % du CA. Ce n'est pas une hypothèse d'auditeur, c'est un comptage ligne à ligne sur 104 lignes de facturation.</p>
+  <h2>Le risque n’est pas théorique, il est déjà mesuré</h2>
+  <p style="color:#fff">En 2023, seule année où la répartition du chiffre d’affaires par client a été recalculée sur le FEC, trois clients pèsent 93,5 % du CA. Ce n’est pas une hypothèse d’auditeur, c’est un comptage ligne à ligne sur 104 lignes de facturation.</p>
 </section>
 
 <section class="txt bg-white">
@@ -187,32 +201,32 @@
       </tbody>
     </table>
   </div>
-  <p><span class="badge ok">Calculé</span> Perdre EKIUM, c'est perdre 420 925 € de chiffre d'affaires sur une base 2023, soit plus de la moitié de l'activité totale de l'année.</p>
-  <p><span class="badge warn">Estimé</span> Si l'on suppose, à défaut de détail par client, que la rentabilité d'EKIUM suit le taux de marge moyen de la société en 2023 (35,9 %), perdre ce client reviendrait à perdre environ 151 000 € de marge sur sous-traitance. Les frais généraux (171 910 € en 2023, en grande partie fixes : dirigeant, loyer, structure) ne baisseraient pas dans les mêmes proportions du jour au lendemain. Résultat : l'EBITDA de l'exercice, qui était de +117 000 € avec EKIUM, basculerait autour de -34 000 € sans lui. Un seul client peut donc, à lui seul, faire passer Geozey de bénéficiaire à déficitaire.</p>
-  <p><span class="badge ko">Non calculable en l'état</span> Cette répartition par client n'a pas été recalculée sur 2024 et 2025 (la note de retraitement le signale explicitement comme hors périmètre de sa mission). Rien dans le pipeline actuel de missions ne montre de diversification engagée depuis 2023 : les trois missions ouvertes début août (Athènes pour Bouygues Bâtiment International, Dunkerque, Marseille) sont encore sans aucun contact pris à ce jour, donc sans effet mesuré sur la concentration. Recalculer la concentration 2024 et 2025 sur le même modèle que 2023 est une action à mener avant la prochaine revue, elle n'est pas dans le périmètre chiffré de ce document.</p>
+  <p><span class="badge ok">Calculé</span> Perdre EKIUM, c’est perdre 420 925 € de chiffre d’affaires sur une base 2023, soit plus de la moitié de l’activité totale de l’année.</p>
+  <p><span class="badge warn">Estimé</span> Si l’on suppose, à défaut de détail par client, que la rentabilité d’EKIUM suit le taux de marge moyen de la société en 2023 (35,9 %), perdre ce client reviendrait à perdre environ 151 000 € de marge sur sous-traitance. Les frais généraux (171 910 € en 2023, en grande partie fixes : dirigeant, loyer, structure) ne baisseraient pas dans les mêmes proportions du jour au lendemain. Résultat : l’EBITDA de l’exercice, qui était de +117 000 € avec EKIUM, basculerait autour de -34 000 € sans lui. Un seul client peut donc, à lui seul, faire passer Geozey de bénéficiaire à déficitaire.</p>
+  <p><span class="badge ko">Non calculable en l’état</span> Cette répartition par client n’a pas été recalculée sur 2024 et 2025 (la note de retraitement le signale explicitement comme hors périmètre de sa mission). Rien dans le pipeline actuel de missions ne montre de diversification engagée depuis 2023 : les trois missions ouvertes début août (Athènes pour Bouygues Bâtiment International, Dunkerque, Marseille) sont encore sans aucun contact pris à ce jour, donc sans effet mesuré sur la concentration. Recalculer la concentration 2024 et 2025 sur le même modèle que 2023 est une action à mener avant la prochaine revue, elle n’est pas dans le périmètre chiffré de ce document.</p>
   <p>Un acquéreur applique une décote à ce niveau de concentration. Le rapport de valorisation cite une pratique de marché documentée : une décote de risque de concentration pouvant atteindre 40 % du prix est appliquée en due diligence lorsque les trois premiers clients approchent 35 à 40 % du CA. Geozey est à 93,5 % sur trois clients, très au-delà de ce seuil. Un acquéreur retiendra vraisemblablement une décote au moins équivalente à ce plancher de 40 %, sinon supérieure.</p>
 </section>
 
 <section class="txt bg-light">
   <span class="kicker">Objectif à horizon 2028</span>
   <h2>Combien de clients faut-il pour sortir de la dépendance</h2>
-  <p><span class="badge warn">Estimé</span> Objectif intermédiaire réaliste à horizon 2028 : aucun client au-dessus de 40 % du CA, les trois premiers clients réunis sous 70 % (contre 93,5 % aujourd'hui). En tenant EKIUM constant en valeur absolue (420 925 €, base 2023, la seule connue), ramener ce client sous 40 % suppose un CA total d'environ 1,05 M€, soit une croissance d'environ 47 % par rapport au CA 2025 (717 410 €).</p>
-  <p><span class="badge warn">Estimé</span> Objectif ambitieux, au-delà de 2028 si nécessaire : aucun client au-dessus de 30 %, les trois premiers sous 60 %. Toujours EKIUM constant en valeur absolue, cela suppose un CA total d'environ 1,40 M€, soit près du double du CA 2025.</p>
-  <p><span class="badge warn">Estimé</span> Nombre de clients actifs nécessaire : mathématiquement, pour qu'aucun client ne dépasse 25 à 30 % d'un CA cible d'environ 1,05 à 1,40 M€, il faut au minimum 4 clients de poids comparable. En pratique, pour absorber la fin naturelle d'une mission sans revenir à la dépendance, la cible opérationnelle est un portefeuille d'au moins <strong>8 à 10 clients actifs facturés chaque année</strong>, contre 7 clients identifiés en 2023 mais avec une distribution extrêmement inégale (3 clients à 93,5 %, les 4 autres se partageant 2,8 %).</p>
+  <p><span class="badge warn">Estimé</span> Objectif intermédiaire réaliste à horizon 2028 : aucun client au-dessus de 40 % du CA, les trois premiers clients réunis sous 70 % (contre 93,5 % aujourd’hui). En tenant EKIUM constant en valeur absolue (420 925 €, base 2023, la seule connue), ramener ce client sous 40 % suppose un CA total d’environ 1,05 M€, soit une croissance d’environ 47 % par rapport au CA 2025 (717 410 €).</p>
+  <p><span class="badge warn">Estimé</span> Objectif ambitieux, au-delà de 2028 si nécessaire : aucun client au-dessus de 30 %, les trois premiers sous 60 %. Toujours EKIUM constant en valeur absolue, cela suppose un CA total d’environ 1,40 M€, soit près du double du CA 2025.</p>
+  <p><span class="badge warn">Estimé</span> Nombre de clients actifs nécessaire : mathématiquement, pour qu’aucun client ne dépasse 25 à 30 % d’un CA cible d’environ 1,05 à 1,40 M€, il faut au minimum 4 clients de poids comparable. En pratique, pour absorber la fin naturelle d’une mission sans revenir à la dépendance, la cible opérationnelle est un portefeuille d’au moins <strong>8 à 10 clients actifs facturés chaque année</strong>, contre 7 clients identifiés en 2023 mais avec une distribution extrêmement inégale (3 clients à 93,5 %, les 4 autres se partageant 2,8 %).</p>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Axes concrets</span>
-  <h2>Ce qui existe déjà et qu'il reste à activer</h2>
+  <h2>Ce qui existe déjà et qu’il reste à activer</h2>
   <div class="doc-table">
     <table>
       <thead><tr><th>Axe</th><th>État mesuré</th><th>Action</th></tr></thead>
       <tbody>
-        <tr><td>Prospects maîtres d'oeuvre déjà sourcés</td><td><strong>244 prospects</strong>, chacun avec sa source et sa date de collecte, score moyen 91 sur 100, importés et vérifiés en base le 14/08/2026. <span class="badge ok">Calculé</span></td><td>Base de contact directe, aucun sourcing supplémentaire nécessaire pour démarrer la prospection.</td></tr>
-        <tr><td>Vivier de profils PMO</td><td><strong>126 profils</strong> sourcés et scorés, dont 36 en planning et 31 en project control, score moyen 88. 12 profils seulement au vivier Boond actif. <span class="badge ok">Calculé</span></td><td>Le vivier est déjà surdimensionné par rapport aux missions ouvertes : la contrainte n'est pas le sourcing, c'est la mise en mouvement commerciale.</td></tr>
-        <tr><td>Secteurs adjacents accessibles avec les mêmes compétences</td><td>Signaux identifiés en juillet 2026 : vague EPR2 (Technip Energies et EDF, groupement génie civil Vinci Bouygues Eiffage NGE Fayat, Framatome), bassin de Cotentin (Naval Group, Orano, fin des essais de Flamanville), Afrique pipelines et subsea (Saipem, TechnipFMC, zones Côte d'Ivoire et Mozambique déjà couvertes via l'expérience EACOP chez EKIUM).</td><td>Ces signaux datent de fin juillet, à revérifier avant contact (certains signaux mesurés dans la même veille se sont révélés obsolètes, jusqu'à 9 ans). Prioriser Cotentin (défense et nucléaire, déjà dans les secteurs cœur de Geozey).</td></tr>
-        <tr><td>Profondeur chez les clients existants hors EKIUM</td><td>SNEF, Veolia, Engie, Razel-Bec, Vinci et Bourbon figurent déjà au portefeuille ou au carnet de contacts. Sur 2023, Bourbon Offshore Gaia, Yaka Engineering et Proelan ne représentent ensemble que 17,0 % du CA malgré une relation déjà établie.</td><td>Reprendre contact commercial ciblé sur ces comptes avant tout démarchage à froid : le coût d'acquisition y est plus bas, la relation existe déjà.</td></tr>
-        <tr><td>Canal LinkedIn</td><td>Mesuré le 05/08/2026 : dix conversations actives dans la messagerie de Yacine, dont une a directement donné la mission Marseille (score de matching 89/100 sur le profil retenu). Un contact chez Orano (nucléaire) qualifié comme prospect client potentiel. Pendant la même période, le formulaire du site n'a produit aucune candidature. <span class="badge ok">Calculé sur un échantillon de 10 conversations</span></td><td>C'est le canal qui produit aujourd'hui, à traiter en priorité sur le canal formulaire, qui reste à zéro depuis sa mise en ligne fin juillet.</td></tr>
+        <tr><td>Prospects maîtres d’œuvre déjà sourcés</td><td><strong>244 prospects</strong>, chacun avec sa source et sa date de collecte, score moyen 91 sur 100, importés et vérifiés en base le 14/08/2026. <span class="badge ok">Calculé</span></td><td>Base de contact directe, aucun sourcing supplémentaire nécessaire pour démarrer la prospection.</td></tr>
+        <tr><td>Vivier de profils PMO</td><td><strong>126 profils</strong> sourcés et scorés, dont 36 en planning et 31 en project control, score moyen 88. 12 profils seulement au vivier Boond actif. <span class="badge ok">Calculé</span></td><td>Le vivier est déjà surdimensionné par rapport aux missions ouvertes : la contrainte n’est pas le sourcing, c’est la mise en mouvement commerciale.</td></tr>
+        <tr><td>Secteurs adjacents accessibles avec les mêmes compétences</td><td>Signaux identifiés en juillet 2026 : vague EPR2 (Technip Energies et EDF, groupement génie civil Vinci Bouygues Eiffage NGE Fayat, Framatome), bassin de Cotentin (Naval Group, Orano, fin des essais de Flamanville), Afrique pipelines et subsea (Saipem, TechnipFMC, zones Côte d’Ivoire et Mozambique déjà couvertes via l’expérience EACOP chez EKIUM).</td><td>Ces signaux datent de fin juillet, à revérifier avant contact (certains signaux mesurés dans la même veille se sont révélés obsolètes, jusqu’à 9 ans). Prioriser Cotentin (défense et nucléaire, déjà dans les secteurs cœur de Geozey).</td></tr>
+        <tr><td>Profondeur chez les clients existants hors EKIUM</td><td>SNEF, Veolia, Engie, Razel-Bec, Vinci et Bourbon figurent déjà au portefeuille ou au carnet de contacts. Sur 2023, Bourbon Offshore Gaia, Yaka Engineering et Proelan ne représentent ensemble que 17,0 % du CA malgré une relation déjà établie.</td><td>Reprendre contact commercial ciblé sur ces comptes avant tout démarchage à froid : le coût d’acquisition y est plus bas, la relation existe déjà.</td></tr>
+        <tr><td>Canal LinkedIn</td><td>Mesuré le 05/08/2026 : dix conversations actives dans la messagerie de Yacine, dont une a directement donné la mission Marseille (score de matching 89/100 sur le profil retenu). Un contact chez Orano (nucléaire) qualifié comme prospect client potentiel. Pendant la même période, le formulaire du site n’a produit aucune candidature. <span class="badge ok">Calculé sur un échantillon de 10 conversations</span></td><td>C’est le canal qui produit aujourd’hui, à traiter en priorité sur le canal formulaire, qui reste à zéro depuis sa mise en ligne fin juillet.</td></tr>
       </tbody>
     </table>
   </div>
@@ -225,10 +239,10 @@
     <table>
       <thead><tr><th>Trimestre</th><th>Priorité</th><th>Volume visé</th></tr></thead>
       <tbody>
-        <tr><td>T1 2026</td><td>Débloquer les trois missions ouvertes depuis le 06/08 (Athènes pour Bouygues Bâtiment International, Dunkerque, Marseille), toutes sans contact à ce jour. Chacune est aussi une porte d'entrée vers un client hors EKIUM. Lancer une première vague de contact sur le canal LinkedIn, qui produit déjà, vers un premier lot de prospects sourcés.</td><td>3 missions matchées et contactées, ~60 à 80 prospects contactés sur les 244, objectif 1 à 2 missions signées hors EKIUM.</td></tr>
+        <tr><td>T1 2026</td><td>Débloquer les trois missions ouvertes depuis le 06/08 (Athènes pour Bouygues Bâtiment International, Dunkerque, Marseille), toutes sans contact à ce jour. Chacune est aussi une porte d’entrée vers un client hors EKIUM. Lancer une première vague de contact sur le canal LinkedIn, qui produit déjà, vers un premier lot de prospects sourcés.</td><td>3 missions matchées et contactées, ~60 à 80 prospects contactés sur les 244, objectif 1 à 2 missions signées hors EKIUM.</td></tr>
         <tr><td>T2 2026</td><td>Poursuivre le contact sur le solde des 244 prospects. Reprendre contact commercial sur les comptes déjà établis hors EKIUM (SNEF, Veolia, Engie, Razel-Bec, Vinci, Bourbon).</td><td>~150 à 160 prospects contactés au cumul, objectif 2 à 3 missions signées additionnelles, 2 à 3 nouveaux clients facturés.</td></tr>
-        <tr><td>T3 2026</td><td>Bilan à mi-parcours de la campagne. Élargir vers les secteurs adjacents confirmés (Cotentin en priorité). Vérifier les signaux de juillet avant tout contact, certains sont obsolètes.</td><td>Solde des 244 prospects contacté, portefeuille visé : 5 à 6 clients actifs distincts sur l'année en cours.</td></tr>
-        <tr><td>T4 2026</td><td>Recalculer la concentration client 2026 sur le même modèle que 2023 (comptes 706 par libellé de facturation). Ajuster la cible 2027-2028 sur des données mesurées, pas sur l'hypothèse initiale.</td><td>Premier calcul de concentration post-plan disponible, base de pilotage pour 2027.</td></tr>
+        <tr><td>T3 2026</td><td>Bilan à mi-parcours de la campagne. Élargir vers les secteurs adjacents confirmés (Cotentin en priorité). Vérifier les signaux de juillet avant tout contact, certains sont obsolètes.</td><td>Solde des 244 prospects contacté, portefeuille visé : 5 à 6 clients actifs distincts sur l’année en cours.</td></tr>
+        <tr><td>T4 2026</td><td>Recalculer la concentration client 2026 sur le même modèle que 2023 (comptes 706 par libellé de facturation). Ajuster la cible 2027-2028 sur des données mesurées, pas sur l’hypothèse initiale.</td><td>Premier calcul de concentration post-plan disponible, base de pilotage pour 2027.</td></tr>
       </tbody>
     </table>
   </div>
@@ -240,22 +254,22 @@
     <span class="tag ember">À ne pas mal lire</span>
     <h3>Ne pas casser EKIUM</h3>
     <hr>
-    <p>Cette stratégie ne vise pas à réduire EKIUM en valeur absolue. EKIUM reste, et doit rester, le client le plus solide de Geozey : 420 925 € de CA documentés en 2023, une relation ancienne, un accès à des projets de premier plan comme EACOP. L'objectif n'est pas de facturer moins à EKIUM. L'objectif est de faire croître le reste du portefeuille jusqu'à ce qu'EKIUM ne représente plus une part écrasante du total. Un dirigeant qui lit vite pourrait comprendre l'inverse : ce n'est pas ce que dit ce document.</p>
+    <p>Cette stratégie ne vise pas à réduire EKIUM en valeur absolue. EKIUM reste, et doit rester, le client le plus solide de Geozey : 420 925 € de CA documentés en 2023, une relation ancienne, un accès à des projets de premier plan comme EACOP. L’objectif n’est pas de facturer moins à EKIUM. L’objectif est de faire croître le reste du portefeuille jusqu’à ce qu’EKIUM ne représente plus une part écrasante du total. Un dirigeant qui lit vite pourrait comprendre l’inverse : ce n’est pas ce que dit ce document.</p>
   </div>
 </section>
 
 <section class="txt bg-white">
   <span class="kicker">Lien avec la cession</span>
   <h2>Chaque point de diversification est un point de valorisation</h2>
-  <p>Une société qui réalise 93,5 % de son chiffre d'affaires sur trois clients se vend mal, quel que soit son niveau d'EBITDA. Le rapport de valorisation le documente : aucune transaction publiée en France, sur la période 2023-2026, ne porte sur une cible de conseil en ingénierie de moins d'1 M€ de CA avec un prix communiqué. À cette taille, un acquéreur se fonde davantage sur des critères qualitatifs (dépendance au dirigeant, concentration client, récurrence) que sur des transactions comparables, faute d'y en avoir.</p>
-  <p>La concentration client est l'un des sept critères qualitatifs chiffrés dans le barème utilisé par le rapport de valorisation (Nexco Expertise), avec un impact de -25 % à +5 % sur le multiple retenu, en plus de la décote de 40 % citée plus haut sur le prix pour un risque de concentration comparable au seuil de 35 à 40 %. Faire passer les trois premiers clients de 93,5 % vers 70 %, puis 60 %, ne change rien à l'EBITDA en soi. Cela change directement la position de Geozey sur cette grille de décote, indépendamment de la trajectoire de marge de la partie 1.</p>
-  <p>Les deux plans se renforcent l'un l'autre : le plan de marge augmente l'EBITDA sur lequel le multiple s'applique, le plan de diversification augmente le multiple lui-même en réduisant le risque perçu par un acquéreur. Présentés séparément, ils sont deux progrès distincts. Présentés ensemble devant un acquéreur, ils racontent une seule histoire, celle d'une société qui a compris pourquoi elle avait décroché et qui a repris le contrôle des deux leviers qui expliquent sa valeur : la marge et la clientèle.</p>
+  <p>Une société qui réalise 93,5 % de son chiffre d’affaires sur trois clients se vend mal, quel que soit son niveau d’EBITDA. Le rapport de valorisation le documente : aucune transaction publiée en France, sur la période 2023-2026, ne porte sur une cible de conseil en ingénierie de moins d’1 M€ de CA avec un prix communiqué. À cette taille, un acquéreur se fonde davantage sur des critères qualitatifs (dépendance au dirigeant, concentration client, récurrence) que sur des transactions comparables, faute d’y en avoir.</p>
+  <p>La concentration client est l’un des sept critères qualitatifs chiffrés dans le barème utilisé par le rapport de valorisation (Nexco Expertise), avec un impact de -25 % à +5 % sur le multiple retenu, en plus de la décote de 40 % citée plus haut sur le prix pour un risque de concentration comparable au seuil de 35 à 40 %. Faire passer les trois premiers clients de 93,5 % vers 70 %, puis 60 %, ne change rien à l’EBITDA en soi. Cela change directement la position de Geozey sur cette grille de décote, indépendamment de la trajectoire de marge de la partie 1.</p>
+  <p>Les deux plans se renforcent l’un l’autre : le plan de marge augmente l’EBITDA sur lequel le multiple s’applique, le plan de diversification augmente le multiple lui-même en réduisant le risque perçu par un acquéreur. Présentés séparément, ils sont deux progrès distincts. Présentés ensemble devant un acquéreur, ils racontent une seule histoire, celle d’une société qui a compris pourquoi elle avait décroché et qui a repris le contrôle des deux leviers qui expliquent sa valeur : la marge et la clientèle.</p>
 </section>
 
 <footer>
   <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
   <hr>
-  <p class="copy">Geozey x egery, plan d'optimisation des marges et stratégie de diversification client, 18 août 2026, Confidentiel, document interne, ne pas diffuser</p>
+  <p class="copy">Geozey x egery, plan d’optimisation des marges et stratégie de diversification client, 18 août 2026, Confidentiel, document interne, ne pas diffuser</p>
 </footer>
 
 </body>
