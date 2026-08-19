@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Programme et Gantt · Hub pré-cession Alvo x Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
+<style>
+:root{--ember-ink:#C42F09;--fait:#1F6B45;--cours:#FF4512;--todo:#8f8f8e}
+.page-hero{padding:150px 90px 70px}
+.txt{padding:64px 90px}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#155434}
+.badge.warn{background:#F6E7C6;color:#7A4800}
+.badge.off{background:#DCE7F5;color:#00397D}
+.badge.ember{background:var(--ember-ink);color:#fff}
+.badge.neutre{background:#d5d5d5;color:#3b3b3b}
+
+/* ── Bandeau instantané ── */
+.snap{background:var(--ember);color:#fff;padding:22px 90px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.snap .m{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase}
+.snap p{font-size:15px;line-height:1.5;margin:0;max-width:760px}
+.snap a.src{display:inline-flex;align-items:center;background:#fff;color:var(--ember-ink);font-size:14px;padding:9px 18px;border-radius:27px;white-space:nowrap}
+.snap a.src:hover{background:#1e1e1e;color:#fff}
+
+/* ── Filtres ── */
+.filters{background:#fff;border-radius:13px;padding:24px 26px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:30px}
+.frow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.frow:last-child{margin-bottom:0}
+.frow .fk{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#4a4a49;width:104px;flex:none}
+.fb{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:9px 16px;border-radius:27px;border:1px solid rgba(30,30,30,.4);background:#fff;color:#1e1e1e;cursor:pointer}
+.fb:hover{border-color:var(--ember-ink);color:var(--ember-ink)}
+.fb.on{background:var(--ember-ink);border-color:var(--ember-ink);color:#fff}
+.fcount{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#4a4a49;margin-top:16px;display:block}
+
+/* ── Gantt ── */
+.gantt{background:#fff;border-radius:13px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:28px;overflow:hidden}
+.g-scroll{overflow-x:auto}
+.g-inner{min-width:940px}
+.g-head{display:grid;grid-template-columns:302px 1fr;background:var(--dark);color:#fff}
+.g-head .g-lab{padding:13px 18px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase}
+.g-months{position:relative;height:42px}
+.g-months span{position:absolute;top:13px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;color:#fff;transform:translateX(-50%);white-space:nowrap}
+.g-months i{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.22)}
+.g-body{position:relative}
+.g-guides{position:absolute;left:302px;right:0;top:0;bottom:0;pointer-events:none;z-index:3}
+.g-guides i{position:absolute;top:0;bottom:0;width:1px;background:rgba(30,30,30,.10)}
+.g-guides b.g-now{position:absolute;top:0;bottom:0;width:2px;background:var(--ember)}
+.g-guides b.g-now::after{content:"19 août 2026";position:absolute;top:6px;left:7px;background:var(--ember);color:#fff;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;padding:4px 9px;border-radius:14px;white-space:nowrap}
+.g-sh{grid-column:1 / -1;background:#ececec;padding:11px 18px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#1e1e1e;border-top:1px solid rgba(30,30,30,.16);border-bottom:1px solid rgba(30,30,30,.16)}
+.g-row{display:grid;grid-template-columns:302px 1fr}
+.g-row .g-lab{padding:0 16px;height:34px;display:flex;align-items:center;font-size:13.5px;line-height:1.25;color:#1e1e1e;overflow:hidden;border-bottom:1px solid rgba(30,30,30,.08)}
+.g-row .g-lab span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.g-track{position:relative;height:34px;border-bottom:1px solid rgba(30,30,30,.08)}
+.g-bar{position:absolute;top:9px;height:16px;border-radius:8px;z-index:1}
+.g-bar.b-fait{background:var(--fait)}
+.g-bar.b-cours{background:var(--cours)}
+.g-bar.b-todo{background:var(--todo)}
+.g-legend{display:flex;gap:26px;flex-wrap:wrap;padding:20px 22px;border-top:1px solid rgba(30,30,30,.12)}
+.g-legend div{display:flex;align-items:center;gap:9px;font-size:14px;color:#2b2b2b}
+.g-legend i{width:22px;height:10px;border-radius:5px;display:block;flex:none}
+.g-legend i.now{width:2px;height:16px;border-radius:0;background:var(--ember)}
+
+/* ── Liste détaillée ── */
+.grp{margin-top:52px}
+.grp .gh{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;padding-bottom:14px;border-bottom:2px solid var(--ember)}
+.grp .gh h3{font-size:24px;font-weight:400;line-height:1.25}
+.grp .gh .gm{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#4a4a49}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:24px}
+.itm{background:#fff;border-radius:13px;padding:24px 24px 26px;box-shadow:0 4px 4px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.itm h4{font-size:18px;font-weight:400;line-height:1.35;margin-bottom:12px}
+.itm .bl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.itm .dt{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:1.6px;color:#4a4a49;margin-bottom:14px}
+.itm .cm{font-size:15px;line-height:1.6;color:#2b2b2b}
+.itm .lk{margin-top:16px}
+.itm .lk a{display:inline-flex;align-items:center;background:#1e1e1e;color:#fff;font-size:13px;padding:8px 16px;border-radius:27px}
+.itm .lk a:hover{background:var(--ember);color:#fff}
+.hid{display:none !important}
+
+nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.62);color:#fff;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
+footer .copy{color:#cfcfcf}
+@media(max-width:1100px){
+  nav .doc-now{display:none}
+  .page-hero{padding:130px 24px 56px}
+  .txt{padding:52px 24px}
+  .snap{padding:20px 24px}
+  .items{grid-template-columns:1fr}
+  .frow .fk{width:100%}
+}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav>
+  <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <span class="doc-now">Programme et Gantt</span>
+  <div class="doc-steps">
+    <a href="/cockpit-accompagnement/" title="Vue d’ensemble">← Vue d’ensemble</a>
+    <a href="/cockpit-accompagnement/ressources" title="Livrables et ressources">Ressources →</a>
+  </div>
+</nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Accompagnement pré-cession Alvo x Geozey · cinq sprints · 45 éléments</span>
+  <h1>Le programme,<br>du diagnostic au closing.</h1>
+  <p class="lead">Toute la mission sur une frise unique, du 19 février 2026 au 18 avril 2027. Chaque élément porte son statut, sa période, son périmètre contractuel ou hors contrat, et le commentaire qui explique où il en est vraiment.</p>
+</section>
+
+<div class="snap">
+  <span class="m">Instantané synchronisé le 19 août 2026</span>
+  <p>Les données de cette page sont figées dans le fichier, sans aucun appel à une interface de programmation depuis le navigateur et sans aucune clé d’accès. La source de vérité reste le tableau de suivi.</p>
+  <a class="src" href="https://egery-company.monday.com/boards/5101980426" target="_blank" rel="noopener">Ouvrir la source de vérité ↗</a>
+</div>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Frise du programme</span>
+  <h2>45 éléments positionnés sur 423 jours.</h2>
+  <p>La barre verticale ember marque la date du jour. Tout ce qui est à sa gauche est derrière nous, tout ce qui la traverse est en cours de période. Les filtres ci-dessous agissent en même temps sur la frise et sur le détail plus bas.</p>
+
+  <div class="filters">
+    <div class="frow">
+      <span class="fk">Statut</span>
+      <button class="fb on" data-g="st" data-v="all" type="button">Tous</button>
+      <button class="fb" data-g="st" data-v="fait" type="button">Terminé (18)</button>
+      <button class="fb" data-g="st" data-v="cours" type="button">En cours (6)</button>
+      <button class="fb" data-g="st" data-v="todo" type="button">À faire (21)</button>
+    </div>
+    <div class="frow">
+      <span class="fk">Périmètre</span>
+      <button class="fb on" data-g="p" data-v="all" type="button">Tous</button>
+      <button class="fb" data-g="p" data-v="c" type="button">Contractuel (33)</button>
+      <button class="fb" data-g="p" data-v="h" type="button">Hors contrat (12)</button>
+    </div>
+    <div class="frow">
+      <span class="fk">Sprint</span>
+      <button class="fb on" data-g="s" data-v="all" type="button">Tous</button>
+      <button class="fb" data-g="s" data-v="1" type="button">Sprint 1</button>
+      <button class="fb" data-g="s" data-v="2" type="button">Sprint 2</button>
+      <button class="fb" data-g="s" data-v="3" type="button">Sprint 3</button>
+      <button class="fb" data-g="s" data-v="4" type="button">Sprint 4</button>
+      <button class="fb" data-g="s" data-v="5" type="button">Sprint 5</button>
+    </div>
+    <span class="fcount" id="fcount">45 éléments affichés sur 45</span>
+  </div>
+
+  <div class="gantt">
+    <div class="g-scroll"><div class="g-inner">
+      <div class="g-head">
+        <div class="g-lab">Élément du programme</div>
+        <div class="g-months">
+          <i style="left:2.36%"></i><span style="left:2.36%">mars 26</span>
+          <i style="left:9.69%"></i><span style="left:9.69%">avr</span>
+          <i style="left:16.79%"></i><span style="left:16.79%">mai</span>
+          <i style="left:24.11%"></i><span style="left:24.11%">juin</span>
+          <i style="left:31.21%"></i><span style="left:31.21%">juil</span>
+          <i style="left:38.53%"></i><span style="left:38.53%">août</span>
+          <i style="left:45.86%"></i><span style="left:45.86%">sept</span>
+          <i style="left:52.96%"></i><span style="left:52.96%">oct</span>
+          <i style="left:60.28%"></i><span style="left:60.28%">nov</span>
+          <i style="left:67.38%"></i><span style="left:67.38%">déc</span>
+          <i style="left:74.70%"></i><span style="left:74.70%">janv 27</span>
+          <i style="left:82.03%"></i><span style="left:82.03%">févr</span>
+          <i style="left:88.65%"></i><span style="left:88.65%">mars</span>
+          <i style="left:95.98%"></i><span style="left:95.98%">avr</span>
+        </div>
+      </div>
+      <div class="g-body">
+        <div class="g-guides">
+          <i style="left:2.36%"></i><i style="left:9.69%"></i><i style="left:16.79%"></i><i style="left:24.11%"></i>
+          <i style="left:31.21%"></i><i style="left:38.53%"></i><i style="left:45.86%"></i><i style="left:52.96%"></i>
+          <i style="left:60.28%"></i><i style="left:67.38%"></i><i style="left:74.70%"></i><i style="left:82.03%"></i>
+          <i style="left:88.65%"></i><i style="left:95.98%"></i>
+          <b class="g-now" style="left:42.79%"></b>
+        </div>
+
+        <div class="g-sh" data-sh="1">Sprint 1 · Diagnostic et structuration · 19/02 au 18/04/2026 · terminé</div>
+        <div class="g-row" data-s="1" data-st="fait" data-p="c"><div class="g-lab"><span>Analyse financière sur trois exercices avec le FEC 2023</span></div><div class="g-track"><span class="g-bar b-fait" style="left:0.00%;width:13.71%"></span></div></div>
+        <div class="g-row" data-s="1" data-st="fait" data-p="c"><div class="g-lab"><span>Due diligence interne sur quatre axes</span></div><div class="g-track"><span class="g-bar b-fait" style="left:0.00%;width:13.71%"></span></div></div>
+        <div class="g-row" data-s="1" data-st="fait" data-p="c"><div class="g-lab"><span>Valorisation multi-méthodes et benchmark de comparables</span></div><div class="g-track"><span class="g-bar b-fait" style="left:0.00%;width:13.71%"></span></div></div>
+        <div class="g-row" data-s="1" data-st="fait" data-p="h"><div class="g-lab"><span>Collecte des éléments de la data room</span></div><div class="g-track"><span class="g-bar b-fait" style="left:0.00%;width:13.71%"></span></div></div>
+
+        <div class="g-sh" data-sh="2">Sprint 2 · Réduction de la dépendance dirigeant · 19/04 au 18/08/2026 · terminé</div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>Site web professionnel en ligne</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>Page LinkedIn entreprise créée</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>Playbook commercial, première version</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>Cadre de gouvernance IA rédigé</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>CRM structuré, référentiel reconstitué et enrichi</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>Papeterie de marque</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="c"><div class="g-lab"><span>Points de suivi hebdomadaires formalisés</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Application métier, palier A</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Infrastructure d’agents autonomes</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Chaîne de candidature complète</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Socle de sourcing, 370 contacts</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Blog éditorial, trois articles</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Délivrabilité email</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+        <div class="g-row" data-s="2" data-st="fait" data-p="h"><div class="g-lab"><span>Version anglaise du site</span></div><div class="g-track"><span class="g-bar b-fait" style="left:13.95%;width:28.61%"></span></div></div>
+
+        <div class="g-sh" data-sh="3">Sprint 3 · Optimisation de la rentabilité et rattrapage · 19/08 au 18/11/2026 · en cours</div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="h"><div class="g-lab"><span>Rapprochements sur les trois missions ouvertes</span></div><div class="g-track"><span class="g-bar b-todo" style="left:42.79%;width:6.38%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="cours" data-p="h"><div class="g-lab"><span>Déblocage de l’accès technique au CRM</span></div><div class="g-track"><span class="g-bar b-cours" style="left:42.79%;width:2.84%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="cours" data-p="c"><div class="g-lab"><span>Atelier de cadrage IA</span></div><div class="g-track"><span class="g-bar b-cours" style="left:42.79%;width:6.38%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="cours" data-p="c"><div class="g-lab"><span>Finalisation du CRM avec le client</span></div><div class="g-track"><span class="g-bar b-cours" style="left:42.79%;width:17.26%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="cours" data-p="c"><div class="g-lab"><span>Modèle financier de pilotage</span></div><div class="g-track"><span class="g-bar b-cours" style="left:42.79%;width:17.26%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="cours" data-p="c"><div class="g-lab"><span>Agents IA métier</span></div><div class="g-track"><span class="g-bar b-cours" style="left:42.79%;width:21.51%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="cours" data-p="c"><div class="g-lab"><span>Consolidation de la stratégie de diversification client</span></div><div class="g-track"><span class="g-bar b-cours" style="left:49.17%;width:15.13%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Validation du cadre de gouvernance IA</span></div><div class="g-track"><span class="g-bar b-todo" style="left:42.79%;width:6.38%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Version définitive du rapport d’audit externe</span></div><div class="g-track"><span class="g-bar b-todo" style="left:42.79%;width:9.93%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="h"><div class="g-lab"><span>Remise à niveau de la qualification des profils</span></div><div class="g-track"><span class="g-bar b-todo" style="left:42.79%;width:9.93%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Reporting mensuel écrit</span></div><div class="g-track"><span class="g-bar b-todo" style="left:42.79%;width:21.51%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="h"><div class="g-lab"><span>Lancement des campagnes Brevo et LinkedIn</span></div><div class="g-track"><span class="g-bar b-todo" style="left:45.86%;width:10.40%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Animation de la page LinkedIn</span></div><div class="g-track"><span class="g-bar b-todo" style="left:45.86%;width:18.44%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Approfondissement et validation du playbook commercial</span></div><div class="g-track"><span class="g-bar b-todo" style="left:45.86%;width:10.40%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Consolidation des pièces manquantes de la due diligence</span></div><div class="g-track"><span class="g-bar b-todo" style="left:45.86%;width:10.40%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Vérification référencement et sécurité du site</span></div><div class="g-track"><span class="g-bar b-todo" style="left:45.86%;width:6.86%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Fiabilisation du plan d’optimisation des marges</span></div><div class="g-track"><span class="g-bar b-todo" style="left:49.17%;width:10.87%"></span></div></div>
+        <div class="g-row" data-s="3" data-st="todo" data-p="c"><div class="g-lab"><span>Plan de développement commercial avec budget et prévisions</span></div><div class="g-track"><span class="g-bar b-todo" style="left:52.96%;width:11.35%"></span></div></div>
+
+        <div class="g-sh" data-sh="4">Sprint 4 · Data room et documentation · 19/11/2026 au 18/01/2027 · à ouvrir</div>
+        <div class="g-row" data-s="4" data-st="todo" data-p="c"><div class="g-lab"><span>Structuration et sécurisation de la data room</span></div><div class="g-track"><span class="g-bar b-todo" style="left:64.54%;width:6.15%"></span></div></div>
+        <div class="g-row" data-s="4" data-st="todo" data-p="c"><div class="g-lab"><span>Mémorandum de présentation de l’entreprise</span></div><div class="g-track"><span class="g-bar b-todo" style="left:67.38%;width:11.35%"></span></div></div>
+        <div class="g-row" data-s="4" data-st="todo" data-p="c"><div class="g-lab"><span>Questions et réponses anticipées de due diligence</span></div><div class="g-track"><span class="g-bar b-todo" style="left:67.38%;width:11.35%"></span></div></div>
+        <div class="g-row" data-s="4" data-st="todo" data-p="c"><div class="g-lab"><span>Teaser anonymisé et présentation détaillée</span></div><div class="g-track"><span class="g-bar b-todo" style="left:74.70%;width:4.02%"></span></div></div>
+
+        <div class="g-sh" data-sh="5">Sprint 5 · Approche des acquéreurs et closing · à partir du 19/01/2027 · à ouvrir</div>
+        <div class="g-row" data-s="5" data-st="todo" data-p="c"><div class="g-lab"><span>Identifier et qualifier au minimum 15 acquéreurs</span></div><div class="g-track"><span class="g-bar b-todo" style="left:78.96%;width:9.46%"></span></div></div>
+        <div class="g-row" data-s="5" data-st="todo" data-p="c"><div class="g-lab"><span>Reporting mensuel sur l’avancement des acquéreurs</span></div><div class="g-track"><span class="g-bar b-todo" style="left:78.96%;width:21.04%"></span></div></div>
+        <div class="g-row" data-s="5" data-st="todo" data-p="c"><div class="g-lab"><span>Approche confidentielle et documentée des acquéreurs</span></div><div class="g-track"><span class="g-bar b-todo" style="left:82.03%;width:17.97%"></span></div></div>
+        <div class="g-row" data-s="5" data-st="todo" data-p="c"><div class="g-lab"><span>Organisation des rendez-vous sous accord de confidentialité</span></div><div class="g-track"><span class="g-bar b-todo" style="left:85.34%;width:14.66%"></span></div></div>
+        <div class="g-row" data-s="5" data-st="todo" data-p="c"><div class="g-lab"><span>Accompagnement de la négociation jusqu’au closing</span></div><div class="g-track"><span class="g-bar b-todo" style="left:88.65%;width:11.35%"></span></div></div>
+      </div>
+      <div class="g-legend">
+        <div><i style="background:#1F6B45"></i>Terminé</div>
+        <div><i style="background:#FF4512"></i>En cours</div>
+        <div><i style="background:#8f8f8e"></i>À faire</div>
+        <div><i class="now"></i>Date du jour, 19 août 2026</div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Le détail, sprint par sprint</span>
+  <h2>Chaque élément, avec ce qu’il reste vraiment à faire.</h2>
+  <p>Le commentaire de chaque élément dit la vérité d’avancement, y compris quand elle est inconfortable. Rien n’est masqué, rien n’est arrondi.</p>
+
+  <div class="grp" data-grp="1">
+    <div class="gh"><h3>Sprint 1 · Diagnostic et structuration</h3><span class="gm">19/02 au 18/04/2026 · 4 éléments · terminé</span></div>
+    <div class="items">
+      <article class="itm" data-s="1" data-st="fait" data-p="c">
+        <h4>Analyse financière sur trois exercices avec le FEC 2023</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/02/2026 au 18/04/2026</p>
+        <p class="cm">Le FEC 2023 n’avait jamais été exploité. La concentration client était à 93 %.</p>
+      </article>
+      <article class="itm" data-s="1" data-st="fait" data-p="c">
+        <h4>Due diligence interne sur quatre axes</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/02/2026 au 18/04/2026</p>
+        <p class="cm">Financier, juridique, fiscal, social. Points durs identifiés et liste des pièces manquantes établie. La consolidation de cette liste est reprise en sprint 3.</p>
+      </article>
+      <article class="itm" data-s="1" data-st="fait" data-p="c">
+        <h4>Valorisation multi-méthodes et benchmark de comparables</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/02/2026 au 18/04/2026</p>
+        <p class="cm">Trois méthodes croisées, actualisation des flux, multiples et patrimoniale. 24 sources et 8 opérations sectorielles pour le benchmark.</p>
+        <div class="lk"><a href="/cockpit-accompagnement/valorisation">Ouvrir le rapport de valorisation</a></div>
+      </article>
+      <article class="itm" data-s="1" data-st="fait" data-p="h">
+        <h4>Collecte des éléments de la data room</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/02/2026 au 18/04/2026</p>
+        <p class="cm">Réalisée en avance pour permettre l’analyse du sprint 1. Espace partagé quasi complet, direction artistique incluse, analyses stockées en base. Le sprint 4 ne part donc pas de zéro.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="grp" data-grp="2">
+    <div class="gh"><h3>Sprint 2 · Réduction de la dépendance dirigeant</h3><span class="gm">19/04 au 18/08/2026 · 14 éléments · terminé</span></div>
+    <div class="items">
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>Site web professionnel en ligne</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Sept pages publiques en ligne, référencement, sécurité, affichage adapté au téléphone. La majorité est faite. Vérification du référencement et de la sécurité, plus câblage des outils de mesure d’audience, repris en sprint 3.</p>
+        <div class="lk"><a href="https://geozey.com" target="_blank" rel="noopener">Ouvrir geozey.com ↗</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>Page LinkedIn entreprise créée</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Créée depuis le compte de Yacine, donc propriétaire dès l’origine, aucun transfert à faire. L’animation est reprise en sprint 3.</p>
+        <div class="lk"><a href="https://www.linkedin.com/company/geozey" target="_blank" rel="noopener">Ouvrir la page LinkedIn ↗</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>Playbook commercial, première version</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Produit et complet sur la forme, onze sections, scripts d’appel, questions de qualification. Mais travail de surface, jamais livré ni vérifié par le client. Approfondissement et validation repris en sprint 3.</p>
+        <div class="lk"><a href="/cockpit-accompagnement/playbook">Ouvrir le playbook</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>Cadre de gouvernance IA rédigé</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Neuf sections, cartographie des usages, registre des traitements, position réglementaire. Effectué. Les deux validations, Benjamin en interne puis Yacine, sont reprises en sprint 3.</p>
+        <div class="lk"><a href="/cockpit-accompagnement/gouvernance-ia">Ouvrir le cadre de gouvernance IA</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>CRM structuré, référentiel reconstitué et enrichi</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Part egery terminée. Référentiel reconstitué depuis 195 documents, 22 sociétés dont 17 SIRET vérifiés un par un, 18 contacts. La suite dépend majoritairement du client, elle est reprise en sprint 3.</p>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>Papeterie de marque</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Carte de visite, signature de courriel et papier à en-tête. Tous créés côté direction artistique, disponibles dans l’espace partagé.</p>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="c">
+        <h4>Points de suivi hebdomadaires formalisés</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Cadence posée. Atelier technique le lundi, point livrables le mercredi.</p>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Application métier, palier A</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Totalement hors contrat. Trois rôles cloisonnés, cloisonnement prouvé par test réel, moteur de matching explicable sur dix axes.</p>
+        <div class="lk"><a href="https://geozey.com/app" target="_blank" rel="noopener">Ouvrir l’application ↗</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Infrastructure d’agents autonomes</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Totalement hors contrat. Mémoire partagée, dépôt dédié, pack de compétences. À ne pas confondre avec les six agents IA métier, qui eux sont contractuels et suivis en sprint 3.</p>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Chaîne de candidature complète</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Formulaire de 39 champs, écriture en base, dépôt de CV, notification par courriel, attribution de la source. Venue après le contrat.</p>
+        <div class="lk"><a href="https://geozey.com/candidature" target="_blank" rel="noopener">Ouvrir le formulaire ↗</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Socle de sourcing, 370 contacts</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">244 prospects et 126 profils, contre 11 contacts au départ. Les prospects sont de très bons dossiers d’appel d’offres, validés par Yacine. Les profils sont moins qualifiés, leur remise à niveau est reprise en sprint 3.</p>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Blog éditorial, trois articles</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Trois articles fondateurs sourcés, illustrés et signés Yacine. Ils serviront de matière première à l’animation LinkedIn du sprint 3.</p>
+        <div class="lk"><a href="https://geozey.com/blog" target="_blank" rel="noopener">Ouvrir le blog ↗</a></div>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Délivrabilité des courriels</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">Domaine authentifié, six enregistrements DNS posés, SPF corrigé et DMARC créé. Concrètement, les courriels de Geozey arrivent maintenant correctement.</p>
+      </article>
+      <article class="itm" data-s="2" data-st="fait" data-p="h">
+        <h4>Version anglaise du site</h4>
+        <div class="bl"><span class="badge ok">Terminé</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/04/2026 au 18/08/2026</p>
+        <p class="cm">469 clés de traduction. Point de vigilance, l’affichage n’est pas constaté côté visiteur, aucun sélecteur de langue visible en ligne. À vérifier avant de le présenter au client.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="grp" data-grp="3">
+    <div class="gh"><h3>Sprint 3 · Optimisation de la rentabilité et rattrapage</h3><span class="gm">19/08 au 18/11/2026 · 18 éléments · en cours</span></div>
+    <div class="items">
+      <article class="itm" data-s="3" data-st="todo" data-p="h">
+        <h4>Rapprochements sur les trois missions ouvertes</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge warn">Hors contrat</span><span class="badge ember">Priorité</span></div>
+        <p class="dt">19/08/2026 au 15/09/2026</p>
+        <p class="cm">Trois missions ouvertes depuis le 6 août, aucun rapprochement posé, aucun contact envoyé. Une mission démarre en septembre. 126 profils sont en base et n’ont jamais été rapprochés. C’est la seule ligne qui fait entrer de l’argent chez le client.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="cours" data-p="h">
+        <h4>Déblocage de l’accès technique au CRM</h4>
+        <div class="bl"><span class="badge ember">En cours</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/08/2026 au 31/08/2026</p>
+        <p class="cm">Bloque toute l’exécution commerciale depuis le 4 août. Un accès direct existait, Aurélien revérifie l’état actuel depuis sa ligne de travail. Manque encore un diagnostic détaillé, un plan de résolution et une date de rétablissement.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="cours" data-p="c">
+        <h4>Atelier de cadrage IA</h4>
+        <div class="bl"><span class="badge ember">En cours</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 15/09/2026</p>
+        <p class="cm">C’est l’atelier prévu au contrat. Format attendu, deux heures, réunissant egery, Yacine et le référent technique. L’entrée de Benjamin dans l’équipe est l’occasion de le tenir.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="cours" data-p="c">
+        <h4>Finalisation du CRM avec le client</h4>
+        <div class="bl"><span class="badge ember">En cours</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 31/10/2026</p>
+        <p class="cm">La part restante dépend majoritairement de Yacine. Côté egery, le référentiel est reconstitué et enrichi. Reste à obtenir ses arbitrages sur les fiches non tranchées et les coordonnées manquantes.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="cours" data-p="c">
+        <h4>Modèle financier de pilotage</h4>
+        <div class="bl"><span class="badge ember">En cours</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 31/10/2026</p>
+        <p class="cm">Accès Qonto disponible. Tableau de bord pour la gestion prévisionnelle et la trésorerie. Demander les exports des outils de facturation pour les intégrer. Livraison attendue, un fichier de calcul plus un onglet de gestion du cash dans le tableau de bord. Manque une échéance technique nommée.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="cours" data-p="c">
+        <h4>Agents IA métier</h4>
+        <div class="bl"><span class="badge ember">En cours</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 18/11/2026</p>
+        <p class="cm">Accord commun, pas de limite de nombre, créés au fil de l’eau selon les besoins. Trois existent déjà, sourcing, screening et matching. Yacine a été formé à en créer, ils sont construits avec lui. Restera ouvert au fil de l’eau.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="cours" data-p="c">
+        <h4>Consolidation de la stratégie de diversification client</h4>
+        <div class="bl"><span class="badge ember">En cours</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">15/09/2026 au 18/11/2026</p>
+        <p class="cm">Le document est effectué et le déploiement a commencé. Reste à consolider. Enjeu de fond, trois clients pèsent 93,5 % du chiffre d’affaires, c’est le premier facteur de décote du dossier.</p>
+        <div class="lk"><a href="/cockpit-accompagnement/plan-marges">Ouvrir le plan de marges</a></div>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Validation du cadre de gouvernance IA</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 15/09/2026</p>
+        <p class="cm">Deux validations à obtenir, d’abord Benjamin en interne, puis Yacine côté client. Le document est rédigé et en ligne.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Version définitive du rapport d’audit externe</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 30/09/2026</p>
+        <p class="cm">Reggio Partners, contact Hugo Dussart. Le premier audit a été livré en présentation et reste qualifié de provisoire par ses propres auteurs. Bloque la clôture définitive du sprint 1.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="h">
+        <h4>Remise à niveau de la qualification des profils</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">19/08/2026 au 30/09/2026</p>
+        <p class="cm">Les 244 prospects sont validés par Yacine et constituent de très bons dossiers. Les 126 profils sont nettement moins qualifiés. Les porter au même niveau est le prérequis pour obtenir des rapprochements pertinents.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Reporting mensuel écrit</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/08/2026 au 18/11/2026</p>
+        <p class="cm">Obligation contractuelle ferme, reporting écrit dans les huit jours suivant la fin de chaque mois, avec six rubriques imposées. Actions réalisées, avancement, prochaines étapes, alertes, indicateurs, analyse et recommandations. Aucun reporting conforme produit à ce jour.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="h">
+        <h4>Lancement des campagnes Brevo et LinkedIn</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge warn">Hors contrat</span></div>
+        <p class="dt">01/09/2026 au 15/10/2026</p>
+        <p class="cm">Six campagnes en brouillon depuis le 3 août, tout est paramétré, domaine authentifié, 370 contacts en base. Aucun envoi à ce jour, le GO écrit n’a jamais été donné. Démarche volontaire d’egery pour générer du chiffre d’affaires.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Animation de la page LinkedIn</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/09/2026 au 18/11/2026</p>
+        <p class="cm">Processus arrêté en revue, les articles de blog du site sont remis en forme par un agent IA, puis validés et publiés par Yacine lui-même. egery ne publie jamais, pour éviter toute erreur. Yacine a confirmé que cette action lui plaît. Manque encore un calendrier éditorial et une cadence de validation.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Approfondissement et validation du playbook commercial</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/09/2026 au 15/10/2026</p>
+        <p class="cm">Le document existe mais reste un travail de surface, jamais livré ni vérifié par le client. À approfondir puis faire valider formellement par Yacine. Point à trancher au passage, deux planchers de marge contradictoires circulent, 25 et 28 pour cent.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Consolidation des pièces manquantes de la due diligence</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/09/2026 au 15/10/2026</p>
+        <p class="cm">Dix pièces manquantes ont été identifiées en sprint 1. Consolider la liste et planifier leur collecte auprès du client. Alimente directement le sprint 4.</p>
+        <div class="lk"><a href="/cockpit-accompagnement/due-diligence">Ouvrir la due diligence</a></div>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Vérification du référencement et de la sécurité du site</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/09/2026 au 30/09/2026</p>
+        <p class="cm">Sous-tâche demandée en revue, câbler les deux outils qui mesurent l’audience et la santé du référencement. À vérifier aussi, l’affichage réel de la version anglaise, non constaté en ligne.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Fiabilisation du plan d’optimisation des marges</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">15/09/2026 au 31/10/2026</p>
+        <p class="cm">Le document existe avec la cause de la chute identifiée et six leviers chiffrés. Les comptes rendus de rendez-vous stockés dans l’espace partagé sont une mine d’or pour l’étayer. Reste à fiabiliser avec le client. Manque un jalon et une forme de validation définie.</p>
+      </article>
+      <article class="itm" data-s="3" data-st="todo" data-p="c">
+        <h4>Plan de développement commercial avec budget et prévisions</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/10/2026 au 18/11/2026</p>
+        <p class="cm">Livrable formel non produit à ce jour. Doit contenir la stratégie de croissance, les nouveaux segments, le plan d’actions prioritaires, le budget commercial, les prévisions et les indicateurs de suivi.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="grp" data-grp="4">
+    <div class="gh"><h3>Sprint 4 · Data room et documentation</h3><span class="gm">19/11/2026 au 18/01/2027 · 4 éléments · à ouvrir</span></div>
+    <div class="items">
+      <article class="itm" data-s="4" data-st="todo" data-p="c">
+        <h4>Structuration et sécurisation de la data room</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/11/2026 au 15/12/2026</p>
+        <p class="cm">La matière est déjà collectée, espace partagé quasi complet avec la direction artistique et la due diligence. Reste à structurer par catégorie, gérer les droits d’accès et assurer la traçabilité des consultations.</p>
+      </article>
+      <article class="itm" data-s="4" data-st="todo" data-p="c">
+        <h4>Mémorandum de présentation de l’entreprise</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/12/2026 au 18/01/2027</p>
+        <p class="cm">Productible rapidement, mais volontairement décalé, la valeur de l’entreprise va augmenter et le produire trop tôt serait un travail à refaire. Manque un critère de déclenchement clair pour éviter un travail dans l’urgence.</p>
+      </article>
+      <article class="itm" data-s="4" data-st="todo" data-p="c">
+        <h4>Questions et réponses anticipées de due diligence</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/12/2026 au 18/01/2027</p>
+        <p class="cm">S’appuie directement sur les points durs déjà identifiés en sprint 1, concentration client, holding à l’étranger, comptes non approuvés, absence de contrat type freelance. Anticiper les questions et traiter les points sensibles en amont.</p>
+      </article>
+      <article class="itm" data-s="4" data-st="todo" data-p="c">
+        <h4>Teaser anonymisé et présentation détaillée</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/01/2027 au 18/01/2027</p>
+        <p class="cm">Même logique de calendrier que le mémorandum, à produire au plus près de la mise en vente. Le teaser sert aux premières approches, la présentation détaillée n’est transmise qu’après signature d’un accord de confidentialité.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="grp" data-grp="5">
+    <div class="gh"><h3>Sprint 5 · Approche des acquéreurs et closing</h3><span class="gm">À partir du 19/01/2027 · 5 éléments · à ouvrir</span></div>
+    <div class="items">
+      <article class="itm" data-s="5" data-st="todo" data-p="c">
+        <h4>Identifier et qualifier au minimum 15 acquéreurs</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/01/2027 au 28/02/2027</p>
+        <p class="cm">Critères contractuels, capacité financière démontrée ou raisonnablement estimée, intérêt stratégique ou industriel pour Geozey, profil compatible avec l’opération. Objectif quantitatif de prospection, pas obligation de résultat.</p>
+      </article>
+      <article class="itm" data-s="5" data-st="todo" data-p="c">
+        <h4>Reporting mensuel sur l’avancement des acquéreurs</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">19/01/2027 au 18/04/2027</p>
+        <p class="cm">Liste des acquéreurs approchés avec leur statut, détail des échanges, prochaines actions, analyse des tendances et recommandations. Obligation contractuelle distincte du reporting mensuel général.</p>
+      </article>
+      <article class="itm" data-s="5" data-st="todo" data-p="c">
+        <h4>Approche confidentielle et documentée des acquéreurs</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/02/2027 au 18/04/2027</p>
+        <p class="cm">Approche personnalisée, relances systématiques, documentation de chaque échange. La traçabilité est une obligation contractuelle, courriels, appels, relances, réponses ou absence de réponse.</p>
+      </article>
+      <article class="itm" data-s="5" data-st="todo" data-p="c">
+        <h4>Organisation des rendez-vous sous accord de confidentialité</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">15/02/2027 au 18/04/2027</p>
+        <p class="cm">Signature d’un accord de confidentialité préalable, coordination des agendas, préparation des rendez-vous, participation d’egery si souhaitée, compte rendu et suivi.</p>
+      </article>
+      <article class="itm" data-s="5" data-st="todo" data-p="c">
+        <h4>Accompagnement de la négociation jusqu’au closing</h4>
+        <div class="bl"><span class="badge neutre">À faire</span><span class="badge off">Contractuel</span></div>
+        <p class="dt">01/03/2027 au 18/04/2027</p>
+        <p class="cm">Analyse et évaluation des offres reçues, support dans la négociation de la lettre d’intention, coordination de la due diligence acquéreur, accompagnement sur le protocole de cession jusqu’au closing effectif.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery · Programme de la mission pré-cession · Instantané du 19 août 2026 · Confidentiel</p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var f = { st:'all', p:'all', s:'all' };
+  var rows  = [].slice.call(document.querySelectorAll('.g-row'));
+  var cards = [].slice.call(document.querySelectorAll('.itm'));
+  var heads = [].slice.call(document.querySelectorAll('.g-sh'));
+  var grps  = [].slice.call(document.querySelectorAll('.grp'));
+  var out   = document.getElementById('fcount');
+
+  function keep(el){
+    return (f.st === 'all' || el.getAttribute('data-st') === f.st)
+        && (f.p  === 'all' || el.getAttribute('data-p')  === f.p)
+        && (f.s  === 'all' || el.getAttribute('data-s')  === f.s);
+  }
+
+  function apply(){
+    var n = 0, i;
+    for (i = 0; i < rows.length; i++){
+      var ok = keep(rows[i]);
+      rows[i].classList.toggle('hid', !ok);
+      if (ok) { n++; }
+    }
+    for (i = 0; i < cards.length; i++){
+      cards[i].classList.toggle('hid', !keep(cards[i]));
+    }
+    for (i = 0; i < heads.length; i++){
+      var sp = heads[i].getAttribute('data-sh');
+      var vis = rows.some(function(r){
+        return r.getAttribute('data-s') === sp && !r.classList.contains('hid');
+      });
+      heads[i].classList.toggle('hid', !vis);
+    }
+    for (i = 0; i < grps.length; i++){
+      var gp = grps[i].getAttribute('data-grp');
+      var vg = cards.some(function(c){
+        return c.getAttribute('data-s') === gp && !c.classList.contains('hid');
+      });
+      grps[i].classList.toggle('hid', !vg);
+    }
+    out.textContent = n + (n > 1 ? ' éléments affichés' : ' élément affiché') + ' sur 45';
+  }
+
+  var btns = [].slice.call(document.querySelectorAll('.fb'));
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var g = b.getAttribute('data-g');
+      f[g] = b.getAttribute('data-v');
+      btns.forEach(function(o){
+        if (o.getAttribute('data-g') === g) { o.classList.remove('on'); }
+      });
+      b.classList.add('on');
+      apply();
+    });
+  });
+  apply();
+})();
+</script>
+<script src="/cockpit-accompagnement/assets/shell.js"></script>
+</body>
+</html>
