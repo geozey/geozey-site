@@ -28,23 +28,23 @@ a.rc:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.16)}
 .rc .url{margin-top:16px;font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:1.2px;color:#4a4a49;word-break:break-all}
 .rc .go{margin-top:auto;padding-top:20px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember-ink)}
 
-/* ── Captures de la direction artistique ── */
+/* ── Planches de la direction artistique ── */
 .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px}
 .shot{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;margin:0}
-.shot button{display:block;width:100%;padding:0;border:0;background:#d5d5d5;cursor:zoom-in}
-.shot img{width:100%;display:block;min-height:170px;background:#d5d5d5}
+.shot .frame{background:#1e1e1e;color:#fff;min-height:190px;display:flex;flex-direction:column;justify-content:center;padding:30px 28px;position:relative}
+.shot .frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--ember)}
+.shot .frame .fname{font-family:'Roboto Mono',monospace;font-size:12px;letter-spacing:1.4px;color:#fff;word-break:break-all}
+.shot .frame .fdim{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FF9C85;margin-top:12px}
+.shot .frame .fwait{font-size:14.5px;line-height:1.5;color:#e4e4e4;margin-top:16px;max-width:340px}
 .shot figcaption{padding:22px 24px 26px}
 .shot figcaption .bl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .shot figcaption h3{font-size:18px;font-weight:400;line-height:1.35}
 .shot figcaption p{font-size:14.5px;line-height:1.55;color:#2b2b2b;margin-top:9px}
-#lb{position:fixed;inset:0;z-index:9000;background:rgba(10,10,10,.92);display:none;align-items:center;justify-content:center;padding:40px}
-#lb.on{display:flex}
-#lb img{max-width:100%;max-height:86vh;border-radius:13px;width:auto}
-#lb .cl{position:absolute;top:24px;right:24px;background:var(--ember);color:#fff;border:0;border-radius:27px;padding:11px 22px;font-size:15px;cursor:pointer}
 
 .note-box{background:#fff;border-radius:13px;padding:26px 28px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:28px;border-left:4px solid var(--ember)}
 .note-box .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--ember-ink);display:block;margin-bottom:9px}
-.note-box p{font-size:15px;line-height:1.6;color:#2b2b2b;margin:0}
+.note-box p{font-size:15px;line-height:1.6;color:#2b2b2b;margin:0 0 10px}
+.note-box p:last-child{margin-bottom:0}
 
 .camp{background:rgba(255,255,255,.09);border-radius:13px;padding:30px 28px;margin-top:34px}
 .camp .st{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
@@ -222,49 +222,63 @@ footer .copy{color:#cfcfcf}
 <section class="txt bg-white">
   <span class="kicker" style="color:var(--ember-ink)">Famille 3 · Design et direction artistique</span>
   <h2>Process Geozey, avant et après.</h2>
-  <p>Le processus de Geozey a été cartographié puis redéployé. Ces quatre planches montrent le chemin parcouru, de l’état des lieux initial au flux cible et au parcours de croissance. Cliquez sur une planche pour l’agrandir.</p>
+  <p>Le processus de Geozey a été cartographié puis redéployé. Quatre planches jalonnent ce chemin, de l’état des lieux initial au flux cible et au parcours de croissance. Chaque planche est identifiée ci-dessous par son fichier d’origine et sa définition.</p>
 
   <div class="shots">
     <figure class="shot">
-      <button type="button" data-zoom aria-label="Agrandir la planche Process Geozey version 1">
-        <img data-fx="figjam_v1" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Planche Process Geozey, version 1, état des lieux initial">
-      </button>
+      <div class="frame">
+        <span class="fname">figjam_v1.png</span>
+        <span class="fdim">2048 x 1791 pixels</span>
+        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
+      </div>
       <figcaption>
-        <div class="bl"><span class="badge neutre">Avant</span><span class="badge off">Cartographie</span></div>
+        <div class="bl"><span class="badge neutre">Avant</span><span class="badge off">Cartographie</span><span class="badge warn">Aperçu en attente</span></div>
         <h3>Process Geozey, version 1</h3>
         <p>État des lieux initial du processus, tel qu’il tournait au démarrage de l’accompagnement. Point de départ de la réflexion.</p>
       </figcaption>
     </figure>
     <figure class="shot">
-      <button type="button" data-zoom aria-label="Agrandir la planche Process Geozey version 2 finale">
-        <img data-fx="figjam_v2_final2" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Planche Process Geozey, version 2 finale, flux cible">
-      </button>
+      <div class="frame">
+        <span class="fname">figjam_v2_final2.png</span>
+        <span class="fdim">2363 x 2400 pixels</span>
+        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
+      </div>
       <figcaption>
-        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Flux cible</span></div>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Flux cible</span><span class="badge warn">Aperçu en attente</span></div>
         <h3>Process Geozey, version 2 finale</h3>
         <p>Flux cible arbitré avec Yacine. C’est cette version qui a servi de base à l’application métier et au moteur de matching.</p>
       </figcaption>
     </figure>
     <figure class="shot">
-      <button type="button" data-zoom aria-label="Agrandir le board version 3">
-        <img data-fx="board_v3" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Board version 3, vue consolidée du processus Geozey">
-      </button>
+      <div class="frame">
+        <span class="fname">board_v3.png</span>
+        <span class="fdim">2085 x 2400 pixels</span>
+        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
+      </div>
       <figcaption>
-        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Vue consolidée</span></div>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Vue consolidée</span><span class="badge warn">Aperçu en attente</span></div>
         <h3>Board version 3</h3>
         <p>Vue consolidée du processus, rôles et étapes réunis sur une seule planche. Support des ateliers de cadrage.</p>
       </figcaption>
     </figure>
     <figure class="shot">
-      <button type="button" data-zoom aria-label="Agrandir la planche du parcours growth">
-        <img data-fx="figjam_growth" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Planche du parcours growth, acquisition et qualification">
-      </button>
+      <div class="frame">
+        <span class="fname">figjam_growth.png</span>
+        <span class="fdim">2400 x 1844 pixels</span>
+        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
+      </div>
       <figcaption>
-        <div class="bl"><span class="badge ember">Après</span><span class="badge warn">Hors contrat</span></div>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge warn">Hors contrat</span><span class="badge warn">Aperçu en attente</span></div>
         <h3>Parcours growth</h3>
         <p>Chaîne d’acquisition et de qualification, du sourcing au rapprochement. Elle sous-tend le socle de 370 contacts et les campagnes.</p>
       </figcaption>
     </figure>
+  </div>
+
+  <div class="note-box">
+    <span class="k">Pourquoi ces quatre planches ne sont pas encore affichées</span>
+    <p>Les quatre captures sont des images, et leur transfert vers le dépôt par interface de programmation s’est révélé non fiable : le contenu arrivait tronqué, ce qui aurait donné des visuels dégradés. Nous avons préféré un emplacement propre à une image abîmée. Le dépôt des quatre fichiers est à refaire par téléversement direct, l’emplacement et les légendes sont déjà prêts et n’attendent que les visuels.</p>
+    <p>Les quatre fichiers d’origine, en pleine définition, restent disponibles dans l’espace partagé de la mission, dossier des captures de la direction artistique.</p>
   </div>
 
   <div class="cards">
@@ -286,11 +300,6 @@ footer .copy{color:#cfcfcf}
       <p>Carte de visite, signature de courriel et papier à en-tête. Livrés au sprint 2, disponibles dans l’espace partagé, hors de ce hub.</p>
       <span class="url">Espace partagé, sur demande</span>
     </div>
-  </div>
-
-  <div class="note-box">
-    <span class="k">Pourquoi ces planches sont ici en aperçu</span>
-    <p>Les quatre planches sont intégrées à la page en version légère, pour que la page reste rapide et qu’aucun accès extérieur ne soit nécessaire pour les consulter. Les fichiers d’origine, en pleine résolution, restent dans l’espace partagé de la mission.</p>
   </div>
 </section>
 
@@ -337,37 +346,6 @@ footer .copy{color:#cfcfcf}
   <p class="copy">Geozey x egery · Inventaire des livrables et ressources · 19 août 2026 · Confidentiel</p>
 </footer>
 
-<div id="lb" role="dialog" aria-modal="true" aria-label="Aperçu agrandi">
-  <button class="cl" type="button">Fermer</button>
-  <img alt="">
-</div>
-
-<script src="/cockpit-accompagnement/assets/fx-figjam-v1.js"></script>
-<script src="/cockpit-accompagnement/assets/fx-figjam-v2.js"></script>
-<script src="/cockpit-accompagnement/assets/fx-board-v3.js"></script>
-<script src="/cockpit-accompagnement/assets/fx-figjam-growth.js"></script>
-<script>
-(function(){
-  'use strict';
-  var lb = document.getElementById('lb');
-  var big = lb.querySelector('img');
-  function open(src, alt){
-    big.src = src;
-    big.alt = alt || '';
-    lb.classList.add('on');
-  }
-  function close(){ lb.classList.remove('on'); big.removeAttribute('src'); }
-  [].slice.call(document.querySelectorAll('[data-zoom]')).forEach(function(b){
-    b.addEventListener('click', function(){
-      var im = b.querySelector('img');
-      if (im && im.src && im.src.length > 200) { open(im.src, im.alt); }
-    });
-  });
-  lb.querySelector('.cl').addEventListener('click', close);
-  lb.addEventListener('click', function(e){ if (e.target === lb) { close(); } });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { close(); } });
-})();
-</script>
 <script src="/cockpit-accompagnement/assets/shell.js"></script>
 </body>
 </html>
