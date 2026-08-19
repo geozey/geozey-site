@@ -48,6 +48,14 @@ try {
   for (const b of blogf) { await copyFile('blog/' + b, 'public/blog/' + b); console.log('BLOG ' + b); }
 } catch { console.log('pas de dossier blog'); }
 
+// Dossier de seance protege par code, cockpit-accompagnement. Zone interne,
+// exclue des moteurs par balise noindex sur chaque page, cf. skill garde-fous.
+try {
+  const cockpitf = await readdir('cockpit-accompagnement');
+  await mkdir('public/cockpit-accompagnement', { recursive: true });
+  for (const c of cockpitf) { await copyFile('cockpit-accompagnement/' + c, 'public/cockpit-accompagnement/' + c); console.log('COCKPIT ' + c); }
+} catch { console.log('pas de dossier cockpit-accompagnement'); }
+
 const cites = new Set();
 for (const p of pages.filter(f => f.endsWith(".html") || f.endsWith(".css"))) {
   const t = await readFile(p, "utf8");
