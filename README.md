@@ -5,3 +5,5 @@ Charte Louise Lenepveu. CTA branches sur l'espace de qualification.
 
 Build : node build.mjs recupere les pages et les assets puis produit /public.
 Deploiement : Vercel scope GEOZEY.
+
+Espace de seance protege par code : cockpit-accompagnement/, copie dans /public par build.mjs, noindex sur chaque page.
