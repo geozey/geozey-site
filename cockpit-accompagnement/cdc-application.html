@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cahier des charges application métier et devis, Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<style>
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
+.doc-table table{width:100%;border-collapse:collapse;font-size:15px}
+.doc-table thead tr{background:var(--dark);color:#fff}
+.doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
+.doc-table tbody td{padding:14px 18px;vertical-align:top;line-height:1.55}
+.doc-table tbody tr:last-child{border-bottom:none}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#1A5E3A}
+.badge.warn{background:#F6E7C6;color:#8a5200}
+.badge.ko{background:#F4D7D3;color:#AA1C00}
+.badge.off{background:#DCE7F5;color:#003E8A}
+.badge.ember{background:var(--ember);color:#fff}
+.badge.neutre{background:var(--card);color:var(--ash)}
+.page-hero{padding:150px 140px 80px}
+.txt{padding:64px 140px}
+.txt h2{margin-bottom:22px}
+.txt h3{font-weight:400;font-size:22px;margin:34px 0 12px}
+.txt p{margin-bottom:16px}
+.txt ul{margin:0 0 20px;padding-left:22px}
+.txt li{margin-bottom:10px;line-height:1.6}
+.note-box{background:#fff;border-radius:13px;padding:26px 30px;margin:20px 0;box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.note-box.dark{background:var(--dark);color:#fff}
+.note-box.ember{background:var(--ember);color:#fff}
+.note-box h4{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500;margin-bottom:10px}
+.section-num{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;color:var(--ember);text-transform:uppercase;display:block;margin-bottom:8px}
+.total-line{font-family:'Roboto Mono',monospace;font-size:14px;letter-spacing:1px;text-align:right;padding:18px 18px;background:var(--card)}
+@media (max-width:900px){.page-hero{padding:90px 24px 50px}.txt{padding:40px 24px}}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Séance du mercredi 19 août 2026, 14h30</span>
+  <h1>Cahier des charges de l'application métier Geozey, et devis</h1>
+  <p class="lead">Document projeté en séance. Benjamin Queroy, directeur général d'egery Tech, présente ce cadrage à Yacine Djebrouni, dirigeant de Geozey. Il fixe ce qui est déjà livré, ce qui est inclus sans facturation supplémentaire, et ce qui reste à chiffrer.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="section-num">1. Finalité</span>
+  <h2>À quoi sert cette application</h2>
+  <p>Geozey recrute des experts techniques, planificateurs, PMO, ingénieurs, pour des maîtres d'œuvre industriels sur des projets d'énergie, d'infrastructure et de défense. L'application métier est l'outil interne qui centralise le vivier de freelances, les missions confiées par les clients, et le rapprochement entre les deux, à la place d'un suivi dispersé entre tableurs et messages.</p>
+  <p>Elle donne à Yacine une vue unique sur ses candidatures entrantes, ses missions ouvertes et la qualité des rapprochements proposés, avec une justification lisible pour chaque score plutôt qu'un chiffre à prendre pour argent comptant.</p>
+  <p>À terme, elle ouvre aussi l'accès à des tiers, un client qui suit ses missions, un freelance qui tient son propre passeport à jour, ce qui allège la charge administrative de Geozey et professionnalise son image face à ses clients et à ses experts.</p>
+</section>
+
+<section class="txt bg-light">
+  <span class="section-num">2. Les trois rôles</span>
+  <h2>Ce que chacun voit, et ce que chacun ne voit pas</h2>
+  <p>C'est la colonne vertébrale de l'application. Chaque compte est rattaché à un seul rôle, et ce rôle détermine entièrement ce qui s'affiche à l'écran, aucun réglage manuel ne vient l'ajuster.</p>
+  <div class="doc-table">
+    <table>
+      <thead><tr><th>Rôle</th><th>Ce qu'il voit</th><th>Ce qu'il ne voit jamais</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Administrateur</strong><br>Yacine</td>
+          <td>Flux des candidatures entrantes, vivier complet des freelances, missions ouvertes et closes, moteur de matching avec le détail des scores axe par axe, page Méthode qui explique les règles, et l'onglet Finance réservé à lui seul.</td>
+          <td>Rien n'est masqué à l'administrateur, c'est le rôle qui voit l'ensemble.</td>
+        </tr>
+        <tr>
+          <td><strong>Client</strong><br>maître d'œuvre</td>
+          <td>Ses missions confiées à Geozey, et les profils qui lui sont proposés pour chacune, avec la justification du rapprochement.</td>
+          <td>Le reste du vivier, les missions et les profils des autres clients, l'onglet Finance, le détail interne du barème.</td>
+        </tr>
+        <tr>
+          <td><strong>Freelance</strong><br>du vivier</td>
+          <td>Son propre passeport, ses informations et ses compétences qu'il peut mettre à jour lui-même, et les missions sur lesquelles il est positionné.</td>
+          <td>Les autres freelances du vivier, les missions des autres clients, l'onglet Finance, le détail du barème de notation.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="section-num">3. Cloisonnement</span>
+  <h2>Les règles d'étanchéité, et la preuve qu'elles tiennent</h2>
+  <p>Le principe technique s'appelle une politique RLS, pour row level security, une règle posée directement dans la base de données qui filtre automatiquement ce qu'un compte a le droit de lire ou d'écrire, avant même que l'écran ne s'affiche. Trois fonctions dites security definer complètent ce dispositif, elles évitent qu'une vérification de rôle ne déclenche une boucle qui bloquerait l'application.</p>
+  <p>La règle affichée dans ce document n'est jamais une simple déclaration. Elle est prouvée par un test réel, exécuté depuis l'extérieur de l'application, pas par une relecture du code source, qui peut toujours cacher un oubli.</p>
+  <div class="note-box">
+    <h4>Le test exécuté sur le palier A</h4>
+    <p>Une tentative de lecture anonyme, c'est à dire sans compte ni mot de passe, a été lancée sur les sept tables de la base via l'interface publique de programmation. Résultat, zéro ligne renvoyée, partout, y compris sur la table qui contient les candidatures. Une tentative d'écriture anonyme a ensuite été lancée sur les mêmes tables. Elle a été refusée avec le code d'erreur standard 42501, qui signifie que la politique de sécurité a bloqué l'accès. Le risque numéro un identifié en amont, la fuite du vivier à un simple visiteur du site non connecté, est donc fermé et vérifié, pas seulement supposé.</p>
+  </div>
+  <p>Le même principe de preuve par test s'appliquera aux paliers B et C, avant chaque livraison, un compte client verra vérifiablement uniquement ses missions, un compte freelance verra vérifiablement uniquement son passeport et ses positionnements.</p>
+</section>
+
+<section class="txt bg-light">
+  <span class="section-num">4. Détail fonctionnel</span>
+  <h2>Palier par palier, avec le critère de fin de chacun</h2>
+
+  <h3><span class="badge ok">Livré</span> &nbsp; Palier A, socle et administrateur</h3>
+  <p>Déjà en ligne, déjà accompli, argument de la séance : aucune facturation supplémentaire, inclus dans l'accompagnement existant.</p>
+  <ul>
+    <li>Application en ligne sur <strong>geozey.com/app</strong>, exclue des moteurs de recherche, page marquée noindex, vérifié à la fois dans le code de la page et dans l'en-tête technique envoyé par le serveur.</li>
+    <li>Socle de base de données à six tables et onze règles de sécurité, un type de rôle à trois valeurs, administrateur, client, freelance.</li>
+    <li>Écran de connexion en deux volets, mot de passe classique ou lien magique, un lien de connexion envoyé par courriel qui dispense de saisir un mot de passe.</li>
+    <li>Navigation qui change automatiquement selon le rôle connecté. Vues Flux, Vivier, Missions, Matching et Méthode pour l'administrateur. Création de mission avec génération automatique d'une référence. Fiches de score détaillées, axe par axe.</li>
+    <li>Moteur de matching explicable, barème à dix axes de comparaison, deux critères éliminatoires qui écartent un profil d'office, et un écart de TJM, le taux journalier moyen facturé par le freelance, signalé en simple alerte et jamais transformé en score. Ce moteur a été validé sur cinq profils construits spécialement pour mettre en défaut chaque règle une à une. Il est <strong>non négociable</strong>, repris tel quel, il n'est pas refait.</li>
+    <li>Référentiel de profils et de sociétés lu depuis BoondManager, l'outil de gestion de Geozey, avec un cache obligatoire, une copie locale des données rafraîchie périodiquement, et un quota de 500 appels par mois à respecter.</li>
+    <li>Charte graphique héritée, l'application charge le fichier styles.css du site puis une couche applicative propre, elle suit donc automatiquement toute évolution de la direction artistique de Louise Lenepveu.</li>
+  </ul>
+  <p><strong>Critère de fin, déjà constaté :</strong> l'application est en ligne, le cloisonnement est prouvé par test réel décrit en section 3, le moteur de matching rend un résultat conforme sur le jeu d'essai à cinq profils.</p>
+
+  <h3><span class="badge off">Inclus</span> &nbsp; Onglet Finance, brique DAF sur Qonto</h3>
+  <p>Cadré le 13 août 2026. Trois briques, réservées au rôle administrateur uniquement.</p>
+  <ul>
+    <li>Prévisionnel d'exploitation et de trésorerie.</li>
+    <li>Suivi de trésorerie en temps réel.</li>
+    <li>Marge réelle par mission.</li>
+  </ul>
+  <div class="note-box dark">
+    <h4>Règle non négociable, écrite en toutes lettres</h4>
+    <p>L'accès à Qonto, la banque en ligne de Geozey, est en <strong>lecture seule stricte</strong>, sur les comptes, les transactions et les factures. Aucune exécution de virement ni de paiement ne sera jamais possible depuis l'application métier, quel que soit l'accès accordé à quelque compte que ce soit. Cette règle ne se discute pas.</p>
+  </div>
+  <p>Cette brique est <strong>incluse</strong>, elle vaut exécution du livrable 3 du Sprint 1, le modèle financier prévisionnel déjà prévu au contrat. Elle ne fait l'objet d'aucun avenant.</p>
+  <p><strong>Critère de fin :</strong> Yacine consulte dans l'onglet Finance ses soldes, ses transactions et ses factures Qonto à jour, sans qu'aucun bouton ni fonction de l'application ne permette d'initier un virement ou un paiement. Le prévisionnel est également livré au format Excel avec macros, comme prévu au contrat.</p>
+
+  <h3><span class="badge off">Inclus</span> &nbsp; Onglet Ressources, playbook commercial</h3>
+  <p>Demande formulée en séance, évolution du palier A. Héberger le playbook commercial et les process de Geozey directement dans l'application, pour que le futur commercial recruté par Yacine les ait sous la main dès son arrivée, sans devoir chercher un fichier dispersé.</p>
+  <p><strong>Critère de fin :</strong> le playbook et les process sont consultables dans l'application par les comptes administrateur, prêts à être transmis au futur commercial.</p>
+
+  <h3><span class="badge ember">À chiffrer</span> &nbsp; Palier B, espace client maître d'œuvre</h3>
+  <p>Le client se connecte avec son propre compte, voit ses missions confiées à Geozey et les profils qui lui sont proposés pour chacune, et rien d'autre. Aucun accès au reste du vivier, aucun accès aux missions ou aux profils des autres clients.</p>
+  <p><strong>Critère de fin :</strong> comme pour le palier A, le cloisonnement est vérifié par un test réel avant livraison, pas par une relecture de code. Un compte client de démonstration doit montrer, à l'écran, exactement ses missions et rien de plus.</p>
+  <p><strong>Forfait : 4 900 EUR HT. Délai : trois semaines après validation écrite.</strong></p>
+
+  <h3><span class="badge ember">À chiffrer</span> &nbsp; Palier C, espace freelance et agent conversationnel</h3>
+  <p>Le freelance se connecte et met à jour lui-même son passeport, ses informations et ses compétences, ce qui résout le problème récurrent des coordonnées manquantes ou périmées dans le vivier. Un agent conversationnel est activé, avec une clé d'accès posée sur le compte Geozey.</p>
+  <p><strong>Critère de fin :</strong> un freelance de démonstration modifie lui-même une information de son passeport et la voit reflétée immédiatement. L'agent conversationnel répond correctement à une question test posée en séance ou en recette.</p>
+  <p><strong>Forfait : 4 400 EUR HT. Délai : trois semaines après validation écrite.</strong></p>
+
+  <h3><span class="badge neutre">Hors périmètre</span> &nbsp; Évolution vers un produit SaaS commercialisable</h3>
+  <p>Faire de cette application un produit vendu à d'autres agences de recrutement engage une question de propriété intellectuelle et un modèle de revenus partagés qui méritent un cadrage dédié, distinct de ce devis. Cette évolution n'est pas chiffrée ici.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="section-num">5. Architecture technique</span>
+  <h2>En langage clair, sans jargon non expliqué</h2>
+  <ul>
+    <li><strong>Hébergement du site et de l'application :</strong> Vercel, le service qui héberge les pages et les sert aux visiteurs.</li>
+    <li><strong>Base de données :</strong> Supabase, le service qui héberge la base de données, les comptes utilisateurs et le stockage des fichiers déposés. L'instance utilisée s'appelle geozey-core, ses données sont hébergées dans l'Union européenne.</li>
+    <li><strong>Où vivent les données :</strong> dans geozey-core, une base qui appartient à Geozey, pas à egery.</li>
+    <li><strong>Où vivent les clés d'accès aux services tiers :</strong> dans le vault de geozey-core, un coffre chiffré intégré à la base, jamais écrites en clair dans le code de l'application, jamais transmises à un navigateur, jamais lisibles par un tiers.</li>
+    <li><strong>Quota BoondManager :</strong> 500 appels par mois. Un cache, une copie locale des données lues chez Boond et rafraîchie périodiquement, est donc obligatoire, sinon l'application épuiserait ce quota en quelques jours d'usage normal et cesserait de fonctionner.</li>
+  </ul>
+  <div class="note-box ember">
+    <h4>Point d'architecture à trancher en séance, vérifié ce jour</h4>
+    <p>Les projets Vercel geozey-app, cockpit-geozey et geozey-brand appartiennent aujourd'hui au compte Vercel d'egery, et non à celui de Geozey. Poser la clé bancaire Qonto en variable d'environnement, un réglage technique stocké côté hébergeur, sur ce compte reviendrait à héberger un accès au compte bancaire de Geozey chez son prestataire technique.</p>
+    <p><strong>Recommandation retenue :</strong> la clé Qonto vit dans le vault de la base geozey-core, qui appartient à Geozey. Elle y est posée par Yacine lui-même, elle est lue uniquement côté serveur au moment de l'appel à Qonto, et jamais manipulée par un tiers, ni par egery, ni par aucun agent automatisé. C'est une décision d'architecture assumée et expliquée en séance, pas un incident à corriger après coup.</p>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="section-num">6. Données personnelles</span>
+  <h2>Candidats, conservation, information, et cadre européen sur l'IA</h2>
+  <ul>
+    <li>Les CV déposés par les candidats sont stockés dans un espace de stockage de fichiers, appelé bucket, marqué <strong>non public</strong> : personne ne peut y accéder par une simple adresse internet, seul un compte authentifié et autorisé peut lire un fichier.</li>
+    <li>Une durée de conservation des candidatures non retenues doit être fixée et documentée avec Yacine, en cohérence avec les pratiques usuelles du recrutement, puis appliquée de façon automatique dans la base.</li>
+    <li>Les personnes doivent être informées de la collecte et du traitement de leurs données au moment où elles déposent leur candidature. La politique de confidentialité existante doit être mise à jour pour refléter le fonctionnement réel du dépôt de CV en base sécurisée, et non plus décrire un simple lien.</li>
+  </ul>
+  <div class="note-box">
+    <h4>Le moteur de matching et le règlement européen sur l'intelligence artificielle</h4>
+    <p>Le moteur de matching relève du règlement européen sur l'intelligence artificielle au titre des systèmes utilisés dans le recrutement. Le principe retenu pour Geozey est que ce moteur <strong>propose et ne décide jamais</strong> : il calcule un score explicable et une justification axe par axe, mais c'est Yacine, en tant qu'administrateur, qui valide chaque rapprochement avant toute prise de contact avec un candidat ou un client. Une information des candidats sur l'existence de ce traitement automatisé doit être ajoutée au formulaire de candidature.</p>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="section-num">7. Devis</span>
+  <h2>Récapitulatif chiffré, palier par palier</h2>
+  <div class="doc-table">
+    <table>
+      <thead><tr><th>Palier</th><th>Périmètre</th><th>Montant</th><th>Délai</th><th>Condition de déclenchement</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Palier A<br><span class="badge ok">Livré</span></td>
+          <td>Socle trois rôles, vivier Boond avec cache, missions, matching explicable, cloisonnement prouvé par test</td>
+          <td>Inclus, 0 EUR HT</td>
+          <td>Déjà livré</td>
+          <td>Aucune, déjà en ligne</td>
+        </tr>
+        <tr>
+          <td>Onglet Finance<br><span class="badge off">Inclus</span></td>
+          <td>Prévisionnel, suivi de trésorerie temps réel, marge par mission, lecture seule stricte sur Qonto</td>
+          <td>Inclus, 0 EUR HT, vaut le livrable 3 du Sprint 1</td>
+          <td>Selon calendrier du Sprint 1</td>
+          <td>Yacine pose la clé Qonto dans le vault de geozey-core</td>
+        </tr>
+        <tr>
+          <td>Onglet Ressources<br><span class="badge off">Inclus</span></td>
+          <td>Playbook commercial et process hébergés dans l'application</td>
+          <td>Inclus, 0 EUR HT</td>
+          <td>À la suite du palier A</td>
+          <td>Contenu du playbook fourni par Yacine</td>
+        </tr>
+        <tr>
+          <td>Palier B<br><span class="badge ember">À chiffrer</span></td>
+          <td>Espace client maître d'œuvre, missions et profils proposés, cloisonnement testé</td>
+          <td><strong>4 900 EUR HT</strong></td>
+          <td>Trois semaines après validation</td>
+          <td>Validation écrite de Yacine, accès nécessaires fournis</td>
+        </tr>
+        <tr>
+          <td>Palier C<br><span class="badge ember">À chiffrer</span></td>
+          <td>Espace freelance, passeport en autonomie, agent conversationnel</td>
+          <td><strong>4 400 EUR HT</strong></td>
+          <td>Trois semaines après validation</td>
+          <td>Validation écrite de Yacine, clé de l'agent posée sur le compte Geozey</td>
+        </tr>
+        <tr>
+          <td>Évolution SaaS<br><span class="badge neutre">Hors périmètre</span></td>
+          <td>Produit commercialisable à d'autres agences, propriété intellectuelle et revenus partagés</td>
+          <td>Non chiffré, cadrage dédié à prévoir</td>
+          <td>À définir</td>
+          <td>Décision de principe de Yacine</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="total-line">Total des options chiffrées, paliers B et C : 9 300 EUR HT</div>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="section-num">8. Ce que Geozey doit fournir</span>
+  <h2>Pour que le chantier avance sans blocage</h2>
+  <ul>
+    <li><strong>Accès :</strong> validation par Yacine de la création des comptes utilisateurs, un compte par client pilote et par freelance pilote, geste réalisé côté Supabase, aucun agent ni prestataire ne saisit de mot de passe à la place de Geozey.</li>
+    <li><strong>Clés posées par Yacine lui-même :</strong> la clé API de Qonto dans le vault de geozey-core, et la clé de l'agent conversationnel du palier C sur le compte Geozey. Ni egery ni aucun agent automatisé ne manipule ces clés.</li>
+    <li><strong>Déblocage de la clé d'agence BoondManager :</strong> nécessaire pour lever les limites actuelles d'accès à l'API et fiabiliser la lecture du référentiel dans le respect du quota mensuel.</li>
+    <li><strong>Validations écrites :</strong> un accord écrit de Yacine avant le démarrage de chacun des paliers B et C, condition de déclenchement du délai de trois semaines annoncé pour chacun.</li>
+  </ul>
+</section>
+
+<section class="txt bg-white">
+  <span class="section-num">9. Limites</span>
+  <h2>Ce que l'application ne fera pas</h2>
+  <ul>
+    <li>Elle n'exécutera jamais de virement ni de paiement sur le compte bancaire Qonto de Geozey, quel que soit l'accès accordé à quelque rôle que ce soit.</li>
+    <li>Elle ne remplace pas BoondManager comme outil de gestion administrative et de facturation des freelances, elle en lit seulement le référentiel.</li>
+    <li>Le moteur de matching ne décide jamais seul d'un rapprochement, il propose un score explicable soumis à validation humaine.</li>
+    <li>L'agent conversationnel du palier C ne se substitue pas à Yacine pour une décision commerciale.</li>
+    <li>L'évolution vers un produit SaaS commercialisable à d'autres agences n'est pas comprise dans ce devis.</li>
+  </ul>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery Tech, cahier des charges de l'application métier et devis, séance du 19 août 2026, document confidentiel</p>
+</footer>
+
+</body>
+</html>

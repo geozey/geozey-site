@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cahier des charges, infrastructure IA et CAIO externalisé, Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<style>
+.page-hero{padding:150px 140px 80px}
+.txt{padding:70px 140px}
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
+.doc-table table{width:100%;border-collapse:collapse;font-size:14.5px}
+.doc-table thead tr{background:#1e1e1e;color:#fff}
+.doc-table thead th{padding:14px 16px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
+.doc-table tbody td{padding:14px 16px;vertical-align:top;line-height:1.55}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#1A5E3A}
+.badge.warn{background:#F6E7C6;color:#8a5200}
+.badge.ko{background:#F4D7D3;color:#AA1C00}
+.badge.off{background:#DCE7F5;color:#003E8A}
+.badge.ember{background:var(--ember);color:#fff}
+.badge.neutre{background:var(--card);color:var(--ash)}
+.rule-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:13px;padding:36px 40px;margin:26px 0}
+.rule-box p{color:#fff;font-size:19px;line-height:1.6;max-width:780px}
+.rule-box .kicker{color:var(--ember)}
+.note-src{font-size:13px;color:var(--ash);max-width:780px;line-height:1.6}
+.note-src a{color:var(--ash);text-decoration:underline}
+ol.numbered{padding-left:22px;line-height:1.9;font-size:17px;max-width:800px}
+ol.numbered li{margin-bottom:12px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:30px 0}
+.hat-card{background:#fff;border-radius:13px;padding:30px 28px;box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.hat-card h3{font-weight:400;font-size:20px;margin:0 0 14px}
+.hat-card .in{font-size:14px;line-height:1.6;margin-bottom:14px}
+.hat-card .out{font-size:14px;line-height:1.6;color:var(--ash)}
+.hat-card .lbl{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px}
+.lbl-in{color:#1A5E3A}
+.lbl-out{color:var(--ash)}
+.big-num{font-family:'Roboto Mono',monospace;font-size:15px;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+
+<section class="page-hero ph-ember">
+  <span class="kicker">Cahier des charges, séance du 19 août 2026, 14h30</span>
+  <h1>Infrastructure IA et rôle de CAIO externalisé</h1>
+  <p class="lead">Document projeté en séance. Benjamin Queroy, directeur général egery Tech, prend le lead face à Yacine Djebrouni. Objet du document : nommer un rôle tenu de fait depuis plusieurs mois sans jamais avoir été facturé, en fixer le contenu, en fixer le prix, et dire honnêtement ce qui est offert et jusqu'à quand.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">Ce document en trois lignes</span>
+  <h2>La finalité du rôle</h2>
+  <ol class="numbered">
+    <li>Ce document nomme, cadre et chiffre un rôle qu'egery Tech tient déjà de fait pour Geozey depuis plusieurs mois, sans jamais l'avoir facturé ni même nommé jusqu'ici.</li>
+    <li>Il tient dans un seul abonnement trois casquettes : CAIO externalisé, directeur technique de fait sur l'application et le site, et Head of Growth sur l'acquisition et le pipeline commercial.</li>
+    <li>Il part de ce qui tourne déjà, preuve avant promesse, fixe l'infrastructure cible et ce qui reste la propriété pleine et entière de Geozey, puis se conclut par un devis clair.</li>
+  </ol>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker">L'argument central</span>
+  <h2>Cette infrastructure survit à la cession</h2>
+  <div class="rule-box">
+    <span class="kicker">Le point qui change la valeur du dossier</span>
+    <p>Le jour où Geozey se vend, l'accompagnement du cabinet de fusion-acquisition s'éteint. L'infrastructure IA, elle, continue de tourner pour l'acquéreur. Une société de conseil qui livre à son repreneur un moteur de matching qui explique ses décisions, un radar de sourcing qui alimente le pipeline en continu et une application métier cloisonnée par rôle ne vend pas la même chose qu'un simple carnet d'adresses.</p>
+  </div>
+  <p style="color:#fff;max-width:780px;line-height:1.7">C'est un actif transmissible, donc un argument de valorisation direct. Le rapport de valorisation multiméthodes produit sur le dossier Geozey retient aujourd'hui une valeur d'entreprise de 150 à 450 k EUR. Chaque élément qui réduit la dépendance de l'activité à la personne du dirigeant pousse vers le haut de cette fourchette. L'infrastructure décrite dans ce document en fait directement partie : elle transfère du savoir-faire vers un système qui reste en place, pas vers une seule tête.</p>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker">1. La preuve, pas la promesse</span>
+  <h2>Ce qui tourne déjà</h2>
+  <p>C'est la démonstration de la séance de ce jour. Chaque ligne est vérifiable, avec son résultat mesuré quand il existe.</p>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Brique</th><th>Ce qu'elle fait</th><th>Résultat mesuré</th><th>Statut</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Application métier à trois rôles</strong></td>
+        <td>En ligne, base Supabase geozey-core appartenant à Geozey, données hébergées dans l'Union européenne</td>
+        <td>Cloisonnement entre administrateur, client maître d'oeuvre et freelance prouvé par un test réel</td>
+        <td><span class="badge ok">en ligne, prouvé</span></td>
+      </tr>
+      <tr>
+        <td><strong>Moteur de matching explicable</strong></td>
+        <td>Dix axes de rapprochement, deux critères éliminatoires, écart de TJM traité comme une alerte, jamais comme un score</td>
+        <td>Validé sur cinq profils construits spécifiquement pour piéger chaque règle</td>
+        <td><span class="badge ok">validé</span></td>
+      </tr>
+      <tr>
+        <td><strong>Agents autonomes de sourcing et de veille</strong></td>
+        <td>Détection continue de prospects maîtres d'oeuvre et de profils PMO, chaque ligne porte sa source et sa date de collecte</td>
+        <td>244 prospects maîtres d'oeuvre et 126 profils PMO sourcés, scorés et tracés, contre 11 contacts au point de départ</td>
+        <td><span class="badge ok">en ligne, mesuré</span></td>
+      </tr>
+      <tr>
+        <td><strong>Site refondu et durci</strong></td>
+        <td>Version anglaise, blog de trois articles sourcés, formulaire de qualification avec dépôt de CV dans un espace de stockage non public, notification par courriel</td>
+        <td>En ligne et vérifié en production</td>
+        <td><span class="badge ok">en ligne</span></td>
+      </tr>
+      <tr>
+        <td><strong>Mémoire partagée et cockpit de pilotage</strong></td>
+        <td>Historique des décisions et des arbitrages, tableau de bord de suivi du dossier</td>
+        <td>Alimenté en continu</td>
+        <td><span class="badge ok">en ligne</span></td>
+      </tr>
+      <tr>
+        <td><strong>Serveur OVH souverain de Geozey</strong></td>
+        <td>KS-1 Xeon-D 1520, 32 Go de mémoire, deux disques de 2 To, environ 17 EUR HT par mois</td>
+        <td>Actuellement démarré en mode secours, donc aucun service ne tourne dessus. Décision prise : on le conserve et on l'affecte à l'infrastructure IA souveraine. C'est un actif à activer, pas une dépense à couper</td>
+        <td><span class="badge warn">à activer</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">2. Périmètre du rôle</span>
+  <h2>Trois casquettes dans un seul abonnement</h2>
+  <p>Le rôle est tenu de fait depuis plusieurs mois sans avoir jamais été nommé ni facturé. Ce qui suit fixe son contenu, casquette par casquette : ce qui est inclus, et ce qui n'y est pas.</p>
+  <div class="three-col">
+    <div class="hat-card">
+      <h3>CAIO externalisé</h3>
+      <p style="font-size:13px;color:var(--ash);margin-bottom:14px">Directeur de l'intelligence artificielle</p>
+      <span class="lbl lbl-in">Inclus</span>
+      <div class="in">Stratégie IA, architecture, choix des outils, sécurité, conformité, pilotage de l'infrastructure et des agents, maintenance, mémoire partagée.</div>
+      <span class="lbl lbl-out">Non inclus</span>
+      <div class="out">Toute tâche hors du périmètre convenu passe par une fiche de cadrage dédiée, chiffrée à part, avant démarrage.</div>
+    </div>
+    <div class="hat-card">
+      <h3>Directeur technique de fait</h3>
+      <p style="font-size:13px;color:var(--ash);margin-bottom:14px">Application métier et site</p>
+      <span class="lbl lbl-in">Inclus</span>
+      <div class="in">Exploitation, correctifs, évolutions du palier A déjà livré, veille de sécurité.</div>
+      <span class="lbl lbl-out">Non inclus</span>
+      <div class="out">Le palier B (espace client maître d'oeuvre), le palier C (espace freelance et agent) et toute évolution vers un produit commercialisable sortent du périmètre et se chiffrent à part.</div>
+    </div>
+    <div class="hat-card">
+      <h3>Head of Growth</h3>
+      <p style="font-size:13px;color:var(--ash);margin-bottom:14px">Acquisition et pipeline</p>
+      <span class="lbl lbl-in">Inclus</span>
+      <div class="in">Pilotage de l'acquisition, sourcing et enrichissement, campagnes, contenu et référencement, radar de détection des projets attribués, alimentation du pipeline du futur commercial.</div>
+      <span class="lbl lbl-out">Non inclus</span>
+      <div class="out">Le forfait outils growth et l'intéressement au chiffre d'affaires sont une option distincte et facultative, détaillée en section 9.</div>
+    </div>
+  </div>
+  <p style="font-size:15px;line-height:1.7;max-width:780px">Rythme inclus dans les trois casquettes : deux ateliers techniques par mois, l'atelier du lundi 11h30, plus le point du mercredi.</p>
+</section>
+
+<section class="txt bg-gray">
+  <span class="kicker">3. Infrastructure cible</span>
+  <h2>Où vivent les données, où vivent les clés</h2>
+  <p style="max-width:800px;line-height:1.7">Chaque terme technique est expliqué en une phrase à son premier usage.</p>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Question</th><th>Réponse</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Où vivent les données</td>
+        <td>Dans Supabase, une base de données hébergée dans le cloud : la base geozey-core, hébergée dans l'Union européenne, propriété de Geozey.</td>
+      </tr>
+      <tr>
+        <td>Où vivent les clés</td>
+        <td>Dans les variables d'environnement de Vercel, la plateforme qui héberge et fait tourner le site et l'application. La clé de la banque Qonto y a été posée par Yacine lui-même, en lecture seule stricte. Point de vigilance en cours : confirmer que le projet Vercel qui porte l'application appartient bien à Geozey et non à egery, pour qu'une clé bancaire du client ne vive jamais sur une infrastructure qui n'est pas la sienne.</td>
+      </tr>
+      <tr>
+        <td>Quel rôle pour le serveur OVH souverain</td>
+        <td>Le KS-1 sort du mode secours, un mode de démarrage de dépannage où aucun service ne tourne, pour devenir le socle de l'infrastructure IA de Geozey : une base vectorielle, une mémoire de recherche que les agents interrogent pour raisonner sur les données de Geozey, des programmes d'orchestration qui font tourner les agents de sourcing et de veille en continu, et du stockage documentaire. Les données qui y transiteront restent chez Geozey, elles ne partent chez aucun tiers.</td>
+      </tr>
+      <tr>
+        <td>Quelles briques restent chez des tiers, et pourquoi</td>
+        <td>Vercel pour l'hébergement du site et de l'application, fiable à ce niveau d'usage. Supabase pour la base de données, avec la garantie d'un hébergement dans l'Union européenne. Brevo pour l'envoi des courriels, pour sa délivrabilité. GitHub pour le dépôt du code, propriété du compte personnel Geozey. BoondManager pour le référentiel des missions, déjà en place chez Yacine. Qonto pour la banque, en lecture seule.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker">4. Souveraineté</span>
+  <h2>Ce qui appartient à Geozey et le reste quoi qu'il arrive</h2>
+  <p style="color:#fff;max-width:780px;line-height:1.7">La base geozey-core, le dépôt de code sur le compte personnel Geozey, les comptes Vercel, Supabase, Brevo et GitHub, les données de candidats, de clients et de sourcing : tout appartient à Geozey, aujourd'hui et demain.</p>
+  <div class="rule-box">
+    <span class="kicker">La règle</span>
+    <p>Au terme de la relation avec egery Tech, quelle qu'en soit la raison, Geozey garde tout et retire nos accès en un clic. Retirer une invitation Supabase, révoquer une application GitHub, supprimer une variable d'environnement partagée : ce sont des gestes simples, faits côté Geozey, qui ferment l'accès sans toucher à la donnée ni au service.</p>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">5. Renvoi à la gouvernance IA</span>
+  <h2>Un document déjà produit, qu'on ne répète pas ici</h2>
+  <p style="max-width:800px;line-height:1.7">Le cadre de gouvernance de l'intelligence artificielle chez Geozey est un livrable distinct, produit le 18 août 2026 : <strong>Gouvernance IA, Geozey</strong>. Ce cahier des charges s'y adosse sans le reproduire. Trois points à retenir de ce document pour la séance :</p>
+  <ol class="numbered">
+    <li>Le moteur de matching est classé système à haut risque au sens de l'annexe III, point 4a, du règlement européen sur l'intelligence artificielle. Les obligations complètes pour cette catégorie ont été reportées au 2 décembre 2027 par le Digital Omnibus. Geozey dispose d'un délai confirmé, pas d'une dispense.</li>
+    <li>Le principe de décision ne se rediscute pas : une IA chez Geozey propose, elle ne décide jamais d'une personne. L'écart de TJM reste une alerte, jamais un score. C'est déjà en place, journalisé, et opposable.</li>
+    <li>Une action reste à mener côté formulaire de qualification du site : ajouter une mention informant les candidats du recours à un système d'intelligence artificielle pour le matching. Elle figure dans les angles morts du document de gouvernance, à traiter sous 30 jours.</li>
+  </ol>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker">6. Feuille de route</span>
+  <h2>Les trois prochains mois</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Mois</th><th>Ce qu'on fait</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Septembre 2026</strong></td>
+        <td>Sortir le serveur OVH du mode secours et l'affecter à l'infrastructure IA souveraine. Poser la brique Finance, l'onglet Finance dans l'application, réservé à l'administrateur, en lecture seule sur Qonto. Lever le point de vigilance sur la propriété du projet Vercel. Rattraper les livrables du Sprint 1 encore en attente.</td>
+      </tr>
+      <tr>
+        <td><strong>Octobre 2026</strong></td>
+        <td>Première facturation de l'abonnement CAIO au 1er octobre. Activer les agents de veille en continu sur le serveur OVH désormais opérationnel, sourcing et matching tournant sans interruption. Reprendre la synchronisation avec BoondManager. Alimenter le pipeline : matching et premiers contacts sur les missions déjà ouvertes, à partir des 244 prospects et 126 profils déjà en base.</td>
+      </tr>
+      <tr>
+        <td><strong>Novembre 2026</strong></td>
+        <td>Reporting mensuel consolidé sur les deux premiers mois de l'abonnement. Session de littératie IA pour Yacine et le futur commercial. Mention d'information des candidats ajoutée au formulaire de qualification. Poursuite du volet growth : campagnes, contenu, radar de détection des projets attribués.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">7. Niveaux de service</span>
+  <h2>Ce à quoi Geozey peut se tenir</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Engagement</th><th>Détail</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Réaction sur incident bloquant</td>
+        <td>Aucune astreinte formalisée en heures à ce stade de la relation, ce serait un chiffre inventé. Dans les faits, un incident bloquant signalé par contact direct est traité en priorité, sans attendre le prochain rendez-vous. Une astreinte contractuelle chiffrée peut être posée si Geozey le demande, elle ferait alors l'objet d'une fiche de cadrage dédiée.</td>
+      </tr>
+      <tr>
+        <td>Rythme des ateliers</td>
+        <td>Deux ateliers techniques par mois, l'atelier du lundi 11h30, plus le point du mercredi.</td>
+      </tr>
+      <tr>
+        <td>Reporting mensuel écrit</td>
+        <td>Remis sous 8 jours ouvrés après la fin du mois. Premier reporting avant le 8 septembre 2026, portant sur le mois d'août.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker">8. Le devis</span>
+  <h2>Ce qui se facture, ce qui est offert, ce qui reste hors périmètre</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Poste</th><th>Détail</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Abonnement CAIO externalisé, trois casquettes</td>
+        <td>Prix de référence egery Tech : 4 900 EUR HT par mois. Tarif Geozey, client fondateur : <strong>2 490 EUR HT par mois</strong>.</td>
+      </tr>
+      <tr>
+        <td>Période offerte</td>
+        <td>Du 19 août au 30 septembre 2026, 0 EUR facturé. Valeur offerte sur la période : environ 3 500 EUR HT, en plus du rôle déjà tenu et non facturé depuis plusieurs mois, que ce document mentionne sans le chiffrer, faute de date de départ formelle.</td>
+      </tr>
+      <tr>
+        <td>Première échéance</td>
+        <td>1er octobre 2026, au tarif Geozey client fondateur de 2 490 EUR HT par mois. Engagement de trois mois, puis résiliable à trente jours.</td>
+      </tr>
+      <tr>
+        <td>Option growth, distincte et facultative</td>
+        <td>Forfait outils growth de 490 EUR HT par mois, couvrant le sourcing, l'enrichissement, le routage et l'entretien des listes. Plus un intéressement de 5 pourcent HT du chiffre d'affaires facturé la première année des missions attribuables au dispositif, réciproque dans les deux sens. Le détail complet est dans le document de proposition de collaboration, il n'est pas redétaillé ici.</td>
+      </tr>
+      <tr>
+        <td>Hors périmètre, passe en DTS</td>
+        <td>Le palier B, espace client maître d'oeuvre. Le palier C, espace freelance et agent. Toute évolution de l'application vers un produit SaaS commercialisable. Chacun fait l'objet d'une fiche de cadrage dédiée, périmètre, temps estimé, planning et coût, validée par les deux parties avant démarrage, procédure proposée par Yacine lui-même en séance du 13 août.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note-src" style="color:rgba(255,255,255,.65)">Repère de calcul, pas un engagement au-delà des trois mois d'engagement ferme : si la relation se poursuit sur douze mois pleins au tarif client fondateur, l'abonnement CAIO représente 12 fois 2 490 EUR HT, soit 29 880 EUR HT sur l'année.</p>
+</section>
+
+<section class="txt bg-gray">
+  <span class="kicker">9. Ce que Geozey doit fournir</span>
+  <h2>Accès, clés, arbitrages</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Catégorie</th><th>Ce qui est attendu de Geozey</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Accès</td>
+        <td>Accès nécessaires à l'exploitation du serveur OVH pour sa sortie du mode secours, ou délégation claire de cette opération. Accès BoondManager pour le futur commercial. Accès complémentaires à définir au fil de la feuille de route.</td>
+      </tr>
+      <tr>
+        <td>Clés posées par lui-même</td>
+        <td>Toute clé, tout identifiant, tout jeton reste un geste humain fait par Yacine dans l'interface officielle du service concerné, jamais une manipulation confiée à un agent IA. C'est la règle déjà en place pour la clé Qonto, elle vaut pour toute clé à venir.</td>
+      </tr>
+      <tr>
+        <td>Arbitrages</td>
+        <td>Confirmer la propriété du projet Vercel qui porte l'application, Geozey et non egery. Valider le modèle de l'option growth si elle est retenue. Configurer BoondManager avec le futur commercial. Tester le formulaire de qualification jusqu'à l'envoi complet. Examiner les campagnes Brevo en cours.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery Tech, cahier des charges infrastructure IA et rôle de CAIO externalisé, document projeté en séance le 19 août 2026, confidentiel</p>
+</footer>
+
+</body>
+</html>
