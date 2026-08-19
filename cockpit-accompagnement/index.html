@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Séance du 19 août 2026 — Geozey x egery</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<style>
+.page-hero{padding:150px 140px 80px}
+.txt{padding:70px 140px}
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:30px}
+.doc-table table{width:100%;border-collapse:collapse;font-size:15px}
+.doc-table thead tr{background:var(--dark);color:#fff}
+.doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
+.doc-table tbody tr:last-child{border-bottom:0}
+.doc-table tbody td{padding:13px 18px;vertical-align:top;line-height:1.5}
+.doc-table td.mono{font-family:'Roboto Mono',monospace;font-size:11px;color:var(--ash);white-space:nowrap}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#1A5E3A}
+.badge.warn{background:#F6E7C6;color:#8a5200}
+.badge.off{background:#DCE7F5;color:#003E8A}
+.badge.ember{background:var(--ember);color:#fff}
+.badge.neutre{background:var(--card);color:var(--ash)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:37px;margin-top:44px}
+.stat-card{background:var(--card);border-radius:13px;padding:30px 28px}
+.stat-card .v{font-size:52px;font-weight:400;line-height:1;letter-spacing:-1px}
+.stat-card .l{font-size:14px;line-height:1.4;margin-top:12px;color:var(--ash)}
+.docgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px}
+.doclink{display:flex;flex-direction:column;background:#fff;border-radius:13px;padding:32px 28px 34px;text-decoration:none;color:var(--dark);box-shadow:0 4px 4px rgba(0,0,0,.08);transition:transform .15s}
+.doclink:hover{transform:translateY(-3px)}
+.doclink .tag{align-self:flex-start;margin-bottom:26px}
+.doclink h3{font-size:21px;font-weight:400;line-height:1.3}
+.doclink p{font-size:14.5px;line-height:1.5;color:var(--ash);margin-top:10px}
+.doclink .go{margin-top:auto;padding-top:22px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember)}
+.over{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-top:40px}
+.overcard{background:rgba(255,255,255,.08);border-radius:13px;padding:30px 28px}
+.overcard h3{font-size:19px;font-weight:400;line-height:1.35}
+.overcard p{font-size:15px;line-height:1.55;margin-top:10px;opacity:.85}
+.overcard .m{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember);display:block;margin-bottom:16px}
+.linklist{margin-top:30px}
+.linklist a{display:block;padding:15px 0;border-bottom:1px solid rgba(30,30,30,.15);text-decoration:none;color:var(--dark);font-size:16px}
+.linklist a:hover{color:var(--ember)}
+.linklist a span{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ash);display:block;margin-top:4px}
+.linklist p.note{padding:15px 0;border-bottom:1px solid rgba(30,30,30,.15);color:var(--ash);font-size:14px;line-height:1.5;margin:0}
+@media(max-width:1100px){.page-hero{padding:130px 24px 60px}.txt{padding:56px 24px}.stats-row,.docgrid,.over{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav>
+  <a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+</nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Séance du mercredi 19 août 2026, 14h30 · Benjamin Queroy · Aurélien Queroy · Yacine Djebrouni</span>
+  <h1>Où on en est,<br>ce qui dépasse le contrat,<br>et ce qu'on propose pour la suite.</h1>
+  <p class="lead">Un seul écran pour toute la collaboration. Ce qui est livré, ce qui reste dû, ce qui a été fait au-delà de ce qui était vendu, et les trois documents qui cadrent la suite.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember)">La preuve, pas la promesse</span>
+  <h2>Ce que la collaboration a produit à ce jour.</h2>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="v">370</div><div class="l">contacts joignables sourcés et tracés, contre 11 au départ. 244 prospects maîtres d'oeuvre, 126 profils PMO.</div></div>
+    <div class="stat-card"><div class="v">3</div><div class="l">rôles cloisonnés dans l'application métier en ligne, étanchéité prouvée par test réel et non par relecture.</div></div>
+    <div class="stat-card"><div class="v">10</div><div class="l">axes du moteur de matching, chaque point de score expliqué, validé sur cinq profils construits pour le piéger.</div></div>
+    <div class="stat-card"><div class="v">3</div><div class="l">exercices de FEC analysés ligne à ligne. La chute d'EBITDA est expliquée et chiffrée.</div></div>
+  </div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker" style="color:var(--ember)">Le point qui compte</span>
+  <h2>Ce qui a été fait au-delà du contrat.</h2>
+  <p>Ces travaux ne figurent dans aucun sprint. Ils ont été produits parce qu'ils étaient nécessaires, sans avenant et sans facturation. Ils sont nommés ici une fois, pour que la relation reparte sur une base claire.</p>
+
+  <div class="over">
+    <div class="overcard">
+      <span class="m">Hors contrat</span>
+      <h3>Infrastructure d'agents autonomes</h3>
+      <p>Le contrat prévoyait six agents IA métier. Ce qui tourne est une infrastructure d'agents autonomes avec sa mémoire partagée, son radar de sourcing et son cockpit de pilotage. Intégrée sans surcoût.</p>
+    </div>
+    <div class="overcard">
+      <span class="m">Hors contrat</span>
+      <h3>Application métier à trois rôles</h3>
+      <p>Le contrat prévoyait du conseil et du paramétrage CRM. Le palier A d'une application métier a été construit et mis en ligne : rôles, vivier, missions, matching explicable, flux des qualifications.</p>
+    </div>
+    <div class="overcard">
+      <span class="m">Hors contrat</span>
+      <h3>Durcissement complet du site</h3>
+      <p>Le site était livré. Il a été repris depuis : adresses propres, en-têtes de sécurité, images optimisées, version anglaise, référencement réparé, trois bugs bloquants corrigés sur le formulaire, dépôt de CV opérationnel.</p>
+    </div>
+    <div class="overcard">
+      <span class="m">Hors contrat</span>
+      <h3>Blog et référencement génératif</h3>
+      <p>Trois articles de fond signés Yacine Djebrouni, chaque chiffre sourcé, écrits pour être repris par les moteurs et par les IA. Aucune ligne du contrat ne prévoyait de production éditoriale.</p>
+    </div>
+    <div class="overcard">
+      <span class="m">Hors contrat</span>
+      <h3>Analyse des trois FEC</h3>
+      <p>La concentration client à 93,5 % sur trois clients et l'explication chiffrée de la chute d'EBITDA sortent d'une analyse ligne à ligne des FEC 2023, 2024 et 2025. Le contrat ne prévoyait pas ce niveau.</p>
+    </div>
+    <div class="overcard">
+      <span class="m">Hors contrat</span>
+      <h3>Gouvernance IA et conformité</h3>
+      <p>Cartographie des usages, registre des traitements, et classification du moteur de matching au regard du règlement européen sur l'IA, avec les actions à mener et leur échéance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember)">Le contrat</span>
+  <h2>Livrable par livrable, sans rien masquer.</h2>
+
+  <div class="doc-table">
+    <table>
+      <thead><tr><th>Sprint</th><th>Livrable contractuel</th><th>État</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1</td><td>Rapport d'audit financier</td><td><span class="badge warn">Provisoire</span> &nbsp;version définitive demandée à Reggio</td></tr>
+        <tr><td class="mono">1</td><td>Due diligence interne</td><td><span class="badge ok">Livré</span> &nbsp;quatre axes, pièces manquantes listées</td></tr>
+        <tr><td class="mono">1</td><td>Rapport de valorisation multi-méthodes</td><td><span class="badge ok">Livré</span> &nbsp;trois méthodes, fourchette argumentée</td></tr>
+        <tr><td class="mono">1</td><td>Benchmark de sociétés comparables</td><td><span class="badge ok">Livré</span> &nbsp;24 sources, 8 opérations du secteur</td></tr>
+        <tr><td class="mono">1</td><td>Modèle financier prévisionnel</td><td><span class="badge ok">Livré</span> &nbsp;Excel 2026-2028, onglet Finance à brancher</td></tr>
+        <tr><td class="mono">2</td><td>Identité visuelle</td><td><span class="badge ok">Livré</span></td></tr>
+        <tr><td class="mono">2</td><td>Site web professionnel</td><td><span class="badge ok">Livré et dépassé</span></td></tr>
+        <tr><td class="mono">2</td><td>Page LinkedIn entreprise</td><td><span class="badge ok">Livré</span></td></tr>
+        <tr><td class="mono">2</td><td>6 agents IA métier</td><td><span class="badge ok">Livré et dépassé</span></td></tr>
+        <tr><td class="mono">2</td><td>Gouvernance IA globale</td><td><span class="badge ok">Livré</span> &nbsp;cartographie, registre, règlement européen</td></tr>
+        <tr><td class="mono">2</td><td>Playbook commercial</td><td><span class="badge ok">Livré</span> &nbsp;prêt pour le futur commercial</td></tr>
+        <tr><td class="mono">2</td><td>Conseil et paramétrage CRM</td><td><span class="badge warn">Bloqué</span> &nbsp;clé d'agence Boond, cause identifiée</td></tr>
+        <tr><td class="mono">2</td><td>16 points de suivi hebdomadaires</td><td><span class="badge off">Cadencé</span> &nbsp;rituels posés, à tracer</td></tr>
+        <tr><td class="mono">3</td><td>Plan de développement commercial</td><td><span class="badge warn">En cours</span> &nbsp;370 contacts prêts, campagnes en brouillon</td></tr>
+        <tr><td class="mono">3</td><td>Plan d'optimisation des marges</td><td><span class="badge ok">Livré</span> &nbsp;trois leviers chiffrés</td></tr>
+        <tr><td class="mono">3</td><td>Stratégie de diversification client</td><td><span class="badge ok">Livré</span> &nbsp;cible 2028 chiffrée</td></tr>
+        <tr><td class="mono">4·5</td><td>Dataroom, mémorandum, teaser, acquéreurs</td><td><span class="badge neutre">Mois 8 à 18</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember)">Les trois documents de la séance</span>
+  <h2>À ouvrir pendant le rendez-vous.</h2>
+
+  <div class="docgrid">
+    <a class="doclink" href="proposition">
+      <span class="tag ember">01 · Collaboration</span>
+      <h3>Proposition d'offre et apport d'affaires réciproque</h3>
+      <p>Les trois étages, le prix de chacun, et un apport d'affaires symétrique dans les deux sens, au même taux et aux mêmes règles.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="doclink" href="cdc-application">
+      <span class="tag">02 · Application</span>
+      <h3>Cahier des charges de l'application métier et devis</h3>
+      <p>Palier A livré et inclus, onglet Finance inclus, paliers B et C chiffrés au forfait. Et une décision d'architecture à trancher.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="doclink" href="cdc-infra-ia">
+      <span class="tag">03 · Infra IA</span>
+      <h3>Cahier des charges infra IA, CAIO externalisé et devis</h3>
+      <p>Trois casquettes dans un seul abonnement, CAIO, direction technique et head of growth. Offert jusqu'au 30 septembre.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+  </div>
+</section>
+
+<section class="txt bg-gray">
+  <span class="kicker" style="color:var(--ember)">Le dossier complet</span>
+  <h2>Tous les livrables, un clic chacun.</h2>
+
+  <div class="linklist">
+    <a href="valorisation">Rapport de valorisation multi-méthodes<span>Sprint 1 · trois méthodes · fourchette argumentée</span></a>
+    <a href="due-diligence">Synthèse de due diligence interne<span>Sprint 1 · quatre axes · pièces manquantes</span></a>
+    <p class="note">Le benchmark de sociétés comparables et les retraitements d'EBITDA sur trois exercices sont fournis en fichiers séparés, hors de cet espace.</p>
+    <a href="plan-marges">Plan d'optimisation des marges et diversification client<span>Sprint 3 · leviers chiffrés · cible 2028</span></a>
+    <a href="playbook">Playbook commercial<span>Sprint 2 · pour le futur commercial</span></a>
+    <a href="gouvernance-ia">Gouvernance IA<span>Sprint 2 · cartographie · registre · règlement européen</span></a>
+    <p class="note">Le déblocage de la clé d'agence BoondManager fait l'objet d'une note séparée, fournie hors de cet espace.</p>
+    <a href="https://geozey.com/app">Application métier, palier A<span>En ligne · trois rôles · matching explicable</span></a>
+    <a href="https://geozey.com/blog">Blog<span>Trois articles signés, chaque chiffre sourcé</span></a>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember)">Ce qui reste</span>
+  <h2>Trois choses à débloquer, aucune n'est technique.</h2>
+
+  <div class="doc-table">
+    <table>
+      <thead><tr><th>Sujet</th><th>Ce qui bloque</th><th>Qui</th></tr></thead>
+      <tbody>
+        <tr><td>Rapport d'audit financier définitif</td><td>La version en main porte encore la mention provisoire. Demande envoyée à Reggio avec les découvertes des FEC, au cas où elles changent ses retraitements.</td><td class="mono">Reggio</td></tr>
+        <tr><td>Synchronisation BoondManager</td><td>Erreur 422 depuis le 4 août. Cause probable structurelle : l'offre ne donne pas accès à l'espace développeur. Message au support prêt à envoyer.</td><td class="mono">Yacine</td></tr>
+        <tr><td>Onglet Finance sur Qonto</td><td>La clé se pose à la main. Décision d'architecture à valider : elle vit dans la base de Geozey, pas sur l'hébergement de son prestataire.</td><td class="mono">Yacine</td></tr>
+        <tr><td>Test du formulaire de bout en bout</td><td>Personne ne l'a encore fait en conditions réelles. C'est le test qui valide toute la chaîne, jusqu'à la notification.</td><td class="mono">Yacine</td></tr>
+        <tr><td>Relecture des trois articles</td><td>Ils sont signés de son nom, rien ne part sans son accord.</td><td class="mono">Yacine</td></tr>
+        <tr><td>Information des candidats sur l'IA</td><td>Le moteur de matching relève du règlement européen. Une mention doit être ajoutée au formulaire.</td><td class="mono">egery</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember)">Le rythme</span>
+  <h2>Trois rendez-vous fixes, à partir de cette semaine.</h2>
+
+  <div class="doc-table">
+    <table>
+      <thead><tr><th>Rituel</th><th>Rythme</th><th>Contenu</th><th>Premier</th></tr></thead>
+      <tbody>
+        <tr><td>Atelier technique</td><td class="mono">Lundi 11h30</td><td>Outils, agents, application, accès. Le format où l'on construit.</td><td class="mono">24 août</td></tr>
+        <tr><td>Point livrables et business</td><td class="mono">Mercredi 14h30</td><td>Livrables, missions, pipeline, arbitrages. Compte rendu systématique, il alimente les 16 points contractuels.</td><td class="mono">aujourd'hui</td></tr>
+        <tr><td>Reporting mensuel écrit</td><td class="mono">Sous 8 jours</td><td>Actions, livrables, indicateurs business et finance, plan du mois suivant.</td><td class="mono">avant le 8 sept.</td></tr>
+        <tr><td>Revue de cadrage DTS</td><td class="mono">À la demande</td><td>Présentation et validation des fiches avant tout démarrage.</td><td class="mono">selon fiches</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="zerodelta">
+  <h2>Zero Delta.</h2>
+  <div class="zd-grid">
+    <div class="zd-item"><span class="n">01</span><span class="w">Zéro surprise de facturation</span></div>
+    <div class="zd-item"><span class="n">02</span><span class="w">Zéro travail sans fiche validée</span></div>
+    <div class="zd-item"><span class="n">03</span><span class="w">Zéro livrable contractuel abandonné</span></div>
+    <div class="zd-item"><span class="n">04</span><span class="w">Zéro chiffre non sourcé</span></div>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery · Séance du 19 août 2026 · Document interne · Confidentiel</p>
+</footer>
+
+</body>
+</html>
