@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Livrables et ressources · Hub pré-cession Alvo x Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
+<style>
+:root{--ember-ink:#C42F09}
+.page-hero{padding:150px 90px 70px}
+.txt{padding:64px 90px}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#155434}
+.badge.warn{background:#F6E7C6;color:#7A4800}
+.badge.off{background:#DCE7F5;color:#00397D}
+.badge.ember{background:var(--ember-ink);color:#fff}
+.badge.neutre{background:#d5d5d5;color:#3b3b3b}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
+.rc{display:flex;flex-direction:column;background:#fff;border-radius:13px;padding:28px 26px 30px;color:var(--dark);box-shadow:0 4px 4px rgba(0,0,0,.08);transition:transform .18s ease,box-shadow .18s ease}
+a.rc:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.16)}
+.rc .tg{align-self:flex-start;margin-bottom:22px}
+.rc h3{font-size:19.5px;font-weight:400;line-height:1.3}
+.rc p{font-size:14.5px;line-height:1.55;color:#2b2b2b;margin-top:10px}
+.rc .url{margin-top:16px;font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:1.2px;color:#4a4a49;word-break:break-all}
+.rc .go{margin-top:auto;padding-top:20px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember-ink)}
+
+/* ── Captures de la direction artistique ── */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px}
+.shot{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;margin:0}
+.shot button{display:block;width:100%;padding:0;border:0;background:#d5d5d5;cursor:zoom-in}
+.shot img{width:100%;display:block;min-height:170px;background:#d5d5d5}
+.shot figcaption{padding:22px 24px 26px}
+.shot figcaption .bl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.shot figcaption h3{font-size:18px;font-weight:400;line-height:1.35}
+.shot figcaption p{font-size:14.5px;line-height:1.55;color:#2b2b2b;margin-top:9px}
+#lb{position:fixed;inset:0;z-index:9000;background:rgba(10,10,10,.92);display:none;align-items:center;justify-content:center;padding:40px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:86vh;border-radius:13px;width:auto}
+#lb .cl{position:absolute;top:24px;right:24px;background:var(--ember);color:#fff;border:0;border-radius:27px;padding:11px 22px;font-size:15px;cursor:pointer}
+
+.note-box{background:#fff;border-radius:13px;padding:26px 28px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:28px;border-left:4px solid var(--ember)}
+.note-box .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--ember-ink);display:block;margin-bottom:9px}
+.note-box p{font-size:15px;line-height:1.6;color:#2b2b2b;margin:0}
+
+.camp{background:rgba(255,255,255,.09);border-radius:13px;padding:30px 28px;margin-top:34px}
+.camp .st{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.camp h3{font-size:22px;font-weight:400;line-height:1.3}
+.camp p{font-size:15.5px;line-height:1.6;color:#eaeaea;margin-top:12px;max-width:820px}
+.campgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.campgrid div{background:rgba(255,255,255,.08);border-radius:13px;padding:22px 20px}
+.campgrid .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#FF9C85;display:block;margin-bottom:9px}
+.campgrid .v{font-size:24px;font-weight:400}
+.campgrid .d{font-size:14px;line-height:1.5;color:#eaeaea;margin-top:8px}
+
+nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.62);color:#fff;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
+footer .copy{color:#cfcfcf}
+@media(max-width:1100px){
+  nav .doc-now{display:none}
+  .page-hero{padding:130px 24px 56px}
+  .txt{padding:52px 24px}
+  .cards,.campgrid{grid-template-columns:1fr 1fr}
+  .shots{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .cards,.campgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav>
+  <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <span class="doc-now">Livrables et ressources</span>
+  <div class="doc-steps">
+    <a href="/cockpit-accompagnement/programme" title="Programme et Gantt">← Programme</a>
+    <a href="/cockpit-accompagnement/proposition" title="Proposition de collaboration">Documents →</a>
+  </div>
+</nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Inventaire au 19 août 2026 · tout ce que la collaboration a produit</span>
+  <h1>Livrables et ressources.<br>Ce qui existe, et où cela se trouve.</h1>
+  <p class="lead">Quatre familles : ce qui est en ligne et public, les documents de ce hub, la direction artistique et le processus, et les campagnes prêtes à partir. Chaque élément est cliquable ou porte clairement son état.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Famille 1 · En ligne</span>
+  <h2>Six adresses publiques, toutes actives.</h2>
+  <p>Ce sont les actifs visibles par un prospect, un candidat ou un futur acquéreur. Ils constituent la vitrine du dossier de cession.</p>
+
+  <div class="cards">
+    <a class="rc" href="https://geozey.com" target="_blank" rel="noopener">
+      <span class="tg tag ember">Site principal</span>
+      <h3>geozey.com</h3>
+      <p>Sept pages publiques, référencement, en-têtes de sécurité, affichage adapté au téléphone, version anglaise à 469 clés.</p>
+      <span class="url">https://geozey.com</span>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+    <a class="rc" href="https://geozey.com/blog" target="_blank" rel="noopener">
+      <span class="tg tag">Éditorial</span>
+      <h3>Blog</h3>
+      <p>Trois articles de fond signés Yacine Djebrouni, chaque chiffre sourcé, écrits pour être repris par les moteurs et par les IA.</p>
+      <span class="url">https://geozey.com/blog</span>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+    <a class="rc" href="https://geozey.com/candidature" target="_blank" rel="noopener">
+      <span class="tg tag">Recrutement</span>
+      <h3>Formulaire de candidature</h3>
+      <p>39 champs, écriture en base, dépôt de CV, notification par courriel et attribution de la source. Chaîne complète.</p>
+      <span class="url">https://geozey.com/candidature</span>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+    <a class="rc" href="https://geozey.com/app" target="_blank" rel="noopener">
+      <span class="tg tag ember">Application métier</span>
+      <h3>Application, palier A</h3>
+      <p>Trois rôles cloisonnés, cloisonnement prouvé par test réel, moteur de matching explicable sur dix axes. Hors contrat.</p>
+      <span class="url">https://geozey.com/app</span>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+    <a class="rc" href="https://www.linkedin.com/company/geozey" target="_blank" rel="noopener">
+      <span class="tg tag">Réseau</span>
+      <h3>Page LinkedIn entreprise</h3>
+      <p>Créée depuis le compte de Yacine, donc propriétaire dès l’origine. L’animation éditoriale est au programme du sprint 3.</p>
+      <span class="url">https://www.linkedin.com/company/geozey</span>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+    <a class="rc" href="https://cockpit-geozey.vercel.app" target="_blank" rel="noopener">
+      <span class="tg tag ember">Pilotage</span>
+      <h3>Cockpit de pilotage opérationnel</h3>
+      <p>Vision 2028, six axes opérationnels, trajectoire EBITDA et valorisation cible. Complémentaire de ce hub, il porte la trajectoire quand ce hub porte l’exécution.</p>
+      <span class="url">https://cockpit-geozey.vercel.app</span>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Famille 2 · Documents du hub</span>
+  <h2>Huit documents, tous derrière le même code d’accès.</h2>
+  <p>Ces documents contiennent la valorisation de l’entreprise et la trajectoire de cession. Ils ne sortent pas de cet espace.</p>
+
+  <div class="cards">
+    <a class="rc" href="/cockpit-accompagnement/proposition">
+      <span class="tg tag ember">01 · Collaboration</span>
+      <h3>Proposition d’offre et apport d’affaires réciproque</h3>
+      <p>Les trois étages, le prix de chacun, et un apport d’affaires symétrique dans les deux sens, au même taux et aux mêmes règles.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/cdc-application">
+      <span class="tg tag">02 · Application</span>
+      <h3>Cahier des charges de l’application métier et devis</h3>
+      <p>Palier A livré et inclus, onglet Finance inclus, paliers B et C chiffrés au forfait. Et une décision d’architecture à trancher.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/cdc-infra-ia">
+      <span class="tg tag">03 · Infra IA</span>
+      <h3>Cahier des charges infra IA, CAIO externalisé et devis</h3>
+      <p>Trois casquettes dans un seul abonnement, direction IA, direction technique et head of growth.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/valorisation">
+      <span class="tg tag">Sprint 1</span>
+      <h3>Rapport de valorisation multi-méthodes</h3>
+      <p>Trois méthodes croisées, 24 sources et 8 opérations sectorielles. Fourchette de valeur d’entreprise de 150 à 450 k EUR.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/due-diligence">
+      <span class="tg tag">Sprint 1</span>
+      <h3>Synthèse de due diligence interne</h3>
+      <p>Quatre axes, financier, juridique, fiscal et social. Points durs identifiés et dix pièces manquantes listées.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/plan-marges">
+      <span class="tg tag">Sprint 3</span>
+      <h3>Plan d’optimisation des marges et diversification</h3>
+      <p>Cause de la chute d’EBITDA identifiée et six leviers chiffrés. Cible 2028 posée face à une concentration client de 93,5 %.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/playbook">
+      <span class="tg tag">Sprint 2</span>
+      <h3>Playbook commercial</h3>
+      <p>Onze sections, scripts d’appel et questions de qualification, destiné au futur commercial. Approfondissement au sprint 3.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+    <a class="rc" href="/cockpit-accompagnement/gouvernance-ia">
+      <span class="tg tag">Sprint 2</span>
+      <h3>Gouvernance IA</h3>
+      <p>Neuf sections, cartographie des usages, registre des traitements et position au regard du règlement européen sur l’IA.</p>
+      <span class="go">Ouvrir le document</span>
+    </a>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Famille 3 · Design et direction artistique</span>
+  <h2>Process Geozey, avant et après.</h2>
+  <p>Le processus de Geozey a été cartographié puis redéployé. Ces quatre planches montrent le chemin parcouru, de l’état des lieux initial au flux cible et au parcours de croissance. Cliquez sur une planche pour l’agrandir.</p>
+
+  <div class="shots">
+    <figure class="shot">
+      <button type="button" data-zoom aria-label="Agrandir la planche Process Geozey version 1">
+        <img data-fx="figjam_v1" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Planche Process Geozey, version 1, état des lieux initial">
+      </button>
+      <figcaption>
+        <div class="bl"><span class="badge neutre">Avant</span><span class="badge off">Cartographie</span></div>
+        <h3>Process Geozey, version 1</h3>
+        <p>État des lieux initial du processus, tel qu’il tournait au démarrage de l’accompagnement. Point de départ de la réflexion.</p>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <button type="button" data-zoom aria-label="Agrandir la planche Process Geozey version 2 finale">
+        <img data-fx="figjam_v2_final2" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Planche Process Geozey, version 2 finale, flux cible">
+      </button>
+      <figcaption>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Flux cible</span></div>
+        <h3>Process Geozey, version 2 finale</h3>
+        <p>Flux cible arbitré avec Yacine. C’est cette version qui a servi de base à l’application métier et au moteur de matching.</p>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <button type="button" data-zoom aria-label="Agrandir le board version 3">
+        <img data-fx="board_v3" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Board version 3, vue consolidée du processus Geozey">
+      </button>
+      <figcaption>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Vue consolidée</span></div>
+        <h3>Board version 3</h3>
+        <p>Vue consolidée du processus, rôles et étapes réunis sur une seule planche. Support des ateliers de cadrage.</p>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <button type="button" data-zoom aria-label="Agrandir la planche du parcours growth">
+        <img data-fx="figjam_growth" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Planche du parcours growth, acquisition et qualification">
+      </button>
+      <figcaption>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge warn">Hors contrat</span></div>
+        <h3>Parcours growth</h3>
+        <p>Chaîne d’acquisition et de qualification, du sourcing au rapprochement. Elle sous-tend le socle de 370 contacts et les campagnes.</p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="cards">
+    <a class="rc" href="https://claude.ai/design/p/70156369-e895-4496-ad03-aec28dba0d42" target="_blank" rel="noopener">
+      <span class="tg tag ember">Direction artistique</span>
+      <h3>Portraits Équipe Geozey</h3>
+      <p>Calques graphiques et gabarit des portraits d’équipe, en alternance ember et blanc, conformes à la charte Louise Lenepveu.</p>
+      <span class="go">Ouvrir ↗</span>
+    </a>
+    <div class="rc">
+      <span class="tg tag">Charte</span>
+      <h3>Charte Louise Lenepveu, millésime 2026</h3>
+      <p>Coins arrondis à 13 px, pilules à 27 px, titres en graisse normale, bandes ember pleines. Elle ne se reproduit pas, elle s’importe depuis la feuille de style du site.</p>
+      <span class="url">https://geozey.com/styles.css</span>
+    </div>
+    <div class="rc">
+      <span class="tg tag">Papeterie</span>
+      <h3>Papeterie de marque</h3>
+      <p>Carte de visite, signature de courriel et papier à en-tête. Livrés au sprint 2, disponibles dans l’espace partagé, hors de ce hub.</p>
+      <span class="url">Espace partagé, sur demande</span>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <span class="k">Pourquoi ces planches sont ici en aperçu</span>
+    <p>Les quatre planches sont intégrées à la page en version légère, pour que la page reste rapide et qu’aucun accès extérieur ne soit nécessaire pour les consulter. Les fichiers d’origine, en pleine résolution, restent dans l’espace partagé de la mission.</p>
+  </div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker" style="color:var(--ember)">Famille 4 · Campagnes</span>
+  <h2>Tout est prêt. Il manque un GO écrit.</h2>
+
+  <div class="camp">
+    <div class="st"><span class="badge warn">En attente de GO</span><span class="badge off">Aucun envoi à ce jour</span></div>
+    <h3>Six campagnes Brevo préparées depuis le 3 août 2026</h3>
+    <p>Les six campagnes sont entièrement paramétrées et attendent en brouillon. Le domaine est authentifié, la base est chargée, les segments sont prêts. Aucun envoi n’a été déclenché parce que le GO écrit n’a jamais été donné. C’est une décision qui appartient à Yacine, elle se prend en une phrase.</p>
+
+    <div class="campgrid">
+      <div>
+        <span class="k">Campagnes prêtes</span>
+        <div class="v">6</div>
+        <p class="d">En brouillon, paramétrées, segments et objets posés.</p>
+      </div>
+      <div>
+        <span class="k">Contacts en base</span>
+        <div class="v">370</div>
+        <p class="d">244 prospects maîtres d’œuvre validés par Yacine et 126 profils PMO.</p>
+      </div>
+      <div>
+        <span class="k">Délivrabilité</span>
+        <div class="v">Domaine authentifié</div>
+        <p class="d">Six enregistrements DNS posés, SPF corrigé et DMARC créé. Les courriels arrivent.</p>
+      </div>
+    </div>
+
+    <p>Point de vigilance lié : la remise à niveau de la qualification des 126 profils est le prérequis pour que les campagnes destinées au vivier produisent des rapprochements pertinents. Elle est inscrite au sprint 3, du 19 août au 30 septembre 2026.</p>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Hors de ce hub</span>
+  <h2>Ce qui existe mais ne vit pas ici.</h2>
+  <p>Trois éléments sont volontairement fournis en fichiers séparés : le benchmark de sociétés comparables, les retraitements d’EBITDA sur trois exercices, et la note de déblocage de la clé d’agence BoondManager. Le rapport d’audit externe de Reggio Partners est encore en version provisoire, sa version définitive est attendue avant le 30 septembre 2026.</p>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery · Inventaire des livrables et ressources · 19 août 2026 · Confidentiel</p>
+</footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Aperçu agrandi">
+  <button class="cl" type="button">Fermer</button>
+  <img alt="">
+</div>
+
+<script src="/cockpit-accompagnement/assets/fx-figjam-v1.js"></script>
+<script src="/cockpit-accompagnement/assets/fx-figjam-v2.js"></script>
+<script src="/cockpit-accompagnement/assets/fx-board-v3.js"></script>
+<script src="/cockpit-accompagnement/assets/fx-figjam-growth.js"></script>
+<script>
+(function(){
+  'use strict';
+  var lb = document.getElementById('lb');
+  var big = lb.querySelector('img');
+  function open(src, alt){
+    big.src = src;
+    big.alt = alt || '';
+    lb.classList.add('on');
+  }
+  function close(){ lb.classList.remove('on'); big.removeAttribute('src'); }
+  [].slice.call(document.querySelectorAll('[data-zoom]')).forEach(function(b){
+    b.addEventListener('click', function(){
+      var im = b.querySelector('img');
+      if (im && im.src && im.src.length > 200) { open(im.src, im.alt); }
+    });
+  });
+  lb.querySelector('.cl').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if (e.target === lb) { close(); } });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { close(); } });
+})();
+</script>
+<script src="/cockpit-accompagnement/assets/shell.js"></script>
+</body>
+</html>
