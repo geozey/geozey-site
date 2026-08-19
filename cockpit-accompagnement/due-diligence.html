@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Synthese de due diligence interne , Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<style>
+.page-hero{padding:150px 140px 80px}
+.txt{padding:70px 140px}
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
+.doc-table table{width:100%;border-collapse:collapse;font-size:14.5px}
+.doc-table thead tr{background:var(--dark);color:#fff}
+.doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
+.doc-table tbody td{padding:14px 18px;vertical-align:top;line-height:1.55}
+.doc-table tbody tr:last-child{border-bottom:none}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#1A5E3A}
+.badge.warn{background:#F6E7C6;color:#8a5200}
+.badge.ko{background:#F4D7D3;color:#AA1C00}
+.badge.off{background:#DCE7F5;color:#003E8A}
+.badge.ember{background:var(--ember);color:#fff}
+.badge.neutre{background:var(--card);color:var(--ash)}
+.source-note{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.3px;color:var(--ash);margin-top:4px}
+.axe-block{margin-bottom:56px}
+.axe-block:last-child{margin-bottom:0}
+.warnbox{background:#fff;border-radius:13px;padding:28px 32px;margin:28px 0;box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.warnbox h3{font-weight:400;font-size:19px;margin:0 0 10px}
+ul.dd-list{padding-left:20px;line-height:1.7;font-size:16px}
+ul.dd-list li{margin-bottom:10px}
+.mini-kicker{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ash);margin-bottom:8px;display:block}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Sprint 1 , Accompagnement pre-cession Alvo , Document de travail</span>
+  <h1>Synthese de due diligence interne</h1>
+  <p class="lead">GEOZEY SASU (889 313 144 RCS Nice). Quatre axes : financier, juridique, fiscal, social. Redige le 17 aout 2026 a partir de la data room mise a disposition par le cedant et des travaux d'analyse deja realises par Alvo.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="mini-kicker">Cadre et limites</span>
+  <h2>Ce que ce document est, et ce qu'il n'est pas</h2>
+  <p>Cette synthese est un document de travail interne produit par Alvo dans le cadre de l'accompagnement pre-cession de GEOZEY. Elle n'est ni un audit legal des comptes, ni une expertise independante, ni une consultation juridique ou fiscale opposable. Elle organise, pour chaque axe, ce qui a ete examine dans la data room, ce qui apparait sain, ce qui constitue un point d'attention pour un acquereur potentiel, et une recommandation de mise en conformite avec son degre d'urgence.</p>
+  <p>Le volet financier s'appuie sur deux travaux deja realises et repris ici sans recalcul : le rapport Reggio du 24 avril 2026 (encore au stade provisoire) et l'analyse du FEC 2024-2025. Les autres constats proviennent de la lecture directe des pieces de la data room Drive (dossiers Financier, Juridique Corporate, Commercial et Contrats Clients, Confidentialite et NDA, Partenariats et Sous-traitance sortante, Freelances et Ressources, Presentation et Synthese). Chaque constat cite la piece et, quand elle est connue, sa date. Les releves bancaires n'ont pas ete relus ligne a ligne, la synthese financiere existant deja via Reggio et le FEC.</p>
+  <div class="warnbox">
+    <h3>Avertissement de fiabilite</h3>
+    <p style="font-size:15px;line-height:1.6;margin:0">Le rapport Reggio est explicitement qualifie de PROVISOIRE par ses auteurs a la date du 24/04/2026. Les montants financiers de ce document doivent donc etre lus comme des ordres de grandeur de travail, a fiabiliser avant toute transmission a un repreneur. Par ailleurs, la data room examinee ici est celle mise a disposition au 17/08/2026 : plusieurs pieces attendues sont absentes et sont listees en fin de document.</p>
+  </div>
+</section>
+
+<section class="txt bg-light">
+<div class="axe-block">
+  <span class="mini-kicker">Axe 1 / 4</span>
+  <h2>Financier</h2>
+  <p>Les liasses fiscales et comptes annuels deposes (2023, 2024) et les comptes annuels 2025 disponibles dans la data room confirment, a l'euro pres ou presque, les chiffres du rapport Reggio du 24/04/2026. Aucune divergence materielle n'a ete identifiee entre les pieces comptables primaires et la synthese Reggio.</p>
+
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Indicateur</th><th>2023</th><th>2024</th><th>2025</th><th>Piece source</th></tr></thead>
+  <tbody>
+  <tr><td>Chiffre d'affaires HT</td><td>805 980 EUR</td><td>737 991 EUR</td><td>717 410 EUR</td><td>Liasses fiscales 2023/2024, Comptes annuels BIC 2025</td></tr>
+  <tr><td>EBITDA (resultat d'exploitation + dotations amortissements)</td><td>~117 k EUR</td><td>~73 k EUR</td><td>~3 k EUR</td><td>Calcul Reggio 24/04/2026, recoupe sur comptes de resultat deposes</td></tr>
+  <tr><td>Resultat net</td><td>86 752 EUR</td><td>54 844 EUR</td><td>-1 030 EUR (perte)</td><td>Bilans passifs 2024 et 2025 (Comptes annuels BIC 2025)</td></tr>
+  <tr><td>Capitaux propres</td><td>200 739 EUR</td><td>58 440 EUR</td><td>57 410 EUR</td><td>Bilans passifs GEOZEY 2024 et 2025</td></tr>
+  <tr><td>Tresorerie (disponibilites)</td><td>124 162 EUR</td><td>35 327 EUR</td><td>49 263 EUR</td><td>Bilans actifs GEOZEY 2024 et 2025</td></tr>
+  <tr><td>Dettes fournisseurs</td><td>n.c.</td><td>37 473 EUR</td><td>123 546 EUR</td><td>Bilans passifs GEOZEY 2024 et 2025</td></tr>
+  <tr><td>Dividendes verses</td><td>0</td><td>197 143 EUR (au titre du resultat 2023)</td><td>0</td><td>PV DAU 29/03/2024 et decision d'affectation du resultat du meme jour</td></tr>
+  </tbody>
+  </table>
+  </div>
+  <p class="source-note">La chute des capitaux propres entre 2023 et 2024 s'explique integralement par la distribution de dividendes de 197 143 EUR decidee le 29/03/2024. La hausse des dettes fournisseurs en 2025 (de 37 473 EUR a 123 546 EUR) est le mecanisme identifie par Reggio pour expliquer le BFR devenu negatif en fin d'exercice.</p>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Sujets releves par l'analyse FEC 2024-2025</h3>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Sujet</th><th>Montant</th><th>Statut</th><th>Constat / piece de recoupement</th></tr></thead>
+  <tbody>
+  <tr><td>Loyer verse a la SCI Soldier Immo (partie liee, gerant Yacine Djebrouni)</td><td>13 750 EUR (2023), 15 000 EUR (2024), 12 375 EUR identifie sur le suivi 2025</td><td><span class="badge warn">Partie liee</span></td><td>Convention reglementee divulguee dans les PV DAU 29/03/2024 et 5/05/2025 ; ligne "loyer soldier" retrouvee dans Suivi Exercice Fiscal 2025.xlsx</td></tr>
+  <tr><td>Location vehicule</td><td>11 880 EUR (probable, non confirme)</td><td><span class="badge neutre">A confirmer</span></td><td>Retraitement juge probable par l'analyse FEC, non recoupe ici sur piece contractuelle</td></tr>
+  <tr><td>Remuneration dirigeant jugee basse</td><td>33 251 EUR (FEC) ; 20 862 EUR de remuneration brute President divulguee au titre de 2024</td><td><span class="badge warn">Sous le marche</span></td><td>PV DAU 5/05/2025, quatrieme resolution ; a rapprocher du montant plus large retenu par l'analyse FEC (charges sociales et avantages inclus)</td></tr>
+  <tr><td>Mouvements de compte courant dirigeant</td><td>75 676,69 EUR (solde 31/12/2023), 67 779,02 EUR (solde 31/12/2024), non remunere</td><td><span class="badge ok">Divulgue en convention</span></td><td>PV DAU 29/03/2024 et 5/05/2025 (conventions article L227-10)</td></tr>
+  <tr><td>Mouvement atypique avec la SCI Majy Immo</td><td>76 000 EUR</td><td><span class="badge warn">A documenter</span></td><td>Signale par l'analyse FEC 2024-2025 ; aucune convention reglementee correspondante retrouvee dans les PV lus (SCI Majy Immo non citee dans les conventions divulguees)</td></tr>
+  <tr><td>Vente d'un scooter</td><td>5 000 EUR</td><td><span class="badge neutre">Non recurrent</span></td><td>Element ponctuel signale par l'analyse FEC, sans effet EBITDA</td></tr>
+  <tr><td>Anomalie de classement "OSEILLE TV"</td><td>7 189 EUR</td><td><span class="badge neutre">Sans effet EBITDA</span></td><td>Signale par l'analyse FEC ; a reclasser mais neutre sur le retraitement</td></tr>
+  </tbody>
+  </table>
+  </div>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Ce qui est sain</h3>
+  <ul class="dd-list">
+    <li>Aucune dette financiere : confirme par les bilans passifs 2024 et 2025 (aucune ligne "emprunts et dettes aupres des etablissements de credit").</li>
+    <li>Les comptes 2023 et 2024 sont approuves, affectes et deposes dans les delais : attestation de presentation CICA Conseils du 19/03/2024, PV DAU du 29/03/2024 (comptes 2023) et du 5/05/2025 (comptes 2024), pouvoirs de depot signes.</li>
+    <li>Aucune divergence entre le rapport Reggio et les pieces comptables primaires deposees.</li>
+    <li>Element de contexte favorable : la degradation de la rentabilite 2023-2025 est desormais expliquee et quantifiee par l'analyse du FEC 2023. Elle est tarifaire, effondrement du taux de marge sur sous-traitance de 35,9 % en 2023 a 18,0 % en 2025, soit 71 339 EUR de marge perdue, et non une derive de structure de couts : les frais generaux ont baisse de 45 909 EUR sur la meme periode.</li>
+  </ul>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Concentration client, premier facteur de risque du dossier</h3>
+  <p>L'analyse du FEC 2023 permet desormais de chiffrer la concentration client, un point qui restait a produire dans les travaux precedents. Trois clients representent 93,5 % du chiffre d'affaires 2023.</p>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Client</th><th>CA 2023, en EUR</th><th>Part du CA</th></tr></thead>
+  <tbody>
+  <tr><td>EKIUM</td><td>420 925</td><td>52,2 %</td></tr>
+  <tr><td>Project Management Organisation</td><td>246 550</td><td>30,6 %</td></tr>
+  <tr><td>Bourbon Offshore Gaia</td><td>86 100</td><td>10,7 %</td></tr>
+  <tr><td>Total, trois premiers clients</td><td>753 575</td><td>93,5 %</td></tr>
+  </tbody>
+  </table>
+  </div>
+  <p class="source-note">Analyse FEC 2023. La perte du seul client EKIUM representerait a elle seule plus de la moitie du chiffre d'affaires : c'est le premier facteur de risque du dossier pour un acquereur, avant meme le niveau de rentabilite.</p>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Points d'attention pour un acquereur</h3>
+  <ul class="dd-list">
+    <li><strong>Concentration client extreme, premier facteur de risque du dossier.</strong> Trois clients (EKIUM 52,2 %, Project Management Organisation 30,6 %, Bourbon Offshore Gaia 10,7 %) representent 93,5 % du CA 2023, voir le tableau ci-dessus. C'est le premier facteur de risque de ce dossier pour un acquereur, avant meme la rentabilite.</li>
+    <li><strong>Remuneration du dirigeant divisee par plus de deux et demi entre 2023 et 2025.</strong> Elle passe de 88 345 EUR (2023) a 33 251 EUR (2025), charges sociales comprises (analyse FEC 2023). Un acquereur devra recruter un dirigeant remplacant au prix du marche, ce qui pesera directement sur la rentabilite normative post-cession.</li>
+    <li><strong>Rapport Reggio encore provisoire.</strong> Un acquereur exigera une version definitive avant toute negociation de prix, en particulier sur le waterfall de retraitement EBITDA.</li>
+    <li><strong>Rentabilite en forte baisse et exercice 2025 en perte, cause desormais identifiee.</strong> EBITDA passe de ~117 k EUR (2023) a ~3 k EUR (2025), resultat net 2025 negatif de 1 030 EUR. L'analyse du FEC 2023 explique cette chute : effondrement du taux de marge sur sous-traitance, de 35,9 % en 2023 a 18,0 % en 2025, soit 71 339 EUR de marge perdue, et baisse du chiffre d'affaires de 806 a 717 k EUR, soit moins 88 570 EUR. Les frais generaux ont baisse de 45 909 EUR sur la periode, ils ne sont pas en cause : la degradation est tarifaire, pas une derive de structure de couts.</li>
+    <li><strong>Aucun proces-verbal d'approbation des comptes 2025 retrouve dans la data room.</strong> L'exercice clos le 31/12/2025 doit statutairement etre approuve par l'associe unique dans les six mois, soit au plus tard le 30/06/2026. A la date de ce document (17/08/2026), aucun PV DAU ni decision d'affectation du resultat 2025 n'a ete identifie, alors que les comptes annuels (Comptes annuels BIC.pdf) et la liasse IS 2025 (Liasse IS reel normal.pdf) sont deja etablis. C'est un retard par rapport a l'echeance legale.</li>
+    <li><strong>Parties liees multiples et concentrees sur le dirigeant.</strong> SCI Soldier Immo (loyer), SCI Majy Immo (mouvement de 76 000 EUR non documente par convention reglementee retrouvee), compte courant dirigeant. Un acquereur consolidera systematiquement ces flux hors perimetre de cession.</li>
+    <li><strong>BFR devenu negatif via la dette fournisseurs.</strong> La dette fournisseurs triple entre 2024 et 2025 (37 473 EUR a 123 546 EUR) au moment meme ou le resultat devient negatif : point a expliquer (rythme de paiement des sous-traitants, tension de tresorerie de fin d'annee, ou effet calendaire d'une grosse facture).</li>
+  </ul>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Recommandations</h3>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Recommandation</th><th>Urgence</th></tr></thead>
+  <tbody>
+  <tr><td>Faire approuver et deposer les comptes annuels 2025 par l'associe unique (PV DAU + affectation du resultat), au regard du depassement de l'echeance legale du 30/06/2026</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Finaliser la version definitive du rapport Reggio et lever la mention "provisoire" avant toute presentation a un repreneur</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Documenter par une convention ecrite le mouvement de 76 000 EUR avec la SCI Majy Immo (nature, date, remboursement)</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Reclasser l'ecriture "OSEILLE TV" (7 189 EUR) et clarifier la nature de la charge "location vehicule" (11 880 EUR)</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Documenter par ecrit une politique de remuneration du dirigeant alignee sur le marche, utile a la fois pour le retraitement EBITDA et pour la credibilite face a un repreneur</td><td><span class="badge warn">Important</span></td></tr>
+  </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<section class="txt bg-white">
+<div class="axe-block">
+  <span class="mini-kicker">Axe 2 / 4</span>
+  <h2>Juridique</h2>
+  <p>La structure juridique francaise de GEOZEY est simple et a jour. Le point de vigilance majeur de cet axe est l'existence d'une holding a Hong Kong incorporee tres recemment, dont le role vis-a-vis de GEOZEY SASU n'est pas documente dans la data room.</p>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Ce qui est sain</h3>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Element</th><th>Constat</th><th>Piece</th></tr></thead>
+  <tbody>
+  <tr><td>Statuts</td><td>SASU au capital de 1 000 EUR, siege 11 rue Pertinax 06000 Nice, a jour au 16/03/2023, objet social couvrant l'ingenierie, le conseil et la formation</td><td>GEOZEY - STATUTS A JOUR AU 16.03.2023.pdf</td></tr>
+  <tr><td>Kbis</td><td>RCS Nice 889 313 144, immatriculation 23/09/2020, president Yacine Djebrouni, extrait a jour au 22/09/2025</td><td>Extrait KBIS - GEOZEY - 22_09_2025.pdf</td></tr>
+  <tr><td>Marque</td><td>Marque verbale "GEOZEY" deposee a l'INPI le 06/03/2023, n. 4942710, classes 35 (portage salarial), 36 (immobilier), 41 (formation), 42 (etudes techniques), extension Polynesie francaise</td><td>Depot marque INPI GEOZEY - 06.03.2023.pdf</td></tr>
+  <tr><td>Historique juridique</td><td>La societe a ete immatriculee en 2020 sous la denomination UNITY CONSULTING (meme SIRET 889 313 144) avant de devenir GEOZEY courant 2023 ; coherent avec la mise a jour des statuts et le depot de marque de mars 2023</td><td>Contrats Proelan 2021-2023 signes "Unity Consulting SASU" ; Contrat commande Mojtaba (PMO SAS) signe "UNITY Consulting Manager"</td></tr>
+  </tbody>
+  </table>
+  </div>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Point d'attention majeur : la holding Hong Kong</h3>
+  <p>Le dossier Juridique Corporate contient un sous-dossier "01.2 Holding Hong Kong" avec trois pieces : le certificat d'incorporation, le formulaire NNC1 et les statuts (Articles of Association) de <strong>GEOZEY Limited</strong>, societe de droit hongkongais.</p>
+  <ul class="dd-list">
+    <li><strong>Incorporation tres recente :</strong> certificat delivre le 24/10/2025 (Certificate of Incorporation - HK - 24.10.2025.pdf), soit moins d'un an avant la presente synthese.</li>
+    <li><strong>Actionnaire fondateur unique :</strong> Yacine Djebrouni, a titre personnel (et non GEOZEY SASU), pour 10 000 actions ordinaires de 1 HKD, entierement liberees (Form NNC1 - Incorporation Form HK.pdf). GEOZEY Limited n'est donc pas juridiquement une filiale de GEOZEY SASU sur les pieces disponibles, mais une structure personnelle parallele du dirigeant.</li>
+    <li><strong>Objet declare :</strong> "Activities of head offices; management and management consultancy activities, such as company secretary services" ; secretariat de societe assure par un prestataire local (Athenasia Consulting Limited).</li>
+    <li><strong>Flux deja evoques dans le suivi de gestion :</strong> le fichier Suivi Exercice Fiscal 2025.xlsx fait apparaitre une colonne "Geozey Limited HKG" au sein des lignes de sous-traitance/charges, avec un montant de 16 750 EUR sur la periode de decembre 2025, soit dans le mois suivant l'incorporation de la structure. Ce point merite d'etre verifie et documente : aucune convention de facturation, de management fees ou de prestations intra-groupe entre GEOZEY SASU et GEOZEY Limited n'a ete retrouvee dans la data room.</li>
+  </ul>
+  <div class="warnbox">
+    <h3>Ce qu'un acquereur en dira</h3>
+    <p style="font-size:15px;line-height:1.6;margin:0">Une structure offshore recente, detenue personnellement par le dirigeant et deja associee a des flux financiers dans le suivi de gestion de la cible, sans contrat intra-groupe documente, sans lien capitalistique avec GEOZEY SASU et sans explication de son objet economique, est un point que tout repreneur serieux mettra au centre de sa due diligence. Il posera trois questions : pourquoi cette structure existe, si elle a vocation a capter tout ou partie du chiffre d'affaires ou de la clientele de GEOZEY, et si elle doit etre neutralisee (cession, dissolution ou engagement contractuel) comme condition suspensive de la cession.</p>
+  </div>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Contrats clients et sous-traitance : dependance au dirigeant et clauses transferees</h3>
+  <p>Le referentiel reconstitue le 31/07 a partir de 195 contrats identifie 19 societes clientes et un modele de sous-traitance en cascade (Geozey intervient tantot comme donneur d'ordre, tantot comme sous-traitant). La lecture directe de plusieurs contrats confirme des points de vigilance juridiques classiques d'une societe de conseil mono-dirigeant :</p>
+  <ul class="dd-list">
+    <li><strong>Contrat-cadre EKIUM (groupe SNEF)</strong>, reference 24-001, signe par Yacine Djebrouni en qualite de President, comporte un article 21 "Clause de non-sollicitation et de non-concurrence" et un article 18 "Confidentialite" qui engagent GEOZEY dans la duree, potentiellement au-dela d'une cession (GEOZEY - 24-001 - Contrat Cadre de prestations de service signe 2 parties.pdf).</li>
+    <li><strong>Contrat Veolia / Arianeo</strong> (projet de 200 M EUR selon la note commerciale interne), signe le 15/01/2024, personnalise au nom de Yacine Djebrouni et definissant une clause de conflit d'interets large incluant les societes controlees par le "Prestataire" (20240115 Contrat Yacine DJEBROUNI - v2.0.pdf).</li>
+    <li><strong>Contrats de formation COOPIL</strong> (Interforum 2024, Cegelec P6 2025, Technicatome P6 2024 et 2026) comportent chacun un article 4 imposant a Yacine Djebrouni / GEOZEY une clause de non-concurrence de 24 mois vis-a-vis de COOPIL aupres du client final forme. Cette obligation continuera de lier la societe apres une cession, sauf information et accord de COOPIL.</li>
+    <li><strong>Concentration client desormais quantifiee, voir l'axe financier.</strong> L'analyse du FEC 2023 chiffre la concentration client a 93,5 % du CA sur trois clients (EKIUM 52,2 %, Project Management Organisation 30,6 %, Bourbon Offshore Gaia 10,7 %), le premier facteur de risque du dossier pour un acquereur. EKIUM apparait comme client historique et recurrent (missions depuis 2020, plusieurs freelances positionnes en continu).</li>
+  </ul>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">NDA et clauses de non-concurrence des freelances : profondeur insuffisante</h3>
+  <p>Le dossier "Confidentialite et NDA" de la data room ne contient qu'<strong>une seule piece</strong> : l'engagement de confidentialite signe par Yacine Djebrouni lui-meme le 17/09/2024 dans le cadre d'une mission COOPIL chez Interforum (Engagement de Confidentialite Yacine.pdf). Il s'agit d'un engagement du dirigeant envers un donneur d'ordre, et non d'un NDA type impose par GEOZEY a ses propres freelances ou sous-traitants.</p>
+  <p>Dans le dossier "Freelances et Ressources", les pieces retrouvees (contrats Proelan 2021-2023, contrat PMO SAS / Mojtaba 2022-2023) montrent systematiquement GEOZEY (alors Unity Consulting) en position de <strong>sous-traitant</strong> d'un donneur d'ordre, jamais en position de donneur d'ordre imposant ses propres clauses de confidentialite ou de non-concurrence a un freelance qu'elle sous-traite. Aucun contrat-type "GEOZEY vers freelance" avec clause de non-concurrence, de non-sollicitation du client final ou de propriete intellectuelle n'a ete identifie dans la data room.</p>
+  <div class="warnbox">
+    <h3>Ce qu'un acquereur en dira</h3>
+    <p style="font-size:15px;line-height:1.6;margin:0">Sur un modele ou 517 a 588 k EUR de couts freelances sont engages chaque annee, l'absence de contrat-type documente proteger GEOZEY (confidentialite des donnees client, non-sollicitation, non-concurrence, cession de propriete intellectuelle) est un risque direct de desintermediation : un freelance positionne chez EKIUM ou Veolia via GEOZEY pourrait en theorie etre sollicite directement par le client final sans recours contractuel documente. C'est un point de vigilance qui pese aussi sur la clause de non-sollicitation qu'EKIUM impose a GEOZEY : si GEOZEY ne repercute pas cette clause vers ses propres sous-traitants, elle porte seule le risque de manquement.</p>
+  </div>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Recommandations</h3>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Recommandation</th><th>Urgence</th></tr></thead>
+  <tbody>
+  <tr><td>Clarifier par ecrit la relation entre GEOZEY SASU et GEOZEY Limited (Hong Kong) : objet economique, convention de facturation le cas echeant, position dans le perimetre de cession</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Deployer un contrat-type freelance GEOZEY (confidentialite, non-sollicitation du client final, non-concurrence, propriete intellectuelle) et le faire signer retroactivement par les freelances actifs</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Cartographier les clauses de non-concurrence et de non-sollicitation deja souscrites par GEOZEY (EKIUM, COOPIL) pour anticiper leur traitement en cession (changement de controle, information du cocontractant)</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Documenter par ecrit un plan de diversification client pour reduire la concentration mesuree a 93,5 % sur trois comptes en 2023 (analyse FEC)</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Verifier l'existence de clauses de changement de controle dans les contrats-cadres majeurs (EKIUM en particulier)</td><td><span class="badge off">Conseille</span></td></tr>
+  </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<section class="txt bg-light">
+<div class="axe-block">
+  <span class="mini-kicker">Axe 3 / 4</span>
+  <h2>Fiscal</h2>
+  <p>GEOZEY est soumise a l'impot sur les societes au regime reel normal. Les liasses fiscales 2023, 2024 et 2025 sont presentes dans la data room et coherentes avec les comptes annuels. Aucun redressement ni controle fiscal en cours n'a ete signale dans les pieces examinees.</p>
+
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Exercice</th><th>Benefice imposable au taux normal</th><th>Benefice imposable a 15 pourcent</th><th>Piece</th></tr></thead>
+  <tbody>
+  <tr><td>2023</td><td>67 503 EUR</td><td>42 500 EUR</td><td>LIASSE FISCALE GEOZEY 2023.pdf</td></tr>
+  <tr><td>2024</td><td>24 959 EUR</td><td>42 500 EUR</td><td>GEOZEY - LIASSE FISCALE 2024.pdf</td></tr>
+  <tr><td>2025</td><td>0 EUR</td><td>1 030 EUR</td><td>Liasse IS reel normal .pdf</td></tr>
+  </tbody>
+  </table>
+  </div>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Points d'attention</h3>
+  <ul class="dd-list">
+    <li><strong>Aucun retraitement certain identifie par l'analyse FEC.</strong> C'est en soi un point plutot rassurant (pas d'indice de charges fictives ou de sous-facturation systematique), mais plusieurs elements probables restent a trancher avec l'expert-comptable (location vehicule 11 880 EUR, classement OSEILLE TV).</li>
+    <li><strong>Loyer verse a une partie liee (SCI Soldier Immo).</strong> Un loyer verse a une SCI detenue par le dirigeant expose, en cas de loyer surevalue par rapport au marche locatif local, a un risque de requalification en acte anormal de gestion. Aucune expertise de loyer de marche n'a ete retrouvee dans la data room.</li>
+    <li><strong>Remuneration du dirigeant en forte baisse depuis 2023, jugee sous le marche.</strong> Elle passe de 88 345 EUR en 2023 a 33 251 EUR en 2025, charges sociales comprises (analyse FEC 2023), soit une division par plus de deux et demi ; 20 862 EUR bruts en 2024 selon le PV DAU du 5/05/2025. Ce n'est donc pas un niveau structurellement bas mais une baisse marquee sur la periode recente, qui peut, en cas de controle, interroger sur la realite de la contrepartie de services rendus par les societes liees (SCI notamment) ou sur l'equilibre global de la remuneration du dirigeant (dividendes 2024 de 197 143 EUR vs salaire tres inferieur).</li>
+    <li><strong>Compte courant d'associe non remunere.</strong> Solde de 75 676,69 EUR fin 2023 et 67 779,02 EUR fin 2024 : une avance non remuneree de cette ampleur peut, selon les cas, etre requalifiee fiscalement si elle traduit un avantage occulte. Elle est correctement divulguee en convention reglementee, ce qui limite le risque mais n'efface pas le sujet.</li>
+    <li><strong>Exercice 2025 en deficit fiscal quasi nul (base 15 pourcent de 1 030 EUR).</strong> A rapprocher du point financier sur la baisse de rentabilite.</li>
+  </ul>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Recommandations</h3>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Recommandation</th><th>Urgence</th></tr></thead>
+  <tbody>
+  <tr><td>Faire etablir par l'expert-comptable une note ecrite tranchant le statut des retraitements probables (location vehicule, classement OSEILLE TV)</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Documenter le caractere de marche du loyer SCI Soldier Immo (comparable locatif ou attestation d'agence)</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Formaliser une politique de remuneration du dirigeant coherente avec le marche PMO/conseil, en amont d'une revue fiscale par un repreneur</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Solliciter une attestation de vigilance fiscale et sociale a jour a joindre a la data room repreneur</td><td><span class="badge off">Conseille</span></td></tr>
+  </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<section class="txt bg-white">
+<div class="axe-block">
+  <span class="mini-kicker">Axe 4 / 4</span>
+  <h2>Social</h2>
+  <p>Le modele social de GEOZEY repose structurellement sur tres peu de salaries et un recours massif a des freelances positionnes chez les clients finaux, pour un cout de 517 a 588 k EUR par an selon l'analyse FEC 2024-2025. Les comptes de resultat confirment la faiblesse de la masse salariale directe : salaires et traitements de 62 575 EUR en 2023, 20 862 EUR en 2024, 24 120 EUR en 2025 (essentiellement la remuneration du dirigeant), sans ligne d'effectif salarie significatif visible dans les comptes deposes.</p>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Ce qui est sain</h3>
+  <ul class="dd-list">
+    <li>Modele economique a faibles charges fixes de personnel, donc peu de passif social lourd (indemnites de licenciement, provisions pour conges payes) a la difference d'une structure fortement salariee.</li>
+    <li>Pas d'anomalie de charges sociales relevee par l'analyse FEC.</li>
+  </ul>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Points d'attention</h3>
+  <ul class="dd-list">
+    <li><strong>Dependance operationnelle totale au dirigeant.</strong> Sans effectif salarie de production significatif, la vente, la relation client (EKIUM, Veolia, COOPIL) et le pilotage des freelances reposent sur Yacine Djebrouni. C'est le risque homme-cle central de ce dossier, deja visible dans l'axe juridique (contrats personnalises a son nom) et dans l'axe financier (remuneration et comptes courants).</li>
+    <li><strong>Requalification potentielle des freelances.</strong> Un volume eleve de sous-traitance individuelle en cascade, sans les contrats-types de protection identifies a l'axe juridique, expose a un risque de requalification en salariat deguise si la subordination economique ou l'exclusivite de fait de certains freelances etait demontree. Aucune analyse de ce risque n'a ete retrouvee dans la data room.</li>
+    <li><strong>CDI de chantier evoques mais non documentes.</strong> Le passage a des CDI de chantier est mentionne comme une orientation envisagee par la direction, sans piece contractuelle ou etude d'impact social/financier retrouvee dans la data room a ce stade.</li>
+    <li><strong>Absence de cadre contractuel freelance standardise</strong> (deja souleve a l'axe juridique) : c'est aussi un sujet social, car il conditionne la capacite de l'acquereur a securiser la continuite des equipes projet apres la cession.</li>
+  </ul>
+
+  <h3 style="font-weight:400;font-size:22px;margin-top:36px">Recommandations</h3>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Recommandation</th><th>Urgence</th></tr></thead>
+  <tbody>
+  <tr><td>Faire realiser une revue de requalification du statut des freelances recurrents (criteres de subordination, exclusivite de fait)</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Formaliser un plan de reduction de la dependance au dirigeant (delegation commerciale, second point de contact chez les clients cles)</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Chiffrer et documenter l'hypothese CDI de chantier avant d'en faire un argument de cession</td><td><span class="badge off">Conseille</span></td></tr>
+  </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="mini-kicker">Synthese transverse</span>
+  <h2>Recommandations de mise en conformite, par urgence</h2>
+  <p style="max-width:820px">Vue consolidee des actions identifiees dans les quatre axes. Le degre d'urgence tient compte a la fois du risque juridique/fiscal intrinseque et de l'impact probable sur la perception d'un repreneur en phase de data room.</p>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Recommandation</th><th>Axe</th><th>Urgence</th></tr></thead>
+  <tbody>
+  <tr><td>Approuver et deposer les comptes annuels 2025 (echeance legale deja depassee au 30/06/2026)</td><td>Financier</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Finaliser et lever le caractere provisoire du rapport Reggio</td><td>Financier</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Clarifier par ecrit la relation entre GEOZEY SASU et GEOZEY Limited (Hong Kong)</td><td>Juridique</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Auditer le risque de requalification des freelances recurrents</td><td>Social</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Documenter le mouvement de 76 000 EUR avec la SCI Majy Immo</td><td>Financier</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Deployer un contrat-type freelance (confidentialite, non-concurrence, PI)</td><td>Juridique / Social</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Cartographier les clauses de non-concurrence et de changement de controle deja souscrites</td><td>Juridique</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Engager un plan de diversification client pour reduire la concentration mesuree a 93,5 % sur trois comptes en 2023 (analyse FEC)</td><td>Juridique / Commercial</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Documenter le caractere de marche du loyer SCI Soldier Immo</td><td>Fiscal</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Formaliser une politique de remuneration du dirigeant alignee marche</td><td>Fiscal / Financier</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Reclasser les ecritures OSEILLE TV et location vehicule</td><td>Financier / Fiscal</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Chiffrer l'hypothese CDI de chantier</td><td>Social</td><td><span class="badge off">Conseille</span></td></tr>
+  </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="mini-kicker">Gap analysis</span>
+  <h2>Pieces attendues et non retrouvees dans la data room</h2>
+  <p>Cette liste est un des livrables les plus utiles de la due diligence interne : elle indique au cedant les pieces a produire avant l'ouverture d'une data room repreneur.</p>
+  <div class="doc-table">
+  <table>
+  <thead><tr><th>Piece manquante</th><th>Impact</th><th>Urgence</th></tr></thead>
+  <tbody>
+  <tr><td>PV d'approbation des comptes 2025 et decision d'affectation du resultat</td><td>Non-conformite au delai legal de 6 mois ; bloquant pour toute presentation a un repreneur</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Convention ecrite ou toute piece expliquant la relation GEOZEY SASU / GEOZEY Limited (Hong Kong)</td><td>Zone grise juridique et fiscale majeure identifiee dans ce document</td><td><span class="badge ko">Urgent</span></td></tr>
+  <tr><td>Contrats-types freelance GEOZEY (confidentialite, non-concurrence, PI) signes par les intervenants actifs</td><td>Absence de protection juridique du modele de sous-traitance en cascade</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Version definitive (non provisoire) du rapport Reggio</td><td>Le chiffre EBITDA retraite reste, a ce stade, un chiffre de travail</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Convention reglementee ou justificatif documentant le mouvement de 76 000 EUR avec la SCI Majy Immo</td><td>Flux avec partie liee non explique dans les PV lus</td><td><span class="badge warn">Important</span></td></tr>
+  <tr><td>Attestation de loyer de marche pour les locaux loues a la SCI Soldier Immo</td><td>Risque d'acte anormal de gestion en cas de controle fiscal</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Contrats et NDA au-dela de la piece unique retrouvee dans le dossier "Confidentialite et NDA"</td><td>Le dossier NDA de la data room ne contient qu'un seul document a ce jour</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Piece ou etude relative au projet de CDI de chantier</td><td>Orientation citee mais non documentee</td><td><span class="badge off">Conseille</span></td></tr>
+  <tr><td>Attestations de vigilance URSSAF et fiscale a jour</td><td>Pieces standard de data room repreneur, non retrouvees dans le perimetre examine</td><td><span class="badge off">Conseille</span></td></tr>
+  </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x Alvo , Synthese de due diligence interne, Sprint 1 , aout 2026 , Document de travail confidentiel, ne pas diffuser hors des parties a la mission</p>
+</footer>
+
+</body>
+</html>
