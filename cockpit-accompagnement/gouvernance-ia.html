@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gouvernance IA, Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<style>
+.page-hero{padding:150px 140px 80px}
+.txt{padding:70px 140px}
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
+.doc-table table{width:100%;border-collapse:collapse;font-size:14.5px}
+.doc-table thead tr{background:var(--dark);color:#fff}
+.doc-table thead th{padding:14px 16px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
+.doc-table tbody td{padding:14px 16px;vertical-align:top;line-height:1.55}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#1A5E3A}
+.badge.warn{background:#F6E7C6;color:#8a5200}
+.badge.ko{background:#F4D7D3;color:#AA1C00}
+.badge.off{background:#DCE7F5;color:#003E8A}
+.badge.ember{background:var(--ember);color:#fff}
+.badge.neutre{background:var(--card);color:var(--ash)}
+.rule-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:13px;padding:36px 40px;margin:26px 0}
+.rule-box p{color:#fff;font-size:19px;line-height:1.6;max-width:760px}
+.rule-box .kicker{color:var(--ember)}
+.note-src{font-size:13px;color:var(--ash);max-width:780px;line-height:1.6}
+.note-src a{color:var(--ash);text-decoration:underline}
+.src-list{list-style:none;padding:0;margin:18px 0;font-size:14px;line-height:1.9;color:var(--ash)}
+.src-list a{color:var(--dark)}
+ol.numbered{padding-left:22px;line-height:1.8;font-size:16px;max-width:780px}
+ol.numbered li{margin-bottom:10px}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Gouvernance IA, Geozey SASU</span>
+  <h1>Cadre de gouvernance de l'intelligence artificielle</h1>
+  <p class="lead">Livrable contractuel du Sprint 2. Cartographie des usages, classification des données, principe de décision, garde-fous, registre RGPD et positionnement au regard du règlement européen sur l'IA. Document interne, non public, à jour au 18 août 2026.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">Cadrage</span>
+  <h2>Pourquoi ce document</h2>
+  <p>Geozey exploite l'IA à trois endroits précis de son activité : un moteur de matching explicable entre missions et profils, un formulaire de qualification des candidatures sur le site public, et un usage d'assistants IA par les personnes de l'équipe pour produire, rédiger et vérifier du travail. Ce document fixe, pour chacun de ces usages, ce qui est déjà en place, ce qui reste à faire, et la règle qui ne se négocie pas : une IA chez Geozey propose, elle ne décide jamais d'une personne. Il sert de base au registre RGPD de la société et de première évaluation au regard du règlement européen sur l'intelligence artificielle.</p>
+  <p>Le périmètre couvert est celui de l'application métier à trois rôles (administrateur, client maître d'oeuvre, freelance) livrée en palier A le 04/08/2026 sur <a href="https://geozey.com/app">geozey.com/app</a>, hébergée sur Vercel avec une base Supabase geozey-core dans l'Union européenne, ainsi que le site public geozey.com et son formulaire de candidature.</p>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker">1. Cartographie</span>
+  <h2>Les usages d'IA dans la société</h2>
+  <p>Quatre usages actifs ou en cours de cadrage, chacun avec son niveau d'autonomie et son responsable désigné.</p>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Usage</th><th>Sur quelles données</th><th>Niveau d'autonomie</th><th>Qui en répond</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Moteur de matching</strong>, barème explicable à dix axes, deux critères éliminatoires</td>
+        <td>Missions (Boond, saisie interne), profils du vivier (prospects_sourcing, profils_sourcing), écart de TJM</td>
+        <td><span class="badge off">propose</span> classe et argumente un rapprochement, ne décide jamais d'un envoi ni d'une exclusion</td>
+        <td>Yacine Djebrouni, administrateur Geozey</td>
+      </tr>
+      <tr>
+        <td><strong>Formulaire de qualification</strong> et dépôt de CV sur le site public</td>
+        <td>Identité, expérience, TJM, CV déposé (bucket candidatures-cv), coordonnées</td>
+        <td><span class="badge off">automatisé sans jugement</span> enregistre la donnée et notifie, ne filtre ni ne score personne</td>
+        <td>Yacine Djebrouni, propriétaire de la donnée collectée</td>
+      </tr>
+      <tr>
+        <td><strong>Assistants IA de production</strong> (rédaction, code, sourcing, synthèse) utilisés par l'équipe egery pour le compte de Geozey</td>
+        <td>Contenus du site, code de l'application, prospection B2B publique, mémoire de gouvernance</td>
+        <td><span class="badge warn">propose sous supervision</span> tout envoi, toute publication et toute clé restent un geste humain</td>
+        <td>Aurélien (egery), sous mandat écrit de Yacine Djebrouni</td>
+      </tr>
+      <tr>
+        <td><strong>Assistant IA grand public</strong> (usage individuel futur, Yacine et futur commercial)</td>
+        <td>Aucune donnée client ni CV ne doit y transiter, cf. règle 5</td>
+        <td><span class="badge ko">interdit sans cadrage</span> hors outil contractualisé et hébergé de façon documentée</td>
+        <td>Chaque utilisateur, individuellement</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">2. Classification</span>
+  <h2>Les données traitées</h2>
+  <p>Quatre familles de données, chacune avec sa base légale, sa durée de conservation proposée et son lieu d'hébergement réel.</p>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Famille de données</th><th>Base légale</th><th>Durée de conservation</th><th>Hébergement</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Données de candidats</strong> : identité, CV, expérience, TJM, disponibilité, motifs d'exclusion cités</td>
+        <td>Mesures précontractuelles prises à la demande de la personne (article 6.1.b RGPD) et intérêt légitime pour le vivier</td>
+        <td>2 ans sans contact ni mise à jour, recommandation CNIL en matière de recrutement</td>
+        <td>Supabase geozey-core, Union européenne. Bucket candidatures-cv non public</td>
+      </tr>
+      <tr>
+        <td><strong>Données de clients</strong> : contacts des maîtres d'oeuvre, missions, échanges commerciaux, prospects sourcing</td>
+        <td>Intérêt légitime pour la prospection B2B, exécution du contrat une fois la mission signée</td>
+        <td>3 ans à compter du dernier contact utile, sans signature de mission</td>
+        <td>Supabase geozey-core, Union européenne</td>
+      </tr>
+      <tr>
+        <td><strong>Données financières</strong> : facturation, TJM contractuels, marges, flux bancaires (module DAF Qonto)</td>
+        <td>Exécution du contrat et obligation légale comptable et fiscale</td>
+        <td>10 ans, durée légale de conservation des pièces comptables en France</td>
+        <td>Onglet Finance de l'application, réservé au rôle administrateur. Qonto et Supabase geozey-core</td>
+      </tr>
+      <tr>
+        <td><strong>Données publiques</strong> : sourcing de prospects et de profils depuis des sources professionnelles ouvertes</td>
+        <td>Intérêt légitime, prospection B2B encadrée par le considérant 47 du RGPD</td>
+        <td>3 ans, avec source et date de collecte obligatoires sur chaque ligne (contrainte de base tenue)</td>
+        <td>Supabase geozey-core, Union européenne</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note-src">Point de vigilance porté au dossier : la clé Qonto vit en variable d'environnement Vercel, choix tranché par Yacine contre la recommandation initiale de placement en vault Supabase. Il reste à vérifier que le projet Vercel qui porte l'application appartient bien à Geozey et non à egery, pour qu'une clé bancaire du client ne vive jamais sur une infrastructure qui n'est pas la sienne.</p>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker">3. Principe de décision</span>
+  <h2>Ce qu'une IA peut faire, et ce qu'elle ne fait jamais</h2>
+  <div class="rule-box">
+    <span class="kicker">La règle</span>
+    <p>Chez Geozey, le moteur de matching propose. Il ne décide jamais. Un score, un classement ou une alerte d'écart de TJM sont des arguments soumis à une personne, jamais une conclusion. La personne qui tranche est toujours identifiée, toujours humaine, et toujours responsable de sa décision.</p>
+  </div>
+  <p style="color:#fff;max-width:780px;line-height:1.7">Trois niveaux, sans zone grise.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Ce qu'une IA peut décider seule</strong> : rien qui affecte une personne. Elle peut classer une candidature dans une catégorie technique, calculer un écart de TJM, structurer une donnée déposée, envoyer une notification interne de nouveau dossier.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Ce qu'une IA propose sans décider</strong> : un rapprochement mission et profil noté sur dix axes, une alerte d'écart de TJM signalée et jamais convertie en score, une suggestion de contenu ou de code que l'humain relit avant publication.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Ce qui reste toujours humain</strong> : écarter un profil du vivier, envoyer une donnée à un tiers, manipuler une clé ou un mot de passe, valider un contenu public, trancher un arbitrage commercial ou financier.</p>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker">4. Garde-fous techniques</span>
+  <h2>Ce qui est déjà en place</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Garde-fou</th><th>Où</th><th>État</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Cloisonnement par rôle : administrateur, client maître d'oeuvre, freelance</td>
+        <td>Table app_users et policies de l'application geozey.com/app</td>
+        <td><span class="badge ok">en place</span></td>
+      </tr>
+      <tr>
+        <td>RLS activée sur les tables de sourcing, avec contrainte source et date de collecte non nulles</td>
+        <td>Supabase geozey-core, tables prospects_sourcing et profils_sourcing</td>
+        <td><span class="badge ok">prouvée par test</span> vérifiée le 13 et le 14 août 2026 lors de la mise en place</td>
+      </tr>
+      <tr>
+        <td>Bucket de dépôt de CV non public, policy de dépôt anonyme sans lecture pour le rôle anonyme</td>
+        <td>Bucket candidatures-cv, geozey-core</td>
+        <td><span class="badge ok">en place</span> limite 8 388 608 octets, PDF et Word uniquement</td>
+      </tr>
+      <tr>
+        <td>Quota d'appels API BoondManager avec cache local pour ne pas dépendre d'un appel en temps réel</td>
+        <td>Référentiel missions et ressources, palier de l'offre Boond</td>
+        <td><span class="badge warn">en place, sous tension</span> synchronisation à l'arrêt depuis le 04/08/2026, voir livrable B</td>
+      </tr>
+      <tr>
+        <td>Pas de score qui remplace l'humain : l'écart de TJM reste une alerte, jamais une note</td>
+        <td>Moteur de matching, règle de conception</td>
+        <td><span class="badge ok">en place</span></td>
+      </tr>
+      <tr>
+        <td>Pages internes non indexées, adresses propres sans .html</td>
+        <td>Site public et cockpit interne</td>
+        <td><span class="badge ok">en place</span> vérifié en ligne le 15/08/2026</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">5. Règles pour les personnes</span>
+  <h2>Ce que Yacine et son futur commercial peuvent faire, ou non, avec un assistant IA</h2>
+  <ol class="numbered">
+    <li>Ne jamais coller une donnée client, un CV ou un extrait de vivier dans un outil grand public non cadré contractuellement (version gratuite d'un assistant IA, sans engagement de confidentialité ni hébergement documenté).</li>
+    <li>Utiliser un assistant IA uniquement dans un cadre contractualisé, avec un compte professionnel identifié, pour la rédaction, la recherche ou la structuration d'un contenu qui ne contient pas de donnée personnelle sensible.</li>
+    <li>Ne jamais saisir, coller ou faire manipuler une clé, un mot de passe ou un jeton par un agent IA. La saisie d'un identifiant est toujours un geste humain, fait dans l'interface officielle du service concerné.</li>
+    <li>N'écarter aucun profil du vivier sur une supposition. Le motif d'exclusion doit être une phrase de la personne elle-même, datée et citée, jamais une déduction de l'IA ni de l'humain.</li>
+    <li>Ne jamais inventer un chiffre. Toute donnée chiffrée présentée à un client ou publiée doit être sourcée et vérifiable.</li>
+    <li>N'envoyer aucune donnée à un tiers, y compris à un outil d'IA, sans accord écrit préalable de la personne concernée ou du client.</li>
+    <li>Signaler immédiatement toute IA qui semble avoir pris une décision (exclusion, envoi, publication) au lieu de la proposer : c'est un incident de gouvernance, pas un détail technique.</li>
+  </ol>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker">6. Traçabilité</span>
+  <h2>Ce qui est journalisé</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Objet journalisé</th><th>Où</th><th>Durée</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Chaque dossier de candidature et sa notification par courriel</td>
+        <td>Table notifications_envoyees, Supabase geozey-core</td>
+        <td>12 mois glissants, proposé</td>
+      </tr>
+      <tr>
+        <td>Chaque ligne de sourcing avec sa source et sa date de collecte</td>
+        <td>Tables prospects_sourcing et profils_sourcing, contrainte non nulle</td>
+        <td>Durée de vie de la ligne, soit 3 ans</td>
+      </tr>
+      <tr>
+        <td>Chaque motif d'exclusion d'un profil, cité et daté</td>
+        <td>Fiche du profil concerné, base geozey-core</td>
+        <td>Durée de vie de la fiche</td>
+      </tr>
+      <tr>
+        <td>Chaque modification de code du site et de l'application</td>
+        <td>Historique GitHub des dépôts geozey-site et geozey-app, horodaté et attribué</td>
+        <td>Illimitée, historique de version</td>
+      </tr>
+      <tr>
+        <td>Chaque décision et arbitrage de gouvernance de la lane Geozey</td>
+        <td>Mémoire de gouvernance cockpit_memory, projet Supabase egery cockpit</td>
+        <td>Illimitée, mémoire de pilotage</td>
+      </tr>
+      <tr>
+        <td>Chaque appel à l'API BoondManager</td>
+        <td>Quota et journal du compte Boond de Yacine, consultable côté Boond</td>
+        <td>Selon la politique de Boond, hors du périmètre Geozey</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">7. Registre des traitements</span>
+  <h2>Registre RGPD, version tenable par une TPE</h2>
+  <p>Six traitements couvrent l'intégralité de l'activité numérique de Geozey. Ce registre est la version simple à tenir à jour par Yacine, à revoir à chaque évolution notable de l'application ou du site.</p>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Traitement</th><th>Finalité</th><th>Base légale</th><th>Conservation</th><th>Destinataires</th></tr></thead>
+    <tbody>
+      <tr><td>Qualification et matching des candidatures</td><td>Évaluer l'adéquation entre un profil et une mission</td><td>Mesures précontractuelles, article 6.1.b</td><td>2 ans sans contact</td><td>Administrateur, client concerné selon l'étape</td></tr>
+      <tr><td>Vivier de profils freelances</td><td>Constituer une réserve de compétences PMO mobilisable</td><td>Intérêt légitime</td><td>3 ans depuis dernier contact</td><td>Administrateur</td></tr>
+      <tr><td>Sourcing de prospects maîtres d'oeuvre</td><td>Prospection commerciale B2B</td><td>Intérêt légitime</td><td>3 ans</td><td>Administrateur, futur commercial</td></tr>
+      <tr><td>Gestion des missions et facturation</td><td>Exécution des contrats et comptabilité</td><td>Exécution du contrat, obligation légale</td><td>10 ans</td><td>Administrateur, comptabilité</td></tr>
+      <tr><td>Référentiel Boond en cache</td><td>Alimenter le matching sans ressaisie</td><td>Exécution du contrat</td><td>Alignée sur Boond, cache rafraîchi</td><td>Administrateur</td></tr>
+      <tr><td>Notifications de nouveau dossier</td><td>Informer sans délai d'une candidature reçue</td><td>Intérêt légitime</td><td>12 mois</td><td>Administrateur</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker">8. Règlement européen sur l'IA</span>
+  <h2>Où se situe Geozey, précisément</h2>
+  <p style="color:#fff;max-width:780px;line-height:1.7">Le règlement (UE) 2024/1689 est entré en vigueur le 1er août 2024. Il classe à haut risque, par défaut, les systèmes d'IA destinés au recrutement ou à la sélection de personnes physiques, notamment pour analyser des candidatures et évaluer des candidats : c'est l'annexe III, point 4a. Un moteur de matching de profils entre directement dans cette catégorie.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Le point vérifié à la demande explicite du client</strong> : l'article 6 paragraphe 3 du règlement prévoit une exemption pour les systèmes de l'annexe III qui remplissent une tâche procédurale étroite, améliorent un travail humain déjà réalisé, auditent des décisions passées, ou préparent un travail sans évaluer personne. Le fait de proposer sans décider pourrait sembler qualifier Geozey pour cette exemption. Ce n'est pas le cas. Le même article ferme cette porte dès que le système pratique un profilage au sens de l'article 4 point 4 du RGPD, c'est à dire dès qu'il évalue ou prédit des aspects personnels d'un individu, notamment sa performance professionnelle. Le barème à dix axes qui note l'adéquation d'un profil à une mission constitue précisément ce profilage. La règle propose et ne décide jamais protège la qualité de la supervision humaine, exigée pour un système à haut risque, mais elle ne fait pas sortir Geozey de la classification à haut risque.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Classification retenue</strong> : le moteur de matching Geozey est un système à haut risque au sens de l'annexe III point 4a du règlement européen sur l'IA. La supervision humaine réelle, déjà en place, est une obligation qu'il faudra documenter, pas une exemption.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Calendrier</strong> : les obligations complètes pour les systèmes à haut risque de l'annexe III, initialement prévues au 2 août 2026, ont été reportées au 2 décembre 2027 par le règlement dit Digital Omnibus sur l'IA, adopté par le Parlement européen le 16 juin 2026 puis par le Conseil de l'Union européenne le 29 juin 2026. Geozey dispose donc d'un délai confirmé, pas d'une dispense. Les obligations de littératie IA des équipes, elles, sont applicables depuis le 2 février 2025 et concernent Geozey dès aujourd'hui.</p>
+  <p style="color:#fff;max-width:780px;line-height:1.7"><strong>Ce que cela impose concrètement à une TPE d'ici décembre 2027</strong> : un système de gestion des risques documenté, une gouvernance des données tracée (déjà largement engagée, voir section 6), une documentation technique du moteur de matching, une supervision humaine démontrable et journalisée (déjà en place par construction), une information des candidats sur le recours à un système d'IA, et un dispositif de signalement d'incident. Les sanctions en cas de manquement peuvent atteindre 15 millions d'euros ou 3 pour cent du chiffre d'affaires mondial pour une non-conformité administrative, et jusqu'à 35 millions d'euros ou 7 pour cent pour une violation grave, un plafond théorique pour une société de la taille de Geozey mais un signal de sérieux à prendre au mot.</p>
+  <p class="note-src" style="color:rgba(255,255,255,.65)">Sources, consultées le 18 août 2026 : Règlement (UE) 2024/1689, <a style="color:#fff" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">eur-lex.europa.eu</a>. Annexe III, point 4a, <a style="color:#fff" href="https://artificialintelligenceact.eu/annex/3/">artificialintelligenceact.eu/annex/3</a>. Report des obligations haut risque au 2 décembre 2027, Digital Omnibus adopté les 16 et 29 juin 2026, Quantic Avocats, article du 22 juillet 2026 mis à jour le 5 août 2026, <a style="color:#fff" href="https://www.quantic-avocats.com/2026/07/22/ai-act-digital-omnibus-report-obligations-haut-risque/">quantic-avocats.com</a>. Test de profilage de l'article 6 paragraphe 3, ActScope, article du 11 mai 2026, <a style="color:#fff" href="https://actscope.eu/guide/article-6-3-exemption-explained">actscope.eu/guide/article-6-3-exemption-explained</a>. Calendrier général et régime de sanctions, LaGazetteIA, article du 28 mars 2026, <a style="color:#fff" href="https://lagazetteia.fr/ia-generale/ai-act-application-aout-2026-obligations-amendes/">lagazetteia.fr</a>.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">9. Angles morts</span>
+  <h2>Ce qui manque encore, et l'urgence de chaque action</h2>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Angle mort</th><th>Action à mener</th><th>Urgence</th></tr></thead>
+    <tbody>
+      <tr><td>Synchronisation BoondManager interrompue depuis le 04/08/2026</td><td>Suivre la marche à suivre du livrable B, contacter le support Boond si besoin</td><td><span class="badge ko">urgent</span></td></tr>
+      <tr><td>Absence de notice d'utilisation du matching remise aux candidats</td><td>Rédiger une mention courte informant du recours à un système d'IA dans le formulaire de qualification</td><td><span class="badge warn">à traiter sous 30 jours</span></td></tr>
+      <tr><td>Registre des traitements non encore formalisé en dehors de ce document</td><td>Adopter formellement ce registre, le dater et le mettre à jour à chaque évolution</td><td><span class="badge warn">à traiter sous 30 jours</span></td></tr>
+      <tr><td>Vérification non faite de la propriété du projet Vercel portant la clé Qonto</td><td>Confirmer que le projet appartient à Geozey et non à egery</td><td><span class="badge warn">à traiter sous 30 jours</span></td></tr>
+      <tr><td>Aucune formation formelle à l'usage de l'IA pour Yacine et le futur commercial</td><td>Programmer une session courte de littératie IA, obligation déjà applicable depuis février 2025</td><td><span class="badge warn">à traiter sous 30 jours</span></td></tr>
+      <tr><td>Durées de conservation de ce document non encore automatisées (purge)</td><td>Mettre en place une purge ou un archivage programmé des données au delà des durées fixées section 2</td><td><span class="badge off">à planifier</span></td></tr>
+      <tr><td>Documentation technique du moteur de matching insuffisante pour l'échéance de décembre 2027</td><td>Ouvrir un chantier dédié courant 2027, dans la continuité de ce document</td><td><span class="badge neutre">planifié 2027</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery, gouvernance IA, Sprint 2, document produit le 18 août 2026, confidentiel</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Playbook commercial · Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<style>
+/* Complements document interne, dans la grammaire du site. Le site n a pas de tableaux. */
+.page-hero{padding:150px 140px 80px}
+.txt{padding:70px 140px}
+.txt .wide{max-width:1100px}
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:34px}
+.doc-table table{width:100%;border-collapse:collapse;font-size:15px}
+.doc-table thead tr{background:var(--dark);color:#fff}
+.doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
+.doc-table tbody tr:last-child{border-bottom:0}
+.doc-table tbody td{padding:14px 18px;vertical-align:top;line-height:1.55}
+.doc-table td.mono{font-family:'Roboto Mono',monospace;font-size:12px;color:var(--ash);white-space:nowrap}
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#1A5E3A}
+.badge.warn{background:#F6E7C6;color:#8a5200}
+.badge.ko{background:#F4D7D3;color:#AA1C00}
+.badge.off{background:#DCE7F5;color:#003E8A}
+.badge.ember{background:var(--ember);color:#fff}
+.badge.neutre{background:var(--card);color:var(--ash)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:34px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:34px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
+.rolecard,.script,.obj{background:var(--card);border-radius:13px;padding:28px 26px}
+.rolecard h3,.script h3,.obj h3{font-size:19px;font-weight:400;margin:10px 0 8px;line-height:1.3}
+.rolecard p,.obj p{font-size:14.5px;line-height:1.55;color:var(--ash)}
+.script{background:#fff;box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.script .canal{margin-bottom:14px}
+.script blockquote{font-size:15.5px;line-height:1.65;font-style:normal;border-left:3px solid var(--ember);padding-left:16px;margin:12px 0 0;color:var(--dark)}
+.prixcard{background:#fff;border-radius:13px;padding:34px 32px;box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.prixcard .prix{font-size:38px;font-weight:400;line-height:1;margin:12px 0 4px}
+.prixcard .prix small{font-size:14px;color:var(--ash)}
+.kvrow{display:flex;justify-content:space-between;gap:24px;padding:13px 0;border-bottom:1px solid rgba(30,30,30,.12);font-size:15px}
+.kvrow:last-child{border-bottom:0}
+.kvrow .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--ash);flex:0 0 260px;padding-top:3px}
+.kvrow .v{text-align:right;line-height:1.5}
+.note-mono{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--ash);margin-top:22px;line-height:1.7}
+.oncall{background:var(--ember);color:#fff;border-radius:13px;padding:30px 32px;margin-top:34px}
+.oncall .k{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.85}
+.oncall .big{font-size:34px;font-weight:400;margin:10px 0}
+@media(max-width:1100px){.page-hero{padding:130px 24px 60px}.txt{padding:56px 24px}.g2,.g3,.g4{grid-template-columns:1fr}.kvrow{flex-direction:column;gap:4px}.kvrow .k{flex:none}.kvrow .v{text-align:left}}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav>
+  <a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <div class="links" style="margin-right:24px"><a class="active" href="#" onclick="return false">Playbook commercial</a></div>
+</nav>
+
+<section class="page-hero ph-ember">
+  <span class="kicker">Playbook commercial · Geozey SASU · A lire avant ton premier appel</span>
+  <h1>Vendre du PMO industriel,<br>pas des CV.</h1>
+  <p class="lead">Ce document te rend autonome en une semaine. Pas de theorie, des scripts prets a dire au telephone et sur LinkedIn, les vrais chiffres de Geozey, et un seul chiffre a ne jamais oublier : la marge minimum a tenir sur chaque mission que tu signes.</p>
+</section>
+
+<section class="txt bg-white" id="metier">
+  <span class="kicker" style="color:var(--ember)">1 · Le metier</span>
+  <h2>Ce que Geozey vend, a qui, et pourquoi ca marche.</h2>
+  <p class="wide">Geozey place des consultants independants en sous-traitance derriere de grands maitres d oeuvre industriels. Ces consultants font trois choses : planification Primavera P6, controle de projet, document control. On les appelle des PMO, pour Project Management Organisation. Le TJM facture au client tourne autour de <strong>700 EUR</strong> par jour.</p>
+  <p class="wide">Les clients grands comptes de Geozey : EKIUM, SNEF, Veolia, Engie, Razel-Bec, Vinci, Bourbon. Les secteurs : nucleaire, oil and gas, energie, defense, grands travaux. Ce sont des chantiers longs, techniques, ou un planning qui derape coute tres cher.</p>
+
+  <div class="stats-inline wide" style="margin-top:38px">
+    <div class="stat"><span class="v">806 k€</span><span class="l">CA 2023</span></div>
+    <div class="stat"><span class="v">738 k€</span><span class="l">CA 2024</span></div>
+    <div class="stat"><span class="v">717 k€</span><span class="l">CA 2025</span></div>
+    <div class="stat"><span class="v">~800 k€</span><span class="l">Rythme annonce 2026, declaratif</span></div>
+  </div>
+
+  <h3 style="font-size:22px;font-weight:400;margin-top:44px">Pourquoi un maitre d oeuvre appelle Geozey plutot que de recruter</h3>
+  <div class="g3">
+    <div class="rolecard">
+      <span class="tag">Le chantier a une fin</span>
+      <h3>Un CDI, ca s embauche pour longtemps</h3>
+      <p>La mission dure 9 mois, 3 ans, parfois moins. Le maitre d oeuvre ne veut pas porter un salarie qu il devra reclasser ou licencier a la fin du chantier. Un consultant Geozey part quand la mission se termine.</p>
+    </div>
+    <div class="rolecard">
+      <span class="tag">Le recrutement est trop lent</span>
+      <h3>9 a 12 semaines pour un cadre</h3>
+      <p>C est le delai moyen pour recruter un cadre en France. Un planning qui derape n attend pas trois mois. Geozey propose un profil deja qualifie en quelques jours.</p>
+    </div>
+    <div class="rolecard">
+      <span class="tag">La competence est rare</span>
+      <h3>P6 certifie, experience nucleaire ou defense</h3>
+      <p>Ces profils sont peu nombreux et chers a former en interne. Il est plus simple de les louer au bon moment que de les creer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="txt bg-light" id="client-ideal">
+  <span class="kicker" style="color:var(--ember)">2 · Le client ideal</span>
+  <h2>Qui appeler, dans quelle societe, a quel poste.</h2>
+  <p class="wide">Les clients grands comptes de Geozey sont EKIUM, SNEF, Veolia, Engie, Razel-Bec, Vinci et Bourbon. Ce sont des maitres d oeuvre qui gagnent des marches et qui doivent armer une equipe planning et controle de projet a chaque nouveau chantier. Ce sont eux qu on cible en priorite.</p>
+
+  <div class="oncall wide">
+    <span class="k">A retenir avant tout</span>
+    <div class="big">EKIUM pese 52,2% du CA 2023</div>
+    <p style="font-size:15px;line-height:1.6;opacity:.95">Trois clients, EKIUM, Project Management Organisation et Bourbon Offshore Gaia, representaient a eux seuls 93,5% du chiffre d affaires en 2023. Ta mission n est pas seulement de vendre : c est de faire rentrer de NOUVEAUX clients dans le portefeuille, pas seulement du volume chez EKIUM. Chaque nouveau maitre d oeuvre signe reduit le risque de Geozey.</p>
+  </div>
+
+  <h3 style="font-size:22px;font-weight:400;margin-top:44px">Les postes qui decident chez un maitre d oeuvre</h3>
+  <div class="g4">
+    <div class="rolecard">
+      <span class="tag ember">Decideur</span>
+      <h3>Directeur de projet</h3>
+      <p>Il porte le chantier. C est lui qui sent en premier qu il manque un planificateur ou un controleur de projet.</p>
+    </div>
+    <div class="rolecard">
+      <span class="tag ember">Decideur</span>
+      <h3>Responsable planning</h3>
+      <p>Ton interlocuteur naturel. C est le pair metier de nos consultants, il sait exactement ce qu il cherche.</p>
+    </div>
+    <div class="rolecard">
+      <span class="tag ember">Decideur</span>
+      <h3>Responsable de contrat</h3>
+      <p>Il gere le budget du chantier et valide qu on peut faire appel a de la sous-traitance sur cette ligne.</p>
+    </div>
+    <div class="rolecard">
+      <span class="tag ember">Decideur</span>
+      <h3>Achats hors production</h3>
+      <p>Il referencie Geozey comme fournisseur. Un passage obligatoire chez certains grands comptes, a ne pas sauter.</p>
+    </div>
+  </div>
+</section>
+
+<section class="txt bg-dark" id="declencheur">
+  <span class="kicker" style="color:var(--ember)">3 · Le declencheur</span>
+  <h2>Le bon moment pour appeler, c est l attribution du marche.</h2>
+  <p class="wide">C est le coeur de la methode Geozey, et il faut le comprendre avant de decrocher un telephone. <strong>Geozey ne repond jamais a un appel d offres public.</strong> Il ne se bat pas pour gagner un marche. Il se place derriere celui qui vient de le gagner.</p>
+  <p class="wide">Quand un maitre d oeuvre comme EKIUM ou Razel-Bec decroche un chantier, il doit armer son equipe planning et controle de projet tres vite, souvent avant d avoir le temps de recruter. C est exactement ce moment la qu il faut reperer et appeler, pas trois mois plus tard quand l equipe est deja calee ailleurs.</p>
+
+  <div class="g2 wide">
+    <div class="rolecard" style="background:rgba(255,255,255,.08);color:#fff">
+      <span class="tag">A NE PAS FAIRE</span>
+      <h3 style="color:#fff">Repondre a un appel d offres public</h3>
+      <p style="color:rgba(255,255,255,.75)">Ce n est pas le modele Geozey. On y perd du temps face a des dizaines de concurrents, pour un marche qu on ne gagnera pas.</p>
+    </div>
+    <div class="rolecard" style="background:rgba(255,255,255,.08);color:#fff">
+      <span class="tag ember">A FAIRE</span>
+      <h3 style="color:#fff">Reperer qui vient de gagner un marche</h3>
+      <p style="color:rgba(255,255,255,.75)">Presse specialisee, communiques des maitres d oeuvre, LinkedIn, attributions de marches publics deja consultees. 244 prospects maitres d oeuvre sont deja sources et en base pour demarrer.</p>
+    </div>
+  </div>
+  <p class="wide note-mono" style="color:rgba(255,255,255,.6)">Reflexe simple : des qu un chantier nucleaire, energie, defense ou grands travaux est annonce comme attribue, tu identifies le maitre d oeuvre et tu appelles dans la semaine, avant que son equipe soit complete.</p>
+</section>
+
+<section class="txt bg-white" id="discours">
+  <span class="kicker" style="color:var(--ember)">4 · Le discours d approche</span>
+  <h2>Ce que tu dis, mot pour mot.</h2>
+  <p class="wide">Ton sobre. Pas commercial, pas insistant. Tu apportes une information utile, pas une offre. Deux profils d interlocuteurs, deux accroches differentes.</p>
+
+  <h3 style="font-size:20px;font-weight:400;margin-top:40px">Vers un maitre d oeuvre</h3>
+  <div class="g2 wide">
+    <div class="script">
+      <span class="tag canal">Telephone</span>
+      <blockquote>Bonjour [Prenom], je vous appelle parce que [Societe] vient de decrocher [nom du projet]. Sur ce type de chantier, monter l equipe planning et controle de projet est souvent le premier point de tension. Geozey met a disposition des consultants P6 et PMO deja rodes a votre secteur, disponibles sous quelques semaines. Vous avez un besoin de ce type sur ce projet ?</blockquote>
+    </div>
+    <div class="script">
+      <span class="tag canal">LinkedIn</span>
+      <blockquote>Bonjour [Prenom], felicitations pour [projet]. Geozey accompagne des maitres d oeuvre comme EKIUM et SNEF sur la planification Primavera P6 et le controle de projet, en sous-traitance. Si le sujet ressource se pose sur ce chantier, je peux vous envoyer deux profils disponibles rapidement.</blockquote>
+    </div>
+  </div>
+
+  <h3 style="font-size:20px;font-weight:400;margin-top:40px">Vers un freelance</h3>
+  <div class="g2 wide">
+    <div class="script">
+      <span class="tag canal">Telephone</span>
+      <blockquote>Bonjour [Prenom], je vois votre profil [planning P6 / controle de projet / document control]. Geozey place des consultants comme vous chez des grands comptes de l energie et de la defense, TJM autour de 700 euros selon la mission. On a plusieurs besoins ouverts en ce moment, dont un a Athenes et un a Marseille qui demarre en septembre. Ca vous interesse d en parler cinq minutes ?</blockquote>
+    </div>
+    <div class="script">
+      <span class="tag canal">LinkedIn</span>
+      <blockquote>Bonjour [Prenom], votre experience [P6 / controle de projet] correspond a un besoin en cours cote Geozey. On travaille en sous-traitance derriere des maitres d oeuvre comme EKIUM et SNEF, secteurs energie, nucleaire, defense. Interesse pour que je vous en dise plus ?</blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="txt bg-light" id="qualification">
+  <span class="kicker" style="color:var(--ember)">5 · La qualification</span>
+  <h2>Les questions a poser avant de proposer quoi que ce soit.</h2>
+  <p class="wide">Un besoin mal qualifie fait perdre du temps a tout le monde et abime la reputation de Geozey. Pose ces questions avant de chercher un profil.</p>
+
+  <div class="doc-table wide">
+    <table>
+      <thead><tr><th>Question</th><th>Pourquoi elle compte</th></tr></thead>
+      <tbody>
+        <tr><td>Duree de la mission</td><td>Determine si le profil doit etre disponible longtemps ou en depannage court</td></tr>
+        <tr><td>Site et mobilite</td><td>Sur site, hybride, a l etranger : ca elimine des profils tout de suite</td></tr>
+        <tr><td>Competence exacte</td><td>Planning, controle de projet, ou document control : ce ne sont pas les memes personnes</td></tr>
+        <tr><td>Logiciel impose</td><td>Primavera P6, quelle version : un mauvais outil disqualifie un bon profil</td></tr>
+        <tr><td>Date de demarrage</td><td>Une date ferme permet de sourcer vite. Une date floue est un signal d alerte</td></tr>
+        <tr><td>Budget jour</td><td>Le TJM que le client est pret a payer. Sans ce chiffre, impossible de verifier la marge, voir section 6</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:20px;font-weight:400;margin-top:44px">Ce qui disqualifie un besoin</h3>
+  <div class="g3">
+    <div class="obj"><h3>Budget trop bas</h3><p>Le budget jour ne permet pas de couvrir le cout du freelance et le plancher de marge, voir section 6. On ne signe pas a perte.</p></div>
+    <div class="obj"><h3>Pas de date ferme</h3><p>Un besoin sans date de demarrage claire est souvent un besoin qui n existe pas encore vraiment. On le suit, on ne le traite pas en urgence.</p></div>
+    <div class="obj"><h3>CDI deguise</h3><p>Si le client parle d integrer le consultant en interne a terme, c est un risque de requalification. On en parle a Yacine avant d avancer.</p></div>
+  </div>
+</section>
+
+<section class="txt bg-dark" id="marge">
+  <span class="kicker" style="color:var(--ember)">6 · La marge, section non negociable</span>
+  <h2>Le chiffre que tu dois connaitre mieux que ton propre nom.</h2>
+  <p class="wide">Le prix que tu factures au client moins ce que Geozey paie au freelance, c est la marge. C est elle qui fait vivre l entreprise, qui te paie toi, et qui paie Yacine. Un commercial qui signe une mission a une marge trop basse ne fait pas une bonne affaire : il fait perdre de l argent a Geozey, meme si le contrat est signe.</p>
+
+  <div class="stats-inline wide" style="margin-top:38px">
+    <div class="stat"><span class="v">35,9%</span><span class="l">Marge sur sous-traitance en 2023, niveau deja tenu</span></div>
+    <div class="stat"><span class="v">18,0%</span><span class="l">Marge en 2025, le niveau qui detruit de la valeur</span></div>
+  </div>
+  <p class="wide" style="margin-top:24px">C est LE sujet economique de Geozey. Entre 2023 et 2025, la marge sur sous-traitance s est effondree de 35,9% a 18,0%. Ce n est pas une question de volume, c est une question de prix mal tenu, mission apres mission. La bonne nouvelle : 35,9% a deja ete tenu par le passe, ce n est pas un objectif theorique.</p>
+
+  <h3 style="font-size:20px;font-weight:400;color:#fff;margin-top:44px">La regle a appliquer sur chaque mission</h3>
+  <p class="wide" style="color:rgba(255,255,255,.8)">Le plancher fixe par l analyse financiere interne de Geozey est de <strong>28% de marge minimum</strong>. En dessous de ce chiffre, tu ne signes pas sans validation de Yacine. Formule simple a retenir :</p>
+  <div class="oncall wide">
+    <span class="k">Formule</span>
+    <div class="big">TJM minimum a facturer = cout journalier du freelance / 0,72</div>
+    <p style="font-size:15px;line-height:1.6;opacity:.95">Exemple : un freelance demande 500 EUR par jour. TJM minimum a facturer au client : 500 / 0,72 = environ 694 EUR, arrondi a 700 EUR. C est exactement le TJM de reference de Geozey.</p>
+  </div>
+
+  <div class="doc-table wide" style="margin-top:40px">
+    <table>
+      <thead><tr><th>Niveau de marge</th><th>Sur un TJM facture de 700 EUR</th><th>Cout freelance</th><th>Marge par jour</th></tr></thead>
+      <tbody>
+        <tr><td>18,0% · niveau 2025, a fuir</td><td class="mono">700 EUR</td><td class="mono">574 EUR</td><td class="mono">126 EUR</td></tr>
+        <tr><td>28% · plancher a tenir</td><td class="mono">700 EUR</td><td class="mono">504 EUR</td><td class="mono">196 EUR</td></tr>
+        <tr><td>35,9% · niveau 2023, l objectif</td><td class="mono">700 EUR</td><td class="mono">~449 EUR</td><td class="mono">~251 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wide note-mono" style="color:rgba(255,255,255,.6)">Concret : signer a 18% au lieu du plancher de 28% coute environ 70 EUR de marge par jour facture. Sur une mission de 9 mois comme Ellinikon, environ 180 jours factures, ca represente plus de 12 000 EUR de marge perdue pour Geozey, sur une seule mission.</p>
+</section>
+
+<section class="txt bg-white" id="parcours">
+  <span class="kicker" style="color:var(--ember)">7 · Le parcours d une affaire</span>
+  <h2>De la detection a la facturation, qui fait quoi.</h2>
+  <p class="wide">Ce parcours s appuie sur le process officiel de Geozey formalise par Aurelien, voir section 12. Toi et Yacine n avez pas le meme role a chaque etape.</p>
+
+  <div class="doc-table wide">
+    <table>
+      <thead><tr><th>Etape</th><th>Ce qui se passe</th><th>Toi, le commercial</th><th>Yacine</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1 · Detection</td><td>Un marche vient d etre attribue a un maitre d oeuvre cible</td><td>Tu reperes le signal, tu crees la fiche dans Boond</td><td>Informe si le client est deja connu</td></tr>
+        <tr><td class="mono">2 · Premier contact</td><td>Appel ou message LinkedIn au bon interlocuteur</td><td>Tu appelles ou tu ecris, section 4</td><td>Non implique</td></tr>
+        <tr><td class="mono">3 · Qualification</td><td>Duree, site, competence, logiciel, date, budget jour</td><td>Tu poses les questions de la section 5, tu notes tout dans Boond</td><td>Tranche si le besoin est douteux</td></tr>
+        <tr><td class="mono">4 · Matching</td><td>On cherche le bon profil dans le vivier</td><td>Tu proposes 2 a 3 profils du vivier Boond</td><td>Il valide le choix final et le prix</td></tr>
+        <tr><td class="mono">5 · Devis et TJM</td><td>Le prix est fixe en respectant le plancher de marge</td><td>Tu fais une premiere proposition dans le plancher, section 6</td><td>Il valide si le prix sort du cadre standard</td></tr>
+        <tr><td class="mono">6 · Contrat</td><td>Devis client et contrat freelance signes</td><td>Tu transmets les elements</td><td>Il signe, contrat client et contrat freelance</td></tr>
+        <tr><td class="mono">7 · Suivi mission</td><td>Le freelance demarre et travaille sur site</td><td>Tu gardes le contact avec le client</td><td>Il suit le livrable et la relation client</td></tr>
+        <tr><td class="mono">8 · Facturation</td><td>Facture mensuelle envoyee au client</td><td>Ta remuneration se calcule sur le CA facture et encaisse</td><td>Il facture et encaisse</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="txt bg-light" id="outils">
+  <span class="kicker" style="color:var(--ember)">8 · Les outils</span>
+  <h2>Ou vit l information, et ce qui marche vraiment.</h2>
+
+  <div class="g2 wide">
+    <div class="rolecard">
+      <span class="tag ember">CRM et vivier</span>
+      <h3>BoondManager</h3>
+      <p>Toute fiche prospect, toute mission, tout profil freelance vit ici. C est la memoire de Geozey. Rien ne reste dans une tete ou dans WhatsApp : si ce n est pas dans Boond, ca n existe pas pour l entreprise.</p>
+    </div>
+    <div class="rolecard">
+      <span class="tag ember">Application metier</span>
+      <h3>Matching et suivi des missions</h3>
+      <p>C est l outil qui propose les meilleurs profils du vivier pour un besoin donne, et qui suit une mission une fois signee.</p>
+    </div>
+  </div>
+
+  <div class="oncall wide">
+    <span class="k">A savoir avant de choisir ton canal</span>
+    <div class="big">LinkedIn produit. Le formulaire du site ne produit pas encore.</div>
+    <p style="font-size:15px;line-height:1.6;opacity:.95">Le canal qui ramene vraiment des candidatures et des contacts aujourd hui, c est LinkedIn. Le formulaire de candidature du site sert pour les freelances qui arrivent d eux-memes, mais il ne genere pas encore de flux comparable. Ne compte pas dessus comme source principale, utilise LinkedIn en priorite.</p>
+  </div>
+
+  <h3 style="font-size:20px;font-weight:400;margin-top:44px">L etat du vivier aujourd hui</h3>
+  <div class="stats-inline wide" style="margin-top:20px">
+    <div class="stat"><span class="v">12</span><span class="l">Profils dans Boond, prets a proposer</span></div>
+    <div class="stat"><span class="v">126</span><span class="l">Profils sources et scores, dont 36 planning et 31 controle de projet</span></div>
+    <div class="stat"><span class="v">244</span><span class="l">Prospects maitres d oeuvre deja sources</span></div>
+  </div>
+
+  <h3 style="font-size:20px;font-weight:400;margin-top:44px">Les trois missions ouvertes des ta premiere semaine</h3>
+  <div class="doc-table wide">
+    <table>
+      <thead><tr><th>Mission</th><th>Duree</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Athenes, ingenieur genie civil et planning P6, tour Ellinikon Riviera pour Bouygues Batiment International</td><td class="mono">9 mois</td><td><span class="badge warn">Offre en relecture</span></td></tr>
+        <tr><td>Dunkerque, renfort PMO, usine de batteries pour vehicules electriques</td><td class="mono">3 ans</td><td><span class="badge off">Ouverte</span></td></tr>
+        <tr><td>Marseille, planificateur Primavera P6</td><td class="mono">Demarrage septembre</td><td><span class="badge ember">Urgent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="wide note-mono">Ces trois missions sont ouvertes depuis le 6 aout et n ont encore recu aucun contact. C est la premiere chose a traiter en arrivant : matcher le vivier existant dessus avant de chercher de nouveaux besoins.</p>
+</section>
+
+<section class="txt bg-white" id="objections">
+  <span class="kicker" style="color:var(--ember)">9 · Les objections courantes</span>
+  <h2>Ce qu on te dira, et ce que tu repondras.</h2>
+
+  <div class="doc-table wide">
+    <table>
+      <thead><tr><th>Objection</th><th>Ta reponse</th></tr></thead>
+      <tbody>
+        <tr><td>On a deja un sous-traitant sur ce type de besoin</td><td>Pas de probleme, gardons le contact pour le prochain chantier ou en cas de besoin de renfort ponctuel.</td></tr>
+        <tr><td>Notre budget jour est plus bas que 700 EUR</td><td>Demande le budget exact et verifie le plancher de marge, section 6. Si ca passe, tu avances. Si ca ne passe pas, tu en parles a Yacine avant de t engager.</td></tr>
+        <tr><td>On prefere recruter en direct</td><td>Le delai moyen pour recruter un cadre est de 9 a 12 semaines. Un chantier qui derape n attend pas. Geozey propose un profil qualifie en quelques jours, en attendant ou a la place.</td></tr>
+        <tr><td>Envoyez-moi des CV, je regarde</td><td>Qualifie d abord le besoin avec les questions de la section 5. Envoyer des profils au hasard degrade l image de Geozey.</td></tr>
+        <tr><td>Freelance : je suis deja en mission</td><td>Garde le contact, note le profil dans Boond, il sera utile pour le prochain besoin qui correspond.</td></tr>
+        <tr><td>Freelance : Geozey, jamais entendu parler</td><td>Presente les clients, EKIUM, SNEF, Veolia, Engie, et l experience de Yacine, treize ans sur des projets comme ITER.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="txt bg-light" id="indicateurs">
+  <span class="kicker" style="color:var(--ember)">10 · Les indicateurs de la semaine</span>
+  <h2>Ce que tu montres a Yacine chaque lundi.</h2>
+  <p class="wide">Pas besoin d un rapport long. Cinq chiffres suffisent pour montrer que la semaine a ete utile.</p>
+
+  <div class="doc-table wide">
+    <table>
+      <thead><tr><th>Indicateur</th><th>Ce que ca montre</th></tr></thead>
+      <tbody>
+        <tr><td>Nombre de contacts pris, telephone et LinkedIn</td><td>Le volume d action reel de la semaine</td></tr>
+        <tr><td>Nombre de besoins qualifies, avec duree, site, competence, budget jour</td><td>Ce qui est vraiment exploitable, pas juste des contacts</td></tr>
+        <tr><td>Profils proposes sur les trois missions ouvertes, Ellinikon, Dunkerque, Marseille</td><td>La priorite absolue de la premiere semaine</td></tr>
+        <tr><td>Marge moyenne des propositions faites</td><td>Doit rester au dessus de 28%, section 6</td></tr>
+        <tr><td>Nouveaux profils freelances ajoutes au vivier Boond</td><td>Le vivier grandit meme quand rien ne se signe cette semaine la</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="txt bg-gray" id="process-officiel">
+  <span class="kicker" style="color:var(--ember)">11 · Le process Geozey formalise par Aurelien</span>
+  <h2>Ce playbook s ajoute au process, il ne le remplace pas.</h2>
+  <p class="wide">Aurelien a formalise le process operationnel complet de Geozey sur deux boards Figma. Ce playbook commercial couvre les etapes ou toi, le commercial, tu es en premiere ligne, principalement acquisition et qualification. Pour la vue d ensemble complete, du brief a la mission livree, ce sont ces deux boards qui font reference.</p>
+
+  <div class="doc-table wide">
+    <table>
+      <thead><tr><th>Board</th><th>Lien</th></tr></thead>
+      <tbody>
+        <tr><td>Process Geozey</td><td class="mono">https://www.figma.com/board/qEKJKAqZ4VdYW5FZdl1l2q/Process-Geozey</td></tr>
+        <tr><td>Process Geozey V2, Growth Mode</td><td class="mono">https://www.figma.com/board/ob2KPD0soHiFUQZppMOElR/Process-Geozey-V2-Growth-Mode</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:20px;font-weight:400;margin-top:44px">Les 5 phases du process V2, pour situer ton role</h3>
+  <div class="g3">
+    <div class="rolecard"><span class="tag">1</span><h3>Acquisition</h3><p>On capture les bons besoins. C est la ou se joue le declencheur, section 3, et le discours d approche, section 4.</p></div>
+    <div class="rolecard"><span class="tag">2</span><h3>Qualification</h3><p>On verifie qu on peut vraiment livrer. C est la section 5 de ce playbook.</p></div>
+    <div class="rolecard"><span class="tag">3</span><h3>Matching</h3><p>On trouve le bon profil dans le vivier, avec l appui de l application metier et de Yacine.</p></div>
+    <div class="rolecard"><span class="tag">4</span><h3>Closing</h3><p>Devis, contrat, signature. Porte par Yacine avec ton appui, section 7.</p></div>
+    <div class="rolecard"><span class="tag">5</span><h3>Execution</h3><p>La mission se deroule, se suit, se facture.</p></div>
+  </div>
+  <p class="wide note-mono" style="color:var(--ash)">Le board Process Geozey, premiere version, n a pas pu etre lu au moment de la redaction de ce playbook. Le board V2 Growth Mode a ete lu integralement et sert de reference ci-dessus. Consulte les deux boards directement pour le detail complet des outils et des automatisations associees a chaque phase.</p>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery · Playbook commercial · Sprint 2 · Confidentiel</p>
+</footer>
+
+</body>
+</html>
