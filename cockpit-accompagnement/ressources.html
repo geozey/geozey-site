@@ -31,15 +31,16 @@ a.rc:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.16)}
 /* ── Planches de la direction artistique ── */
 .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px}
 .shot{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;margin:0}
-.shot .frame{background:#1e1e1e;color:#fff;min-height:190px;display:flex;flex-direction:column;justify-content:center;padding:30px 28px;position:relative}
-.shot .frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--ember)}
-.shot .frame .fname{font-family:'Roboto Mono',monospace;font-size:12px;letter-spacing:1.4px;color:#fff;word-break:break-all}
-.shot .frame .fdim{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FF9C85;margin-top:12px}
-.shot .frame .fwait{font-size:14.5px;line-height:1.5;color:#e4e4e4;margin-top:16px;max-width:340px}
+.shot a.pic{display:block;position:relative;background:#f4f2f0;line-height:0;border-bottom:5px solid var(--ember)}
+.shot a.pic img{width:100%;height:auto;display:block}
+.shot a.pic .zoom{position:absolute;right:13px;bottom:16px;background:rgba(19,19,19,.88);color:#fff;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;border-radius:27px;line-height:1;transition:background .18s ease}
+.shot a.pic:hover .zoom{background:var(--ember)}
+.shot a.pic:focus-visible{outline:3px solid var(--ember);outline-offset:-3px}
 .shot figcaption{padding:22px 24px 26px}
 .shot figcaption .bl{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .shot figcaption h3{font-size:18px;font-weight:400;line-height:1.35}
 .shot figcaption p{font-size:14.5px;line-height:1.55;color:#2b2b2b;margin-top:9px}
+.shot figcaption .fname{display:block;margin-top:13px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.4px;color:#4a4a49}
 
 .note-box{background:#fff;border-radius:13px;padding:26px 28px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:28px;border-left:4px solid var(--ember)}
 .note-box .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--ember-ink);display:block;margin-bottom:9px}
@@ -222,62 +223,62 @@ footer .copy{color:#cfcfcf}
 <section class="txt bg-white">
   <span class="kicker" style="color:var(--ember-ink)">Famille 3 · Design et direction artistique</span>
   <h2>Process Geozey, avant et après.</h2>
-  <p>Le processus de Geozey a été cartographié puis redéployé. Quatre planches jalonnent ce chemin, de l’état des lieux initial au flux cible et au parcours de croissance. Chaque planche est identifiée ci-dessous par son fichier d’origine et sa définition.</p>
+  <p>Le processus de Geozey a été cartographié puis redéployé. Quatre planches jalonnent ce chemin, de l’état des lieux initial au flux cible, à la vue consolidée et au processus opérationnel en cinq phases. Chaque vignette s’ouvre en pleine page d’un clic.</p>
 
   <div class="shots">
     <figure class="shot">
-      <div class="frame">
-        <span class="fname">figjam_v1.png</span>
-        <span class="fdim">2048 x 1791 pixels</span>
-        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
-      </div>
+      <a class="pic" href="/cockpit-accompagnement/assets/planche-process-v1.svg" target="_blank" rel="noopener">
+        <img src="/cockpit-accompagnement/assets/planche-process-v1.svg" alt="Planche 1, cartographie initiale des quatre parcours Geozey" loading="lazy">
+        <span class="zoom">Agrandir ↗</span>
+      </a>
       <figcaption>
-        <div class="bl"><span class="badge neutre">Avant</span><span class="badge off">Cartographie</span><span class="badge warn">Aperçu en attente</span></div>
+        <div class="bl"><span class="badge neutre">Avant</span><span class="badge off">Cartographie</span></div>
         <h3>Process Geozey, version 1</h3>
-        <p>État des lieux initial du processus, tel qu’il tournait au démarrage de l’accompagnement. Point de départ de la réflexion.</p>
+        <p>État des lieux initial, tel que le processus tournait au démarrage. Quatre parcours mis à plat, prospect qualifié, freelance, client et lancement de mission, chacun avec ses sources, son objet, ses actions et son canal. Les pastilles roses marquent le point dur récurrent : qualifier, scorer et certifier.</p>
+        <span class="fname">planche-process-v1.svg</span>
       </figcaption>
     </figure>
     <figure class="shot">
-      <div class="frame">
-        <span class="fname">figjam_v2_final2.png</span>
-        <span class="fdim">2363 x 2400 pixels</span>
-        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
-      </div>
+      <a class="pic" href="/cockpit-accompagnement/assets/planche-process-v2.svg" target="_blank" rel="noopener">
+        <img src="/cockpit-accompagnement/assets/planche-process-v2.svg" alt="Planche 2, comparaison avant et après du process Geozey" loading="lazy">
+        <span class="zoom">Agrandir ↗</span>
+      </a>
       <figcaption>
-        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Flux cible</span><span class="badge warn">Aperçu en attente</span></div>
-        <h3>Process Geozey, version 2 finale</h3>
-        <p>Flux cible arbitré avec Yacine. C’est cette version qui a servi de base à l’application métier et au moteur de matching.</p>
+        <div class="bl"><span class="badge neutre">Avant</span><span class="badge ember">Après</span><span class="badge off">Flux cible</span></div>
+        <h3>Process Geozey, version 2</h3>
+        <p>La planche qui met les deux mondes côte à côte. À gauche le process actuel en mode artisanal, à droite le process optimisé avec CRM, IA et automatisation, en quatre étapes numérotées. En bas, la pile d’outils mobilisés pour y arriver.</p>
+        <span class="fname">planche-process-v2.svg</span>
       </figcaption>
     </figure>
     <figure class="shot">
-      <div class="frame">
-        <span class="fname">board_v3.png</span>
-        <span class="fdim">2085 x 2400 pixels</span>
-        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
-      </div>
+      <a class="pic" href="/cockpit-accompagnement/assets/planche-process-v3.svg" target="_blank" rel="noopener">
+        <img src="/cockpit-accompagnement/assets/planche-process-v3.svg" alt="Planche 3, vue consolidée du process Geozey" loading="lazy">
+        <span class="zoom">Agrandir ↗</span>
+      </a>
       <figcaption>
-        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Vue consolidée</span><span class="badge warn">Aperçu en attente</span></div>
-        <h3>Board version 3</h3>
-        <p>Vue consolidée du processus, rôles et étapes réunis sur une seule planche. Support des ateliers de cadrage.</p>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Vue consolidée</span></div>
+        <h3>Process Geozey, version 3</h3>
+        <p>Version consolidée et arbitrée avec Yacine, celle qui a servi de base à l’application métier et au moteur de matching. Elle ajoute une étape zéro de qualification en entrée et repasse chaque étape sous bande ember. Support des ateliers de cadrage.</p>
+        <span class="fname">planche-process-v3.svg</span>
       </figcaption>
     </figure>
     <figure class="shot">
-      <div class="frame">
-        <span class="fname">figjam_growth.png</span>
-        <span class="fdim">2400 x 1844 pixels</span>
-        <span class="fwait">Aperçu en attente d’intégration. Le fichier d’origine est dans l’espace partagé de la mission.</span>
-      </div>
+      <a class="pic" href="/cockpit-accompagnement/assets/planche-process-operationnel.svg" target="_blank" rel="noopener">
+        <img src="/cockpit-accompagnement/assets/planche-process-operationnel.svg" alt="Planche 4, process opérationnel en cinq phases" loading="lazy">
+        <span class="zoom">Agrandir ↗</span>
+      </a>
       <figcaption>
-        <div class="bl"><span class="badge ember">Après</span><span class="badge warn">Hors contrat</span><span class="badge warn">Aperçu en attente</span></div>
-        <h3>Parcours growth</h3>
-        <p>Chaîne d’acquisition et de qualification, du sourcing au rapprochement. Elle sous-tend le socle de 370 contacts et les campagnes.</p>
+        <div class="bl"><span class="badge ember">Après</span><span class="badge off">Cinq phases</span></div>
+        <h3>Process opérationnel V2</h3>
+        <p>La traduction opérationnelle du flux cible : acquisition, qualification, matching, closing, exécution. Chaque phase porte son avant, son après et son impact mesurable. La bande du bas relie le tout à la cession, un repreneur doit pouvoir piloter Geozey sans appeler Yacine.</p>
+        <span class="fname">planche-process-operationnel.svg</span>
       </figcaption>
     </figure>
   </div>
 
   <div class="note-box">
-    <span class="k">Pourquoi ces quatre planches ne sont pas encore affichées</span>
-    <p>Les quatre captures sont des images, et leur transfert vers le dépôt par interface de programmation s’est révélé non fiable : le contenu arrivait tronqué, ce qui aurait donné des visuels dégradés. Nous avons préféré un emplacement propre à une image abîmée. Le dépôt des quatre fichiers est à refaire par téléversement direct, l’emplacement et les légendes sont déjà prêts et n’attendent que les visuels.</p>
+    <span class="k">À propos de ces quatre aperçus</span>
+    <p>Les vignettes ci-dessus sont des aperçus compressés, calibrés pour s’afficher vite dans ce hub. Elles restituent la structure, les titres et la logique de chaque planche, mais le texte des cellules les plus fines n’y est pas destiné à la lecture.</p>
     <p>Les quatre fichiers d’origine, en pleine définition, restent disponibles dans l’espace partagé de la mission, dossier des captures de la direction artistique.</p>
   </div>
 
