@@ -18,7 +18,7 @@
 .doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500;white-space:nowrap}
 .doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
 .doc-table tbody tr:last-child{border-bottom:0}
-.doc-table tbody td{padding:13px 18px;vertical-align:top;line-height:1.5}
+.doc-table tbody td{padding:13px 18px;vertical-align:top;line-height:1.5;color:var(--dark)}
 .doc-table td.mono{font-family:'Roboto Mono',monospace;font-size:11px;color:#4a4a49;white-space:nowrap}
 .badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 .badge.ok{background:#DDEBD9;color:#155434}
@@ -28,7 +28,7 @@
 .badge.neutre{background:#d5d5d5;color:#3b3b3b}
 
 /* ── Avancement ── */
-.prog-wrap{background:#fff;border-radius:13px;padding:36px 34px 34px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:34px}
+.prog-wrap{background:#fff;border-radius:13px;padding:36px 34px 34px;box-shadow:0 4px 4px rgba(0,0,0,.06);margin-top:34px;color:var(--dark)}
 .prog-top{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
 .prog-top .pct{font-size:66px;line-height:1;font-weight:400;letter-spacing:-2px}
 .prog-top .cnt{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#4a4a49}
@@ -47,14 +47,14 @@
 
 /* ── Chiffres clés ── */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:36px}
-.kpi{background:var(--card);border-radius:13px;padding:28px 26px}
+.kpi{background:var(--card);border-radius:13px;padding:28px 26px;color:var(--dark)}
 .kpi .v{font-size:40px;font-weight:400;line-height:1.05;letter-spacing:-1px}
 .kpi .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#4a4a49;display:block;margin-bottom:14px}
 .kpi .d{font-size:14px;line-height:1.5;margin-top:11px;color:#2b2b2b}
 
 /* ── Sprints ── */
 .sprints{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:36px}
-.spr{background:#fff;border-radius:13px;padding:26px 22px 24px;box-shadow:0 4px 4px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.spr{background:#fff;border-radius:13px;padding:26px 22px 24px;box-shadow:0 4px 4px rgba(0,0,0,.06);display:flex;flex-direction:column;color:var(--dark)}
 .spr .n{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--ember-ink);display:block;margin-bottom:12px}
 .spr h3{font-size:18px;font-weight:400;line-height:1.3}
 .spr .p{font-family:'Roboto Mono',monospace;font-size:11px;color:#4a4a49;margin-top:9px;line-height:1.6}
@@ -301,34 +301,24 @@ footer .copy{color:#cfcfcf}
 
 <section class="txt bg-dark">
   <span class="kicker" style="color:var(--ember)">Le point qui compte</span>
-  <h2>Ce qui a été fait au-delà du contrat.</h2>
-  <p>Ces travaux ne figurent dans aucun sprint contractuel. Ils ont été produits parce qu’ils étaient nécessaires, sans avenant et sans facturation. Ils sont nommés ici une fois, pour que la relation reparte sur une base claire.</p>
+  <h2>Ce qui a été construit au-delà du contrat.</h2>
+  <p>Quatre objets entiers qui ne figurent dans aucun sprint contractuel. Ils ont été produits parce qu’ils étaient nécessaires, sans avenant et sans facturation. Ils sont nommés ici une fois, pour que la relation reparte sur une base claire.</p>
 
   <div class="over">
     <div class="overcard">
       <span class="m">Hors contrat</span>
       <h3>Infrastructure d’agents autonomes</h3>
-      <p>Le contrat prévoyait six agents IA métier. Ce qui tourne est une infrastructure d’agents autonomes avec sa mémoire partagée, son radar de sourcing et son cockpit de pilotage. Intégrée sans surcoût.</p>
+      <p>Le contrat prévoit six agents IA métier. Ce qui tourne est une infrastructure d’agents autonomes avec sa mémoire partagée, son radar de sourcing et son socle d’exécution. Intégrée sans surcoût.</p>
     </div>
     <div class="overcard">
       <span class="m">Hors contrat</span>
       <h3>Application métier à trois rôles</h3>
-      <p>Le contrat prévoyait du conseil et du paramétrage CRM. Le palier A d’une application métier a été construit et mis en ligne : rôles, vivier, missions, matching explicable, flux des qualifications.</p>
-    </div>
-    <div class="overcard">
-      <span class="m">Hors contrat</span>
-      <h3>Durcissement complet du site</h3>
-      <p>Le site était livré. Il a été repris depuis : adresses propres, en-têtes de sécurité, images optimisées, version anglaise, référencement réparé, trois bugs bloquants corrigés sur le formulaire, dépôt de CV opérationnel.</p>
+      <p>Le contrat prévoit du conseil et du paramétrage CRM, à l’exclusion de toute fourniture de logiciel. Le palier A d’une application métier a été construit et mis en ligne : rôles, vivier, missions, matching explicable, flux des qualifications.</p>
     </div>
     <div class="overcard">
       <span class="m">Hors contrat</span>
       <h3>Blog et référencement génératif</h3>
-      <p>Trois articles de fond signés Yacine Djebrouni, chaque chiffre sourcé, écrits pour être repris par les moteurs et par les IA. Aucune ligne du contrat ne prévoyait de production éditoriale.</p>
-    </div>
-    <div class="overcard">
-      <span class="m">Hors contrat</span>
-      <h3>Analyse des trois FEC</h3>
-      <p>La concentration client à 93,5 % sur trois clients et l’explication chiffrée de la chute d’EBITDA sortent d’une analyse ligne à ligne des FEC 2023, 2024 et 2025. Le contrat ne prévoyait pas ce niveau.</p>
+      <p>Trois articles de fond signés Yacine Djebrouni, chaque chiffre sourcé, écrits pour être repris par les moteurs et par les IA.</p>
     </div>
     <div class="overcard">
       <span class="m">Hors contrat</span>
@@ -340,17 +330,20 @@ footer .copy{color:#cfcfcf}
 
 <section class="txt bg-gray">
   <span class="kicker" style="color:#FF9C85">Le dossier complet</span>
-  <h2>Tous les livrables, un clic chacun.</h2>
+  <h2>Les neuf documents du dossier, un clic chacun.</h2>
 
   <div class="linklist">
-    <a href="https://cockpit-geozey.vercel.app">Cockpit de pilotage opérationnel<span>Vision 2028 · 6 axes · trajectoire EBITDA et valorisation cible</span></a>
-    <p class="note">Les deux tableaux de bord ne disent pas la même chose et ne se contredisent pas. Le cockpit de pilotage porte la trajectoire : une valorisation cible de 800 k à 1,2 M EUR à horizon 2028, conditionnée au redressement de la marge et à la diversification du portefeuille. Le rapport de valorisation ci-dessous mesure la valeur constatée aujourd’hui, soit 150 à 450 k EUR de valeur d’entreprise. L’écart entre les deux est exactement le chemin décrit par le plan de marges.</p>
-    <a href="/cockpit-accompagnement/valorisation">Rapport de valorisation multi-méthodes<span>Sprint 1 · trois méthodes · fourchette argumentée</span></a>
-    <a href="/cockpit-accompagnement/due-diligence">Synthèse de due diligence interne<span>Sprint 1 · quatre axes · pièces manquantes</span></a>
+    <a href="/cockpit-accompagnement/proposition">Proposition de collaboration et apport d’affaires réciproque<span>01 · Collaboration · les trois étages et leur prix</span></a>
+    <a href="/cockpit-accompagnement/cdc-application">Cahier des charges de l’application métier et devis<span>02 · Application · palier A livré, paliers B et C chiffrés</span></a>
+    <a href="/cockpit-accompagnement/cdc-infra-ia">Cahier des charges infra IA, CAIO externalisé et devis<span>03 · Infra IA · direction IA, technique et croissance</span></a>
+    <a href="/cockpit-accompagnement/valorisation">Rapport de valorisation multi-méthodes<span>04 · Sprint 1 · trois méthodes · fourchette argumentée</span></a>
+    <p class="note">La valeur d’entreprise constatée aujourd’hui est de 150 à 450 k EUR, c’est la fourchette du rapport de valorisation. La cible à horizon 2028 est de 800 k à 1,2 M EUR, conditionnée au redressement de la marge et à la diversification du portefeuille. L’écart entre les deux est exactement le chemin décrit par le plan de marges.</p>
+    <a href="/cockpit-accompagnement/due-diligence">Synthèse de due diligence interne<span>05 · Sprint 1 · quatre axes · pièces manquantes</span></a>
+    <a href="/cockpit-accompagnement/audit-externe">Audit externe Reggio Partners<span>Document externe · rapport provisoire d’avril 2026</span></a>
     <p class="note">Le benchmark de sociétés comparables et les retraitements d’EBITDA sur trois exercices sont fournis en fichiers séparés, hors de cet espace.</p>
-    <a href="/cockpit-accompagnement/plan-marges">Plan d’optimisation des marges et diversification client<span>Sprint 3 · leviers chiffrés · cible 2028</span></a>
-    <a href="/cockpit-accompagnement/playbook">Playbook commercial<span>Sprint 2 · pour le futur commercial</span></a>
-    <a href="/cockpit-accompagnement/gouvernance-ia">Gouvernance IA<span>Sprint 2 · cartographie · registre · règlement européen</span></a>
+    <a href="/cockpit-accompagnement/plan-marges">Plan d’optimisation des marges et diversification client<span>06 · Sprint 3 · leviers chiffrés · cible 2028</span></a>
+    <a href="/cockpit-accompagnement/playbook">Playbook commercial<span>07 · Sprint 2 · pour le futur commercial</span></a>
+    <a href="/cockpit-accompagnement/gouvernance-ia">Gouvernance IA<span>08 · Sprint 2 · cartographie · registre · règlement européen</span></a>
     <p class="note">Le déblocage de la clé d’agence BoondManager fait l’objet d’une note séparée, fournie hors de cet espace.</p>
     <a href="/cockpit-accompagnement/ressources">Inventaire complet des livrables et ressources<span>Tout ce qui a été produit · en ligne, documents, design, campagnes</span></a>
   </div>
