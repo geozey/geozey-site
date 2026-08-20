@@ -2,226 +2,120 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Application metier Geozey : vivier, missions et matching explicable. Acces reserve.">
-<meta property="og:title" content="Geozey — application metier">
-<meta property="og:description" content="Qualification, vivier et matching des profils PMO, planning et document control.">
-<meta property="og:image" content="https://geozey.com/assets/logo.png">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#000000">
-<title>Geozey — application metier</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Application métier — Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <link rel="stylesheet" href="/app/app-ui.css">
-<style>
-/* Couche de l application metier. Les tokens viennent de styles.css, la charte
-   du site fait foi : arrondis 13, graisse 400, Roboto Mono pour les libelles,
-   ember en accent, dark #1e1e1e. Les noms de classes sont conserves pour ne
-   pas toucher au moteur. */
-body{background:#ececec;font-size:16px}
-.mono{font-family:'Roboto Mono',monospace}
-.hide{display:none!important}
-#login{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr}
-.lg-left{background:var(--dark);color:#fff;padding:70px 72px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.lg-left::before{content:'';position:absolute;inset:0;background:url('/assets/hero.jpg') center 30%/cover no-repeat;opacity:.26;filter:grayscale(1) contrast(1.06)}
-.lg-left::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--ember)}
-.lg-left > *{position:relative;z-index:1}
-.logo{height:30px;width:auto;display:block}
-.logo-sm{height:21px;width:auto;display:block}
-.lg-tag{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember);margin-top:12px}
-.lg-claim{font-size:42px;font-weight:400;line-height:1.25;max-width:13em}
-.lg-claim em{color:var(--ember);font-style:normal}
-.lg-sub{font-size:16px;color:rgba(255,255,255,.66);margin-top:24px;max-width:26em;line-height:1.6}
-.lg-foot{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.lg-right{background:#fff;display:flex;align-items:center;justify-content:center;padding:56px 48px}
-.lg-box{width:100%;max-width:390px}
-.lg-h{font-size:32px;font-weight:400;margin-bottom:10px}
-.lg-p{font-size:16px;color:var(--ash);margin-bottom:34px;line-height:1.6}
-label{display:block;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ash);margin-bottom:9px}
-input[type=email],input[type=password],input[type=text],input[type=number],select,textarea{width:100%;padding:14px 16px;border:1px solid rgba(30,30,30,.22);border-radius:13px;font-family:inherit;font-size:16px;background:#fff;color:var(--dark);margin-bottom:20px}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 22px;background:var(--ember);color:#fff;border:none;border-radius:27px;font-size:16px;cursor:pointer}
-.btn:hover{background:#E63A0C}
-.btn:disabled{opacity:.5;cursor:default}
-.btn-sec{background:#fff;color:var(--dark);border:1px solid rgba(30,30,30,.28)}
-.btn-sec:hover{background:#f4f4f4;border-color:var(--dark)}
-.lg-sep{display:flex;align-items:center;gap:14px;margin:24px 0;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ash)}
-.lg-sep::before,.lg-sep::after{content:'';flex:1;height:1px;background:rgba(30,30,30,.18)}
-.lnk-mp{display:block;width:100%;margin-top:18px;background:none;border:none;color:var(--ash);font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;cursor:pointer;text-align:center;padding:8px}
-.lnk-mp:hover{color:var(--ember)}
-.msg{font-size:15px;padding:16px 18px;border-radius:13px;margin-bottom:20px;line-height:1.5}
-.msg-ko{background:#FCEBEB;color:#A32D2D}
-.msg-ok{background:#EAF3DE;color:#3B6D11}
-.msg-info{background:#ececec;color:var(--dark)}
-header{background:var(--dark);color:#fff;padding:0 56px;display:grid;grid-template-columns:1fr auto;align-items:center;min-height:88px;border-bottom:3px solid var(--ember);gap:20px}
-.hd-r{display:flex;align-items:center;gap:20px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.hd-r b{color:#fff}
-.role-tag{background:var(--ember);color:#fff;padding:7px 14px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;border-radius:20px}
-.lnk{background:none;border:none;color:rgba(255,255,255,.55);font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;padding:0}
-.lnk:hover{color:var(--ember)}
-nav{position:static;top:auto;left:auto;right:auto;height:auto;border-radius:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;z-index:auto;align-items:stretch;background:var(--dark);padding:0 56px;display:flex;overflow-x:auto;border-top:1px solid rgba(255,255,255,.1)}
-nav .links,nav .burger,nav .menu-toggle,nav .pill-cta,nav .logo{display:none}
-nav button{background:none;border:none;color:rgba(255,255,255,.6);font-size:16px;font-weight:300;padding:17px 0;margin-right:34px;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer}
-nav button:hover{color:#fff}
-nav button.on{color:#fff;font-weight:500;border-bottom-color:var(--ember)}
-main{max-width:1240px;margin:0 auto;padding:52px 56px 90px;background:#fff;min-height:70vh}
-.s-label{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember);margin:0 0 26px;display:block}
-.s-label span{display:none}
-.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;border-bottom:1px solid rgba(30,30,30,.14);padding-bottom:36px;margin-bottom:44px;background:none;border-radius:0}
-.st{background:none;padding:0;display:flex;flex-direction:column;gap:0}
-.st-l{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:12px}
-.st-v{font-size:44px;font-weight:400;line-height:1}
-.st.dk .st-v{color:var(--ember)}
-.st-s{font-size:14px;color:var(--ash);margin-top:10px;font-family:inherit;letter-spacing:0;text-transform:none}
-.tw{overflow-x:auto;background:none;border:0;margin-bottom:24px}
-table{width:100%;border-collapse:collapse}
-thead tr{background:none;color:inherit}
-thead th{padding:0 20px 16px 0;text-align:left;font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:400;color:var(--ash);border-bottom:1px solid rgba(30,30,30,.2);white-space:nowrap}
-tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
-tbody tr.clic{cursor:pointer}
-tbody tr:hover td{background:rgba(30,30,30,.02)}
-tbody td{padding:18px 20px 18px 0;vertical-align:top;font-size:16px}
-td.m{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--ember)}
-.bdg{display:inline-block;padding:7px 14px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;border-radius:20px;border:1px solid transparent}
-.b-ok{background:none;color:#3B6D11;border-color:#97C459}
-.b-wip{background:none;color:#854F0B;border-color:#EF9F27}
-.b-ko{background:none;color:#A32D2D;border-color:#F09595}
-.b-nt{background:none;color:var(--ash);border-color:rgba(30,30,30,.3)}
-.b-in{background:none;color:#185FA5;border-color:#85B7EB}
-.b-em{background:var(--ember);color:#fff;border-color:var(--ember)}
-.card{background:#ececec;border:0;border-radius:13px;padding:32px 34px;position:relative;overflow:hidden;margin-bottom:26px}
-.card::before{display:none}
-.card h3{font-size:23px;font-weight:400;margin-bottom:18px}
-.card p{font-size:15px;line-height:1.6;color:var(--ash)}
-.vide{background:#ececec;border:0;padding:56px 34px;text-align:center;color:var(--ash);font-size:16px;border-radius:13px;line-height:1.6}
-.vide b{display:block;color:var(--dark);font-size:23px;font-weight:400;margin-bottom:12px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.axe{display:grid;grid-template-columns:170px 1fr auto;gap:20px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(30,30,30,.14);font-size:15px}
-.axe:last-child{border-bottom:none}
-.axe-n{font-family:'Roboto Mono',monospace;font-size:10px;color:var(--ash);text-transform:uppercase;letter-spacing:2px}
-.bar{height:2px;background:rgba(30,30,30,.16);border-radius:0;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--ember)}
-.axe-v{font-family:'Roboto Mono',monospace;font-size:16px;min-width:70px;text-align:right}
-.axe-d{grid-column:1/-1;font-size:14px;color:var(--ash);margin-top:4px}
-.score{font-size:54px;font-weight:400;line-height:1}
-.elim{background:#FCEBEB;border:0;border-radius:13px;padding:18px 22px;font-size:15px;color:#A32D2D;margin-bottom:20px;line-height:1.5}
-.alerte{background:#FAEEDA;border:0;border-radius:13px;padding:18px 22px;font-size:15px;color:#854F0B;margin-bottom:20px;line-height:1.5}
-footer{background:var(--dark);color:rgba(255,255,255,.42);padding:34px 56px;display:flex;justify-content:space-between;gap:20px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase}
-footer em{color:var(--ember);font-style:normal}
-.frm{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
-.frm .full{grid-column:1/-1}
-@media(max-width:900px){
- #login{grid-template-columns:1fr;min-height:0}
- .lg-left{padding:34px 22px 38px;gap:22px;order:2;min-height:0}
- .lg-claim{font-size:27px;max-width:none}
- .lg-sub{font-size:15px;margin-top:16px;max-width:none}
- .lg-right{padding:38px 22px 42px;order:1;min-height:100vh;align-items:flex-start}
- .lg-box{max-width:none}
- .lg-h{font-size:26px}
- header{padding:20px 22px;grid-template-columns:1fr;gap:14px}
- nav{padding:0 22px}
- nav button{margin-right:22px;font-size:15px}
- main{padding:32px 22px 60px}
- .strip{grid-template-columns:1fr 1fr;gap:26px}
- .st-v{font-size:32px}
- .g2,.g3,.frm{grid-template-columns:1fr}
- footer{flex-direction:column;padding:26px 22px}
- .axe{grid-template-columns:1fr;gap:6px}
- .axe-v{text-align:left}
- table thead{display:none}
- table td{display:block;padding:6px 0;border:0}
- table tbody tr{display:block;padding:20px 0}
-}
-</style>
+<link rel="stylesheet" href="/app/app-forms.css">
+<link rel="icon" href="/favicon.svg">
 </head>
-<body>
+<body class="app-shell">
 
-<!-- ============ CONNEXION ============ -->
-<section id="login">
-  <div class="lg-left">
-    <div>
-      <img class="logo" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
-      <div class="lg-tag">Application metier</div>
-    </div>
-    <div>
-      <div class="lg-claim">Le bon profil, sur le bon chantier, <em>et la preuve</em> que c est le bon.</div>
-      <div class="lg-sub">Vivier, missions et matching explicable. Chaque point attribue est rattache a une reponse, des deux cotes, pour qu une proposition se defende ligne par ligne en rendez-vous.</div>
-    </div>
-    <div class="lg-foot">Donnees hebergees dans l Union europeenne · Acces reserve</div>
-  </div>
-  <div class="lg-right">
-    <div class="lg-box">
-      <div class="lg-h">Connexion</div>
-      <div class="lg-p">Administrateur, client ou expert du vivier.</div>
-      <div id="lgMsg"></div>
-      <label for="em">Adresse email</label>
-      <input type="email" id="em" autocomplete="email" placeholder="prenom@societe.fr">
-      <label for="mp">Mot de passe</label>
-      <input type="password" id="mp" autocomplete="current-password" placeholder="Votre mot de passe">
-      <button class="btn" id="bLogin">Se connecter</button>
-      <div class="lg-sep">ou</div>
-      <button class="btn btn-sec" id="bMagic">Recevoir un lien de connexion</button>
-      <button class="lnk lnk-mp" id="bOubli">Definir ou changer mon mot de passe</button>
-    </div>
-    <div class="lg-box hide" id="boxMdp">
-      <div class="lg-h">Votre mot de passe</div>
-      <div class="lg-p">Choisissez-le maintenant. Huit caracteres minimum. Il ne transite par personne d autre que vous.</div>
-      <div id="mdpMsg"></div>
-      <label for="mp1">Nouveau mot de passe</label>
-      <input type="password" id="mp1" autocomplete="new-password" placeholder="Huit caracteres minimum">
-      <label for="mp2">Confirmation</label>
-      <input type="password" id="mp2" autocomplete="new-password" placeholder="Le meme, pour verifier">
-      <button class="btn" id="bMdp">Enregistrer le mot de passe</button>
-    </div>
-  </div>
-</section>
+<!-- ====================== ÉCRAN DE CONNEXION ====================== -->
+<div class="lgpage" id="ecranConnexion">
+  <div class="lgbox">
+    <a class="mark" href="https://geozey.com"><img src="/assets/logo-charcoal.png" alt="Geozey"></a>
 
-<!-- ============ APPLICATION ============ -->
-<div id="app" class="hide">
-  <header>
-    <div>
-      <img class="logo-sm" src="https://geozey.com/assets/logo-light.png" alt="Geozey">
-      <div class="lg-tag" id="hdSub">Application metier</div>
+    <div id="boiteConnexion">
+      <div class="kick">Application métier</div>
+      <h1>Votre espace Geozey</h1>
+      <p class="sub">Trois espaces, un seul accès. Ce que vous voyez dépend de votre compte, jamais de la page que vous ouvrez.</p>
+      <div id="msgConnexion"></div>
+      <div class="f">
+        <label for="chEmail">Adresse électronique</label>
+        <input type="email" id="chEmail" autocomplete="email" placeholder="prenom@societe.fr">
+      </div>
+      <div class="f">
+        <label for="chMdp">Mot de passe</label>
+        <input type="password" id="chMdp" autocomplete="current-password" placeholder="Votre mot de passe">
+      </div>
+      <button class="b plein" id="btConnexion">Se connecter</button>
+      <div class="alt">
+        <button class="b ghost plein" id="btLien">Recevoir un lien de connexion</button>
+        <p class="fine">Première venue, ou mot de passe oublié : demandez le lien, vous choisirez votre mot de passe en revenant ici.
+        <button class="lien" id="btOubli" style="display:block;margin-top:12px">Définir ou changer mon mot de passe</button></p>
+      </div>
     </div>
-    <div class="hd-r">
-      <span class="role-tag" id="hdRole">—</span>
-      <span id="hdUser">—</span>
-      <button class="lnk" id="bMdpApp">Mot de passe</button>
-      <button class="lnk" id="bOut">Deconnexion</button>
+
+    <div id="boiteMdp" style="display:none">
+      <div class="kick">Sécurité</div>
+      <h1>Choisissez votre mot de passe</h1>
+      <p class="sub">Huit caractères minimum. Il remplacera le lien à usage unique pour vos prochaines connexions.</p>
+      <div id="msgMdp"></div>
+      <div class="f">
+        <label for="chMdp1">Nouveau mot de passe</label>
+        <input type="password" id="chMdp1" autocomplete="new-password" placeholder="Huit caractères minimum">
+      </div>
+      <div class="f">
+        <label for="chMdp2">Le même, pour vérifier</label>
+        <input type="password" id="chMdp2" autocomplete="new-password" placeholder="Confirmation">
+      </div>
+      <button class="b plein" id="btMdp">Enregistrer le mot de passe</button>
     </div>
-  </header>
-  <nav id="nav"></nav>
-  <main id="vues"></main>
-  <footer>
-    <span style="display:flex;align-items:center;gap:10px"><img src="https://geozey.com/assets/logo-light.png" alt="Geozey" style="height:14px;width:auto;opacity:.75"> application metier</span>
-    <span id="ftMaj">Cache Boond</span>
-  </footer>
+  </div>
+</div>
+
+<!-- ====================== COQUE APPLICATIVE ====================== -->
+<div class="shell" id="coque" style="display:none">
+  <aside class="aside">
+    <div class="brand">
+      <img src="/assets/logo.png" alt="Geozey">
+      <div class="r" id="etiquetteEspace">Espace</div>
+    </div>
+    <div class="amenu" id="menu"></div>
+    <div class="who">
+      <b id="quiNom">—</b>
+      <span id="quiMail">—</span>
+      <span id="quiFraicheur"></span>
+      <div class="liens"><a href="#" id="btMdpApp">Mot de passe</a><a href="#" id="btSortie">Déconnexion</a></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="mtop">
+      <div>
+        <h1 id="titreVue">—</h1>
+        <div class="meta" id="sousTitreVue"></div>
+      </div>
+      <div id="actionsVue"></div>
+    </div>
+    <div class="mwrap" id="contenu"></div>
+  </main>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="/supabase-config.js"></script>
 <script>
-const SB_URL = 'https://ggxanhkixhkmnknslotu.supabase.co';
-const SB_KEY = 'sb_publishable_a4mePDbVPl09uG6p1Iv0Lg_lJZCn3jC';
+/* =========================================================================
+   Application métier Geozey.
+   Le socle d'accès est dans la base, pas ici : cette page ne décide de rien,
+   elle demande. Si une policy refuse, l'écran est vide et c'est le
+   comportement attendu. Un écran ne protège rien, une policy si.
+   ========================================================================= */
+
+const SB_URL = window.GEOZEY_DB.url;
+const SB_KEY = window.GEOZEY_DB.anon;
+const BUCKET = 'documents-metier';
 const sb = supabase.createClient(SB_URL, SB_KEY);
 
 /* =========================================================================
-   MOTEUR DE MATCHING — report a l identique du cockpit valide le 30/07/2026.
-   Bareme sur 100, dix axes. Deux criteres eliminatoires passent AVANT le score.
-   L ecart de tarif est signale en alerte, il n est JAMAIS score.
+   MOTEUR DE MATCHING — report à l'identique du cockpit validé le 30/07/2026.
+   Barème sur 100, dix axes. Deux critères éliminatoires passent AVANT le
+   score. L'écart de tarif est signalé en alerte, il n'est JAMAIS scoré.
    Ne pas modifier les poids sans un nouveau cadrage.
    ========================================================================= */
 const AXES = [
-  {cle:'specialite',    nom:'Specialite',    poids:25},
+  {cle:'specialite',    nom:'Spécialité',    poids:25},
   {cle:'habilitations', nom:'Habilitations', poids:15},
   {cle:'secteur',       nom:'Secteur',       poids:14},
   {cle:'outils',        nom:'Outils',        poids:14},
-  {cle:'seniorite',     nom:'Seniorite',     poids:12},
-  {cle:'presence',      nom:'Presence',      poids:6},
+  {cle:'seniorite',     nom:'Séniorité',     poids:12},
+  {cle:'presence',      nom:'Présence',      poids:6},
   {cle:'zone',          nom:'Zone',          poids:5},
   {cle:'langues',       nom:'Langues',       poids:5},
-  {cle:'duree',         nom:'Duree',         poids:4}
+  {cle:'duree',         nom:'Durée',         poids:4}
 ];
 
 function norm(v){
@@ -240,67 +134,67 @@ function scorer(profil, mission){
   const ajoute = (cle,obtenu,poids,detail)=>{ d[cle]={obtenu:Math.round(obtenu*10)/10,poids,detail}; };
 
   const pSpe = AXES[0].poids;
-  if(!mission.specialite) ajoute('specialite',pSpe,pSpe,'Aucune specialite exigee, axe neutralise');
-  else if(memeValeur(profil.specialite,mission.specialite)) ajoute('specialite',pSpe,pSpe,'Specialite exacte : '+profil.specialite);
-  else ajoute('specialite',0,pSpe,'Specialite differente : '+(profil.specialite||'non renseignee')+' au lieu de '+mission.specialite);
+  if(!mission.specialite) ajoute('specialite',pSpe,pSpe,'Aucune spécialité exigée, axe neutralisé');
+  else if(memeValeur(profil.specialite,mission.specialite)) ajoute('specialite',pSpe,pSpe,'Spécialité exacte : '+profil.specialite);
+  else ajoute('specialite',0,pSpe,'Spécialité différente : '+(profil.specialite||'non renseignée')+' au lieu de '+mission.specialite);
 
   const pHab = AXES[1].poids;
   const habP = liste(profil.habilitations), habM = liste(mission.habilitations_requises);
   const habManque = habM.filter(h=>!contient(habP,h));
-  if(habM.length===0) ajoute('habilitations',pHab,pHab,'Aucune habilitation exigee, axe neutralise');
-  else if(habManque.length===0) ajoute('habilitations',pHab,pHab,'Toutes detenues : '+habM.join(', '));
-  else ajoute('habilitations',pHab*(habM.length-habManque.length)/habM.length,pHab,(habM.length-habManque.length)+' sur '+habM.length+' detenues, manque '+habManque.join(', '));
+  if(habM.length===0) ajoute('habilitations',pHab,pHab,'Aucune habilitation exigée, axe neutralisé');
+  else if(habManque.length===0) ajoute('habilitations',pHab,pHab,'Toutes détenues : '+habM.join(', '));
+  else ajoute('habilitations',pHab*(habM.length-habManque.length)/habM.length,pHab,(habM.length-habManque.length)+' sur '+habM.length+' détenues, manque '+habManque.join(', '));
 
   const pSec = AXES[2].poids;
-  if(!mission.secteur) ajoute('secteur',pSec,pSec,'Aucun secteur exige, axe neutralise');
-  else if(memeValeur(profil.secteur,mission.secteur)||contient(liste(profil.secteurs),mission.secteur)) ajoute('secteur',pSec,pSec,'Secteur maitrise : '+mission.secteur);
+  if(!mission.secteur) ajoute('secteur',pSec,pSec,'Aucun secteur exigé, axe neutralisé');
+  else if(memeValeur(profil.secteur,mission.secteur)||contient(liste(profil.secteurs),mission.secteur)) ajoute('secteur',pSec,pSec,'Secteur maîtrisé : '+mission.secteur);
   else ajoute('secteur',0,pSec,'Secteur non couvert : '+mission.secteur);
 
   const pOut = AXES[3].poids;
   const outP = liste(profil.outils), outM = liste(mission.outils_requis);
   const outManque = outM.filter(o=>!contient(outP,o));
-  if(outM.length===0) ajoute('outils',pOut,pOut,'Aucun outil exige, axe neutralise');
+  if(outM.length===0) ajoute('outils',pOut,pOut,'Aucun outil exigé, axe neutralisé');
   else ajoute('outils',pOut*(outM.length-outManque.length)/outM.length,pOut,
-    (outM.length-outManque.length)+' sur '+outM.length+' maitrises'+(outManque.length?' : manque '+outManque.join(', '):' : '+outM.join(', ')));
+    (outM.length-outManque.length)+' sur '+outM.length+' maîtrisés'+(outManque.length?' : manque '+outManque.join(', '):' : '+outM.join(', ')));
 
   const pSen = AXES[4].poids;
   const sP = Number(profil.seniorite_annees||0), sM = Number(mission.seniorite_min||0);
-  if(!sM) ajoute('seniorite',pSen,pSen,'Aucune anciennete exigee, axe neutralise');
-  else if(sP>=sM) ajoute('seniorite',pSen,pSen,sP+' ans pour '+sM+' demandes');
-  else ajoute('seniorite',pSen*Math.max(0,sP/sM),pSen,sP+' ans pour '+sM+' demandes, en dessous du seuil');
+  if(!sM) ajoute('seniorite',pSen,pSen,'Aucune ancienneté exigée, axe neutralisé');
+  else if(sP>=sM) ajoute('seniorite',pSen,pSen,sP+' ans pour '+sM+' demandés');
+  else ajoute('seniorite',pSen*Math.max(0,sP/sM),pSen,sP+' ans pour '+sM+' demandés, en dessous du seuil');
 
   const pPre = AXES[5].poids;
-  if(!mission.presence) ajoute('presence',pPre,pPre,'Aucune contrainte de presence, axe neutralise');
-  else if(memeValeur(profil.presence,mission.presence)) ajoute('presence',pPre,pPre,'Presence compatible : '+mission.presence);
-  else ajoute('presence',0,pPre,'Presence attendue '+mission.presence+', profil en '+(profil.presence||'non renseigne'));
+  if(!mission.presence) ajoute('presence',pPre,pPre,'Aucune contrainte de présence, axe neutralisé');
+  else if(memeValeur(profil.presence,mission.presence)) ajoute('presence',pPre,pPre,'Présence compatible : '+mission.presence);
+  else ajoute('presence',0,pPre,'Présence attendue '+mission.presence+', profil en '+(profil.presence||'non renseigné'));
 
   const pZon = AXES[6].poids;
-  if(!mission.zone) ajoute('zone',pZon,pZon,'Aucune zone exigee, axe neutralise');
+  if(!mission.zone) ajoute('zone',pZon,pZon,'Aucune zone exigée, axe neutralisé');
   else if(memeValeur(profil.zone,mission.zone)||contient(liste(profil.zones),mission.zone)) ajoute('zone',pZon,pZon,'Zone couverte : '+mission.zone);
   else ajoute('zone',0,pZon,'Zone non couverte : '+mission.zone);
 
   const pLan = AXES[7].poids;
   const lanP = liste(profil.langues), lanM = liste(mission.langues_requises);
   const lanManque = lanM.filter(l=>!contient(lanP,l));
-  if(lanM.length===0) ajoute('langues',pLan,pLan,'Aucune langue exigee, axe neutralise');
+  if(lanM.length===0) ajoute('langues',pLan,pLan,'Aucune langue exigée, axe neutralisé');
   else ajoute('langues',pLan*(lanM.length-lanManque.length)/lanM.length,pLan,
     (lanM.length-lanManque.length)+' sur '+lanM.length+(lanManque.length?', manque '+lanManque.join(', '):''));
 
   const pDur = AXES[8].poids;
-  if(!mission.duree_mois) ajoute('duree',pDur,pDur,'Aucune duree precisee, axe neutralise');
-  else ajoute('duree',pDur,pDur,'Duree annoncee : '+mission.duree_mois+' mois');
+  if(!mission.duree_mois) ajoute('duree',pDur,pDur,'Aucune durée précisée, axe neutralisé');
+  else ajoute('duree',pDur,pDur,'Durée annoncée : '+mission.duree_mois+' mois');
 
   let total = 0; AXES.forEach(a=>{ total += d[a.cle].obtenu; });
   total = Math.round(total);
 
   const motifs = [];
-  if(habManque.length>0) motifs.push('habilitation exigee non detenue : '+habManque.join(', '));
+  if(habManque.length>0) motifs.push('habilitation exigée non détenue : '+habManque.join(', '));
   const zoneFrEu = mission.zone ? /(france|europe|union)/.test(norm(mission.zone)) : true;
-  if(zoneFrEu && profil.autorisation_travail === false) motifs.push('pas d autorisation de travail en France ou dans l Union europeenne');
+  if(zoneFrEu && profil.autorisation_travail === false) motifs.push('pas d\'autorisation de travail en France ou dans l\'Union européenne');
 
   let alerte = null;
   if(mission.tjm_max && profil.tjm && Number(profil.tjm) > Number(mission.tjm_max)){
-    alerte = 'Tarif au-dessus du budget : '+profil.tjm+' contre '+mission.tjm_max+' annonces. Un tarif se negocie, il ne disqualifie pas.';
+    alerte = 'Tarif au-dessus du budget : '+profil.tjm+' contre '+mission.tjm_max+' annoncés. Un tarif se négocie, il ne disqualifie pas.';
   }
   return {total, detail:d, ecarte:motifs.length>0, motifs, alerte};
 }
@@ -313,343 +207,1053 @@ function classer(profils, mission){
     });
 }
 
-/* ================= etat ================= */
-let ME = null, DATA = {profils:[], societes:[], contacts:[], missions:[], qualifs:[]}, VUE = 'flux';
-const $ = s => document.querySelector(s);
-const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* ========================== état et outillage ========================== */
+let MOI = null, VUE = null, APERCU = null;
+const D = {profils:[], societes:[], contacts:[], missions:[], propositions:[], documents:[], qualifs:[]};
 
-function message(txt, type){
-  $('#lgMsg').innerHTML = '<div class="msg msg-'+type+'">'+esc(txt)+'</div>';
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const jour = d => d ? new Date(d).toLocaleDateString('fr-FR') : '';
+const jourHeure = d => d ? new Date(d).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'}) : '';
+
+function dire(cible, texte, genre){
+  const n = $(cible); if(n) n.innerHTML = '<div class="msg '+genre+'">'+esc(texte)+'</div>';
+}
+function vide(titre, explication){
+  return '<div class="vide"><h3>'+esc(titre)+'</h3><p>'+esc(explication)+'</p></div>';
+}
+function tableau(entetes, lignes){
+  if(!lignes.length) return '';
+  return '<table class="tbl"><thead><tr>'+entetes.map(h=>'<th>'+esc(h)+'</th>').join('')
+       + '</tr></thead><tbody>'
+       + lignes.map(l=>'<tr>'+l.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')
+       + '</tbody></table>';
 }
 
-/* ================= connexion ================= */
-$('#bLogin').onclick = async () => {
-  const email = $('#em').value.trim(), pass = $('#mp').value;
-  if(!email || !pass){ message('Renseignez votre email et votre mot de passe.','ko'); return; }
-  $('#bLogin').disabled = true;
-  const {error} = await sb.auth.signInWithPassword({email, password:pass});
-  $('#bLogin').disabled = false;
-  if(error){ message('Connexion refusee. Verifiez vos identifiants.','ko'); return; }
+/* ============================== connexion ============================== */
+$('#btConnexion').onclick = async () => {
+  const email = $('#chEmail').value.trim(), mdp = $('#chMdp').value;
+  if(!email || !mdp){ dire('#msgConnexion','Renseignez votre adresse et votre mot de passe.','ko'); return; }
+  $('#btConnexion').disabled = true;
+  const {error} = await sb.auth.signInWithPassword({email, password:mdp});
+  $('#btConnexion').disabled = false;
+  if(error){ dire('#msgConnexion','Connexion refusée. Vérifiez vos identifiants.','ko'); return; }
   demarrer();
 };
-$('#bMagic').onclick = async () => {
-  const email = $('#em').value.trim();
-  if(!email){ message('Renseignez votre email pour recevoir un lien.','ko'); return; }
-  $('#bMagic').disabled = true;
+
+$('#btLien').onclick = async () => {
+  const email = $('#chEmail').value.trim();
+  if(!email){ dire('#msgConnexion','Renseignez votre adresse pour recevoir un lien.','ko'); return; }
+  $('#btLien').disabled = true;
   const {error} = await sb.auth.signInWithOtp({email, options:{emailRedirectTo:location.href}});
-  $('#bMagic').disabled = false;
-  message(error ? 'Envoi impossible pour le moment.' : 'Lien envoye. Ouvrez votre boite mail.', error ? 'ko' : 'ok');
+  $('#btLien').disabled = false;
+  dire('#msgConnexion', error ? "Envoi impossible pour le moment." : "Lien envoyé. Ouvrez votre boîte aux lettres.", error ? 'ko':'ok');
 };
-$('#bOubli').onclick = async () => {
-  const email = $('#em').value.trim();
-  if(!email){ message('Renseignez votre email, le lien vous y sera envoye.','ko'); return; }
-  $('#bOubli').disabled = true;
+
+$('#btOubli').onclick = async () => {
+  const email = $('#chEmail').value.trim();
+  if(!email){ dire('#msgConnexion','Renseignez votre adresse, le lien y sera envoyé.','ko'); return; }
   const {error} = await sb.auth.resetPasswordForEmail(email, {redirectTo: location.origin + location.pathname});
-  $('#bOubli').disabled = false;
-  message(error ? 'Envoi impossible pour le moment.' : 'Lien envoye. Ouvrez votre boite mail, vous choisirez votre mot de passe en revenant ici.', error ? 'ko' : 'ok');
+  dire('#msgConnexion', error ? "Envoi impossible pour le moment."
+    : "Lien envoyé. Ouvrez votre boîte aux lettres, vous choisirez votre mot de passe en revenant ici.", error ? 'ko':'ok');
 };
 
-function messageMdp(txt, type){
-  $('#mdpMsg').innerHTML = '<div class="msg msg-'+type+'">'+esc(txt)+'</div>';
+function ouvrirChoixMdp(){
+  $('#coque').style.display = 'none';
+  $('#ecranConnexion').style.display = 'flex';
+  $('#boiteConnexion').style.display = 'none';
+  $('#boiteMdp').style.display = 'block';
 }
 
-function ouvrirDefinitionMdp(){
-  $('#login').classList.remove('hide');
-  document.querySelectorAll('#login .lg-box')[0].classList.add('hide');
-  $('#boxMdp').classList.remove('hide');
-}
-
-$('#bMdp').onclick = async () => {
-  const a = $('#mp1').value, b = $('#mp2').value;
-  if(a.length < 8){ messageMdp('Huit caracteres minimum.','ko'); return; }
-  if(a !== b){ messageMdp('Les deux saisies different.','ko'); return; }
-  $('#bMdp').disabled = true;
-  const {error} = await sb.auth.updateUser({password: a});
-  $('#bMdp').disabled = false;
-  if(error){ messageMdp('Enregistrement refuse : '+error.message,'ko'); return; }
-  messageMdp('Mot de passe enregistre. Vous entrez dans l application.','ok');
-  setTimeout(demarrer, 900);
+$('#btMdp').onclick = async () => {
+  const a = $('#chMdp1').value, b = $('#chMdp2').value;
+  if(a.length < 8){ dire('#msgMdp','Huit caractères minimum.','ko'); return; }
+  if(a !== b){ dire('#msgMdp','Les deux saisies diffèrent.','ko'); return; }
+  $('#btMdp').disabled = true;
+  const {error} = await sb.auth.updateUser({password:a});
+  $('#btMdp').disabled = false;
+  if(error){ dire('#msgMdp','Enregistrement refusé : '+error.message,'ko'); return; }
+  dire('#msgMdp','Mot de passe enregistré.','ok');
+  setTimeout(demarrer, 800);
 };
 
-$('#bMdpApp').onclick = () => { $('#app').classList.add('hide'); ouvrirDefinitionMdp(); };
+$('#btMdpApp').onclick = e => { e.preventDefault(); ouvrirChoixMdp(); };
+$('#btSortie').onclick  = async e => { e.preventDefault(); await sb.auth.signOut(); location.reload(); };
 
-$('#bOut').onclick = async () => { await sb.auth.signOut(); location.reload(); };
-
-/* ================= chargement ================= */
+/* ============================== démarrage ============================== */
 async function demarrer(){
   const {data:{user}} = await sb.auth.getUser();
   if(!user) return;
-  const {data:profil} = await sb.from('app_users').select('*').eq('id', user.id).maybeSingle();
-  if(!profil){
-    message('Votre compte existe mais aucun role ne lui est rattache. Demandez a Yacine de vous ouvrir l acces.','info');
+
+  const {data:compte} = await sb.from('app_users').select('*').eq('id', user.id).maybeSingle();
+  if(!compte){
+    dire('#msgConnexion', "Votre compte existe, mais aucun rôle ne lui est rattaché. "
+      + "Demandez à Yacine d'ouvrir votre accès : sans rôle, l'application ne vous montre rien, et c'est voulu.", 'info');
     await sb.auth.signOut();
     return;
   }
-  ME = profil;
-  $('#login').classList.add('hide');
-  $('#boxMdp').classList.add('hide');
-  document.querySelectorAll('#login .lg-box')[0].classList.remove('hide');
-  $('#app').classList.remove('hide');
-  $('#hdRole').textContent = ME.role;
-  $('#hdUser').textContent = ME.nom || ME.email;
-  $('#hdSub').textContent = ME.role==='admin' ? 'Vivier, missions et matching' : (ME.role==='client' ? 'Vos missions et propositions' : 'Votre passeport');
+  if(compte.actif === false){
+    dire('#msgConnexion', "Votre accès a été suspendu. Contactez Yacine.", 'ko');
+    await sb.auth.signOut();
+    return;
+  }
+
+  MOI = compte;
+  $('#ecranConnexion').style.display = 'none';
+  $('#boiteConnexion').style.display = 'block';
+  $('#boiteMdp').style.display = 'none';
+  $('#coque').style.display = 'grid';
+
+  $('#etiquetteEspace').textContent =
+    MOI.role === 'admin' ? 'Espace administrateur'
+    : MOI.role === 'client' ? 'Espace client' : 'Espace expert';
+  $('#quiNom').textContent  = MOI.nom || MOI.email;
+  $('#quiMail').textContent = MOI.email;
+
   await charger();
-  construireNav();
+  construireMenu();
   rendre();
 }
 
+/* Chaque requête est envoyée telle quelle : c'est la base qui filtre.
+   Une erreur de policy se lit ici comme un tableau vide, jamais comme une
+   fuite. On ne réplique donc AUCUN filtre de rôle dans ce fichier. */
 async function charger(){
-  const [p,s,c,m,q] = await Promise.all([
-    sb.from('cache_profils').select('*').order('nom'),
-    sb.from('cache_societes').select('*').order('nom'),
-    sb.from('cache_contacts').select('*').order('nom'),
-    sb.from('missions').select('*').order('cree_le',{ascending:false}),
-    sb.from('qualifications').select('*').order('created_at',{ascending:false}).limit(200)
+  const req = (t, o) => sb.from(t).select('*').order(o.col, {ascending:o.asc !== false});
+  const [p,s,c,m,pr,doc,q,j] = await Promise.all([
+    req('cache_profils',  {col:'nom'}),
+    req('cache_societes', {col:'nom'}),
+    req('cache_contacts', {col:'nom'}),
+    req('missions',       {col:'cree_le', asc:false}),
+    req('propositions',   {col:'cree_le', asc:false}),
+    req('documents',      {col:'maj_le',  asc:false}),
+    req('qualifications', {col:'created_at', asc:false}),
+    sb.from('sync_journal').select('fait_le').order('fait_le',{ascending:false}).limit(1)
   ]);
-  DATA.profils   = p.data || [];
-  DATA.societes  = s.data || [];
-  DATA.contacts  = c.data || [];
-  DATA.missions  = m.data || [];
-  DATA.qualifs   = q.error ? [] : (q.data || []);
-  const {data:j} = await sb.from('sync_journal').select('fait_le').order('fait_le',{ascending:false}).limit(1);
-  if(j && j[0]) $('#ftMaj').textContent = 'Cache Boond au ' + new Date(j[0].fait_le).toLocaleDateString('fr-FR');
+  D.profils      = p.data   || [];
+  D.societes     = s.data   || [];
+  D.contacts     = c.data   || [];
+  D.missions     = m.data   || [];
+  D.propositions = pr.data  || [];
+  D.documents    = doc.data || [];
+  D.qualifs      = q.data   || [];
+  if(j.data && j.data[0]) $('#quiFraicheur').textContent = 'Cache Boond au ' + jour(j.data[0].fait_le);
 }
 
-function construireNav(){
-  const onglets = ME.role==='admin'
-    ? [['flux','Flux'],['vivier','Vivier'],['missions','Missions'],['matching','Matching'],['methode','Methode']]
-    : ME.role==='client'
-      ? [['missions','Mes missions'],['methode','Methode']]
-      : [['passeport','Mon passeport'],['methode','Methode']];
-  VUE = onglets[0][0];
-  $('#nav').innerHTML = onglets.map(([k,l])=>'<button data-v="'+k+'">'+l+'</button>').join('');
-  $('#nav').querySelectorAll('button').forEach(b=>{
-    b.onclick = ()=>{ VUE = b.dataset.v; rendre(); };
+/* ================================ menu ================================ */
+const MENUS = {
+  admin: [
+    ['bord',      'Tableau de bord'],
+    ['documents', 'Documents'],
+    ['vivier',    'Vivier'],
+    ['missions',  'Missions'],
+    ['matching',  'Matching'],
+    ['comptes',   'Accès'],
+    ['methode',   'Méthode']
+  ],
+  client: [
+    ['bord',      'Tableau de bord'],
+    ['missions',  'Mes missions'],
+    ['proposes',  'Profils proposés'],
+    ['documents', 'Mes documents'],
+    ['methode',   'Méthode']
+  ],
+  freelance: [
+    ['bord',      'Tableau de bord'],
+    ['passeport', 'Mon passeport'],
+    ['documents', 'Mes dépôts'],
+    ['missions',  'Mes missions'],
+    ['methode',   'Méthode']
+  ]
+};
+
+function construireMenu(){
+  const items = MENUS[MOI.role];
+  VUE = VUE && items.some(i=>i[0]===VUE) ? VUE : items[0][0];
+  $('#menu').innerHTML = items.map(([k,l])=>'<a href="#'+k+'" data-v="'+k+'">'+esc(l)+'</a>').join('');
+  $('#menu').querySelectorAll('a').forEach(a=>{
+    a.onclick = e => { e.preventDefault(); VUE = a.dataset.v; APERCU = null; rendre(); };
   });
 }
 
-/* ================= rendu ================= */
+const TITRES = {
+  bord:      ['Tableau de bord',        'Ce qui attend une action, et rien d\'autre'],
+  documents: ['Flux documentaire',      'Dépôt, mise au format, validation, envoi'],
+  vivier:    ['Vivier',                 'Lu depuis le cache BoondManager'],
+  missions:  ['Missions',               'Besoins clients et affectations'],
+  proposes:  ['Profils proposés',       'Ce que Geozey vous a présenté'],
+  matching:  ['Matching',               'Dix axes, deux critères éliminatoires'],
+  passeport: ['Mon passeport',          'Votre fiche, telle que Geozey la lit'],
+  comptes:   ['Accès',                  'Qui entre, et dans quel espace'],
+  methode:   ['Méthode',                'Comment ces écrans sont construits']
+};
+
 function rendre(){
-  $('#nav').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.v===VUE));
-  const v = $('#vues');
-  if(VUE==='flux')      v.innerHTML = vueFlux();
-  if(VUE==='vivier')    v.innerHTML = vueVivier();
-  if(VUE==='missions')  v.innerHTML = vueMissions();
-  if(VUE==='matching'){ v.innerHTML = vueMatching(); brancherMatching(); }
-  if(VUE==='methode')   v.innerHTML = vueMethode();
-  if(VUE==='passeport') v.innerHTML = vuePasseport();
-  if(VUE==='missions')  brancherMission();
+  $('#menu').querySelectorAll('a').forEach(a=>a.classList.toggle('on', a.dataset.v===VUE));
+  const [t, st] = TITRES[VUE] || ['Geozey',''];
+  $('#titreVue').textContent = t;
+  $('#sousTitreVue').textContent = st;
+  $('#actionsVue').innerHTML = '';
+
+  const c = $('#contenu');
+  if(VUE==='bord')      c.innerHTML = vueBord();
+  if(VUE==='documents'){ c.innerHTML = vueDocuments(); brancherDocuments(); }
+  if(VUE==='vivier')    c.innerHTML = vueVivier();
+  if(VUE==='missions'){  c.innerHTML = vueMissions(); brancherMission(); }
+  if(VUE==='proposes')   c.innerHTML = vueProposes();
+  if(VUE==='matching'){  c.innerHTML = vueMatching(); brancherMatching(); }
+  if(VUE==='passeport'){ c.innerHTML = vuePasseport(); brancherPasseport(); }
+  if(VUE==='comptes')    c.innerHTML = vueComptes();
+  if(VUE==='methode')    c.innerHTML = vueMethode();
+  window.scrollTo(0,0);
 }
 
-function vueFlux(){
-  const joignables = DATA.profils.filter(p=>p.email).length;
-  const clients = DATA.societes.filter(s=>norm(s.etat)==='client').length;
-  return '<div class="strip">'
-   + st('Qualifications', DATA.qualifs.length, 'depuis le formulaire')
-   + st('Vivier', DATA.profils.length, joignables+' joignables', true)
-   + st('Societes', DATA.societes.length, clients+' clients')
-   + st('Missions', DATA.missions.length, DATA.missions.filter(m=>m.statut==='ouverte').length+' ouvertes', true)
+function kpi(libelle, valeur, sous, accent){
+  return '<div><span class="k">'+esc(libelle)+'</span>'
+       + '<div class="v'+(accent?' em':'')+'">'+esc(String(valeur))+'</div>'
+       + '<div class="s">'+esc(sous||'')+'</div></div>';
+}
+
+/* ============================ tableau de bord ============================ */
+const ETAPES = ['depose','en_mise_au_format','pret_validation','valide','envoye'];
+const LIB_ETAPE = {
+  depose:'Déposé', en_mise_au_format:'Mise au format', pret_validation:'À valider',
+  a_corriger:'À corriger', valide:'Validé', envoye:'Envoyé'
+};
+const GENRE_ETAPE = {
+  depose:'info', en_mise_au_format:'wip', pret_validation:'em',
+  a_corriger:'ko', valide:'ok', envoye:'nt'
+};
+
+function vueBord(){
+  const enCours = D.documents.filter(d=>d.statut!=='envoye');
+  const aValider = D.documents.filter(d=>d.statut==='pret_validation');
+  const aEnvoyer = D.documents.filter(d=>d.statut==='valide');
+
+  if(MOI.role==='admin'){
+    const joignables = D.profils.filter(p=>p.email).length;
+    return '<div class="kpis">'
+      + kpi('À valider', aValider.length, aValider.length ? 'Documents en attente de vous' : 'Rien ne vous attend', aValider.length>0)
+      + kpi('Vivier', D.profils.length, joignables+' joignables')
+      + kpi('Missions ouvertes', D.missions.filter(m=>m.statut==='ouverte').length, D.missions.length+' au total', true)
+      + kpi('Qualifications', D.qualifs.length, 'depuis le formulaire')
+      + '</div>'
+      + (aValider.length
+          ? '<div class="s-label">Ce qui attend votre décision<span></span></div>'
+            + aValider.map(d=>carteDocument(d,'admin')).join('')
+          : '')
+      + (aEnvoyer.length
+          ? '<div class="s-label">Validés, pas encore transmis<span></span></div>'
+            + aEnvoyer.map(d=>carteDocument(d,'admin')).join('')
+          : '')
+      + (enCours.length===0
+          ? vide('Aucun document en circulation',
+              "Le flux est vide. Dès qu'un expert dépose un fichier destiné à un client, il apparaît ici et attend votre mise au format.")
+          : '')
+      + noteVivier();
+  }
+
+  if(MOI.role==='client'){
+    const recus = D.documents.filter(d=>d.statut==='envoye');
+    return '<div class="kpis">'
+      + kpi('Vos missions', D.missions.length, D.missions.filter(m=>m.statut==='ouverte').length+' ouvertes', true)
+      + kpi('Profils proposés', D.propositions.length, D.propositions.filter(p=>p.statut==='retenue').length+' retenus')
+      + kpi('Documents reçus', recus.length, 'validés par Geozey')
+      + kpi('Contacts', D.contacts.length, 'chez Geozey')
+      + '</div>'
+      + (recus.length ? '<div class="s-label">Vos derniers documents<span></span></div>'
+          + recus.slice(0,4).map(d=>carteDocument(d,'client')).join('')
+        : vide('Aucun document reçu à ce jour',
+            "Vous ne verrez ici que les documents validés par Geozey. Rien n'arrive dans cet espace sans être passé par cette validation."));
+  }
+
+  const miens = D.documents;
+  const maFiche = D.profils[0];
+  return '<div class="kpis">'
+    + kpi('Vos dépôts', miens.length, miens.filter(d=>d.statut==='envoye').length+' transmis au client', true)
+    + kpi('En attente chez vous', miens.filter(d=>d.statut==='a_corriger').length, 'demandes de correction')
+    + kpi('Vos missions', D.missions.length, 'où vous êtes proposé')
+    + kpi('Fiche', maFiche ? 'à jour' : 'absente', maFiche ? (maFiche.email ? 'joignable' : 'coordonnées manquantes') : '')
+    + '</div>'
+    + (miens.filter(d=>d.statut==='a_corriger').length
+        ? '<div class="s-label">Geozey vous a renvoyé ces documents<span></span></div>'
+          + miens.filter(d=>d.statut==='a_corriger').map(d=>carteDocument(d,'freelance')).join('')
+        : '')
+    + (maFiche && !maFiche.email
+        ? '<div class="msg warn">Votre fiche n\'a ni adresse électronique ni téléphone. Vous êtes visible dans le vivier pour le matching, mais Geozey ne peut pas vous joindre. Complétez votre passeport.</div>'
+        : '')
+    + (miens.length===0 ? vide('Aucun dépôt pour le moment',
+        "Passez par Mes dépôts pour transmettre un livrable. Il partira d'abord à Geozey pour mise au format et validation, jamais directement au client.") : '');
+}
+
+function noteVivier(){
+  const sans = D.profils.filter(p=>!p.email).length;
+  if(!sans) return '';
+  const pl = sans > 1;
+  return '<div class="note"><p><b>'+sans+(pl?' profils':' profil')+' sur '+D.profils.length+'</b> '
+    + (pl?'n\'ont':'n\'a')+' ni adresse ni téléphone. '
+    + (pl?'Ils restent exploitables':'Il reste exploitable')+' par le matching, qui ne juge que les compétences déclarées, '
+    + 'mais pas pour être contacté'+(pl?'s':'')+'. '
+    + 'C\'est la raison d\'être de l\'espace expert : chacun complète sa propre fiche.</p></div>';
+}
+
+/* =========================================================================
+   FLUX DOCUMENTAIRE
+   Le parcours complet : l'expert dépose, la charte s'applique, Yacine
+   prévisualise puis valide, et seulement alors le client voit.
+   Chaque bouton d'étape déclenche un UPDATE que la base accepte ou refuse.
+   ========================================================================= */
+
+function etapes(doc){
+  if(doc.statut === 'a_corriger'){
+    return '<div class="flx"><div class="faite"><i></i><span>Déposé</span></div>'
+         + '<div class="ici"><i></i><span>Renvoyé pour correction</span></div></div>';
+  }
+  const i = ETAPES.indexOf(doc.statut);
+  return '<div class="flx">' + ETAPES.map((e,k)=>
+      '<div class="'+(k<i?'faite':k===i?'ici':'')+'"><i></i><span>'+esc(LIB_ETAPE[e])+'</span></div>'
+    ).join('') + '</div>';
+}
+
+function carteDocument(doc, angle){
+  const soc = D.societes.find(s=>s.boond_id===doc.societe_boond_id);
+  const mis = D.missions.find(m=>m.id===doc.mission_id);
+  const urgent = doc.statut==='pret_validation' && angle==='admin';
+
+  let boutons = '';
+  if(angle==='admin'){
+    if(doc.statut==='depose')            boutons = bt(doc.id,'formater','Mettre au format Geozey','b');
+    if(doc.statut==='en_mise_au_format') boutons = bt(doc.id,'formater','Reprendre la mise au format','b ghost');
+    if(doc.statut==='pret_validation')   boutons = bt(doc.id,'apercu','Prévisualiser','b ghost')
+                                                 + bt(doc.id,'valider','Valider','b')
+                                                 + bt(doc.id,'corriger','Renvoyer en correction','b danger');
+    if(doc.statut==='valide')            boutons = bt(doc.id,'apercu','Prévisualiser','b ghost')
+                                                 + bt(doc.id,'envoyer','Transmettre au client','b');
+    if(doc.statut==='envoye')            boutons = bt(doc.id,'apercu','Prévisualiser','b ghost');
+  }
+  if(angle==='client' && doc.statut==='envoye'){
+    boutons = bt(doc.id,'apercu','Consulter','b') + bt(doc.id,'telecharger','Télécharger','b ghost');
+  }
+  if(angle==='freelance'){
+    if(doc.chemin_formate) boutons += bt(doc.id,'apercu','Voir la version Geozey','b ghost');
+    if(doc.statut==='a_corriger') boutons += bt(doc.id,'redeposer','J\'ai corrigé, je redépose','b');
+  }
+
+  return '<div class="dfile'+(urgent?' urgent':'')+'" id="doc-'+doc.id+'">'
+    + '<div>'
+      + '<div class="ref">'+esc(doc.reference||'')+'</div>'
+      + '<h3>'+esc(doc.titre)+'</h3>'
+      + '<div class="meta">'
+        + esc(soc ? soc.nom : 'Client non renseigné')
+        + (mis ? ' · '+esc(mis.intitule) : '')
+        + ' · déposé le '+jour(doc.cree_le)
+        + (doc.nom_source ? ' · '+esc(doc.nom_source) : '')
+      + '</div>'
+      + etapes(doc)
+      + (doc.commentaire_freelance ? '<div class="cmt"><b>Note de l\'expert.</b> '+esc(doc.commentaire_freelance)+'</div>' : '')
+      + (doc.commentaire_yacine ? '<div class="cmt"><b>Demande de Geozey.</b> '+esc(doc.commentaire_yacine)+'</div>' : '')
+    + '</div>'
+    + '<div class="cote">'
+      + '<span class="bdg '+GENRE_ETAPE[doc.statut]+'">'+esc(LIB_ETAPE[doc.statut])+'</span>'
+      + boutons
+    + '</div>'
+  + '</div>';
+}
+
+function bt(id, action, libelle, classe){
+  return '<button class="'+classe+'" data-doc="'+id+'" data-act="'+action+'">'+esc(libelle)+'</button>';
+}
+
+function vueDocuments(){
+  if(MOI.role==='freelance') return vueDocFreelance();
+  if(MOI.role==='client')    return vueDocClient();
+  return vueDocAdmin();
+}
+
+function vueDocAdmin(){
+  const files = [
+    ['pret_validation', 'Ce qui attend votre validation'],
+    ['depose',          'Déposés, à mettre au format'],
+    ['en_mise_au_format','Mise au format en cours'],
+    ['valide',          'Validés, à transmettre'],
+    ['a_corriger',      'Renvoyés à l\'expert'],
+    ['envoye',          'Transmis au client']
+  ];
+  let html = '<div id="zoneApercu"></div>';
+  let rien = true;
+  files.forEach(([st, titre])=>{
+    const lot = D.documents.filter(d=>d.statut===st);
+    if(!lot.length) return;
+    rien = false;
+    html += '<div class="s-label">'+esc(titre)+' <span></span></div>'
+          + lot.map(d=>carteDocument(d,'admin')).join('');
+  });
+  if(rien) html += vide('Le flux documentaire est vide',
+    "Aucun expert n'a encore déposé de fichier. Dès qu'un dépôt arrive, il se présente ici avec son parcours complet, du dépôt à la transmission.");
+  return html + noteFlux();
+}
+
+function noteFlux(){
+  return '<div class="note"><p><b>Ce que cet écran garantit.</b> Un document ne peut pas sauter d\'étape. '
+    + 'La base refuse toute transition qui n\'est pas prévue, y compris celle qui compte le plus : '
+    + 'un expert ne peut pas rendre son fichier visible au client sans passer par votre validation. '
+    + 'Ce n\'est pas la page qui l\'interdit, c\'est la base : passer par l\'API directement donne le même refus.</p></div>';
+}
+
+function vueDocFreelance(){
+  const soc = D.societes.map(s=>'<option value="'+s.boond_id+'">'+esc(s.nom)+'</option>').join('');
+  const mis = D.missions.map(m=>'<option value="'+m.id+'">'+esc(m.intitule)+'</option>').join('');
+  return '<div id="zoneApercu"></div>'
+   + '<div class="panel">'
+     + '<h3 style="font-size:23px;font-weight:400;margin-bottom:8px">Déposer un document</h3>'
+     + '<p style="font-size:15px;color:var(--ash);line-height:1.6;margin-bottom:26px;max-width:720px">'
+     + 'Votre fichier part chez Geozey, jamais directement chez le client. La charte est appliquée, '
+     + 'Yacine relit, puis transmet. Vous suivez chaque étape depuis cet écran.</p>'
+     + '<div class="depot" id="zoneDepot">'
+       + '<b>Choisissez un fichier</b>'
+       + '<span>Texte, Markdown, HTML, CSV : mise au format automatique. PDF, Word, Excel, images : page de garde Geozey et transmission de l\'original.</span>'
+       + '<input type="file" id="chFichier">'
+     + '</div>'
+     + '<div id="fichierChoisi"></div>'
+     + '<div class="frm" style="margin-top:26px">'
+       + '<div class="full"><label for="chTitre">Titre du document</label>'
+         + '<input type="text" id="chTitre" placeholder="Rapport d\'avancement, semaine 34"></div>'
+       + '<div><label for="chNature">Nature</label><select id="chNature">'
+         + '<option value="livrable">Livrable</option><option value="rapport">Rapport</option>'
+         + '<option value="planning">Planning</option><option value="compte_rendu">Compte rendu</option>'
+         + '<option value="cv">CV</option><option value="autre">Autre</option></select></div>'
+       + '<div><label for="chSociete">Client destinataire</label><select id="chSociete">'
+         + '<option value="">À préciser</option>'+soc+'</select></div>'
+       + '<div class="full"><label for="chMission">Mission concernée</label><select id="chMission">'
+         + '<option value="">Aucune mission précise</option>'+mis+'</select></div>'
+       + '<div class="full"><label for="chNote">Note pour Geozey</label>'
+         + '<textarea id="chNote" placeholder="Ce que Yacine doit savoir avant de relire."></textarea></div>'
+       + '<div class="full"><button class="b" id="btDeposer">Déposer</button></div>'
+     + '</div>'
+     + '<div id="msgDepot"></div>'
    + '</div>'
-   + '<div class="s-label">Qualifications entrantes<span></span></div>'
-   + (DATA.qualifs.length===0
-      ? vide('Aucune qualification a ce jour','Le formulaire est en ligne et fonctionne, il n a simplement pas encore ete rempli. Tant qu il n y a pas de trafic, cet ecran restera vide.')
-      : tableau(['Recu le','Nom','Specialite','Origine','Etat'], DATA.qualifs.map(q=>[
-          q.created_at ? new Date(q.created_at).toLocaleDateString('fr-FR') : '',
-          esc([q.prenom,q.nom].filter(Boolean).join(' ')) || 'anonyme',
-          esc(q.specialite||''), esc(q.utm_source||q.origine||'direct'),
-          '<span class="bdg '+(q.complet?'b-ok':'b-wip')+'">'+(q.complet?'complet':'en cours')+'</span>'
-        ])));
+   + (D.documents.length
+       ? '<div class="s-label">Vos dépôts<span></span></div>' + D.documents.map(d=>carteDocument(d,'freelance')).join('')
+       : '');
 }
 
-function vueVivier(){
-  if(DATA.profils.length===0) return vide('Vivier vide','Le cache Boond n a pas encore ete alimente.');
-  return '<div class="s-label">Vivier, lu depuis le cache Boond<span></span></div>'
-   + tableau(['Nom','Titre','Specialite','Outils','Joignable','Origine'], DATA.profils.map(p=>[
-      '<b>'+esc((p.nom||'')+' '+(p.prenom||''))+'</b>',
-      esc(p.titre||''), esc(p.specialite||''),
-      (p.outils||[]).map(o=>'<span class="bdg b-nt">'+esc(o)+'</span>').join(' ') || '<span style="color:#999">non renseigne</span>',
-      p.email ? '<span class="bdg b-ok">oui</span>' : '<span class="bdg b-ko">a completer</span>',
-      '<span class="bdg b-in">'+esc(p.type_boond)+'</span>'
-     ]))
-   + '<div class="card"><h3>Ce que dit cet ecran</h3><p style="font-size:12px;color:var(--ash)">'
-   + DATA.profils.filter(p=>!p.email).length + ' profils sur ' + DATA.profils.length
-   + ' n ont ni email ni telephone. Ils sont exploitables pour le matching, qui ne juge que les competences declarees, mais pas pour etre contactes. '
-   + 'C est la raison d etre de l espace expert du palier C : chacun completera sa propre fiche.</p></div>';
+function vueDocClient(){
+  const recus = D.documents.filter(d=>d.statut==='envoye');
+  return '<div id="zoneApercu"></div>'
+    + (recus.length
+        ? '<div class="s-label">Documents transmis par Geozey<span></span></div>'
+          + recus.map(d=>carteDocument(d,'client')).join('')
+        : vide('Aucun document à ce jour',
+            "Cet espace ne présente que des documents relus et validés par Geozey. Tant qu'une pièce est en cours de préparation, elle n'apparaît pas ici."))
+    + '<div class="note"><p><b>Pourquoi cet espace est parfois vide.</b> Rien n\'y arrive automatiquement. '
+    + 'Chaque document est mis à la charte puis relu par Geozey avant de vous être transmis. '
+    + 'C\'est un choix : vous ne recevez pas un brouillon.</p></div>';
 }
 
-function vueMissions(){
-  const soc = Object.fromEntries(DATA.societes.map(s=>[s.boond_id, s.nom]));
-  const liste = DATA.missions.length===0
-    ? vide('Aucune mission enregistree','Creez une mission pour lancer un matching. Sans besoin decrit, le moteur n a rien a comparer.')
-    : tableau(['Reference','Intitule','Client','Specialite','Zone','Statut'], DATA.missions.map(m=>[
-        '<span class="m">'+esc(m.reference||'—')+'</span>', '<b>'+esc(m.intitule)+'</b>',
-        esc(soc[m.societe_boond_id]||'—'), esc(m.specialite||''), esc(m.zone||m.ville||''),
-        '<span class="bdg '+(m.statut==='ouverte'?'b-ok':'b-nt')+'">'+esc(m.statut)+'</span>'
-      ]));
-  if(ME.role!=='admin') return '<div class="s-label">Vos missions<span></span></div>'+liste;
-  return '<div class="s-label">Missions et besoins clients<span></span></div>' + liste
-   + '<div class="card"><h3>Nouvelle mission</h3><div class="frm">'
-   + ch('mIntitule','Intitule','text','Planificateur P6 pour EACOP')
-   + selSoc()
-   + ch('mSpecialite','Specialite','text','Planning P6 / PMO')
-   + ch('mSecteur','Secteur','text','Oil and Gas')
-   + ch('mZone','Zone','text','France')
-   + ch('mOutils','Outils requis, separes par des virgules','text','P6 primavera, ACONEX')
-   + ch('mHab','Habilitations requises, separees par des virgules','text','Nucleaire civil')
-   + ch('mLangues','Langues requises, separees par des virgules','text','Francais, Anglais')
-   + ch('mSeniorite','Anciennete minimale en annees','number','5')
-   + ch('mDuree','Duree en mois','number','12')
-   + ch('mTjm','Budget journalier maximum','number','600')
-   + ch('mPresence','Presence','text','Sur site')
-   + '<div class="full"><button class="btn" id="bMission" style="width:auto;padding:12px 28px">Enregistrer la mission</button></div>'
-   + '</div><div id="mMsg" style="margin-top:12px"></div></div>';
+/* --------------------- mise à la charte, gabarit Geozey --------------------- */
+/* La charte ne se reproduit pas, elle s'importe. Le document généré lie
+   https://geozey.com/styles.css et n'utilise que les classes du site. */
+function gabaritGeozey(info, corps, avertissement){
+  return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">'
+   + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+   + '<meta name="robots" content="noindex, nofollow">'
+   + '<title>'+esc(info.titre)+' — Geozey</title>'
+   + '<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">'
+   + '<link rel="stylesheet" href="https://geozey.com/styles.css">'
+   + '<style>'
+   + '.page-hero{padding:120px 96px 62px}.txt{padding:58px 96px}'
+   + '.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:26px 0}'
+   + '.doc-table table{width:100%;border-collapse:collapse;font-size:15px}'
+   + '.doc-table thead tr{background:var(--dark);color:#fff}'
+   + ".doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}"
+   + '.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}'
+   + '.doc-table tbody td{padding:14px 18px;vertical-align:top;line-height:1.55}'
+   + '@media(max-width:760px){.page-hero{padding:80px 24px 40px}.txt{padding:40px 24px}}'
+   + '</style></head><body>'
+   + '<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>'
+   + '<section class="page-hero ph-dark">'
+     + '<span class="kicker">'+esc(info.kicker)+'</span>'
+     + '<h1>'+esc(info.titre)+'</h1>'
+     + (info.chapeau ? '<p class="lead">'+esc(info.chapeau)+'</p>' : '')
+   + '</section>'
+   + '<section class="txt bg-white">'
+     + '<div class="pmeta">'
+       + info.meta.map(([k,v])=>'<div><div class="k">'+esc(k)+'</div><div class="v">'+esc(v)+'</div></div>').join('')
+     + '</div>'
+     + (avertissement ? '<p style="margin-top:30px"><b>'+esc(avertissement)+'</b></p>' : '')
+   + '</section>'
+   + '<section class="txt bg-light">'+corps+'</section>'
+   + '<footer><img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey"><hr>'
+   + '<p class="copy">Geozey · '+esc(info.titre)+' · '+esc(info.date)+' · Confidentiel</p></footer>'
+   + '</body></html>';
 }
 
-function vueMatching(){
-  if(DATA.missions.length===0) return vide('Aucune mission a matcher','Creez d abord une mission dans l onglet Missions.');
-  return '<div class="s-label">Moteur de matching<span></span></div>'
-   + '<div class="card"><h3>Choisir une mission</h3>'
-   + '<select id="selMission">'+DATA.missions.map(m=>'<option value="'+m.id+'">'+esc(m.intitule)+'</option>').join('')+'</select>'
-   + '</div><div id="resMatch"></div>';
-}
+/* Conversion d'un texte simple en corps HTML charté. Volontairement
+   minimale : titres, listes, tableaux, paragraphes. Elle ne devine rien
+   qu'elle ne sache lire, un contenu non reconnu reste un paragraphe. */
+function texteVersHtml(txt){
+  const lignes = String(txt).replace(/\r/g,'').split('\n');
+  let out = '', tampon = [], grille = [];
 
-function brancherMatching(){
-  const sel = $('#selMission'); if(!sel) return;
-  const calc = () => {
-    const m = DATA.missions.find(x=>x.id===sel.value);
-    if(!m) return;
-    const rang = classer(DATA.profils, m);
-    $('#resMatch').innerHTML = rang.map((e,i)=>ficheScore(e,i)).join('');
+  const viderTampon = () => { if(tampon.length){ out += '<ul>'+tampon.map(l=>'<li>'+esc(l)+'</li>').join('')+'</ul>'; tampon=[]; } };
+  const viderTableau = () => {
+    if(!grille.length) return;
+    const cel = l => l.replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
+    const corps = grille.filter(l=>!/^\|?[\s:-]+\|/.test(l));
+    const tete = cel(corps[0]);
+    out += '<div class="doc-table"><table><thead><tr>'+tete.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'
+         + corps.slice(1).map(l=>'<tr>'+cel(l).map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')
+         + '</tbody></table></div>';
+    grille = [];
   };
-  sel.onchange = calc; calc();
+
+  lignes.forEach(l=>{
+    const s = l.trim();
+    if(s.startsWith('|')){ viderTampon(); grille.push(s); return; }
+    viderTableau();
+    if(s === ''){ viderTampon(); return; }
+    if(/^#{3,}\s/.test(s)){ viderTampon(); out += '<h3 style="font-size:20px;font-weight:400;margin:26px 0 10px">'+esc(s.replace(/^#+\s/,''))+'</h3>'; return; }
+    if(/^##\s/.test(s)){ viderTampon(); out += '<h2>'+esc(s.replace(/^#+\s/,''))+'</h2>'; return; }
+    if(/^#\s/.test(s)){ viderTampon(); out += '<h2>'+esc(s.replace(/^#+\s/,''))+'</h2>'; return; }
+    if(/^[-*•]\s/.test(s)){ tampon.push(s.replace(/^[-*•]\s/,'')); return; }
+    viderTampon();
+    out += '<p>'+esc(s)+'</p>';
+  });
+  viderTampon(); viderTableau();
+  return out || '<p>Le fichier déposé ne contient aucun texte exploitable.</p>';
 }
 
-function ficheScore(e,i){
-  const p = e.profil, r = e.r;
-  const nom = esc((p.nom||'')+' '+(p.prenom||''));
-  return '<div class="card">'
-   + '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px">'
-   +   '<div><h3 style="margin-bottom:2px">'+(i+1)+'. '+nom+'</h3>'
-   +   '<div style="font-size:11.5px;color:var(--ash)">'+esc(p.titre||'')+'</div></div>'
-   +   '<div style="text-align:right"><div class="score" style="color:'+(r.ecarte?'var(--ko)':'var(--ember)')+'">'+r.total+'</div>'
-   +   '<div class="mono" style="font-size:9px;color:var(--ash);letter-spacing:2px">SUR 100</div></div>'
-   + '</div>'
-   + (r.ecarte ? '<div class="elim"><b>Ecarte</b> — '+esc(r.motifs.join(' ; '))+'. Son score reel reste affiche : le message utile est que ce profil correspond mais qu il est inexploitable, et pourquoi.</div>' : '')
-   + (r.alerte ? '<div class="alerte">'+esc(r.alerte)+'</div>' : '')
-   + AXES.map(a=>{
-       const d = r.detail[a.cle];
-       return '<div class="axe"><div class="axe-n">'+a.nom+'</div>'
-        + '<div class="bar"><i style="width:'+Math.round(100*d.obtenu/d.poids)+'%"></i></div>'
-        + '<div class="axe-v">'+d.obtenu+' / '+d.poids+'</div>'
-        + '<div class="axe-d">'+esc(d.detail)+'</div></div>';
-     }).join('')
-   + '</div>';
+function csvVersHtml(txt){
+  const sep = (txt.split('\n')[0].match(/;/g)||[]).length > (txt.split('\n')[0].match(/,/g)||[]).length ? ';' : ',';
+  const lignes = txt.replace(/\r/g,'').split('\n').filter(l=>l.trim()!=='');
+  if(!lignes.length) return '<p>Fichier vide.</p>';
+  const cel = l => l.split(sep).map(c=>c.replace(/^"|"$/g,'').trim());
+  const tete = cel(lignes[0]);
+  return '<div class="doc-table"><table><thead><tr>'+tete.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'
+       + lignes.slice(1).map(l=>'<tr>'+cel(l).map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')
+       + '</tbody></table></div>';
 }
 
-function vuePasseport(){
-  const moi = DATA.profils[0];
-  if(!moi) return vide('Aucune fiche rattachee a votre compte','Demandez a Yacine de rattacher votre compte a votre fiche du vivier.');
-  return '<div class="s-label">Mon passeport<span></span></div>'
-   + '<div class="card"><h3>'+esc((moi.nom||'')+' '+(moi.prenom||''))+'</h3>'
-   + '<div class="axe"><div class="axe-n">Titre</div><div>'+esc(moi.titre||'non renseigne')+'</div><div></div></div>'
-   + '<div class="axe"><div class="axe-n">Specialite</div><div>'+esc(moi.specialite||'non renseignee')+'</div><div></div></div>'
-   + '<div class="axe"><div class="axe-n">Outils</div><div>'+((moi.outils||[]).join(', ')||'non renseignes')+'</div><div></div></div>'
-   + '<div class="axe"><div class="axe-n">Email</div><div>'+esc(moi.email||'a completer')+'</div><div></div></div>'
-   + '<div class="axe"><div class="axe-n">Telephone</div><div>'+esc(moi.telephone||'a completer')+'</div><div></div></div>'
-   + '</div>'
-   + '<div class="card"><h3>Mise a jour</h3><p style="font-size:12px;color:var(--ash)">La modification de votre fiche arrive au palier C. Pour l instant, signalez toute correction a Yacine.</p></div>';
-}
+const TEXTUELS = ['.txt','.md','.markdown','.html','.htm','.csv','.json','.log'];
+function estTextuel(nom){ return TEXTUELS.some(e=>String(nom||'').toLowerCase().endsWith(e)); }
 
-function vueMethode(){
-  return '<div class="s-label">Comment le score est calcule<span></span></div>'
-   + '<div class="card"><h3>Un score defendable, pas une boite noire</h3>'
-   + '<p style="font-size:12.5px;color:var(--ash);margin-bottom:14px">Le moteur est deterministe : aucune part d aleatoire, aucun modele entraine. '
-   + 'Chaque point attribue est rattache a une reponse du formulaire, des deux cotes. C est ce qui permet de justifier une proposition en rendez-vous, ligne par ligne, '
-   + 'et d expliquer aussi pourquoi un profil n a pas ete retenu.</p>'
-   + tableau(['Axe','Poids','Regle appliquee'], AXES.map(a=>[
-      '<b>'+a.nom+'</b>', '<span class="m">'+a.poids+'</span>', regleTexte(a.cle)
-     ]))
-   + '</div>'
-   + '<div class="card"><h3>Deux criteres eliminatoires</h3>'
-   + '<p style="font-size:12.5px;color:var(--ash)">Un profil qui ne detient pas une habilitation exigee est ecarte : sur un site nucleaire ou un programme defense, '
-   + 'l habilitation n est pas negociable et aucun point ailleurs ne la compense. Un profil sans autorisation de travail en France ou dans l Union europeenne est ecarte '
-   + 'de la meme facon sur une mission situee en France. Un profil ecarte passe derriere tous les autres, meme avec un score parfait, et son score reel reste affiche.</p></div>'
-   + '<div class="card"><h3>Ce que le score ne dit pas</h3>'
-   + '<p style="font-size:12.5px;color:var(--ash)">Le score mesure la correspondance declaree, pas la qualite d un expert. Les projets marquants et les references restent '
-   + 'en texte libre et se lisent, ils ne se notent pas. Un profil a 72 avec les bons chantiers derriere lui vaut mieux qu un profil a 85 sans reference verifiable. '
-   + 'Le score sert a classer une liste courte, pas a decider seul. L ecart de tarif est signale en alerte et n est jamais score : un tarif se negocie.</p></div>';
-}
-
-function regleTexte(cle){
-  const t = {
-    specialite:'Tout ou rien. La specialite du profil doit correspondre exactement a celle attendue.',
-    habilitations:'Au prorata des habilitations detenues. Toute habilitation manquante declenche aussi l ecartement.',
-    secteur:'Tout ou rien sur le secteur d activite de la mission.',
-    outils:'Au prorata des outils maitrises parmi ceux exiges.',
-    seniorite:'Plein si l anciennete atteint le seuil, au prorata en dessous.',
-    presence:'Tout ou rien : sur site, hybride ou a distance.',
-    zone:'Tout ou rien sur la zone geographique.',
-    langues:'Au prorata des langues exigees et maitrisees.',
-    duree:'Neutre : la duree est affichee, elle ne penalise pas.'
+async function construireVersionGeozey(doc){
+  const soc = D.societes.find(s=>s.boond_id===doc.societe_boond_id);
+  const mis = D.missions.find(m=>m.id===doc.mission_id);
+  const auteur = D.profils.find(p=>p.boond_id===doc.profil_boond_id);
+  const info = {
+    titre: doc.titre,
+    kicker: (LIB_NATURE[doc.nature]||'Document') + ' · ' + (doc.reference||''),
+    chapeau: soc ? 'Document préparé par Geozey pour ' + soc.nom + '.' : null,
+    date: new Date().toLocaleDateString('fr-FR'),
+    meta: [
+      ['Référence', doc.reference||''],
+      ['Client', soc ? soc.nom : 'Non renseigné'],
+      ['Mission', mis ? mis.intitule : 'Sans mission rattachée'],
+      ['Rédigé par', auteur ? [auteur.prenom,auteur.nom].filter(Boolean).join(' ') : 'Expert Geozey'],
+      ['Nature', LIB_NATURE[doc.nature]||doc.nature],
+      ['Édité le', new Date().toLocaleDateString('fr-FR')]
+    ]
   };
-  return t[cle] || '';
+
+  const {data:blob, error} = await sb.storage.from(BUCKET).download(doc.chemin_source);
+  if(error) throw new Error("Le fichier source est introuvable dans le stockage.");
+
+  if(estTextuel(doc.nom_source)){
+    const brut = await blob.text();
+    let corps;
+    const bas = doc.nom_source.toLowerCase();
+    if(bas.endsWith('.csv'))                         corps = csvVersHtml(brut);
+    else if(bas.endsWith('.html')||bas.endsWith('.htm')){
+      const m = brut.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      corps = m ? m[1] : brut;
+    }
+    else                                             corps = texteVersHtml(brut);
+    return gabaritGeozey(info, corps, null);
+  }
+
+  return gabaritGeozey(info,
+    '<p>Le fichier d\'origine est joint à ce document. Son format ne permet pas une remise en page automatique '
+    + 'sans en altérer le contenu : Geozey ne réécrit pas un document qu\'il ne sait pas lire intégralement.</p>'
+    + '<div class="doc-table"><table><thead><tr><th>Fichier</th><th>Format</th><th>Taille</th></tr></thead>'
+    + '<tbody><tr><td>'+esc(doc.nom_source||'')+'</td><td>'+esc(doc.type_source||'inconnu')+'</td>'
+    + '<td>'+(doc.taille_source ? Math.round(doc.taille_source/1024)+' Ko' : 'inconnue')+'</td></tr></tbody></table></div>',
+    'Page de garde Geozey. Le contenu du fichier n\'a pas été modifié.');
 }
 
-/* ================= creation de mission ================= */
-function brancherMission(){
-  const b = $('#bMission'); if(!b) return;
-  b.onclick = async () => {
-    const intitule = $('#mIntitule').value.trim();
-    if(!intitule){ $('#mMsg').innerHTML = '<div class="msg msg-ko">L intitule est obligatoire.</div>'; return; }
-    const arr = id => { const v = $('#'+id).value.trim(); return v ? v.split(',').map(s=>s.trim()).filter(Boolean) : null; };
-    const num = id => { const v = $('#'+id).value; return v===''? null : Number(v); };
-    b.disabled = true;
-    const {data:{user}} = await sb.auth.getUser();
-    const soc = $('#mSociete').value;
-    const {error} = await sb.from('missions').insert({
-      reference:'MIS-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase(),
-      intitule,
-      societe_boond_id: soc ? Number(soc) : null,
-      specialite:$('#mSpecialite').value.trim()||null,
-      secteur:$('#mSecteur').value.trim()||null,
-      zone:$('#mZone').value.trim()||null,
-      outils_requis:arr('mOutils'),
-      habilitations_requises:arr('mHab'),
-      langues_requises:arr('mLangues'),
-      seniorite_min:num('mSeniorite'),
-      duree_mois:num('mDuree'),
-      tjm_max:num('mTjm'),
-      presence:$('#mPresence').value.trim()||null,
-      cree_par:user.id
-    });
-    b.disabled = false;
-    if(error){ $('#mMsg').innerHTML = '<div class="msg msg-ko">Enregistrement refuse : '+esc(error.message)+'</div>'; return; }
+const LIB_NATURE = {livrable:'Livrable', rapport:'Rapport', planning:'Planning',
+  compte_rendu:'Compte rendu', cv:'CV', autre:'Document'};
+
+/* ---------------------------- actions documents ---------------------------- */
+function brancherDocuments(){
+  document.querySelectorAll('[data-doc]').forEach(b=>{
+    b.onclick = () => actionDocument(b.dataset.doc, b.dataset.act, b);
+  });
+  const zone = $('#zoneDepot'), champ = $('#chFichier');
+  if(zone && champ){
+    zone.onclick = () => champ.click();
+    champ.onchange = () => {
+      const f = champ.files[0];
+      $('#fichierChoisi').innerHTML = f
+        ? '<div class="fchoisi"><span>'+esc(f.name)+'</span><span class="bdg nt">'+Math.round(f.size/1024)+' Ko</span></div>'
+        : '';
+      if(f && !$('#chTitre').value) $('#chTitre').value = f.name.replace(/\.[^.]+$/,'');
+    };
+    $('#btDeposer').onclick = deposer;
+  }
+}
+
+async function deposer(){
+  const f = $('#chFichier').files[0];
+  const titre = $('#chTitre').value.trim();
+  const societe = $('#chSociete').value;
+  if(!f)       { dire('#msgDepot','Choisissez un fichier.','ko'); return; }
+  if(!titre)   { dire('#msgDepot','Donnez un titre au document. Il sera lu par le client.','ko'); return; }
+  if(!societe) { dire('#msgDepot','Indiquez le client destinataire. Sans destinataire, le document ne peut pas circuler.','ko'); return; }
+  if(f.size > 25*1024*1024){ dire('#msgDepot','Fichier trop lourd, 25 Mo maximum.','ko'); return; }
+
+  $('#btDeposer').disabled = true;
+  dire('#msgDepot','Dépôt en cours.','info');
+  try{
+    /* La ligne d'abord, le fichier ensuite : la policy du stockage
+       vérifie que le document existe et vous appartient avant d'accepter
+       l'objet. L'ordre inverse serait refusé, et c'est voulu. */
+    const {data:ligne, error:e1} = await sb.from('documents').insert({
+      titre, nature: $('#chNature').value,
+      depose_par: MOI.id, profil_boond_id: MOI.profil_boond_id,
+      societe_boond_id: Number(societe),
+      mission_id: $('#chMission').value || null,
+      commentaire_freelance: $('#chNote').value.trim() || null,
+      statut: 'depose'
+    }).select().single();
+    if(e1) throw e1;
+
+    const chemin = 'sources/'+ligne.id+'/'+f.name.replace(/[^\w.\-]/g,'_');
+    const {error:e2} = await sb.storage.from(BUCKET).upload(chemin, f, {upsert:true});
+    if(e2) throw e2;
+
+    const {error:e3} = await sb.from('documents').update({
+      chemin_source: chemin, nom_source: f.name, type_source: f.type || null, taille_source: f.size
+    }).eq('id', ligne.id);
+    if(e3) throw e3;
+
+    dire('#msgDepot','Document déposé. Geozey le met au format, puis le relit avant transmission.','ok');
+    await charger(); rendre();
+  }catch(err){
+    dire('#msgDepot','Dépôt refusé : '+(err.message||err), 'ko');
+    $('#btDeposer').disabled = false;
+  }
+}
+
+async function actionDocument(id, action, bouton){
+  const doc = D.documents.find(d=>d.id===id);
+  if(!doc) return;
+  bouton.disabled = true;
+  try{
+    if(action==='apercu')      await afficherApercu(doc);
+    if(action==='telecharger') await telecharger(doc);
+    if(action==='formater')    await formater(doc);
+    if(action==='valider')     await transition(doc,'valide');
+    if(action==='envoyer')     await transition(doc,'envoye');
+    if(action==='corriger')    renvoyerEnCorrection(doc);
+    if(action==='redeposer')   await transition(doc,'depose');
+  }catch(err){
+    alerteEcran(err.message || String(err));
+  }
+  bouton.disabled = false;
+}
+
+function alerteEcran(texte){
+  const z = $('#zoneApercu');
+  if(z) z.innerHTML = '<div class="msg ko">'+esc(texte)+'</div>';
+}
+
+async function formater(doc){
+  if(doc.statut==='depose'){
+    const {error} = await sb.from('documents').update({statut:'en_mise_au_format'}).eq('id', doc.id);
+    if(error) throw error;
+  }
+  const html = await construireVersionGeozey(doc);
+  const chemin = 'livrables/'+doc.id+'/'+(doc.reference||doc.id)+'.html';
+  const {error:e1} = await sb.storage.from(BUCKET)
+    .upload(chemin, new Blob([html],{type:'text/html;charset=utf-8'}), {upsert:true, contentType:'text/html;charset=utf-8'});
+  if(e1) throw e1;
+  const {error:e2} = await sb.from('documents')
+    .update({chemin_formate: chemin}).eq('id', doc.id);
+  if(e2) throw e2;
+  const {error:e3} = await sb.from('documents')
+    .update({statut:'pret_validation'}).eq('id', doc.id);
+  if(e3) throw e3;
+
+  await charger(); rendre();
+  const frais = D.documents.find(d=>d.id===doc.id) || doc;
+  afficherApercuHtml(frais, html);
+}
+
+async function transition(doc, vers){
+  const {error} = await sb.from('documents').update({statut:vers}).eq('id', doc.id);
+  if(error) throw new Error(nettoyerErreur(error.message));
+  await charger(); rendre();
+}
+
+function nettoyerErreur(m){
+  if(/Transition refusee/i.test(m)) return m.replace(/^.*Transition refusee/,'Transition refusée');
+  if(/row-level security/i.test(m)) return "Action refusée par la base : votre rôle ne permet pas cette opération.";
+  return m;
+}
+
+function renvoyerEnCorrection(doc){
+  /* Une demande de correction sans motif fait perdre un aller-retour a
+     tout le monde. Le champ est donc obligatoire, et il s ouvre dans la
+     carte du document, pas dans une boite de dialogue du navigateur. */
+  const carte = document.getElementById('doc-'+doc.id);
+  if(!carte || carte.querySelector('.zoneMotif')) return;
+  const zone = document.createElement('div');
+  zone.className = 'zoneMotif';
+  zone.style.gridColumn = '1/-1';
+  zone.innerHTML = '<div class="f" style="margin-top:20px">'
+    + '<label for="motif-'+doc.id+'">Que doit corriger l\'expert ? Ce texte lui sera montré tel quel</label>'
+    + '<textarea id="motif-'+doc.id+'" placeholder="Le tableau de la page 3 ne reprend pas les jalons du planning contractuel."></textarea>'
+    + '</div><div class="actions" style="margin-top:0">'
+    + '<button class="b danger" id="okMotif-'+doc.id+'">Renvoyer en correction</button>'
+    + '<button class="b ghost" id="nonMotif-'+doc.id+'">Annuler</button></div>';
+  carte.appendChild(zone);
+  document.getElementById('motif-'+doc.id).focus();
+  document.getElementById('nonMotif-'+doc.id).onclick = () => zone.remove();
+  document.getElementById('okMotif-'+doc.id).onclick = async () => {
+    const motif = document.getElementById('motif-'+doc.id).value.trim();
+    if(!motif){ alerteEcran("Une demande de correction sans motif ne sert à rien à celui qui la reçoit."); return; }
+    const {error} = await sb.from('documents')
+      .update({commentaire_yacine: motif, statut:'a_corriger'}).eq('id', doc.id);
+    if(error){ alerteEcran(nettoyerErreur(error.message)); return; }
     await charger(); rendre();
   };
 }
 
-/* ================= briques ================= */
-function st(l,v,s,dk){ return '<div class="st'+(dk?' dk':'')+'"><div class="st-l">'+l+'</div><div class="st-v">'+v+'</div><div class="st-s">'+s+'</div></div>'; }
-function vide(t,p){ return '<div class="vide"><b>'+esc(t)+'</b>'+esc(p)+'</div>'; }
-function tableau(cols, lignes){
-  return '<div class="tw"><table><thead><tr>'+cols.map(c=>'<th>'+c+'</th>').join('')+'</tr></thead><tbody>'
-   + lignes.map(l=>'<tr>'+l.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')
-   + '</tbody></table></div>';
-}
-function ch(id,lab,type,ph){ return '<div><label for="'+id+'">'+lab+'</label><input type="'+type+'" id="'+id+'" placeholder="'+ph+'"></div>'; }
-function selSoc(){
-  return '<div><label for="mSociete">Client</label><select id="mSociete"><option value="">Non precise</option>'
-   + DATA.societes.filter(s=>norm(s.etat)==='client').map(s=>'<option value="'+s.boond_id+'">'+esc(s.nom)+'</option>').join('')
-   + '</select></div>';
+function afficherApercuHtml(doc, html){
+  const z = $('#zoneApercu');
+  if(!z) return;
+  z.innerHTML = '<div class="apercu">'
+    + '<div class="barre"><span>Prévisualisation · '+esc(doc.reference||'')+'</span>'
+    + '<span>Version mise à la charte Geozey</span></div>'
+    + '<iframe sandbox="allow-same-origin" srcdoc="'+esc(html)+'"></iframe></div>';
+  z.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-/* ================= amorce ================= */
-const RETOUR_RECOVERY = /type=recovery/.test(location.hash) || /type=recovery/.test(location.search);
-sb.auth.onAuthStateChange((evenement, session) => {
-  if(evenement === 'PASSWORD_RECOVERY' || (RETOUR_RECOVERY && session)){ ouvrirDefinitionMdp(); return; }
-  if(session) demarrer();
+async function afficherApercu(doc){
+  const chemin = doc.chemin_formate || doc.chemin_source;
+  if(!chemin){ alerteEcran("Aucun fichier n'est encore attaché à ce document."); return; }
+  const z = $('#zoneApercu');
+  z.innerHTML = '<div class="msg info">Chargement de la prévisualisation.</div>';
+
+  const {data, error} = await sb.storage.from(BUCKET).download(chemin);
+  if(error){ z.innerHTML = '<div class="msg ko">Prévisualisation impossible : '+esc(error.message)+'</div>'; return; }
+
+  const estHtml = chemin.endsWith('.html');
+  const contenu = estHtml
+    ? '<iframe sandbox="allow-same-origin" srcdoc="'+esc(await data.text())+'"></iframe>'
+    : '<iframe src="'+URL.createObjectURL(data)+'"></iframe>';
+
+  z.innerHTML = '<div class="apercu">'
+    + '<div class="barre"><span>Prévisualisation · '+esc(doc.reference||'')+'</span>'
+    + '<span>'+esc(estHtml ? 'Version mise à la charte Geozey' : 'Fichier d\'origine')+'</span></div>'
+    + contenu + '</div>';
+  z.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+async function telecharger(doc){
+  const chemin = doc.chemin_formate || doc.chemin_source;
+  if(!chemin) return;
+  const {data, error} = await sb.storage.from(BUCKET).createSignedUrl(chemin, 300);
+  if(error){ alerteEcran("Téléchargement refusé : "+error.message); return; }
+  window.open(data.signedUrl, '_blank', 'noopener');
+}
+
+/* ================================ vivier ================================ */
+function vueVivier(){
+  if(!D.profils.length) return vide('Vivier vide',
+    "Le cache BoondManager n'a pas encore été alimenté, ou votre rôle ne donne pas accès au vivier complet.");
+  return tableau(['Nom','Titre','Spécialité','Outils','Joignable','Origine'], D.profils.map(p=>[
+      '<b>'+esc([p.nom,p.prenom].filter(Boolean).join(' '))+'</b>'
+        + (p.ville ? '<span class="s">'+esc(p.ville)+'</span>' : ''),
+      esc(p.titre||''),
+      p.specialite ? esc(p.specialite) : '<span class="bdg ko">à normaliser</span>',
+      (p.outils||[]).map(o=>'<span class="bdg nt">'+esc(o)+'</span>').join(' ') || '<span class="bdg nt">non renseigné</span>',
+      p.email ? '<span class="bdg ok">oui</span>' : '<span class="bdg ko">à compléter</span>',
+      '<span class="bdg info">'+esc(p.type_boond||'')+'</span>'
+    ])) + noteVivier();
+}
+
+/* =============================== missions =============================== */
+function vueMissions(){
+  const nomSoc = Object.fromEntries(D.societes.map(s=>[s.boond_id, s.nom]));
+  const tableauMissions = D.missions.length
+    ? tableau(['Référence','Intitulé','Client','Spécialité','Zone','Statut'], D.missions.map(m=>[
+        '<span style="font-family:\'Roboto Mono\',monospace;font-size:13px">'+esc(m.reference||'')+'</span>',
+        '<b>'+esc(m.intitule)+'</b>'
+          + (m.outils_requis && m.outils_requis.length ? '<span class="s">'+esc(liste_txt(m.outils_requis))+'</span>' : ''),
+        esc(nomSoc[m.societe_boond_id]||'Non rattachée'),
+        esc(m.specialite||''),
+        esc(m.zone||m.ville||''),
+        '<span class="bdg '+(m.statut==='ouverte'?'ok':'nt')+'">'+esc(m.statut)+'</span>'
+      ]))
+    : vide('Aucune mission',
+        MOI.role==='admin'
+          ? "Créez une mission pour lancer un matching. Sans besoin décrit, le moteur n'a rien à comparer."
+          : "Aucune mission ne vous est rattachée pour le moment.");
+
+  if(MOI.role!=='admin') return tableauMissions;
+
+  return tableauMissions + '<div class="panel">'
+   + '<h3 style="font-size:23px;font-weight:400;margin-bottom:22px">Nouvelle mission</h3>'
+   + '<div class="frm">'
+   + champ('mIntitule','Intitulé','text','Planificateur P6 pour EACOP', true)
+   + '<div><label for="mSociete">Client</label><select id="mSociete"><option value="">Non précisé</option>'
+     + D.societes.map(s=>'<option value="'+s.boond_id+'">'+esc(s.nom)+'</option>').join('')+'</select></div>'
+   + champ('mSpecialite','Spécialité','text','Planning')
+   + champ('mSecteur','Secteur','text','Oil and Gas')
+   + champ('mZone','Zone','text','France')
+   + champ('mVille','Ville','text','Marseille')
+   + champ('mOutils','Outils requis, séparés par des virgules','text','P6 primavera, ACONEX')
+   + champ('mHab','Habilitations requises, séparées par des virgules','text','Nucléaire civil')
+   + champ('mLangues','Langues requises, séparées par des virgules','text','Français, Anglais')
+   + champ('mSeniorite','Ancienneté minimale en années','number','5')
+   + champ('mDuree','Durée en mois','number','12')
+   + champ('mTjm','Budget journalier maximum','number','600')
+   + champ('mPresence','Présence','text','Sur site')
+   + '<div class="full"><button class="b" id="btMission">Enregistrer la mission</button></div>'
+   + '</div><div id="msgMission"></div></div>';
+}
+
+function liste_txt(a){ return (a||[]).join(', '); }
+function champ(id, lab, type, ph, pleine){
+  return '<div'+(pleine?' class="full"':'')+'><label for="'+id+'">'+esc(lab)+'</label>'
+       + '<input type="'+type+'" id="'+id+'" placeholder="'+esc(ph)+'"></div>';
+}
+
+function brancherMission(){
+  const b = $('#btMission'); if(!b) return;
+  b.onclick = async () => {
+    const intitule = $('#mIntitule').value.trim();
+    if(!intitule){ dire('#msgMission','Un intitulé est nécessaire.','ko'); return; }
+    b.disabled = true;
+    const tab = v => v.trim() ? v.split(',').map(x=>x.trim()).filter(Boolean) : null;
+    const num = v => v ? Number(v) : null;
+    const {error} = await sb.from('missions').insert({
+      reference: 'MIS-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,5).toUpperCase(),
+      intitule,
+      societe_boond_id: num($('#mSociete').value),
+      specialite: $('#mSpecialite').value.trim() || null,
+      secteur:    $('#mSecteur').value.trim() || null,
+      zone:       $('#mZone').value.trim() || null,
+      ville:      $('#mVille').value.trim() || null,
+      outils_requis: tab($('#mOutils').value),
+      habilitations_requises: tab($('#mHab').value),
+      langues_requises: tab($('#mLangues').value),
+      seniorite_min: num($('#mSeniorite').value),
+      duree_mois: num($('#mDuree').value),
+      tjm_max: num($('#mTjm').value),
+      presence: $('#mPresence').value.trim() || null,
+      statut: 'ouverte'
+    });
+    b.disabled = false;
+    if(error){ dire('#msgMission','Enregistrement refusé : '+error.message,'ko'); return; }
+    await charger(); rendre();
+  };
+}
+
+/* =============================== matching =============================== */
+function vueMatching(){
+  if(!D.missions.length) return vide('Aucune mission à matcher',
+    "Créez d'abord une mission. Le moteur compare un besoin à un vivier, il lui faut les deux.");
+  return '<div class="f" style="max-width:520px">'
+    + '<label for="selMission">Mission</label>'
+    + '<select id="selMission">'+D.missions.map(m=>'<option value="'+m.id+'">'+esc(m.intitule)+'</option>').join('')+'</select>'
+    + '</div><div id="resultatMatching"></div>';
+}
+
+function brancherMatching(){
+  const sel = $('#selMission'); if(!sel) return;
+  const calculer = () => {
+    const m = D.missions.find(x=>x.id===sel.value);
+    if(!m) return;
+    const rangs = classer(D.profils, m);
+    const dejaPropose = new Set(D.propositions.filter(p=>p.mission_id===m.id).map(p=>p.profil_boond_id));
+    $('#resultatMatching').innerHTML = rangs.map(({profil,r})=>{
+      const ini = ([profil.prenom,profil.nom].filter(Boolean).map(x=>x[0]).join('') || '?').toUpperCase();
+      return '<div class="prow">'
+        + '<div class="av'+(r.ecarte?' gr':(r.total>=70?' em':''))+'">'+esc(ini)+'</div>'
+        + '<div class="id">'
+          + '<h3>'+esc([profil.prenom,profil.nom].filter(Boolean).join(' '))+'</h3>'
+          + '<div class="sub">'+esc(profil.titre||profil.specialite||'')+'</div>'
+          + '<div class="tg">'+AXES.map(a=>{
+              const d = r.detail[a.cle];
+              return '<span'+(d.obtenu>=d.poids?' class="em"':'')+' title="'+esc(d.detail)+'">'
+                + esc(a.nom)+' '+d.obtenu+'/'+d.poids+'</span>';
+            }).join('')+'</div>'
+          + (r.ecarte ? '<div class="msg ko" style="margin:14px 0 0">Écarté : '+esc(r.motifs.join(' ; '))+'</div>' : '')
+          + (r.alerte ? '<div class="msg warn" style="margin:14px 0 0">'+esc(r.alerte)+'</div>' : '')
+        + '</div>'
+        + '<div class="sc">'
+          + '<div class="n'+(r.ecarte?' off':'')+'">'+r.total+'</div>'
+          + '<div class="l">sur 100</div>'
+          + '<div class="b"><i class="'+(r.ecarte?'off':'')+'" style="width:'+r.total+'%"></i></div>'
+          + (r.ecarte ? ''
+              : dejaPropose.has(profil.boond_id)
+                ? '<span class="bdg ok" style="margin-top:14px">Déjà proposé</span>'
+                : '<button class="b ghost" style="margin-top:14px" data-prop="'+profil.boond_id+'" data-mis="'+m.id+'" data-score="'+r.total+'">Proposer au client</button>')
+        + '</div>'
+      + '</div>';
+    }).join('') + noteBareme();
+
+    $('#resultatMatching').querySelectorAll('[data-prop]').forEach(b=>{
+      b.onclick = async () => {
+        b.disabled = true;
+        const {error} = await sb.from('propositions').insert({
+          mission_id: b.dataset.mis,
+          profil_boond_id: Number(b.dataset.prop),
+          score: Number(b.dataset.score),
+          motif: 'Proposé depuis le moteur de matching le '+new Date().toLocaleDateString('fr-FR')
+        });
+        if(error){ b.disabled = false; alert('Refusé : '+error.message); return; }
+        await charger(); rendre();
+      };
+    });
+  };
+  sel.onchange = calculer;
+  calculer();
+}
+
+function noteBareme(){
+  return '<div class="note"><p><b>Comment lire ces notes.</b> Neuf axes pondérés, cent points au total. '
+    + 'Un axe que la mission n\'exige pas est neutralisé, il rapporte ses points plutôt que d\'en retirer. '
+    + 'Deux motifs seulement écartent un profil : une habilitation exigée qu\'il ne détient pas, '
+    + 'et l\'absence d\'autorisation de travail sur une mission en France ou dans l\'Union. '
+    + 'Un tarif au-dessus du budget est signalé, jamais scoré : un tarif se négocie.</p></div>';
+}
+
+/* =========================== profils proposés =========================== */
+function vueProposes(){
+  if(!D.propositions.length) return vide('Aucun profil proposé pour le moment',
+    "Geozey vous présentera ici les experts retenus pour vos missions, avec la note de correspondance qui a motivé la proposition.");
+  const nomMis = Object.fromEntries(D.missions.map(m=>[m.id, m.intitule]));
+  return tableau(['Mission','Score','Motif','Statut','Proposé le'], D.propositions.map(p=>[
+      '<b>'+esc(nomMis[p.mission_id]||'Mission')+'</b>',
+      '<span style="font-size:26px">'+(p.score==null?'—':p.score)+'</span>',
+      esc(p.motif||''),
+      '<span class="bdg '+(p.statut==='retenue'?'ok':p.statut==='ecartee'?'ko':'info')+'">'+esc(p.statut)+'</span>',
+      jour(p.cree_le)
+    ]))
+   + '<div class="note"><p><b>Ce que vous ne voyez pas, et pourquoi.</b> Vous accédez aux profils que Geozey '
+   + 'vous propose sur vos missions, pas au vivier complet. Ce n\'est pas une limite technique, c\'est le métier : '
+   + 'Geozey présente des candidatures instruites, pas un annuaire.</p></div>';
+}
+
+/* ============================== passeport ============================== */
+function vuePasseport(){
+  const p = D.profils[0];
+  if(!p) return vide('Fiche introuvable',
+    "Aucune fiche du vivier n'est rattachée à votre compte. Demandez à Yacine de faire le lien, il se pose une seule fois.");
+  const val = (k, v) => v==null ? '' : (Array.isArray(v) ? v.join(', ') : String(v));
+  return '<div class="panel"><div class="frm">'
+   + '<div class="full"><label>Identité</label><input type="text" value="'
+     + esc([p.prenom,p.nom].filter(Boolean).join(' '))+'" disabled></div>'
+   + ligneP('pEmail','Adresse électronique','email', val('email',p.email))
+   + ligneP('pTel','Téléphone','text', val('telephone',p.telephone))
+   + ligneP('pTitre','Titre','text', val('titre',p.titre))
+   + ligneP('pVille','Ville','text', val('ville',p.ville))
+   + ligneP('pZone','Zone d\'intervention','text', val('zone',p.zone))
+   + ligneP('pPresence','Présence acceptée','text', val('presence',p.presence))
+   + ligneP('pSecteur','Secteur principal','text', val('secteur',p.secteur))
+   + ligneP('pOutils','Outils, séparés par des virgules','text', val('outils',p.outils))
+   + ligneP('pHab','Habilitations, séparées par des virgules','text', val('habilitations',p.habilitations))
+   + ligneP('pLangues','Langues, séparées par des virgules','text', val('langues',p.langues))
+   + ligneP('pSeniorite','Ancienneté en années','number', val('seniorite_annees',p.seniorite_annees))
+   + ligneP('pTjm','Tarif journalier','number', val('tjm',p.tjm))
+   + ligneP('pDispo','Disponibilité','text', val('disponibilite',p.disponibilite))
+   + '<div class="full"><button class="b" id="btPasseport">Enregistrer mon passeport</button></div>'
+   + '</div><div id="msgPasseport"></div></div>'
+   + '<div class="note"><p><b>À quoi sert cet écran.</b> Le moteur de matching ne juge que ce qui est déclaré. '
+   + 'Un outil que vous maîtrisez mais qui n\'est pas écrit ici vous coûte des points sur chaque mission qui l\'exige. '
+   + 'Les axes Zone, Présence et Secteur, longtemps vides pour tout le vivier, valent vingt-cinq points sur cent.</p></div>';
+}
+
+function ligneP(id, lab, type, v){
+  return '<div><label for="'+id+'">'+esc(lab)+'</label>'
+       + '<input type="'+type+'" id="'+id+'" value="'+esc(v)+'"></div>';
+}
+
+function brancherPasseport(){
+  const b = $('#btPasseport'); if(!b) return;
+  b.onclick = async () => {
+    const p = D.profils[0];
+    const tab = v => v.trim() ? v.split(',').map(x=>x.trim()).filter(Boolean) : null;
+    const num = v => v ? Number(v) : null;
+    b.disabled = true;
+    const {error} = await sb.from('cache_profils').update({
+      email: $('#pEmail').value.trim() || null,
+      telephone: $('#pTel').value.trim() || null,
+      titre: $('#pTitre').value.trim() || null,
+      ville: $('#pVille').value.trim() || null,
+      zone: $('#pZone').value.trim() || null,
+      presence: $('#pPresence').value.trim() || null,
+      secteur: $('#pSecteur').value.trim() || null,
+      outils: tab($('#pOutils').value),
+      habilitations: tab($('#pHab').value),
+      langues: tab($('#pLangues').value),
+      seniorite_annees: num($('#pSeniorite').value),
+      tjm: num($('#pTjm').value),
+      disponibilite: $('#pDispo').value.trim() || null
+    }).eq('boond_id', p.boond_id).eq('type_boond', p.type_boond);
+    b.disabled = false;
+    if(error){ dire('#msgPasseport','Enregistrement refusé : '+nettoyerErreur(error.message),'ko'); return; }
+    dire('#msgPasseport','Passeport enregistré. Le matching en tient compte immédiatement.','ok');
+    await charger();
+  };
+}
+
+/* ================================ accès ================================ */
+function vueComptes(){
+  return '<div class="msg info">Les comptes se créent dans Supabase, écran Authentication, puis reçoivent '
+    + 'leur rôle ici. Aucun mot de passe ne transite par cette application, ni par une conversation.</div>'
+    + '<div class="vide"><h3>Écran en construction</h3><p>La gestion des accès depuis l\'application '
+    + 'arrive avec le palier suivant. Pour l\'instant, l\'ouverture d\'un compte passe par le script '
+    + 'db/2026-08-20-01, section app_users : une ligne par personne, jointe sur son adresse.</p></div>';
+}
+
+/* =============================== méthode =============================== */
+function vueMethode(){
+  return '<div class="g2">'
+   + bloc('Trois espaces, une seule base',
+       "Ce que vous voyez ne dépend pas de la page ouverte mais du compte connecté. Le filtrage vit dans la base, "
+     + "pas dans le navigateur : interroger l'interface de programmation directement donne exactement le même résultat "
+     + "que cet écran. C'est ce qui distingue un cloisonnement d'un affichage conditionnel.")
+   + bloc('Le document ne saute pas d\'étape',
+       "Dépôt, mise au format, prévisualisation, validation, transmission. Chaque passage d'une étape à la suivante "
+     + "est vérifié par la base, qui refuse tout raccourci. Un expert ne peut pas rendre un fichier visible à un client "
+     + "sans la validation de Geozey, et cette règle ne dépend d'aucun bouton.")
+   + bloc('La charte s\'importe, elle ne se recopie pas',
+       "Les documents produits lient la feuille de style du site. Le jour où la charte évolue, les documents déjà "
+     + "transmis suivent. Aucune couleur, aucun arrondi, aucune graisse n'est redéfini dans cette application.")
+   + bloc('Aucun chiffre inventé',
+       "Le vivier est lu depuis le cache BoondManager, dans un seul sens. Un champ vide reste vide, il n'est jamais "
+     + "estimé ni complété au jugé. Un écran qui affiche zéro dit la vérité sur la donnée, il ne signale pas une panne.")
+   + '</div>';
+}
+
+function bloc(titre, texte){
+  return '<div class="blk"><h3>'+esc(titre)+'</h3><p>'+esc(texte)+'</p></div>';
+}
+
+/* ============================== amorçage ============================== */
+sb.auth.onAuthStateChange((evt) => {
+  if(evt === 'PASSWORD_RECOVERY') ouvrirChoixMdp();
 });
-demarrer();
+
+(async () => {
+  const {data:{session}} = await sb.auth.getSession();
+  if(session) demarrer();
+})();
 </script>
 </body>
 </html>
