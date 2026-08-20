@@ -10,11 +10,11 @@ ni récupérable.
 
 ## Ordre d'application
 
-| Fichier | Ce qu'il fait | Rejouable |
-|---|---|---|
-| `2026-08-20-01-cloisonnement-et-socle-auth.sql` | Ferme l'accès public, pose `app_users`, les fonctions d'identité et les policies des trois espaces | oui |
-| `2026-08-20-02-flux-documentaire.sql` | Crée `documents`, son journal, le graphe des transitions et le stockage cloisonné | oui |
-| `2026-08-20-03-test-cloisonnement.sql` | Ne modifie rien. Prouve le cloisonnement en se mettant à la place de chaque rôle | oui |
+| Fichier | Ce qu'il fait | État | Rejouable |
+|---|---|---|---|
+| `2026-08-20-01-cloisonnement-et-socle-auth.sql` | Ferme l'accès public, pose `app_users`, les fonctions d'identité et les policies des trois espaces | **appliqué le 20/08** | oui |
+| `2026-08-20-02-flux-documentaire.sql` | Crée `documents`, son journal, le graphe des transitions et le stockage cloisonné | **appliqué le 20/08** | oui |
+| `2026-08-20-03-test-cloisonnement.sql` | Ne modifie rien. Prouve le cloisonnement en se mettant à la place de chaque rôle | **joué le 20/08, 7/7 conformes** | oui |
 
 Le fichier 02 dépend du 01 : il utilise `app_role()`, `est_admin()` et
 `touch_maj_le()`. Les passer dans le désordre échoue proprement, sans rien
@@ -49,14 +49,14 @@ résultat. C'est ce qui sépare un cloisonnement d'un affichage conditionnel.
 Ces gestes ne passent par aucun agent, par choix de sécurité tenu depuis le
 début de la mission : aucun secret ne transite par une conversation.
 
-1. Créer les comptes dans `Authentication > Users > Add user`, en cochant
-   `Auto Confirm User`. Trois comptes de test suffisent pour le fichier 03.
-2. Leur attribuer un rôle, avec les `insert` de la partie 0 du fichier 03. La
-   jointure se fait sur l'adresse, aucun identifiant technique à recopier.
-3. Vérifier que `Authentication > Providers > Email` a bien `Confirm email`
-   activé, et arbitrer l'inscription libre : à ce jour, n'importe qui peut
-   créer un compte. Sans ligne dans `app_users`, ce compte ne voit rien, mais
-   un espace client se ferme mieux à la porte qu'au couloir.
+1. Créer les comptes réels dans `Authentication > Users > Add user`, en cochant
+   `Auto Confirm User`, puis leur attribuer un rôle dans `app_users`. **Le
+   fichier 03 n'en a pas besoin** : il monte ses propres identités dans une
+   transaction annulée. Ces comptes-là servent à la recette réelle, sur écran.
+2. Fermer l'inscription libre : `disable_signup` vaut `false` à ce jour,
+   n'importe qui peut créer un compte. Sans ligne dans `app_users` il ne voit
+   rien, le cloisonnement tient, mais un espace client se ferme mieux à la
+   porte qu'au couloir.
 
 ## Le graphe du flux documentaire
 
@@ -81,6 +81,14 @@ Le refus vient d'un trigger, pas d'un bouton grisé.
 - **`propositions` est la seule fenêtre du client sur le vivier**, et elle est
   nominative et volontaire. Sans elle, ouvrir le vivier au client reviendrait à
   lui donner le carnet d'adresses de Geozey.
+- **Deux fonctions cassent une récursion, elles ne sont pas décoratives.**
+  `mission_de_ma_societe()` et `propose_sur_mission()` existent parce que la
+  policy des missions interrogeait `propositions` pendant que celles de
+  `propositions` interrogeaient `missions`. Postgres rendait
+  `42P17 infinite recursion detected in policy`. Elles sont `SECURITY DEFINER`
+  et ne rendent qu'un booléen sur le périmètre propre de l'appelant : rendre
+  `societe_boond_id` aurait été une fuite, même petite. Ne pas les remplacer
+  par un `exists` en ligne, le cycle reviendrait.
 - **Trois colonnes manquaient à `cache_profils`** : `zone`, `presence` et
   `secteur`. Le moteur de matching les lisait, elles n'existaient pas. Les axes
   correspondants, vingt-cinq points sur cent, tombaient donc à zéro pour tout
