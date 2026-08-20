@@ -3,8 +3,9 @@
 -- Migration 2026-08-20-01 : cloisonnement des donnees, puis socle
 -- d authentification a trois espaces.
 --
--- A passer dans l editeur SQL du projet geozey-core, sous le compte
--- Geozey, dans l ordre des fichiers db/ de ce depot.
+-- APPLIQUE EN PRODUCTION LE 20/08/2026 sur geozey-core, sous le compte
+-- Geozey, verifie par la grille de controle finale : verdict FERME sur
+-- les vingt tables du schema public.
 -- Idempotent : peut etre rejoue sans dommage.
 --
 -- POURQUOI CE FICHIER EXISTE
@@ -204,10 +205,40 @@ language sql stable security definer set search_path = public, pg_temp as $$
   select coalesce(public.app_role() = 'admin', false);
 $$;
 
+-- ---------------------------------------------------------------------
+-- DEFAUT TROUVE PAR LE TEST, le 20/08 : RECURSION INFINIE.
+-- La policy de lecture des missions par un freelance interrogeait
+-- propositions ; les policies de propositions interrogeaient missions.
+-- Postgres a rendu 42P17 infinite recursion detected in policy for
+-- relation missions. Le cycle se casse en passant par une fonction
+-- SECURITY DEFINER, qui lit la table cible hors RLS.
+--
+-- Ces deux fonctions ne rendent qu un BOOLEEN sur le perimetre PROPRE
+-- de l appelant. Elles n apprennent donc rien a personne : un client
+-- qui demande est-ce ma mission connait deja la reponse s il possede
+-- la ligne. Rendre societe_boond_id aurait ete une fuite, meme petite.
+-- ---------------------------------------------------------------------
+
+create or replace function public.mission_de_ma_societe(m uuid) returns boolean
+language sql stable security definer set search_path = public, pg_temp as $$
+  select exists (select 1 from public.missions mi
+                  where mi.id = m and mi.societe_boond_id = public.app_societe());
+$$;
+
+create or replace function public.propose_sur_mission(m uuid) returns boolean
+language sql stable security definer set search_path = public, pg_temp as $$
+  select exists (select 1 from public.propositions pr
+                  where pr.mission_id = m and pr.profil_boond_id = public.app_profil());
+$$;
+
 revoke all on function public.app_role(), public.app_societe(),
-                      public.app_profil(), public.est_admin() from public, anon;
+                      public.app_profil(), public.est_admin(),
+                      public.mission_de_ma_societe(uuid), public.propose_sur_mission(uuid)
+       from public, anon;
 grant execute on function public.app_role(), public.app_societe(),
-                          public.app_profil(), public.est_admin() to authenticated;
+                          public.app_profil(), public.est_admin(),
+                          public.mission_de_ma_societe(uuid), public.propose_sur_mission(uuid)
+      to authenticated;
 
 
 -- =====================================================================
@@ -305,17 +336,11 @@ create policy missions_client on public.missions
   using (public.app_societe() is not null and societe_boond_id = public.app_societe());
 
 -- Le freelance voit les missions sur lesquelles il a ete propose. Pas
--- le carnet de commandes complet.
+-- le carnet de commandes complet. Passe par une fonction, sinon
+-- recursion avec les policies de propositions.
 create policy missions_freelance on public.missions
   for select to authenticated
-  using (
-    public.app_profil() is not null
-    and exists (
-      select 1 from public.propositions pr
-       where pr.mission_id = missions.id
-         and pr.profil_boond_id = public.app_profil()
-    )
-  );
+  using (public.app_profil() is not null and public.propose_sur_mission(missions.id));
 
 -- ------------------------------------------------------------------ matches
 -- MISE AU POINT DU 20/08 : cette table n est PAS le matching de
@@ -342,31 +367,17 @@ create policy propositions_admin on public.propositions
 
 create policy propositions_client_lit on public.propositions
   for select to authenticated
-  using (
-    public.app_societe() is not null
-    and exists (
-      select 1 from public.missions mi
-       where mi.id = propositions.mission_id
-         and mi.societe_boond_id = public.app_societe()
-    )
-  );
+  using (public.app_societe() is not null
+         and public.mission_de_ma_societe(propositions.mission_id));
 
 -- Le client se prononce, il ne cree ni ne supprime rien.
 create policy propositions_client_arbitre on public.propositions
   for update to authenticated
-  using (
-    public.app_societe() is not null
-    and exists (select 1 from public.missions mi
-                 where mi.id = propositions.mission_id
-                   and mi.societe_boond_id = public.app_societe())
-  )
-  with check (
-    public.app_societe() is not null
-    and statut in ('vue_client','retenue','ecartee')
-    and exists (select 1 from public.missions mi
-                 where mi.id = propositions.mission_id
-                   and mi.societe_boond_id = public.app_societe())
-  );
+  using (public.app_societe() is not null
+         and public.mission_de_ma_societe(propositions.mission_id))
+  with check (public.app_societe() is not null
+              and statut in ('vue_client','retenue','ecartee')
+              and public.mission_de_ma_societe(propositions.mission_id));
 
 create policy propositions_freelance_lit on public.propositions
   for select to authenticated
