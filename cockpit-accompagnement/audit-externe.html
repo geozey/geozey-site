@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit externe Reggio Partners, rapport provisoire avril 2026, Geozey</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
+<style>
+:root{--ember-ink:#C42F09}
+.page-hero{padding:150px 140px 70px}
+.txt{padding:66px 140px}
+
+.doc-table{background:#fff;border-radius:13px;box-shadow:0 4px 4px rgba(0,0,0,.08);margin:26px 0 30px;color:var(--dark);overflow:hidden}
+.doc-table .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:13px}
+.doc-table table{width:100%;border-collapse:collapse;font-size:14.5px;color:var(--dark);min-width:560px}
+.doc-table.wide table{min-width:920px}
+.doc-table caption{caption-side:top;text-align:left;padding:22px 20px 4px;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#3b3b3b}
+.doc-table thead tr{background:var(--dark);color:#fff}
+.doc-table thead th{padding:13px 15px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;line-height:1.5}
+.doc-table thead th.n{text-align:right}
+.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.16)}
+.doc-table tbody td{padding:10px 15px;line-height:1.5;color:var(--dark)}
+.doc-table tbody td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.doc-table tbody tr:last-child{border-bottom:none}
+.doc-table tbody tr.tot{background:#f0f0f0}
+.doc-table tbody tr.tot td{font-weight:500}
+.doc-table tbody tr.sec td{background:#dedede;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#2b2b2b;padding:9px 15px}
+.doc-table tfoot td{padding:13px 15px;font-size:13px;line-height:1.55;color:#2b2b2b;background:#f7f7f7}
+
+.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.badge.ok{background:#DDEBD9;color:#155434}
+.badge.warn{background:#F6E7C6;color:#7A4800}
+.badge.ko{background:#F4D7D3;color:#9A1800}
+.badge.off{background:#DCE7F5;color:#00397D}
+.badge.ember{background:var(--ember-ink);color:#fff}
+.badgerow{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+
+.notebox{background:#fff;border-radius:13px;padding:26px 30px;box-shadow:0 4px 4px rgba(0,0,0,.07);margin:20px 0;color:var(--dark)}
+.notebox p{margin:0 0 11px;font-size:15.5px;line-height:1.62;color:#242424;max-width:none}
+.notebox p:last-child{margin-bottom:0}
+.notebox ul{margin:6px 0 0 20px;padding:0}
+.notebox li{font-size:15.5px;line-height:1.62;color:#242424;margin-bottom:9px}
+.notebox li:last-child{margin-bottom:0}
+.alertbox{background:#fff;border-radius:13px;padding:28px 32px;box-shadow:0 4px 4px rgba(0,0,0,.08);margin:22px 0;border-left:5px solid var(--ember)}
+.alertbox .k{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:var(--ember-ink);display:block;margin-bottom:11px}
+.alertbox p{font-size:16px;line-height:1.62;color:#242424;margin:0 0 11px;max-width:none}
+.alertbox p:last-child{margin-bottom:0}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:30px 0 8px}
+.kpi{background:#fff;border-radius:13px;padding:24px 22px 26px;box-shadow:0 4px 4px rgba(0,0,0,.08);color:var(--dark)}
+.kpi .k{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#3b3b3b;display:block;margin-bottom:10px}
+.kpi .v{font-size:32px;line-height:1.1;font-weight:400}
+.kpi .d{font-size:14px;line-height:1.5;color:#3b3b3b;margin-top:8px}
+
+.auth{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:26px}
+.auth .p{background:#fff;border-radius:13px;padding:24px 24px 26px;box-shadow:0 4px 4px rgba(0,0,0,.08);color:var(--dark)}
+.auth .p .r{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#3b3b3b;display:block;margin-bottom:8px}
+.auth .p h3{font-size:22px;font-weight:400;line-height:1.3}
+.auth .p .c{font-size:14.5px;line-height:1.6;color:#2b2b2b;margin-top:9px}
+
+.srcfoot{background:#fff;border-radius:13px;padding:26px 30px;box-shadow:0 4px 4px rgba(0,0,0,.08);margin-top:26px;color:var(--dark)}
+.srcfoot p{font-size:15px;line-height:1.62;color:#242424;margin:0 0 9px;max-width:none}
+.srcfoot p:last-child{margin-bottom:0}
+.srcfoot .adr{font-family:'Roboto Mono',monospace;font-size:12px;letter-spacing:1.2px;color:#2b2b2b;line-height:1.9}
+
+nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.62);color:#fff;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
+footer .copy{color:rgba(255,255,255,.75)}
+
+@media(max-width:1100px){
+  nav .doc-now{display:none}
+  .page-hero{padding:130px 24px 56px}
+  .txt{padding:52px 24px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .auth{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .kpis{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est reserve a Geozey et a egery. Saisissez le code communique.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<nav>
+  <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <span class="doc-now">Audit externe Reggio Partners</span>
+  <div class="doc-steps">
+    <a href="/cockpit-accompagnement/due-diligence" title="Synthèse de due diligence interne">← Précédent</a>
+    <a href="/cockpit-accompagnement/plan-marges" title="Plan d’optimisation des marges">Suivant →</a>
+  </div>
+</nav>
+
+<section class="page-hero ph-dark">
+  <span class="kicker">Document externe versé au hub · strictement confidentiel</span>
+  <h1>Projet Geozey.<br>Reporting avril 2026, rapport provisoire.</h1>
+  <p class="lead">Restitution intégrale et fidèle du rapport d’audit externe établi par Reggio Partners, daté du 24 avril 2026. Aucun chiffre n’est recalculé, corrigé ni arrondi sur cette page : chaque montant affiché est celui du rapport d’origine.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Nature du document</span>
+  <h2>Ce que vous lisez, et qui l’a écrit.</h2>
+  <p>Ce document est le reporting d’avril 2026 produit par le cabinet Reggio Partners sur la société Geozey, dans le cadre des travaux d’audit financier préalables à la cession. Il porte en page de garde la mention « Rapport provisoire », la date du 24 avril 2026 et la mention « Strictement confidentiel ». Il compte dix pages et sept parties.</p>
+
+  <div class="alertbox">
+    <span class="k">Avertissement, statut provisoire</span>
+    <p><strong>Ce rapport est qualifié de PROVISOIRE par ses propres auteurs.</strong> La mention « Rapport provisoire » figure sur la page de garde et sur le pied de page de chacune des pages du document. Aucune des conclusions présentées ci-dessous n’a donc de caractère définitif, et les montants restent susceptibles d’être révisés par le cabinet lui-même.</p>
+    <p><strong>La version définitive est attendue avant le 30 septembre 2026.</strong> Tant qu’elle n’est pas reçue, les chiffres de cette page doivent être présentés comme provisoires à tout tiers, acquéreur, financeur ou conseil. Les travaux mentionnés par le cabinet dans ses prochaines étapes, en particulier la présentation d’un EBITDA ajusté normalisé, ne figurent pas encore dans cette version.</p>
+    <p><strong>Deux réserves de reprise, signalées en toute transparence.</strong> Le pied de page du document porte la mention « Nom Projet » sur les pages 2, 4, 5, 6, 7, 8 et 9, et « Projet Cycle · Rapport Provisoire · Mars 2026 » sur la page 3 : ce sont des mentions de gabarit non mises à jour par le cabinet, elles n’ont pas été corrigées ici. Par ailleurs, deux séries mensuelles du rapport ne portent aucune étiquette de valeur et n’ont donc pas pu être extraites : elles sont signalées comme « non extrait » aux endroits concernés.</p>
+  </div>
+
+  <div class="badgerow">
+    <span class="badge ko">Rapport provisoire</span>
+    <span class="badge warn">Version définitive attendue avant le 30/09/2026</span>
+    <span class="badge off">Strictement confidentiel</span>
+    <span class="badge ok">Reproduction fidèle, aucun recalcul</span>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:38px">Auteurs du rapport</h3>
+  <div class="auth">
+    <div class="p">
+      <span class="r">Associé</span>
+      <h3>Hugo Dussart</h3>
+      <p class="c">hugo.dussart@reggio-partners.com<br>06 74 80 58 49</p>
+    </div>
+    <div class="p">
+      <span class="r">Senior expérimenté</span>
+      <h3>Pierre Blin</h3>
+      <p class="c">pierre.blin@reggio-partners.com<br>06 07 87 80 85</p>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:38px">Sommaire du rapport</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <thead><tr><th>N°</th><th>Partie</th><th class="n">Page du rapport</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Éléments clés et planning</td><td class="n">3</td></tr>
+          <tr><td>2</td><td>Synthèse</td><td class="n">4</td></tr>
+          <tr><td>3</td><td>Compte de résultat</td><td class="n">5</td></tr>
+          <tr><td>4</td><td>Bilan</td><td class="n">6</td></tr>
+          <tr><td>5</td><td>Trésorerie</td><td class="n">7</td></tr>
+          <tr><td>6</td><td>Focus chiffre d’affaires</td><td class="n">8</td></tr>
+          <tr><td>7</td><td>Focus EBITDA</td><td class="n">9</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 1 · page 3 du rapport</span>
+  <h2>Éléments clés et planning.</h2>
+
+  <h3 style="font-weight:400">1 · Point d’avancement</h3>
+  <div class="notebox">
+    <ul>
+      <li>Audit IT réalisé le 24/02 ;</li>
+      <li>Audit financier réalisé le 13/03 avec Reggio partners ;</li>
+      <li>Audit fiscal réalisé le 07/04 avec Rodolphe Arles (Coplo) ;</li>
+      <li>Mise en relation avec Xavier Huger (Start 2 Scale) pour le financement de reprise ;</li>
+      <li>Réception des fichiers d’écritures comptable (FEC) (2023, 2024, 2025) et des principaux contrats clients ;</li>
+      <li>Analyse historique de l’activité (P&amp;L, Bilan, trésorerie) ;</li>
+      <li>Structuration de la Dataroom.</li>
+    </ul>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">2 · Prochaines étapes</h3>
+  <div class="notebox">
+    <ul>
+      <li>Présentation d’un EBITDA ajusté, incluant l’identification et la normalisation des éléments non récurrents (rémunération du dirigeant, avantages en nature, charges personnelles refacturées à la société) ;</li>
+      <li>Mise en place d’un processus de clôture périodique, mensuelle ou trimestrielle selon les enjeux et la maturité de l’organisation ;</li>
+      <li>Élaboration d’un prévisionnel d’exploitation et de trésorerie, idéalement mensuel, sur un horizon de 3 à 5 ans ;</li>
+      <li>Structuration de KPI opérationnels intégrés au reporting financier pour un meilleur pilotage de la performance ;</li>
+      <li>Anticipation des enjeux juridiques et fiscaux en lien avec les évolutions de l’activité ;</li>
+      <li>Création de la holding.</li>
+    </ul>
+  </div>
+
+  <div class="badgerow">
+    <span class="badge ok">Audit IT, 24/02</span>
+    <span class="badge ok">Audit financier, 13/03</span>
+    <span class="badge ok">Audit fiscal, 07/04</span>
+    <span class="badge off">FEC 2023, 2024, 2025 reçus</span>
+    <span class="badge warn">EBITDA ajusté, à venir</span>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 2 · page 4 du rapport</span>
+  <h2>Synthèse.</h2>
+  <p class="punch" style="font-weight:400">Ralentissement de l’activité en 2025 (-3%), accompagné d’une dégradation (i) de la marge, de l’EBITDA et (ii) de la trésorerie.</p>
+
+  <h3 style="font-weight:400;margin-top:34px">Performance</h3>
+  <div class="notebox">
+    <ul>
+      <li>Chiffre d’affaires en repli : 717 k€ en 2025 vs 806 k€ en 2023 (TCAM -6% sur 2 ans) ;</li>
+      <li>Modèle freelance avec pression sur les coûts, forte érosion de la marge brute (129 k€ vs 289 k€), soit un taux de marge en baisse à 18% vs 36% en 2023 ;</li>
+      <li>Baisse des charges de personnel entre FY23R et FY24R (88 k€ vers 29 k€), permettant d’amortir partiellement la dégradation de la marge ;</li>
+      <li>EBITDA en contraction : 3 k€ en 2025 vs 73 k€ en 2024 et 117 k€ en 2023 (0,4% du CA) ;</li>
+      <li>Dégradation principalement tirée par la marge brute, les frais généraux étant en baisse mais insuffisants pour compenser.</li>
+    </ul>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Structure bilantielle</h3>
+  <div class="notebox">
+    <ul>
+      <li>Actif immobilisé en légère baisse : 19 k€ en 2025 vs 24 k€ en 2023 (TCAM -11%), peu structurant ;</li>
+      <li>Créances clients en hausse : 118 k€ vs 106 k€, léger allongement du recouvrement ;</li>
+      <li>Hausse des dettes fournisseurs : 124 k€ vs 28 k€, principal levier de financement du cycle d’exploitation qui aboutit à un BFR devenu négatif : -18 k€ vs +52 k€ ;</li>
+      <li>Trésorerie en amélioration vs 2024 : 49 k€ vs 35 k€, mais en baisse vs 2023 (124 k€) ;</li>
+      <li>Capitaux propres en forte baisse : 57 k€ vs 201 k€, impactés par la distribution de dividendes de 197 k€.</li>
+    </ul>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Chiffres clés à fin 2025</h3>
+  <div class="kpis">
+    <div class="kpi"><span class="k">Chiffre d’affaires</span><div class="v">717 k€</div><p class="d">(-3% vs 2024)</p></div>
+    <div class="kpi"><span class="k">Marge</span><div class="v">129 k€</div><p class="d">(18,0 %) en % du chiffre d’affaires</p></div>
+    <div class="kpi"><span class="k">EBITDA</span><div class="v">3 k€</div><p class="d">(0,4 %) en % du chiffre d’affaires</p></div>
+    <div class="kpi"><span class="k">Trésorerie</span><div class="v">49 k€</div><p class="d">Solde au 31 décembre 2025</p></div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:38px">Courbe de trésorerie 2025</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Courbe de trésorerie 2025, valeurs relevées sur le graphique de la page 4, en k€</caption>
+        <thead><tr><th>Mois</th><th class="n">Trésorerie, en k€</th></tr></thead>
+        <tbody>
+          <tr><td>janv.-25</td><td class="n">77</td></tr>
+          <tr><td>févr.-25</td><td class="n">83</td></tr>
+          <tr><td>mars-25</td><td class="n">46</td></tr>
+          <tr><td>avr.-25</td><td class="n">86</td></tr>
+          <tr><td>mai-25</td><td class="n">158</td></tr>
+          <tr><td>juin-25</td><td class="n">123</td></tr>
+          <tr><td>juil.-25</td><td class="n">87</td></tr>
+          <tr><td>août-25</td><td class="n">105</td></tr>
+          <tr><td>sept.-25</td><td class="n">59</td></tr>
+          <tr><td>oct.-25</td><td class="n">54</td></tr>
+          <tr><td>nov.-25</td><td class="n">18</td></tr>
+          <tr><td>déc.-25</td><td class="n">49</td></tr>
+          <tr class="tot"><td>Tréso. moy. 2025</td><td class="n">79 k€</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 3 · page 5 du rapport</span>
+  <h2>Compte de résultat.</h2>
+  <p class="punch" style="font-weight:400">Baisse du chiffre d’affaires (TCAM -6%) combinée à une contraction de la marge (36% à 18%), entraînant une baisse marquée de la rentabilité. Malgré des réductions de coûts, l’EBITDA devient quasi nul en 2025 (0,4%) faute de compensation suffisante de la baisse de marge.</p>
+
+  <div class="doc-table wide">
+    <div class="scroll">
+      <table>
+        <caption>Compte de résultat, FY23-25R</caption>
+        <thead>
+          <tr>
+            <th>En k€</th>
+            <th class="n">FY23R</th>
+            <th class="n">FY24R</th>
+            <th class="n">FY25R</th>
+            <th class="n">TCAM<br>2023 vs 2025</th>
+            <th class="n">Variation<br>2023 vs 2024</th>
+            <th class="n">%<br>2023 vs 2024</th>
+            <th class="n">Variation<br>2024 vs 2025</th>
+            <th class="n">%<br>2024 vs 2025</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chiffre d’affaires</td><td class="n">806</td><td class="n">738</td><td class="n">717</td><td class="n">(6)%</td><td class="n">(68)</td><td class="n">(8)%</td><td class="n">(21)</td><td class="n">(3)%</td></tr>
+          <tr><td>Freelances</td><td class="n">(517)</td><td class="n">(537)</td><td class="n">(588)</td><td class="n">7 %</td><td class="n">(20)</td><td class="n">4 %</td><td class="n">(52)</td><td class="n">10 %</td></tr>
+          <tr class="tot"><td>Marge</td><td class="n">289</td><td class="n">201</td><td class="n">129</td><td class="n">(33)%</td><td class="n">(88)</td><td class="n">(30)%</td><td class="n">(72)</td><td class="n">(36)%</td></tr>
+          <tr><td>Charges de personnel</td><td class="n">(88)</td><td class="n">(29)</td><td class="n">(33)</td><td class="n">(39)%</td><td class="n">60</td><td class="n">(67)%</td><td class="n">(5)</td><td class="n">16 %</td></tr>
+          <tr><td>Locations</td><td class="n">(35)</td><td class="n">(18)</td><td class="n">(26)</td><td class="n">(14)%</td><td class="n">17</td><td class="n">(48)%</td><td class="n">(8)</td><td class="n">41 %</td></tr>
+          <tr><td>Honoraires</td><td class="n">(4)</td><td class="n">(47)</td><td class="n">(20)</td><td class="n">119 %</td><td class="n">(43)</td><td class="n">n.s.</td><td class="n">27</td><td class="n">(57)%</td></tr>
+          <tr><td>Impôts, taxes et versements assimilés</td><td class="n">(2)</td><td class="n">(2)</td><td class="n">(3)</td><td class="n">9 %</td><td class="n">0</td><td class="n">(13)%</td><td class="n">(1)</td><td class="n">35 %</td></tr>
+          <tr><td>Assurances</td><td class="n">(1)</td><td class="n">(3)</td><td class="n">(3)</td><td class="n">48 %</td><td class="n">(2)</td><td class="n">145 %</td><td class="n">0</td><td class="n">(11)%</td></tr>
+          <tr><td>Déplacements, réceptions</td><td class="n">(39)</td><td class="n">(23)</td><td class="n">(27)</td><td class="n">(17)%</td><td class="n">17</td><td class="n">(42)%</td><td class="n">(5)</td><td class="n">21 %</td></tr>
+          <tr><td>Services bancaires</td><td class="n">(1)</td><td class="n">(0)</td><td class="n">(0)</td><td class="n">(54)%</td><td class="n">1</td><td class="n">(84)%</td><td class="n">(0)</td><td class="n">31 %</td></tr>
+          <tr><td>Autres cotisations</td><td class="n">(2)</td><td class="n">(2)</td><td class="n">-</td><td class="n">(100)%</td><td class="n">0</td><td class="n">(4)%</td><td class="n">2</td><td class="n">(100)%</td></tr>
+          <tr><td>Autres services extérieurs</td><td class="n">(43)</td><td class="n">(28)</td><td class="n">(30)</td><td class="n">(17)%</td><td class="n">16</td><td class="n">(36)%</td><td class="n">(2)</td><td class="n">8 %</td></tr>
+          <tr><td>Autres charges d’exploitation</td><td class="n">(17)</td><td class="n">(7)</td><td class="n">(14)</td><td class="n">(9)%</td><td class="n">10</td><td class="n">(59)%</td><td class="n">(7)</td><td class="n">99 %</td></tr>
+          <tr><td>Autres produits d’exploitation</td><td class="n">19</td><td class="n">3</td><td class="n">0</td><td class="n">(99)%</td><td class="n">(16)</td><td class="n">(86)%</td><td class="n">(3)</td><td class="n">(100)%</td></tr>
+          <tr class="tot"><td>Frais généraux</td><td class="n">(172)</td><td class="n">(128)</td><td class="n">(126)</td><td class="n">(14)%</td><td class="n">44</td><td class="n">(25)%</td><td class="n">2</td><td class="n">(2)%</td></tr>
+          <tr class="tot"><td>EBITDA</td><td class="n">117</td><td class="n">73</td><td class="n">3</td><td class="n">(85)%</td><td class="n">(44)</td><td class="n">(38)%</td><td class="n">(70)</td><td class="n">(96)%</td></tr>
+          <tr><td>DAP</td><td class="n">(4)</td><td class="n">(5)</td><td class="n">(4)</td><td class="n">3 %</td><td class="n">(1)</td><td class="n">19 %</td><td class="n">1</td><td class="n">(11)%</td></tr>
+          <tr class="tot"><td>EBIT</td><td class="n">113</td><td class="n">68</td><td class="n">(2)</td><td class="n">n.a.</td><td class="n">(44)</td><td class="n">(39)%</td><td class="n">(70)</td><td class="n">(102)%</td></tr>
+          <tr><td>Résultat Financier</td><td class="n">(2)</td><td class="n">(1)</td><td class="n">(0)</td><td class="n">(98)%</td><td class="n">0</td><td class="n">(17)%</td><td class="n">1</td><td class="n">(100)%</td></tr>
+          <tr><td>Résultat Exceptionnel</td><td class="n">(1)</td><td class="n">1</td><td class="n">0</td><td class="n">n.a.</td><td class="n">2</td><td class="n">(159)%</td><td class="n">(0)</td><td class="n">(20)%</td></tr>
+          <tr><td>Impôts sur les bénéfices et assimilés</td><td class="n">(23)</td><td class="n">(13)</td><td class="n">-</td><td class="n">(100)%</td><td class="n">11</td><td class="n">(46)%</td><td class="n">13</td><td class="n">(100)%</td></tr>
+          <tr class="tot"><td>Résultat net</td><td class="n">87</td><td class="n">55</td><td class="n">(1)</td><td class="n">n.a.</td><td class="n">(32)</td><td class="n">(37)%</td><td class="n">(56)</td><td class="n">(102)%</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="9">Sources : Informations du Management, Analyse Reggio Partners. Les montants négatifs sont présentés entre parenthèses, exactement comme dans le rapport. Le tiret signale une valeur nulle ou absente.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Indicateurs clés, en % du chiffre d’affaires</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>En % du CA</th><th class="n">FY23R</th><th class="n">FY24R</th><th class="n">FY25R</th><th class="n">Variation<br>2023 vs 2024</th><th class="n">Variation<br>2024 vs 2025</th></tr>
+        </thead>
+        <tbody>
+          <tr class="tot"><td>Marge</td><td class="n">35,8 %</td><td class="n">27,3 %</td><td class="n">18,0 %</td><td class="n">(8,6) p.p.</td><td class="n">(9,3) p.p.</td></tr>
+          <tr><td>Charges de personnel</td><td class="n">(11,0)%</td><td class="n">(3,9)%</td><td class="n">(4,6)%</td><td class="n">7,1 p.p.</td><td class="n">(0,7) p.p.</td></tr>
+          <tr><td>Locations</td><td class="n">(4,4)%</td><td class="n">(2,5)%</td><td class="n">(3,6)%</td><td class="n">1,9 p.p.</td><td class="n">(1,1) p.p.</td></tr>
+          <tr><td>Honoraires</td><td class="n">(0,5)%</td><td class="n">(6,4)%</td><td class="n">(2,8)%</td><td class="n">(5,9) p.p.</td><td class="n">3,6 p.p.</td></tr>
+          <tr><td>Déplacements, réceptions</td><td class="n">(4,9)%</td><td class="n">(3,1)%</td><td class="n">(3,8)%</td><td class="n">1,8 p.p.</td><td class="n">(0,7) p.p.</td></tr>
+          <tr class="tot"><td>EBITDA</td><td class="n">14,5 %</td><td class="n">9,9 %</td><td class="n">0,4 %</td><td class="n">(4,6) p.p.</td><td class="n">(9,5) p.p.</td></tr>
+          <tr class="tot"><td>Résultat Net</td><td class="n">10,8 %</td><td class="n">7,4 %</td><td class="n">(0,1)%</td><td class="n">(3,3) p.p.</td><td class="n">(7,6) p.p.</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="6">Sources : Informations du Management, Analyse Reggio Partners.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Commentaires du cabinet</h3>
+  <div class="notebox">
+    <ul>
+      <li>Chiffre d’affaires en repli : 717 k€ en 2025 contre 806 k€ en 2023, TCAM de -6% sur 2 ans.</li>
+      <li>Modèle basé sur freelances : évolution défavorable des coûts, érosion de la marge brute (129 k€ vs 201 k€ vs 289 k€), taux de marge à 18% en 2025 contre 36% en 2023.</li>
+      <li>Charges de personnel en forte baisse entre FY23R et FY24R (29 k€ vs 88 k€) qui permet de limiter l’impact de la dégradation de la marge.</li>
+      <li>EBITDA en forte dégradation : 3 k€ en 2025 (0,4% du CA) contre 73 k€ en 2024 (9,9%) et 117 k€ en 2023 (14,5%), nette baisse de la rentabilité opérationnelle, principalement liée à la dégradation de la marge brute, les frais généraux ayant diminué mais pas suffisamment pour compenser la contraction du taux de marge.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 4 · page 6 du rapport</span>
+  <h2>Bilan.</h2>
+  <p class="punch" style="font-weight:400">Une trésorerie qui se maintient grâce au financement fournisseurs (BFR négatif), dans un contexte de rentabilité très limitée (EBITDA 3 k€ en 2025).</p>
+
+  <div class="doc-table wide">
+    <div class="scroll">
+      <table>
+        <caption>Bilan, déc.23-25R</caption>
+        <thead>
+          <tr>
+            <th>En k€</th>
+            <th class="n">déc.-23R</th>
+            <th class="n">déc.-24R</th>
+            <th class="n">déc.-25R</th>
+            <th class="n">TCAM<br>2023 vs 2025</th>
+            <th class="n">Variation<br>2023 vs 2024</th>
+            <th class="n">%<br>2023 vs 2024</th>
+            <th class="n">Variation<br>2024 vs 2025</th>
+            <th class="n">%<br>2024 vs 2025</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Immobilisations corporelles</td><td class="n">24</td><td class="n">20</td><td class="n">19</td><td class="n">(11)%</td><td class="n">(4)</td><td class="n">(16)%</td><td class="n">(1)</td><td class="n">(6)%</td></tr>
+          <tr><td>Titres de participation</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">-</td><td class="n">-</td><td class="n">-</td><td class="n">-</td><td class="n">-</td></tr>
+          <tr class="tot"><td>Actif immobilisé</td><td class="n">24</td><td class="n">20</td><td class="n">19</td><td class="n">(11)%</td><td class="n">(4)</td><td class="n">(15)%</td><td class="n">(1)</td><td class="n">(6)%</td></tr>
+          <tr><td>Créances clients</td><td class="n">106</td><td class="n">107</td><td class="n">118</td><td class="n">6 %</td><td class="n">1</td><td class="n">1 %</td><td class="n">11</td><td class="n">10 %</td></tr>
+          <tr><td>Dette fournisseurs</td><td class="n">(28)</td><td class="n">(37)</td><td class="n">(124)</td><td class="n">110 %</td><td class="n">(9)</td><td class="n">34 %</td><td class="n">(86)</td><td class="n">n.s.</td></tr>
+          <tr class="tot"><td>BFR d’exploitation</td><td class="n">78</td><td class="n">70</td><td class="n">(6)</td><td class="n">n.a.</td><td class="n">(8)</td><td class="n">(10)%</td><td class="n">(75)</td><td class="n">(108)%</td></tr>
+          <tr><td>Dettes Sociales</td><td class="n">(7)</td><td class="n">(1)</td><td class="n">(1)</td><td class="n">(56)%</td><td class="n">6</td><td class="n">(84)%</td><td class="n">(0)</td><td class="n">23 %</td></tr>
+          <tr><td>Dettes Fiscales</td><td class="n">(33)</td><td class="n">(15)</td><td class="n">(31)</td><td class="n">(2)%</td><td class="n">18</td><td class="n">(55)%</td><td class="n">(17)</td><td class="n">114 %</td></tr>
+          <tr><td>Autres créances</td><td class="n">15</td><td class="n">16</td><td class="n">21</td><td class="n">19 %</td><td class="n">1</td><td class="n">9 %</td><td class="n">5</td><td class="n">31 %</td></tr>
+          <tr class="tot"><td>BFR hors exploitation</td><td class="n">(25)</td><td class="n">0</td><td class="n">(12)</td><td class="n">(31)%</td><td class="n">25</td><td class="n">(100)%</td><td class="n">(12)</td><td class="n">n.s.</td></tr>
+          <tr class="tot"><td>BFR</td><td class="n">52</td><td class="n">70</td><td class="n">(18)</td><td class="n">n.a.</td><td class="n">17</td><td class="n">33 %</td><td class="n">(87)</td><td class="n">(125)%</td></tr>
+          <tr><td>Comptes courants</td><td class="n">0</td><td class="n">(67)</td><td class="n">7</td><td class="n">356 %</td><td class="n">(67)</td><td class="n">n.s.</td><td class="n">74</td><td class="n">(110)%</td></tr>
+          <tr><td>Disponibilités</td><td class="n">124</td><td class="n">35</td><td class="n">49</td><td class="n">(37)%</td><td class="n">(89)</td><td class="n">(72)%</td><td class="n">14</td><td class="n">39 %</td></tr>
+          <tr class="tot"><td>Dette nette / trésorerie nette</td><td class="n">124</td><td class="n">(31)</td><td class="n">56</td><td class="n">(33)%</td><td class="n">(156)</td><td class="n">(125)%</td><td class="n">87</td><td class="n">n.s.</td></tr>
+          <tr class="tot"><td>Actif net</td><td class="n">201</td><td class="n">58</td><td class="n">57</td><td class="n">(47)%</td><td class="n">(142)</td><td class="n">(71)%</td><td class="n">(1)</td><td class="n">(2)%</td></tr>
+          <tr><td>Capital</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">-</td><td class="n">-</td><td class="n">-</td><td class="n">-</td><td class="n">-</td></tr>
+          <tr><td>Réserves</td><td class="n">113</td><td class="n">3</td><td class="n">57</td><td class="n">(29)%</td><td class="n">(110)</td><td class="n">(98)%</td><td class="n">55</td><td class="n">n.s.</td></tr>
+          <tr><td>Résultat</td><td class="n">87</td><td class="n">55</td><td class="n">(1)</td><td class="n">n.a.</td><td class="n">(32)</td><td class="n">(37)%</td><td class="n">(56)</td><td class="n">(102)%</td></tr>
+          <tr class="tot"><td>Capitaux propres</td><td class="n">201</td><td class="n">58</td><td class="n">57</td><td class="n">(47)%</td><td class="n">(142)</td><td class="n">(71)%</td><td class="n">(1)</td><td class="n">(2)%</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="9">Sources : Informations du Management, Analyse Reggio Partners.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">KPIs, en % du chiffre d’affaires</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>KPIs</th><th class="n">déc.-23R</th><th class="n">déc.-24R</th><th class="n">déc.-25R</th><th class="n">Variation<br>2023 vs 2024</th><th class="n">Variation<br>2024 vs 2025</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Chiffre d’affaires HT, en k€</td><td class="n">806</td><td class="n">738</td><td class="n">717</td><td class="n">(68)</td><td class="n">(21)</td></tr>
+          <tr><td>BFR d’exploitation</td><td class="n">9,6 %</td><td class="n">9,4 %</td><td class="n">(0,8)%</td><td class="n">(0,2) p.p.</td><td class="n">(10,2) p.p.</td></tr>
+          <tr><td>BFR hors exploitation</td><td class="n">(3,1)%</td><td class="n">0,0 %</td><td class="n">(1,7)%</td><td class="n">3,1 p.p.</td><td class="n">(1,7) p.p.</td></tr>
+          <tr class="tot"><td>BFR</td><td class="n">6,5 %</td><td class="n">9,4 %</td><td class="n">(2,4)%</td><td class="n">2,9 p.p.</td><td class="n">(11,9) p.p.</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="6">Sources : Informations du Management, Analyse Reggio Partners.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Commentaires du cabinet</h3>
+  <div class="notebox">
+    <ul>
+      <li>Actif immobilisé en légère baisse : 19 k€ en 2025 contre 24 k€ en 2023 (TCAM -11%), niveau peu structurant.</li>
+      <li>Créances clients en hausse : 118 k€ en 2025 contre 106 k€ en 2023, traduisant une pression sur les délais de recouvrement.</li>
+      <li>Forte hausse des dettes fournisseurs : 124 k€ en 2025 contre 28 k€ en 2023, constituant un levier de financement court terme.</li>
+      <li>Amélioration marquée du BFR d’exploitation : -6 k€ en 2025 contre 78 k€ en 2023, sous l’effet du poids des dettes fournisseurs.</li>
+      <li>BFR total négatif : -18 k€ en 2025 vs 52 k€ en 2023, traduisant un financement net de l’activité par le cycle d’exploitation.</li>
+      <li>Trésorerie nette en amélioration vs 2024 : 56 k€ en 2025 vs -31 k€ en 2024 (mais en baisse vs 2023 : 124 k€).</li>
+      <li>Forte baisse des capitaux propres : 57 k€ en 2025 contre 201 k€ en 2023, principalement liée à une distribution de dividendes de 197 k€, en complément de la baisse des résultats.</li>
+      <li>Structure financière reposant davantage sur le financement court terme, notamment fournisseurs.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 5 · page 7 du rapport</span>
+  <h2>Trésorerie.</h2>
+  <p class="punch" style="font-weight:400">Une trésorerie en baisse sur la période, malgré le soutien du BFR, dans un contexte de faible rentabilité et de distribution de dividendes significative (c.197 k€).</p>
+
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Tableau de flux de trésorerie, déc.24-25R</caption>
+        <thead>
+          <tr><th>En k€</th><th class="n">déc.-24R</th><th class="n">déc.-25R</th><th class="n">Cumul</th></tr>
+        </thead>
+        <tbody>
+          <tr class="tot"><td>EBITDA</td><td class="n">73</td><td class="n">3</td><td class="n">75</td></tr>
+          <tr><td>Variation BFR d’exploitation</td><td class="n">8</td><td class="n">75</td><td class="n">83</td></tr>
+          <tr><td>Variation BFR hors exploitation hors IS</td><td class="n">(25)</td><td class="n">12</td><td class="n">(13)</td></tr>
+          <tr class="tot"><td>Variation de BFR</td><td class="n">(17)</td><td class="n">87</td><td class="n">70</td></tr>
+          <tr><td>Investissements</td><td class="n">(5)</td><td class="n">(3)</td><td class="n">(8)</td></tr>
+          <tr><td>Cessions</td><td class="n">5</td><td class="n">-</td><td class="n">5</td></tr>
+          <tr class="tot"><td>Capex</td><td class="n">(0)</td><td class="n">(3)</td><td class="n">(3)</td></tr>
+          <tr><td>IS</td><td class="n">(13)</td><td class="n">-</td><td class="n">(13)</td></tr>
+          <tr class="tot"><td>Free cash-flow</td><td class="n">43</td><td class="n">87</td><td class="n">130</td></tr>
+          <tr><td>Dettes Financières</td><td class="n">-</td><td class="n">-</td><td class="n">-</td></tr>
+          <tr><td>Comptes courants</td><td class="n">67</td><td class="n">(74)</td><td class="n">(6)</td></tr>
+          <tr><td>Distrib. Dividendes</td><td class="n">(197)</td><td class="n">0</td><td class="n">(197)</td></tr>
+          <tr><td>Intêrets financier #6</td><td class="n">-</td><td class="n">-</td><td class="n">-</td></tr>
+          <tr><td>Intêrets financier #7</td><td class="n">-</td><td class="n">-</td><td class="n">-</td></tr>
+          <tr class="tot"><td>Flux de financement</td><td class="n">(130)</td><td class="n">(74)</td><td class="n">(204)</td></tr>
+          <tr><td>Gains (pertes) de change</td><td class="n">(1)</td><td class="n">(0)</td><td class="n">(1)</td></tr>
+          <tr><td>Autres</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
+          <tr class="tot"><td>Autres flux</td><td class="n">(1)</td><td class="n">0</td><td class="n">(1)</td></tr>
+          <tr class="tot"><td>Net cash-flow</td><td class="n">(89)</td><td class="n">14</td><td class="n">(75)</td></tr>
+          <tr class="sec"><td colspan="4">Cash et équivalents</td></tr>
+          <tr><td>Début de période</td><td class="n">124</td><td class="n">35</td><td class="n">124</td></tr>
+          <tr><td>Flux</td><td class="n">(89)</td><td class="n">14</td><td class="n">(75)</td></tr>
+          <tr class="tot"><td>Fin de période</td><td class="n">35</td><td class="n">49</td><td class="n">49</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Source : Management, Analyses Reggio Partners. Les libellés « Intêrets financier #6 » et « Intêrets financier #7 » sont reproduits tels qu’ils figurent dans le rapport, sans correction orthographique.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Courbe de trésorerie, janv.23R à déc.25R</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Trésorerie mensuelle, valeurs relevées sur le graphique de la page 7, en k€</caption>
+        <thead>
+          <tr><th>Mois</th><th class="n">2023</th><th class="n">2024</th><th class="n">2025</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>janvier</td><td class="n">73</td><td class="n">116</td><td class="n">77</td></tr>
+          <tr><td>février</td><td class="n">63</td><td class="n">116</td><td class="n">83</td></tr>
+          <tr><td>mars</td><td class="n">85</td><td class="n">119</td><td class="n">46</td></tr>
+          <tr><td>avril</td><td class="n">120</td><td class="n">68</td><td class="n">86</td></tr>
+          <tr><td>mai</td><td class="n">131</td><td class="n">76</td><td class="n">158</td></tr>
+          <tr><td>juin</td><td class="n">122</td><td class="n">109</td><td class="n">123</td></tr>
+          <tr><td>juillet</td><td class="n">91</td><td class="n">62</td><td class="n">87</td></tr>
+          <tr><td>août</td><td class="n">174</td><td class="n">137</td><td class="n">105</td></tr>
+          <tr><td>septembre</td><td class="n">213</td><td class="n">58</td><td class="n">59</td></tr>
+          <tr><td>octobre</td><td class="n">171</td><td class="n">60</td><td class="n">54</td></tr>
+          <tr><td>novembre</td><td class="n">119</td><td class="n">90</td><td class="n">18</td></tr>
+          <tr><td>décembre</td><td class="n">124</td><td class="n">35</td><td class="n">49</td></tr>
+          <tr class="tot"><td>Tréso. moy. sur janv.23R à déc.25R</td><td class="n" colspan="3">97 k€</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Commentaires du cabinet</h3>
+  <div class="notebox">
+    <ul>
+      <li>EBITDA cumulé limité à 75 k€, insuffisant pour soutenir la génération de trésorerie à lui seul.</li>
+      <li>Forte contribution du BFR sur la période : +70 k€ cumulés (essentiellement liée à l’exploitation : +83 k€), principal moteur du free cash-flow.</li>
+      <li>Impact de l’IS en 2024 (-13 k€), pesant sur la génération de cash globale.</li>
+      <li>Flux de financement très négatifs : -204 k€ cumulés, principalement en raison de la distribution de dividendes (-197 k€) et du remboursement des comptes courants (-6 k€).</li>
+      <li>Absence de recours à de nouvelles dettes financières, renforçant la pression sur la trésorerie disponible.</li>
+      <li>Net cash-flow cumulé négatif : -75 k€, malgré un free cash-flow positif.</li>
+      <li>Trésorerie finale en baisse vs début de période : 49 k€ vs 124 k€.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 6 · page 8 du rapport</span>
+  <h2>Focus chiffre d’affaires et point mort.</h2>
+  <p class="punch" style="font-weight:400">Un chiffre d’affaires marqué par une légère saisonnalité (pic en fin de T1, creux en mai) et une rentabilité sous pression, avec un niveau de chiffre d’affaires 2025 tout juste au point mort en raison de la dégradation de la marge sur coûts variables.</p>
+
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Calcul du point mort par exercice, FY23-25R</caption>
+        <thead>
+          <tr><th>En k€</th><th class="n">FY23R</th><th class="n">FY24R</th><th class="n">FY25R</th></tr>
+        </thead>
+        <tbody>
+          <tr class="tot"><td>Chiffre d’affaires</td><td class="n">806</td><td class="n">738</td><td class="n">717</td></tr>
+          <tr><td>Coûts variables</td><td class="n">(517)</td><td class="n">(537)</td><td class="n">(588)</td></tr>
+          <tr><td>En % du chiffre d’affaires</td><td class="n">(64,2)%</td><td class="n">(72,7)%</td><td class="n">(82,0)%</td></tr>
+          <tr><td>En % des coûts totaux</td><td class="n">75,0 %</td><td class="n">80,7 %</td><td class="n">82,3 %</td></tr>
+          <tr class="tot"><td>Marge sur coûts variables</td><td class="n">289</td><td class="n">201</td><td class="n">129</td></tr>
+          <tr><td>En % du chiffre d’affaires</td><td class="n">35,8 %</td><td class="n">27,3 %</td><td class="n">18,0 %</td></tr>
+          <tr><td>Coûts fixes</td><td class="n">(172)</td><td class="n">(128)</td><td class="n">(126)</td></tr>
+          <tr><td>En % du chiffre d’affaires</td><td class="n">(21,4)%</td><td class="n">(17,4)%</td><td class="n">(17,6)%</td></tr>
+          <tr><td>En % des coûts totaux</td><td class="n">25,0 %</td><td class="n">19,3 %</td><td class="n">17,7 %</td></tr>
+          <tr class="tot"><td>EBITDA</td><td class="n">117</td><td class="n">73</td><td class="n">3</td></tr>
+          <tr><td>En % du chiffre d’affaires</td><td class="n">14,5 %</td><td class="n">9,9 %</td><td class="n">0,4 %</td></tr>
+          <tr class="sec"><td colspan="4">Indicateurs clés</td></tr>
+          <tr class="tot"><td>Point mort Chiffre d’affaires</td><td class="n">481</td><td class="n">471</td><td class="n">703</td></tr>
+          <tr class="tot"><td>Chiffre d’affaires / point mort (x)</td><td class="n">1,7</td><td class="n">1,6</td><td class="n">1,0</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Sources : Informations du Management, Analyse Reggio Partners.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Chiffre d’affaires cumulé et point mort, 2023, 2024 et 2025</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Chiffre d’affaires cumulé par mois, valeurs relevées sur les trois graphiques de la page 8, en k€</caption>
+        <thead>
+          <tr><th>Mois</th><th class="n">CA FY23 cumulé</th><th class="n">CA FY24 cumulé</th><th class="n">CA FY25 cumulé</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>janvier</td><td class="n">41</td><td class="n">-</td><td class="n">64</td></tr>
+          <tr><td>février</td><td class="n">99</td><td class="n">61</td><td class="n">131</td></tr>
+          <tr><td>mars</td><td class="n">188</td><td class="n">176</td><td class="n">196</td></tr>
+          <tr><td>avril</td><td class="n">255</td><td class="n">269</td><td class="n">258</td></tr>
+          <tr><td>mai</td><td class="n">323</td><td class="n">312</td><td class="n">267</td></tr>
+          <tr><td>juin</td><td class="n">394</td><td class="n">369</td><td class="n">349</td></tr>
+          <tr><td>juillet</td><td class="n">462</td><td class="n">446</td><td class="n">420</td></tr>
+          <tr><td>août</td><td class="n">524</td><td class="n">506</td><td class="n">464</td></tr>
+          <tr><td>septembre</td><td class="n">586</td><td class="n">566</td><td class="n">525</td></tr>
+          <tr><td>octobre</td><td class="n">646</td><td class="n">633</td><td class="n">578</td></tr>
+          <tr><td>novembre</td><td class="n">731</td><td class="n">687</td><td class="n">629</td></tr>
+          <tr class="tot"><td>décembre</td><td class="n">806</td><td class="n">748</td><td class="n">717</td></tr>
+          <tr class="tot"><td>Point mort de l’exercice</td><td class="n">481 k€</td><td class="n">471 k€</td><td class="n">703 k€</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">Le graphique du CA FY24 cumulé affiche 748 k€ en fin d’exercice, tandis que le compte de résultat de la page 5 retient 738 k€ pour FY24R. Les deux valeurs sont reproduites ici telles qu’elles figurent dans le rapport, sans arbitrage ni correction.</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="alertbox">
+    <span class="k">Donnée non extraite</span>
+    <p>Le graphique « Saisonnalité du chiffre d’affaires, 2023 - 2024 - 2025 » de la page 8 ne porte aucune étiquette de valeur : il n’affiche que trois courbes mensuelles réparties sur quatre trimestres. <strong>Les valeurs mensuelles de chiffre d’affaires ne sont donc pas extraites</strong> et ne sont pas reproduites ici. Le rapport en tire le commentaire suivant, seul élément exploitable : légère saisonnalité, pic en fin de T1 et creux en mai.</p>
+  </div>
+</section>
+
+<section class="txt bg-light">
+  <span class="kicker" style="color:var(--ember-ink)">Partie 7 · page 9 du rapport</span>
+  <h2>Focus EBITDA et bridge.</h2>
+  <p class="punch" style="font-weight:400">Un EBITDA dégradé à fin 2025 (-98% vs 2023, de 117 k€ à 3 k€), avec une consommation concentrée sur mai puis de septembre à fin novembre, principalement liée à l’érosion de la marge malgré les efforts de réduction des coûts (charges de personnel et frais de déplacement en baisse).</p>
+
+  <h3 style="font-weight:400;margin-top:34px">Bridge EBITDA, 2023 vers 2024</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Bridge EBITDA FY23-24R, valeurs relevées sur le graphique de la page 9, en k€</caption>
+        <thead><tr><th>Étape</th><th class="n">Effet, en k€</th></tr></thead>
+        <tbody>
+          <tr class="tot"><td>EBITDA 2023</td><td class="n">117</td></tr>
+          <tr><td>Marge</td><td class="n">(88)</td></tr>
+          <tr><td>Ch. de perso</td><td class="n">60</td></tr>
+          <tr><td>Locations</td><td class="n">17</td></tr>
+          <tr><td>Honoraires</td><td class="n">(43)</td></tr>
+          <tr><td>Déplacements</td><td class="n">17</td></tr>
+          <tr><td>Autres</td><td class="n">(7)</td></tr>
+          <tr class="tot"><td>EBITDA 2024</td><td class="n">73</td></tr>
+          <tr class="tot"><td>Var. 23-24</td><td class="n">(44) k€ ; Var. (38)%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">Bridge EBITDA, 2024 vers 2025</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <caption>Bridge EBITDA FY24-25R, valeurs relevées sur le graphique de la page 9, en k€</caption>
+        <thead><tr><th>Étape</th><th class="n">Effet, en k€</th></tr></thead>
+        <tbody>
+          <tr class="tot"><td>EBITDA 2024</td><td class="n">73</td></tr>
+          <tr><td>Marge</td><td class="n">(72)</td></tr>
+          <tr><td>Ch. de perso</td><td class="n">(5)</td></tr>
+          <tr><td>Frais généraux</td><td class="n">(8)</td></tr>
+          <tr><td>Honoraires</td><td class="n">27</td></tr>
+          <tr><td>Déplacements</td><td class="n">17</td></tr>
+          <tr><td>Autres</td><td class="n">(30)</td></tr>
+          <tr class="tot"><td>EBITDA 2025</td><td class="n">3</td></tr>
+          <tr class="tot"><td>Var. 24-25</td><td class="n">(70) k€ ; Var. (96)%</td></tr>
+          <tr class="tot"><td>Var. 23-25</td><td class="n">(114) k€ ; Var. (98)%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3 style="font-weight:400;margin-top:34px">EBITDA par exercice</h3>
+  <div class="doc-table">
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Exercice</th><th class="n">EBITDA, en k€</th></tr></thead>
+        <tbody>
+          <tr><td>FY23</td><td class="n">117 k€</td></tr>
+          <tr><td>FY24</td><td class="n">73 k€</td></tr>
+          <tr><td>FY25</td><td class="n">3 k€</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alertbox">
+    <span class="k">Donnée non extraite</span>
+    <p>Les trois graphiques « EBITDA mensuels et cumulés, 2023 - 2024 - 2025 » de la page 9 ne portent aucune étiquette de valeur mensuelle : ils n’affichent, pour chaque exercice, que la courbe mensuelle, la courbe cumulée et l’encadré du total annuel. <strong>Les valeurs mensuelles d’EBITDA ne sont donc pas extraites</strong> et ne sont pas reproduites ici. Seuls les totaux annuels encadrés sur ces graphiques sont repris dans le tableau ci-dessus.</p>
+  </div>
+
+  <div class="badgerow">
+    <span class="badge ko">EBITDA 2025 à 3 k€</span>
+    <span class="badge ko">Var. 23-25 : (114) k€, soit (98)%</span>
+    <span class="badge warn">CA 2025 tout juste au point mort</span>
+  </div>
+</section>
+
+<section class="txt bg-dark">
+  <span class="kicker" style="color:var(--ember)">Page 10 du rapport</span>
+  <h2>Source et mentions.</h2>
+
+  <div class="srcfoot">
+    <p><strong>Source : Management et analyses Reggio Partners.</strong></p>
+    <p>Rapport « Projet Geozey, Reporting avril 2026 », rapport provisoire daté du 24 avril 2026, mention « Strictement confidentiel », dix pages. Auteurs : Hugo Dussart, associé, et Pierre Blin, senior expérimenté.</p>
+    <p class="adr">Reggio Partners<br>217, rue du Faubourg Saint-Honoré<br>75008 Paris<br>France<br>www.reggio-partners.com</p>
+    <p>Cette page est une restitution en HTML du rapport reçu au format PDF. Elle reproduit le texte et les tableaux chiffrés du document d’origine sans aucun recalcul, aucune correction et aucun arrondi. Les valeurs issues des graphiques sont signalées comme telles dans les intitulés de tableaux. Les deux séries mensuelles dépourvues d’étiquettes dans le rapport sont explicitement signalées comme non extraites.</p>
+  </div>
+</section>
+
+<footer>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x egery · Audit externe Reggio Partners, rapport provisoire du 24 avril 2026 · Restitution fidèle versée au hub pré-cession · Strictement confidentiel, ne pas diffuser.</p>
+</footer>
+
+<script src="/cockpit-accompagnement/assets/shell.js"></script>
+</body>
+</html>
