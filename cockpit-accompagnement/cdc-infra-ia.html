@@ -12,12 +12,18 @@
 :root{--ember-ink:#C42F09}
 .page-hero{padding:150px 140px 80px}
 .txt{padding:70px 140px}
-.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
-.doc-table table{width:100%;border-collapse:collapse;font-size:14.5px}
+/* Correctif du 20 août 2026, signalé par Benjamin.
+   Les bandes bg-dark et bg-gray déclarent color:#fff au niveau de la section.
+   .doc-table impose un fond blanc mais ne redéclarait aucune couleur de texte :
+   les cellules héritaient donc du blanc et le tableau devenait invisible.
+   La couleur d’encre est désormais posée sur le conteneur, sur la table et sur
+   les cellules elles-mêmes, pour couper l’héritage à chaque niveau. */
+.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0;color:var(--dark,#1e1e1e)}
+.doc-table table{width:100%;border-collapse:collapse;font-size:14.5px;color:var(--dark,#1e1e1e)}
 .doc-table thead tr{background:#1e1e1e;color:#fff}
-.doc-table thead th{padding:14px 16px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}
+.doc-table thead th{padding:14px 16px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500;color:#fff}
 .doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
-.doc-table tbody td{padding:14px 16px;vertical-align:top;line-height:1.55}
+.doc-table tbody td{padding:14px 16px;vertical-align:top;line-height:1.55;color:var(--dark,#1e1e1e)}
 .badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
 .badge.ok{background:#DDEBD9;color:#1A5E3A}
 .badge.warn{background:#F6E7C6;color:#8a5200}
