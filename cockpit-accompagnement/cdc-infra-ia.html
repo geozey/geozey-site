@@ -34,6 +34,11 @@
 .rule-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:13px;padding:36px 40px;margin:26px 0}
 .rule-box p{color:#fff;font-size:19px;line-height:1.6;max-width:780px}
 .rule-box .kicker{color:var(--ember)}
+/* Variante du même bloc pour les bandes claires, où l’encre doit être sombre. */
+.rule-box-light{background:#fff;border:1px solid rgba(30,30,30,.14);border-radius:13px;padding:36px 40px;margin:26px 0;box-shadow:0 4px 4px rgba(0,0,0,.05)}
+.rule-box-light p{color:var(--dark,#1e1e1e);font-size:19px;line-height:1.6;max-width:840px;margin:0}
+.rule-box-light .kicker{color:var(--ember-ink)}
+.sub-lbl{display:block;font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember-ink);margin:46px 0 12px}
 .note-src{font-size:13px;color:var(--ash);max-width:780px;line-height:1.6}
 .note-src a{color:var(--ash);text-decoration:underline}
 ol.numbered{padding-left:22px;line-height:1.9;font-size:17px;max-width:800px}
@@ -47,6 +52,37 @@ ol.numbered li{margin-bottom:12px}
 .lbl-in{color:#1A5E3A}
 .lbl-out{color:var(--ash)}
 .big-num{font-family:'Roboto Mono',monospace;font-size:15px;letter-spacing:1px}
+/* ── Schéma des flux, SVG inline. Aucune image, aucune bibliothèque.
+      Toutes les couleurs passent par les variables de la charte, avec
+      une valeur de repli, pour ne dépendre d’aucun code écrit en dur.
+      Sur écran étroit le schéma garde sa taille et se fait glisser
+      horizontalement : le réduire rendrait les libellés illisibles. ── */
+.flux-wrap{background:#fff;border-radius:13px;padding:26px 24px;margin:30px 0 14px;box-shadow:0 4px 4px rgba(0,0,0,.06);overflow-x:auto}
+.flux-wrap svg{width:100%;height:auto;display:block}
+@media(max-width:1000px){.flux-wrap svg{width:960px;min-width:960px}}
+.fx-band{fill:rgba(30,30,30,.045)}
+.fx-card{fill:#fff;stroke:#c9c9c9;stroke-width:1.6}
+.fx-contrat{fill:#fff;stroke:var(--ember,#FF4512);stroke-width:2.4}
+.fx-hors{fill:#fff;stroke:var(--dark,#1e1e1e);stroke-width:2.4}
+.fx-node{fill:#fff;stroke:var(--ember-ink,#C42F09);stroke-width:2.4}
+.fx-t{fill:var(--dark,#1e1e1e);font-size:13.5px;font-weight:500}
+.fx-d{fill:#4a4a49;font-size:11.5px}
+.fx-b{fill:var(--dark,#1e1e1e);font-size:11.5px}
+.fx-k{fill:var(--ember-ink,#C42F09);font-size:11px;font-family:'Roboto Mono',monospace;letter-spacing:1.4px}
+.fx-bl{fill:var(--ember-ink,#C42F09);font-size:11px;font-family:'Roboto Mono',monospace;letter-spacing:2.3px}
+.fx-rule{fill:var(--ember-ink,#C42F09);font-size:12.5px;font-weight:500}
+.fx-nt{fill:var(--ember-ink,#C42F09);font-size:14px;font-weight:500}
+.fx-l{stroke:#8d8d8d;stroke-width:1.6;fill:none}
+.fx-le{stroke:var(--ember,#FF4512);stroke-width:2.2;fill:none}
+.fx-lk{stroke:var(--dark,#1e1e1e);stroke-width:2;fill:none}
+.fx-x{fill:#fff;stroke:var(--ember-ink,#C42F09);stroke-width:2.4}
+.fx-xb{stroke:var(--ember-ink,#C42F09);stroke-width:2.4;fill:none}
+.fx-pe{fill:var(--ember,#FF4512)}
+.fx-pd{fill:var(--dark,#1e1e1e)}
+.fx-pg{fill:#8d8d8d}
+.fx-pill-e{fill:var(--ember,#FF4512)}
+.fx-pill-d{fill:var(--dark,#1e1e1e)}
+.fx-pt{fill:#fff;font-size:11px;font-family:'Roboto Mono',monospace;letter-spacing:1.6px}
 nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
 nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.5);color:#f1f1f1;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
@@ -189,14 +225,358 @@ footer .copy{color:rgba(255,255,255,.72)}
       <span class="lbl lbl-in">Inclus</span>
       <div class="in">Pilotage de l’acquisition, sourcing et enrichissement, campagnes, contenu et référencement, radar de détection des projets attribués, alimentation du pipeline du futur commercial.</div>
       <span class="lbl lbl-out">Non inclus</span>
-      <div class="out">Le forfait outils growth et l’intéressement au chiffre d’affaires sont une option distincte et facultative, détaillée en section 9.</div>
+      <div class="out">Le forfait outils growth et l’intéressement au chiffre d’affaires sont une option distincte et facultative, détaillée en section 10.</div>
     </div>
   </div>
   <p style="font-size:15px;line-height:1.7;max-width:780px">Rythme inclus dans les trois casquettes : deux ateliers techniques par mois, l’atelier du lundi 11h30, plus le point du mercredi.</p>
 </section>
 
+<section class="txt bg-light">
+  <span class="kicker">3. IA vendue, IA offerte</span>
+  <h2>Ce qui est dû au titre du contrat, et ce qui ne l’est pas</h2>
+  <p style="max-width:840px;line-height:1.7">Cette section sert à situer un périmètre avant la cession. Elle ne sert pas à réclamer. Elle cite les documents contractuels tels qu’ils sont écrits, et rien d’autre. Deux repères de vocabulaire avant de commencer : les <strong>CGV</strong> sont les conditions générales de vente annexées au contrat signé le 19 février 2026 ; le <strong>Sprint 2</strong> est la deuxième phase du programme, décrite dans l’Annexe 1 de ce même contrat.</p>
+  <p style="max-width:840px;line-height:1.7">Un point est posé d’emblée pour lever toute ambiguïté : <strong>aucune facturation additionnelle n’est demandée sur les agents IA.</strong> La concession actée le 13 août 2026 est tenue. Ce qui suit établit un périmètre, pas une facture.</p>
+
+  <span class="sub-lbl">Ce qui est vendu, donc dû au titre du contrat</span>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Élément</th><th>Où c’est écrit</th><th>Texte exact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Six agents IA métier</strong></td>
+        <td>CGV article 4.6.a, et Annexe 1, Sprint 2, livrable 6</td>
+        <td>« le développement et le déploiement de six (6) agents IA métier et/ou opérationnels ». L’Annexe précise : « Identification des cas d’usage prioritaires, développement des agents IA, paramétrage et personnalisation, tests et mise en production, formation des utilisateurs ».</td>
+      </tr>
+      <tr>
+        <td><strong>La définition de ce qu’est un agent</strong></td>
+        <td>CGV, table des définitions</td>
+        <td>« Agents IA désigne les agents d’intelligence artificielle développés par le Prestataire, orientés métier et opérationnel, destinés à automatiser certaines tâches du Client ».</td>
+      </tr>
+      <tr>
+        <td><strong>La gouvernance IA globale</strong></td>
+        <td>CGV article 4.6.a, Annexe 1, Sprint 2, livrable 7</td>
+        <td>« la définition de l’architecture IA cible, l’établissement des standards techniques, l’intégration de l’écosystème IA existant, la coordination des prestataires concernés ». Et, en définition : « rôle de pilotage et de coordination global assuré par le Prestataire sur l’architecture IA, les standards techniques, l’intégration et la cohérence de l’écosystème IA du Client ».</td>
+      </tr>
+      <tr>
+        <td><strong>Une réunion de cadrage IA de deux heures</strong></td>
+        <td>Annexe 1, Sprint 2, modalités spécifiques</td>
+        <td>Dans les 30 jours du lancement du Sprint 2, réunissant l’agent ALVO, le représentant de Geozey, le prestataire IA et un membre de l’équipe technique ALVO.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="max-width:840px;line-height:1.7">À cela s’ajoute une obligation qui pèse sur le client, utile à rappeler puisqu’elle conditionne le reste. CGV article 8.3 : « Le Client s’engage à faciliter la coordination entre le Prestataire et tout prestataire IA existant, et à donner accès aux informations, outils et interlocuteurs nécessaires ».</p>
+
+  <span class="sub-lbl">Ce qui est hors contrat, avec sa preuve textuelle</span>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Élément</th><th>Preuve</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>L’application métier</strong></td>
+        <td>Annexe 1, Sprint 2, livrable 2, exclusions expresses. La prestation CRM, du nom du logiciel de gestion de la relation client, est vendue « à l’exclusion de toute fourniture de logiciel, ces prestations étant réalisées par un éditeur tiers avec lequel le Client contracte directement ». Un logiciel a pourtant été développé et livré. C’est la preuve la plus directe du dossier.</td>
+      </tr>
+      <tr>
+        <td><strong>L’infrastructure d’agents autonomes</strong></td>
+        <td>Le contrat vend six agents « destinés à automatiser certaines tâches du Client ». Il ne vend aucune couche d’orchestration, c’est-à-dire les programmes qui déclenchent et enchaînent les agents, aucune mémoire partagée, aucun socle d’exécution. CGV article 13.3 : les « architectures », les « briques techniques » et les « développements antérieurs ou indépendants du Contrat » sont des droits réservés du Prestataire, expressément exclus de la cession de propriété.</td>
+      </tr>
+      <tr>
+        <td><strong>Le pack de neuf skills et le setup du poste de travail</strong></td>
+        <td>CGV article 13.3 : sont réservés « ses modèles, frameworks, templates et supports génériques non développés spécifiquement pour le Client ». Une skill est un mode d’emploi réutilisable donné à un agent pour qu’il exécute une tâche de la même façon à chaque fois. Ces skills sont des outils egery adaptés, pas un livrable développé pour Geozey.</td>
+      </tr>
+      <tr>
+        <td><strong>Le moteur de matching à dix axes</strong></td>
+        <td>Nuance à assumer, elle est réelle. L’Annexe 1 prévoit bien « la mise en place, dans la limite des fonctionnalités de la solution CRM retenue et des licences souscrites, de mécanismes de qualification et le cas échéant de matching assisté ». Un moteur déterministe à dix axes développé hors de BoondManager dépasse cette limite. Le principe du matching est au contrat, sa réalisation propriétaire ne l’est pas.</td>
+      </tr>
+      <tr>
+        <td><strong>L’agent conversationnel</strong></td>
+        <td>Déjà traité comme hors contrat par egery Tech elle-même, et chiffré 4 400 EUR HT au palier C.</td>
+      </tr>
+      <tr>
+        <td><strong>La base vectorielle et le socle souverain OVH</strong></td>
+        <td>Aucune mention nulle part dans le contrat.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <span class="sub-lbl">Les faits tracés</span>
+  <div class="doc-table">
+  <table>
+    <thead><tr><th>Date</th><th>Ce qui est acté</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>19 juin 2026</strong><br>Checkpoint avec Yacine</td>
+        <td>Les six agents IA sont actés comme inclus au contrat, pour le mois 6.</td>
+      </tr>
+      <tr>
+        <td><strong>13 août 2026</strong><br>Rendez-vous Aurélien, Benjamin, Yacine, notes Gemini</td>
+        <td>L’accord initial portait sur « six agents via Dust », Dust étant un outil du marché qui permet d’assembler des agents sans les développer. Ce qui a été livré est une infrastructure propriétaire avec mémoire partagée. C’est un écart de nature, pas un écart de volume : il s’agissait d’assembler six agents dans un outil du marché, un socle a été construit.</td>
+      </tr>
+      <tr>
+        <td><strong>13 août 2026</strong><br>Même rendez-vous</td>
+        <td>Une concession est actée : les agents IA ne font l’objet d’aucune facturation additionnelle. Cette concession porte sur les agents. Elle ne couvre ni l’application métier, ni l’infrastructure.</td>
+      </tr>
+      <tr>
+        <td><strong>19 août 2026</strong><br>Revue</td>
+        <td>Accord commun sur le fait qu’il n’y a pas de limite de nombre d’agents : ils sont créés au fil de l’eau selon les besoins, et Yacine a été formé à en créer lui-même. Trois existent aujourd’hui : sourcing, screening, matching.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="rule-box-light">
+    <span class="kicker">La phrase à retenir pour le rendez-vous</span>
+    <p>Ce qui est vendu, ce sont six agents et une gouvernance. Ce qui a été construit, c’est une usine à agents, sans limite de nombre, plus l’application dans laquelle ils travaillent. La différence entre les deux est ce qui reste à l’acquéreur le jour de la cession.</p>
+  </div>
+  <p class="note-src" style="max-width:840px">Sources : contrat signé le 19 février 2026, devis, conditions générales de vente et annexes ; notes des séances du 19 juin, du 13 août et du 19 août 2026. Les passages entre guillemets sont des citations littérales des documents contractuels.</p>
+</section>
+
+<section class="txt bg-white">
+  <span class="kicker">4. Le schéma des flux</span>
+  <h2>D’où vient la donnée, où elle vit, qui la traite, ce qui en sort</h2>
+  <p style="max-width:840px;line-height:1.7">Le même périmètre, vu de haut. Le liseré de chaque bloc dit son statut : orange pour ce qui est nommé au contrat, noir pour ce qui a été construit et livré sans y figurer, gris pour un outil déjà en place chez Geozey. Deux règles de gouvernance sont rendues visibles plutôt qu’écrites : le moteur de matching s’arrête sur un humain, et le coffre à clés ne touche jamais la couche des agents.</p>
+
+  <div class="flux-wrap">
+  <svg viewBox="0 0 1120 1660" role="img" aria-labelledby="fluxTitre fluxDesc" xmlns="http://www.w3.org/2000/svg">
+    <title id="fluxTitre">Schéma des flux de données de Geozey, des sources aux sorties</title>
+    <desc id="fluxDesc">Quatre couches de haut en bas : les sources de données, le socle où vit la donnée, les agents qui la traitent, et les sorties. Le moteur de matching propose et une décision humaine tranche. Le coffre à clés alimente l’infrastructure d’exécution sans jamais passer par la couche des agents.</desc>
+    <defs>
+      <marker id="fxa" viewBox="0 0 9 9" refX="8.5" refY="4.5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L9 4.5 L0 9 Z" class="fx-pg"/></marker>
+      <marker id="fxae" viewBox="0 0 9 9" refX="8.5" refY="4.5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L9 4.5 L0 9 Z" class="fx-pe"/></marker>
+      <marker id="fxad" viewBox="0 0 9 9" refX="8.5" refY="4.5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L9 4.5 L0 9 Z" class="fx-pd"/></marker>
+    </defs>
+
+    <!-- ══ Couche 1, les sources ══ -->
+    <rect class="fx-band" x="48" y="10" width="1056" height="186" rx="13"/>
+    <text class="fx-bl" x="66" y="40">1 · SOURCES</text>
+    <text class="fx-d" x="176" y="40">D’où vient la donnée.</text>
+
+    <rect class="fx-card" x="66" y="58" width="193" height="118" rx="13"/>
+    <text class="fx-t" x="80" y="84">geozey.com</text>
+    <text class="fx-d" x="80" y="108">Le site public. Son</text>
+    <text class="fx-d" x="80" y="124">formulaire de candidature</text>
+    <text class="fx-d" x="80" y="140">reçoit les CV.</text>
+
+    <rect class="fx-card" x="272" y="58" width="193" height="118" rx="13"/>
+    <text class="fx-t" x="286" y="84">BoondManager</text>
+    <text class="fx-d" x="286" y="108">Le logiciel de gestion</text>
+    <text class="fx-d" x="286" y="124">des missions déjà</text>
+    <text class="fx-d" x="286" y="140">utilisé chez Geozey.</text>
+
+    <rect class="fx-card" x="478" y="58" width="193" height="118" rx="13"/>
+    <text class="fx-t" x="492" y="84">LinkedIn</text>
+    <text class="fx-d" x="492" y="108">Réseau professionnel.</text>
+    <text class="fx-d" x="492" y="124">Sert à repérer profils</text>
+    <text class="fx-d" x="492" y="140">et projets attribués.</text>
+
+    <rect class="fx-card" x="684" y="58" width="193" height="118" rx="13"/>
+    <text class="fx-t" x="698" y="84">Qonto, lecture seule</text>
+    <text class="fx-d" x="698" y="108">La banque. L’accès</text>
+    <text class="fx-d" x="698" y="124">autorise la lecture,</text>
+    <text class="fx-d" x="698" y="140">jamais un mouvement.</text>
+
+    <rect class="fx-card" x="890" y="58" width="193" height="118" rx="13"/>
+    <text class="fx-t" x="904" y="84">Data room</text>
+    <text class="fx-d" x="904" y="108">Le dossier réuni pour</text>
+    <text class="fx-d" x="904" y="124">la cession : contrats,</text>
+    <text class="fx-d" x="904" y="140">comptes, notes.</text>
+
+    <path class="fx-l" marker-end="url(#fxa)" d="M162.5 176 V236"/>
+    <path class="fx-l" marker-end="url(#fxa)" d="M368.5 176 V236"/>
+    <path class="fx-l" marker-end="url(#fxa)" d="M574.5 176 V236"/>
+    <path class="fx-l" marker-end="url(#fxa)" d="M780.5 176 V236"/>
+    <path class="fx-l" marker-end="url(#fxa)" d="M986.5 176 V236"/>
+
+    <!-- ══ Couche 2, le socle ══ -->
+    <rect class="fx-band" x="48" y="236" width="1056" height="272" rx="13"/>
+    <text class="fx-bl" x="66" y="266">2 · SOCLE</text>
+    <rect class="fx-pill-d" x="160" y="249" width="140" height="27" rx="13.5"/>
+    <text class="fx-pt" x="230" y="267" text-anchor="middle">Hors contrat</text>
+    <text class="fx-d" x="316" y="266">Où vit la donnée, et à qui elle appartient.</text>
+
+    <rect class="fx-hors" x="66" y="284" width="243" height="204" rx="13"/>
+    <text class="fx-t" x="82" y="310">Base geozey-core</text>
+    <text class="fx-d" x="82" y="334">La base de données de</text>
+    <text class="fx-d" x="82" y="350">Geozey, hébergée dans</text>
+    <text class="fx-d" x="82" y="366">l’Union européenne. Elle</text>
+    <text class="fx-d" x="82" y="382">lui appartient, aujourd’hui</text>
+    <text class="fx-d" x="82" y="398">et demain.</text>
+
+    <rect class="fx-hors" x="325" y="284" width="243" height="204" rx="13"/>
+    <text class="fx-t" x="341" y="310">Stockage documentaire</text>
+    <text class="fx-d" x="341" y="334">Un espace de fichiers non</text>
+    <text class="fx-d" x="341" y="350">public : les CV déposés et</text>
+    <text class="fx-d" x="341" y="366">les pièces du dossier.</text>
+
+    <rect class="fx-hors" x="584" y="284" width="243" height="204" rx="13"/>
+    <text class="fx-t" x="600" y="310">Base vectorielle, à venir</text>
+    <text class="fx-d" x="600" y="334">Une mémoire de recherche</text>
+    <text class="fx-d" x="600" y="350">que les agents interrogent</text>
+    <text class="fx-d" x="600" y="366">pour raisonner sur les</text>
+    <text class="fx-d" x="600" y="382">données de Geozey.</text>
+    <text class="fx-d" x="600" y="398">À poser sur le serveur OVH.</text>
+
+    <rect class="fx-hors" x="843" y="284" width="243" height="204" rx="13"/>
+    <text class="fx-t" x="859" y="310">Coffre à clés</text>
+    <text class="fx-d" x="859" y="334">Les clés d’accès aux</text>
+    <text class="fx-d" x="859" y="350">services. Yacine les pose</text>
+    <text class="fx-d" x="859" y="366">lui-même dans les variables</text>
+    <text class="fx-d" x="859" y="382">d’environnement de Vercel,</text>
+    <text class="fx-d" x="859" y="398">l’endroit où la plateforme</text>
+    <text class="fx-d" x="859" y="414">d’hébergement garde les secrets.</text>
+    <text class="fx-rule" x="859" y="442">Jamais confiées à un agent.</text>
+
+    <path class="fx-l" marker-start="url(#fxa)" marker-end="url(#fxa)" d="M187.5 488 V548"/>
+    <path class="fx-l" marker-start="url(#fxa)" marker-end="url(#fxa)" d="M446.5 488 V548"/>
+    <path class="fx-l" marker-start="url(#fxa)" marker-end="url(#fxa)" d="M705.5 488 V548"/>
+    <text class="fx-d" x="197" y="524">lit et écrit</text>
+    <text class="fx-d" x="456" y="524">lit et écrit</text>
+    <text class="fx-d" x="715" y="524">lit et écrit</text>
+
+    <path class="fx-lk" d="M964.5 488 V506"/>
+    <circle class="fx-x" cx="964.5" cy="518" r="12"/>
+    <path class="fx-xb" d="M956.5 526.5 L972.5 509.5"/>
+
+    <!-- ══ Couche 3, les agents ══ -->
+    <rect class="fx-band" x="48" y="548" width="1056" height="364" rx="13"/>
+    <text class="fx-bl" x="66" y="578">3 · AGENTS</text>
+    <rect class="fx-pill-e" x="160" y="561" width="132" height="27" rx="13.5"/>
+    <text class="fx-pt" x="226" y="579" text-anchor="middle">Contractuel</text>
+    <text class="fx-d" x="310" y="578">Qui traite la donnée.</text>
+    <text class="fx-rule" x="1086" y="578" text-anchor="end">Aucune clé ne transite par un agent</text>
+
+    <rect class="fx-hors" x="66" y="604" width="1020" height="54" rx="13"/>
+    <text class="fx-t" x="84" y="626">Orchestration et mémoire partagée</text>
+    <text class="fx-d" x="84" y="645">Les programmes qui déclenchent les agents, les enchaînent et gardent l’historique de leurs décisions. Ils tourneront sur le serveur OVH.</text>
+    <rect class="fx-pill-d" x="930" y="617" width="140" height="26" rx="13"/>
+    <text class="fx-pt" x="1000" y="634" text-anchor="middle">Hors contrat</text>
+
+    <rect class="fx-contrat" x="66" y="672" width="243" height="224" rx="13"/>
+    <text class="fx-t" x="82" y="698">Agent sourcing</text>
+    <text class="fx-d" x="82" y="720">Détecte en continu les projets</text>
+    <text class="fx-d" x="82" y="736">attribués et les profils PMO.</text>
+    <text class="fx-k" x="82" y="764">CE QU’IL LIT</text>
+    <text class="fx-b" x="82" y="782">Le web, LinkedIn, la base</text>
+    <text class="fx-b" x="82" y="798">geozey-core.</text>
+    <text class="fx-k" x="82" y="826">CE QU’IL ÉCRIT</text>
+    <text class="fx-b" x="82" y="844">Des prospects et des profils,</text>
+    <text class="fx-b" x="82" y="860">avec leur source et leur date.</text>
+
+    <rect class="fx-contrat" x="325" y="672" width="243" height="224" rx="13"/>
+    <text class="fx-t" x="341" y="698">Agent screening</text>
+    <text class="fx-d" x="341" y="720">Trie et qualifie les</text>
+    <text class="fx-d" x="341" y="736">candidatures reçues.</text>
+    <text class="fx-k" x="341" y="764">CE QU’IL LIT</text>
+    <text class="fx-b" x="341" y="782">Le formulaire du site, les CV</text>
+    <text class="fx-b" x="341" y="798">du stockage documentaire.</text>
+    <text class="fx-k" x="341" y="826">CE QU’IL ÉCRIT</text>
+    <text class="fx-b" x="341" y="844">Une fiche de profil qualifiée</text>
+    <text class="fx-b" x="341" y="860">dans geozey-core.</text>
+
+    <rect class="fx-contrat" x="584" y="672" width="243" height="224" rx="13"/>
+    <text class="fx-t" x="600" y="698">Agent matching</text>
+    <text class="fx-d" x="600" y="720">Rapproche un profil et une</text>
+    <text class="fx-d" x="600" y="736">mission sur dix axes.</text>
+    <text class="fx-k" x="600" y="764">CE QU’IL LIT</text>
+    <text class="fx-b" x="600" y="782">geozey-core, et le référentiel</text>
+    <text class="fx-b" x="600" y="798">des missions BoondManager.</text>
+    <text class="fx-k" x="600" y="826">CE QU’IL ÉCRIT</text>
+    <text class="fx-b" x="600" y="844">Une proposition classée, avec</text>
+    <text class="fx-b" x="600" y="860">le motif de chaque écart.</text>
+
+    <rect class="fx-contrat" x="843" y="672" width="243" height="224" rx="13"/>
+    <text class="fx-t" x="859" y="698">Trois places à venir</text>
+    <text class="fx-d" x="859" y="720">Le contrat en prévoit six.</text>
+    <text class="fx-d" x="859" y="736">Trois tournent aujourd’hui.</text>
+    <text class="fx-k" x="859" y="764">CE QUI EST PRÉVU</text>
+    <text class="fx-b" x="859" y="782">Créés au fil des besoins.</text>
+    <text class="fx-b" x="859" y="798">Yacine a été formé à en créer.</text>
+    <text class="fx-k" x="859" y="826">AUCUNE LIMITE DE NOMBRE</text>
+    <text class="fx-b" x="859" y="844">L’infrastructure n’impose</text>
+    <text class="fx-b" x="859" y="860">aucun plafond.</text>
+
+    <path class="fx-le" marker-end="url(#fxae)" d="M705.5 896 V940"/>
+    <text class="fx-rule" x="716" y="922">propose</text>
+
+    <!-- ══ La décision reste humaine ══ -->
+    <rect class="fx-node" x="340" y="940" width="472" height="112" rx="13"/>
+    <text class="fx-nt" x="364" y="974">La décision reste humaine</text>
+    <text class="fx-b" x="364" y="998">Le moteur de matching propose une liste classée et motivée.</text>
+    <text class="fx-b" x="364" y="1016">Il ne décide jamais d’une personne. Yacine, ou le futur</text>
+    <text class="fx-b" x="364" y="1034">commercial, tranche et assume la décision.</text>
+
+    <path class="fx-le" marker-end="url(#fxae)" d="M705.5 1052 V1198"/>
+    <path class="fx-lk" marker-end="url(#fxad)" d="M1086 440 H1096 V1176 H760 V1198"/>
+    <text class="fx-b" x="1086" y="1120" text-anchor="end">Les clés vont à l’infrastructure, jamais aux agents.</text>
+
+    <!-- ══ Couche 4, les sorties ══ -->
+    <rect class="fx-band" x="48" y="1140" width="1056" height="218" rx="13"/>
+    <text class="fx-bl" x="66" y="1170">4 · SORTIES</text>
+    <text class="fx-d" x="186" y="1170">Ce qui en sort, et pour qui.</text>
+
+    <rect class="fx-card" x="66" y="1198" width="243" height="140" rx="13"/>
+    <text class="fx-t" x="82" y="1224">Campagnes Brevo</text>
+    <text class="fx-d" x="82" y="1248">Brevo est l’outil d’envoi de</text>
+    <text class="fx-d" x="82" y="1264">courriels. Il reçoit les listes</text>
+    <text class="fx-d" x="82" y="1280">de contacts à toucher.</text>
+
+    <rect class="fx-card" x="325" y="1198" width="243" height="140" rx="13"/>
+    <text class="fx-t" x="341" y="1224">Notifications</text>
+    <text class="fx-d" x="341" y="1248">Un courriel part vers Yacine</text>
+    <text class="fx-d" x="341" y="1264">à chaque candidature</text>
+    <text class="fx-d" x="341" y="1280">déposée sur le site.</text>
+
+    <rect class="fx-hors" x="584" y="1198" width="243" height="140" rx="13"/>
+    <text class="fx-t" x="600" y="1224">Application métier</text>
+    <text class="fx-d" x="600" y="1248">Trois rôles cloisonnés :</text>
+    <text class="fx-d" x="600" y="1264">administrateur, client maître</text>
+    <text class="fx-d" x="600" y="1280">d’œuvre, freelance. Chacun</text>
+    <text class="fx-d" x="600" y="1296">ne voit que ce qui le concerne.</text>
+
+    <rect class="fx-card" x="843" y="1198" width="243" height="140" rx="13"/>
+    <text class="fx-t" x="859" y="1224">Hub de pilotage</text>
+    <text class="fx-d" x="859" y="1248">Le dossier de préparation à</text>
+    <text class="fx-d" x="859" y="1264">la cession, tenu à jour.</text>
+    <text class="fx-d" x="859" y="1280">Cette page en fait partie.</text>
+
+    <!-- ══ Légende ══ -->
+    <rect class="fx-band" x="48" y="1396" width="1056" height="252" rx="13"/>
+    <text class="fx-bl" x="66" y="1428">LÉGENDE</text>
+
+    <rect class="fx-contrat" x="66" y="1447" width="22" height="22" rx="7"/>
+    <text class="fx-b" x="104" y="1462">Contractuel. Nommé dans le contrat : les six agents IA</text>
+    <text class="fx-b" x="104" y="1479">et la gouvernance IA.</text>
+
+    <rect class="fx-hors" x="66" y="1509" width="22" height="22" rx="7"/>
+    <text class="fx-b" x="104" y="1524">Hors contrat. Construit et livré, mais absent des documents</text>
+    <text class="fx-b" x="104" y="1541">contractuels : le socle, l’orchestration, l’application métier.</text>
+
+    <rect class="fx-card" x="66" y="1571" width="22" height="22" rx="7"/>
+    <text class="fx-b" x="104" y="1586">Outil ou source déjà en place chez Geozey, sans lien</text>
+    <text class="fx-b" x="104" y="1603">avec le périmètre du contrat.</text>
+
+    <circle class="fx-x" cx="591" cy="1455" r="11"/>
+    <path class="fx-xb" d="M583.5 1462.5 L598.5 1447.5"/>
+    <text class="fx-b" x="618" y="1462">Chemin interdit. Aucune clé ne transite par un agent.</text>
+    <text class="fx-b" x="618" y="1479">Le trait sombre qui contourne le schéma est le chemin des clés.</text>
+
+    <path class="fx-l" marker-start="url(#fxa)" marker-end="url(#fxa)" d="M580 1517 H602"/>
+    <text class="fx-b" x="618" y="1524">Lecture et écriture. L’agent lit le socle et y réécrit</text>
+    <text class="fx-b" x="618" y="1541">ses résultats.</text>
+
+    <path class="fx-le" marker-end="url(#fxae)" d="M580 1579 H602"/>
+    <text class="fx-b" x="618" y="1586">Sens du flux. En orange, les deux règles de gouvernance</text>
+    <text class="fx-b" x="618" y="1603">rappelées ci-dessus.</text>
+
+    <text class="fx-d" x="66" y="1632">Le schéma se lit de haut en bas. Chaque terme technique porte son explication en une phrase, à son premier usage.</text>
+  </svg>
+  </div>
+  <p class="note-src" style="max-width:840px">Sur téléphone, le schéma garde sa taille et se fait glisser vers la droite : le réduire rendrait les libellés illisibles. Les deux principes qu’il met en évidence, le matching qui propose sans jamais décider et l’interdiction faite aux agents de manipuler une clé, viennent du document <strong>Gouvernance IA, Geozey</strong> du 18 août 2026.</p>
+</section>
+
 <section class="txt bg-gray">
-  <span class="kicker">3. Infrastructure cible</span>
+  <span class="kicker">5. Infrastructure cible</span>
   <h2>Où vivent les données, où vivent les clés</h2>
   <p style="max-width:800px;line-height:1.7">Chaque terme technique est expliqué en une phrase à son premier usage.</p>
   <div class="doc-table">
@@ -225,7 +605,7 @@ footer .copy{color:rgba(255,255,255,.72)}
 </section>
 
 <section class="txt bg-dark">
-  <span class="kicker">4. Souveraineté</span>
+  <span class="kicker">6. Souveraineté</span>
   <h2>Ce qui appartient à Geozey et le reste quoi qu’il arrive</h2>
   <p style="color:#fff;max-width:780px;line-height:1.7">La base geozey-core, le dépôt de code sur le compte personnel Geozey, les comptes Vercel, Supabase, Brevo et GitHub, les données de candidats, de clients et de sourcing : tout appartient à Geozey, aujourd’hui et demain.</p>
   <div class="rule-box">
@@ -235,7 +615,7 @@ footer .copy{color:rgba(255,255,255,.72)}
 </section>
 
 <section class="txt bg-white">
-  <span class="kicker">5. Renvoi à la gouvernance IA</span>
+  <span class="kicker">7. Renvoi à la gouvernance IA</span>
   <h2>Un document déjà produit, qu’on ne répète pas ici</h2>
   <p style="max-width:800px;line-height:1.7">Le cadre de gouvernance de l’intelligence artificielle chez Geozey est un livrable distinct, produit le 18 août 2026 : <strong>Gouvernance IA, Geozey</strong>. Ce cahier des charges s’y adosse sans le reproduire. Trois points à retenir de ce document pour la séance :</p>
   <ol class="numbered">
@@ -246,7 +626,7 @@ footer .copy{color:rgba(255,255,255,.72)}
 </section>
 
 <section class="txt bg-light">
-  <span class="kicker">6. Feuille de route</span>
+  <span class="kicker">8. Feuille de route</span>
   <h2>Les trois prochains mois</h2>
   <div class="doc-table">
   <table>
@@ -270,7 +650,7 @@ footer .copy{color:rgba(255,255,255,.72)}
 </section>
 
 <section class="txt bg-white">
-  <span class="kicker">7. Niveaux de service</span>
+  <span class="kicker">9. Niveaux de service</span>
   <h2>Ce à quoi Geozey peut se tenir</h2>
   <div class="doc-table">
   <table>
@@ -294,7 +674,7 @@ footer .copy{color:rgba(255,255,255,.72)}
 </section>
 
 <section class="txt bg-dark">
-  <span class="kicker">8. Le devis</span>
+  <span class="kicker">10. Le devis</span>
   <h2>Ce qui se facture, ce qui est offert, ce qui reste hors périmètre</h2>
   <div class="doc-table">
   <table>
@@ -317,6 +697,10 @@ footer .copy{color:rgba(255,255,255,.72)}
         <td>Forfait outils growth de 490 EUR HT par mois, couvrant le sourcing, l’enrichissement, le routage et l’entretien des listes. Plus un intéressement de 5 pourcent HT du chiffre d’affaires facturé la première année des missions attribuables au dispositif, réciproque dans les deux sens. Le détail complet est dans le document de proposition de collaboration, il n’est pas redétaillé ici.</td>
       </tr>
       <tr>
+        <td>Les agents IA</td>
+        <td>Aucune facturation additionnelle. La concession actée en séance du 13 août 2026 est tenue. La section 3 situe leur périmètre contractuel, elle n’ouvre aucune ligne de facturation.</td>
+      </tr>
+      <tr>
         <td>Hors périmètre, passe en DTS</td>
         <td>Le palier B, espace client maître d’œuvre. Le palier C, espace freelance et agent. Toute évolution de l’application vers un produit SaaS commercialisable. Chacun fait l’objet d’une fiche de cadrage dédiée, périmètre, temps estimé, planning et coût, validée par les deux parties avant démarrage, procédure proposée par Yacine lui-même en séance du 13 août.</td>
       </tr>
@@ -327,7 +711,7 @@ footer .copy{color:rgba(255,255,255,.72)}
 </section>
 
 <section class="txt bg-gray">
-  <span class="kicker">9. Ce que Geozey doit fournir</span>
+  <span class="kicker">11. Ce que Geozey doit fournir</span>
   <h2>Accès, clés, arbitrages</h2>
   <div class="doc-table">
   <table>
