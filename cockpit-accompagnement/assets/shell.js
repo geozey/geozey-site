@@ -29,7 +29,6 @@
   ];
 
   var EXT = [
-    ['https://cockpit-geozey.vercel.app', 'Cockpit de pilotage opérationnel'],
     ['https://egery-company.monday.com/boards/5101980426', 'Tableau Monday du programme'],
     ['https://geozey.com', 'Site geozey.com']
   ];
