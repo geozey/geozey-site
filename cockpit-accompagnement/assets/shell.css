@@ -81,6 +81,37 @@
   letter-spacing:1.8px;text-transform:uppercase;color:#a9a9a9;line-height:1.9;
 }
 
+/* ── Encre des composants à fond clair ─────────────────────────
+   La feuille de style de marque pose color:#fff sur .bg-dark,
+   .bg-gray et .ph-dark. Un composant à fond clair posé dans une
+   de ces sections héritait de cette encre blanche et devenait
+   illisible, blanc sur blanc. Chaque composant clair porte donc
+   son encre sombre sur ses cellules, et pas seulement sur son
+   conteneur. Contraste visé : au moins 4,5 pour 1.
+   ────────────────────────────────────────────────────────────── */
+.doc-table:not(.on-dark),
+.doc-table:not(.on-dark) table,
+.doc-table:not(.on-dark) tbody td,
+.doc-table:not(.on-dark) tbody th{color:var(--dark,#1e1e1e)}
+.doc-table:not(.on-dark) tbody td.mono{color:#4a4a49}
+.doc-table thead tr,
+.doc-table thead th{color:#fff}
+
+/* Variante assumée sur fond sombre : carte grise, encre claire. */
+.doc-table.on-dark{background:var(--gray,#3b3b3b)}
+.doc-table.on-dark table,
+.doc-table.on-dark tbody td,
+.doc-table.on-dark tbody th{color:#e7e7e7}
+.doc-table.on-dark tbody tr{border-bottom:1px solid rgba(255,255,255,.12)}
+
+/* Cartes et encadrés à fond clair de la charte. */
+.dcard,.dcard h3,.dcard p,.dcard li,
+.rolecard,.rolecard h3,
+.obj,.obj h3,
+.warnbox,.warnbox h3,.warnbox p,.warnbox li,
+.note-box:not(.dark):not(.ember),
+.note-box:not(.dark):not(.ember) p{color:var(--dark,#1e1e1e)}
+
 /* ── Décalage du contenu, uniquement si le script a pris la main ── */
 body.gz-shell{padding-left:var(--gz-sb)}
 body.gz-shell nav{left:calc(var(--gz-sb) + 24px)}
