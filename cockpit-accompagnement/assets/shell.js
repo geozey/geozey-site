@@ -21,6 +21,7 @@
       ['cdc-infra-ia',    'Cahier des charges infra IA', '03 · Infra IA'],
       ['valorisation',    'Rapport de valorisation',     'Sprint 1 · trois méthodes'],
       ['due-diligence',   'Synthèse de due diligence',   'Sprint 1 · quatre axes'],
+      ['audit-externe',   'Audit externe Reggio',        'Rapport provisoire · avril 2026'],
       ['plan-marges',     'Plan d’optimisation des marges','Sprint 3 · leviers chiffrés'],
       ['playbook',        'Playbook commercial',         'Sprint 2 · scripts et qualification'],
       ['gouvernance-ia',  'Gouvernance IA',              'Sprint 2 · registre et conformité']
