@@ -1,0 +1,142 @@
+/* Geozey — couche formulaires, connexion et flux documentaire.
+   S ajoute a styles.css puis a app-ui.css, ne remplace ni l un ni l autre.
+   Memes tokens que le site : arrondis 13, graisse 400, Roboto Mono pour
+   les libelles, ember en accent, ombre 0 4px 4px. Aucun coin carre. */
+
+/* Le site style l element <nav> en barre fixe flottante. Dans la coque
+   applicative il ne doit rien fixer : garde-fou, au cas ou un <nav>
+   reapparaitrait dans une vue. */
+body.app-shell nav:not(.amenu){position:static;background:none;backdrop-filter:none;
+  box-shadow:none;padding:0;margin:0;width:auto}
+
+/* ---------------------------------------------------------- connexion */
+.lgpage{min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:var(--dark);padding:40px 24px}
+.lgbox{width:100%;max-width:452px;background:#fff;border-radius:13px;
+  padding:46px 44px 40px;box-shadow:0 4px 4px rgba(0,0,0,.25)}
+.lgbox .mark{display:block;margin-bottom:34px}
+.lgbox .mark img{height:22px}
+.lgbox .kick{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;
+  text-transform:uppercase;color:var(--ember);margin-bottom:12px}
+.lgbox h1{font-size:30px;font-weight:400;line-height:1.25;margin-bottom:10px}
+.lgbox .sub{font-size:15px;color:var(--ash);line-height:1.6;margin-bottom:30px}
+.lgbox .alt{margin-top:26px;padding-top:22px;border-top:1px solid rgba(30,30,30,.14)}
+.lgbox .fine{font-size:13px;color:var(--ash);line-height:1.6;margin-top:22px}
+
+/* ------------------------------------------------------------ champs */
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+.frm .full{grid-column:1/-1}
+.f label,.frm label{display:block;font-family:'Roboto Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:9px}
+.f input,.f select,.f textarea,.frm input,.frm select,.frm textarea{
+  width:100%;font:400 16px/1.4 'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--dark);
+  background:#fff;border:1px solid rgba(30,30,30,.25);border-radius:13px;padding:14px 16px}
+.f textarea,.frm textarea{min-height:104px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus,
+.frm input:focus,.frm select:focus,.frm textarea:focus{
+  outline:0;border-color:var(--ember);box-shadow:0 0 0 3px rgba(255,69,18,.12)}
+.f{margin-bottom:20px}
+.f .aide{font-size:13px;color:var(--ash);margin-top:8px;line-height:1.5}
+
+/* ----------------------------------------------------------- boutons */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  border:1px solid transparent;border-radius:27px;padding:14px 26px;cursor:pointer;
+  background:var(--ember);color:#fff;box-shadow:0 4px 4px rgba(0,0,0,.12)}
+.b:hover{filter:brightness(1.06)}
+.b:disabled{opacity:.45;cursor:default;box-shadow:none}
+.b.plein{width:100%}
+.b.sec{background:var(--dark);color:#fff}
+.b.ghost{background:transparent;color:var(--dark);border-color:rgba(30,30,30,.3);box-shadow:none}
+.b.ghost:hover{border-color:var(--dark)}
+.b.danger{background:transparent;color:#AA1C00;border-color:rgba(170,28,0,.4);box-shadow:none}
+.lien{background:none;border:0;padding:0;cursor:pointer;color:var(--ember);
+  font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+/* ---------------------------------------------------------- messages */
+.msg{border-radius:13px;padding:15px 19px;font-size:15px;line-height:1.55;margin:18px 0}
+.msg.ok{background:#DDEBD9;color:#1A5E3A}
+.msg.ko{background:#F4D7D3;color:#AA1C00}
+.msg.info{background:#DCE7F5;color:#003E8A}
+.msg.warn{background:#F6E7C6;color:#8a5200}
+
+/* ------------------------------------------------------------ badges */
+.bdg{display:inline-flex;align-items:center;font-family:'Roboto Mono',monospace;
+  font-size:9.5px;letter-spacing:2px;text-transform:uppercase;
+  border-radius:14px;padding:6px 13px;white-space:nowrap}
+.bdg.ok{background:#DDEBD9;color:#1A5E3A}
+.bdg.wip{background:#F6E7C6;color:#8a5200}
+.bdg.ko{background:#F4D7D3;color:#AA1C00}
+.bdg.info{background:#DCE7F5;color:#003E8A}
+.bdg.em{background:var(--ember);color:#fff}
+.bdg.nt{background:var(--card);color:var(--ash)}
+
+/* ------------------------------------------- vide, l ecran sans donnee */
+.vide{border:1px dashed rgba(30,30,30,.3);border-radius:13px;padding:44px 40px;text-align:center}
+.vide h3{font-size:23px;font-weight:400;margin-bottom:12px}
+.vide p{font-size:15px;color:var(--ash);line-height:1.6;max-width:560px;margin:0 auto}
+
+/* --------------------------------------------- flux documentaire, file */
+.dfile{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:start;
+  border:1px solid rgba(30,30,30,.16);border-radius:13px;padding:26px 28px;margin-bottom:16px}
+.dfile.urgent{border-color:var(--ember)}
+.dfile .ref{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;
+  text-transform:uppercase;color:var(--ember)}
+.dfile h3{font-size:21px;font-weight:400;margin:9px 0 8px;line-height:1.3}
+.dfile .meta{font-size:14px;color:var(--ash);line-height:1.6}
+.dfile .cmt{background:#ececec;border-radius:13px;padding:15px 18px;margin-top:15px;
+  font-size:14px;line-height:1.6;color:var(--ash)}
+.dfile .cote{text-align:right;display:flex;flex-direction:column;gap:11px;align-items:flex-end}
+
+/* ------------------------------------------ flux documentaire, etapes */
+.flx{display:flex;flex-wrap:wrap;gap:0;margin:8px 0 4px}
+.flx div{display:flex;align-items:center;gap:9px;padding-right:15px}
+.flx div::after{content:"";width:22px;height:1px;background:rgba(30,30,30,.25);margin-left:6px}
+.flx div:last-child::after{display:none}
+.flx i{width:9px;height:9px;border-radius:50%;background:#fff;
+  border:1px solid rgba(30,30,30,.35);flex:none;font-style:normal}
+.flx div.faite i{background:var(--ember);border-color:var(--ember)}
+.flx div.ici i{border-color:var(--ember);border-width:2px}
+.flx span{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--ash)}
+.flx div.ici span{color:var(--dark)}
+
+/* --------------------------------------------------- previsualisation */
+.apercu{border:1px solid rgba(30,30,30,.2);border-radius:13px;overflow:hidden;margin-top:22px;
+  box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.apercu .barre{background:var(--dark);color:#fff;padding:13px 20px;display:flex;
+  justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase}
+.apercu iframe{display:block;width:100%;height:640px;border:0;background:#fff}
+
+/* ------------------------------------------------------- depot fichier */
+.depot{border:1px dashed rgba(30,30,30,.35);border-radius:13px;padding:34px;text-align:center;
+  cursor:pointer;background:#fff}
+.depot.sur{border-color:var(--ember);background:rgba(255,69,18,.04)}
+.depot b{display:block;font-size:19px;font-weight:400;margin-bottom:9px}
+.depot span{font-size:14px;color:var(--ash)}
+.depot input{display:none}
+.fchoisi{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:#ececec;border-radius:13px;padding:17px 20px;margin-top:14px;font-size:15px}
+
+/* ---------------------------------------------------------- journal */
+.jrn{border-left:1px solid rgba(30,30,30,.2);padding-left:26px;margin-top:24px}
+.jrn div{position:relative;padding-bottom:20px}
+.jrn div::before{content:"";position:absolute;left:-32px;top:5px;width:9px;height:9px;
+  border-radius:50%;background:var(--ember)}
+.jrn b{display:block;font-size:16px;font-weight:400}
+.jrn span{font-family:'Roboto Mono',monospace;font-size:9px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--ash);display:block;margin-top:5px}
+
+@media(max-width:760px){
+  .frm{grid-template-columns:1fr}
+  .dfile{grid-template-columns:1fr}
+  .dfile .cote{text-align:left;align-items:flex-start}
+  .apercu iframe{height:420px}
+  .lgbox{padding:34px 26px 30px}
+}
+
+/* Les deux liens de bas de barre laterale tiennent sur une ligne. */
+.aside .who .liens{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+.aside .who .liens a{margin-top:0;white-space:nowrap}
