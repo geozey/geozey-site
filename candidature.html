@@ -393,22 +393,31 @@ form.on{display:block}
   ATTR.device   = (window.matchMedia && matchMedia('(max-width:820px)').matches) ? 'mobile' : 'desktop';
 
   /* ---------- Ecriture : une ligne par session, mise a jour au fil de l eau ---------- */
-  var created = false;
+  // `envoye` ferme la session apres le depot final : plus aucune ecriture ne
+  // part de cette page, y compris le filet `pagehide` qui arrive apres le clic.
+  var envoye = false;
   var kindActif = null;
 
-  function rest(method, path, body, prefer){
-    return fetch(CFG.url + '/rest/v1/' + path, {
-      method: method,
+  // Une seule porte d ecriture : la fonction enregistrer_qualification, qui fait
+  // un upsert sur session_id. Historique de ce choix : la page faisait un POST
+  // puis des PATCH. Le POST tombait en 409 des qu un visiteur revenait, parce que
+  // gz_sid est garde a vie dans localStorage et que session_id est UNIQUE ; et le
+  // PATCH ne touchait aucune ligne, ce que PostgREST rend par un 204 que le
+  // navigateur lit comme un succes. Resultat : « Recu » a l ecran, rien en base,
+  // jamais de statut complet, donc jamais de mail. Avec un upsert, il n existe
+  // plus ni conflit ni ecriture muette : une erreur redevient une erreur.
+  function rpc(charge){
+    return fetch(CFG.url + '/rest/v1/rpc/enregistrer_qualification', {
+      method: 'POST',
       headers: {
         'apikey': CFG.anon,
         'Authorization': 'Bearer ' + CFG.anon,
-        'Content-Type': 'application/json',
-        'Prefer': prefer || 'return=minimal'
+        'Content-Type': 'application/json'
       },
-      body: body ? JSON.stringify(body) : undefined
+      body: JSON.stringify({ p: charge })
     }).then(function(r){
-      if(!r.ok) throw new Error('HTTP ' + r.status);
-      return r;
+      if(!r.ok) return r.text().then(function(t){ throw new Error('HTTP ' + r.status + ' ' + t); });
+      return r.json();
     });
   }
 
@@ -475,29 +484,16 @@ form.on{display:block}
       progression: Math.round(c.remplis / c.total * 100),
       champs_remplis: c.remplis,
       duree_sec: Math.round((Date.now() - t0) / 1000),
+      cv_storage_path: d.cv_storage_path || null,
+      cv_nom_fichier: d.cv_nom_fichier || null,
       payload: d
     };
   }
 
   function sync(kind, form, statut){
     if(!ready) return Promise.reject(new Error('config absente'));
-    var body = ligne(kind, form, statut);
-    if(!created){
-      // PAS d upsert ici. Prefer: resolution=merge-duplicates fait un INSERT ON CONFLICT
-      // DO UPDATE, et Postgres exige alors de satisfaire AUSSI la policy UPDATE, dont le
-      // USING porte sur created_at. Sur la ligne candidate, la condition n est pas
-      // satisfaite et l ecriture est refusee : verifie en production, 401 code 42501 avec
-      // l en-tete, 201 sans lui, quel que soit le contenu envoye.
-      // Consequence si on le laisse : le formulaire n enregistre RIEN, en silence.
-      return rest('POST', CFG.table, body, 'return=minimal')
-        .then(function(){ created = true; })
-        .catch(function(){
-          // Cas residuel : la session existe deja (retour sur la page). On complete.
-          created = true;
-          return rest('PATCH', CFG.table + '?session_id=eq.' + encodeURIComponent(SID), body);
-        });
-    }
-    return rest('PATCH', CFG.table + '?session_id=eq.' + encodeURIComponent(SID), body);
+    if(envoye) return Promise.resolve({ok:true, fige:true});
+    return rpc(ligne(kind, form, statut));
   }
 
   /* ---------- Parcours ---------- */
@@ -553,14 +549,15 @@ form.on{display:block}
     form.addEventListener('change', planifier);
     // Filet : si la personne ferme l onglet en cours de saisie, on garde l etat.
     window.addEventListener('pagehide', function(){
-      if(!ready || !created || Date.now() - dernier < 2000) return;
-      // sendBeacon ne sait faire que du POST : il tombait en conflit sur la cle unique.
-      // fetch keepalive survit a la fermeture de l onglet ET permet un PATCH.
+      if(!ready || envoye || Date.now() - dernier < 2000) return;
+      if(collect(form).remplis === 0) return;
+      // sendBeacon ne sait faire que du POST sans en-tetes : keepalive survit a la
+      // fermeture de l onglet et laisse passer la cle et le corps JSON.
       try{
-        fetch(CFG.url + '/rest/v1/' + CFG.table + '?session_id=eq.' + encodeURIComponent(SID), {
-          method: 'PATCH', keepalive: true,
+        fetch(CFG.url + '/rest/v1/rpc/enregistrer_qualification', {
+          method: 'POST', keepalive: true,
           headers: {'apikey': CFG.anon, 'Authorization': 'Bearer ' + CFG.anon, 'Content-Type': 'application/json'},
-          body: JSON.stringify(ligne(kind, form, 'brouillon'))
+          body: JSON.stringify({ p: ligne(kind, form, 'brouillon') })
         });
       }catch(e){}
     });
@@ -605,12 +602,9 @@ form.on{display:block}
         var form = champCV.form;
         if(form.elements['cv_storage_path']) form.elements['cv_storage_path'].value = chemin;
         if(form.elements['cv_nom_fichier']) form.elements['cv_nom_fichier'].value = f.name;
-        return sync('expert', form, 'brouillon').then(function(){
-          return rest('PATCH', CFG.table + '?session_id=eq.' + encodeURIComponent(SID), {
-            cv_storage_path: chemin,
-            cv_nom_fichier: f.name
-          });
-        });
+        // Les deux champs caches viennent d etre remplis : ligne() les porte
+        // maintenant vers les colonnes, une seule ecriture suffit.
+        return sync('expert', form, 'brouillon');
       }).then(function(){
         etatCV.textContent = 'CV depose : ' + f.name;
       }).catch(function(){
@@ -639,7 +633,13 @@ form.on{display:block}
     var payload = collect(form).data;
     btn.disabled = true;
 
-    sync(kind, form, 'complet').then(function(){
+    sync(kind, form, 'complet').then(function(res){
+      // La base rend l identifiant de la ligne. Sans lui, ce n est pas un depot.
+      if(!res || !res.id) throw new Error('reponse sans identifiant');
+      envoye = true;
+      // Le prochain visiteur de ce navigateur repart sur une session neuve :
+      // sans cela, un second depot se ferait sur la ligne deja close du premier.
+      store('gz_sid', uuid());
       msg.className = 'msg ok';
       msg.innerHTML = '<b>Reçu.</b> Votre ' + (kind === 'client' ? 'brief' : 'profil') +
         ' est enregistré. Nous revenons vers vous sous 72 heures ouvrées.';
