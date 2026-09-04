@@ -1,6 +1,6 @@
 /* ============================================================
    Geozey - i18n-en.js
-   Dictionnaire de traduction francais vers anglais (469 paires)
+   Dictionnaire de traduction francais vers anglais (542 paires)
    et moteur d'application sur le DOM. Charge a la demande par
    i18n.js, uniquement quand la langue anglaise est reellement
    choisie : jamais au chargement normal d'une page en francais.
@@ -18,7 +18,7 @@
 (function () {
   "use strict";
 
-  // Dictionnaire francais vers anglais, 469 paires, embarque tel quel.
+  // Dictionnaire francais vers anglais, 542 paires, embarque tel quel.
   var DICO = {
   "Geozey — La cellule d'élite pour les projets qui ne pardonnent pas": "Geozey — The elite unit for projects that don't forgive",
   "Geozey intervient sur les grands projets d'infrastructures, d'énergie et d'industrie lourde. PMO, planification industrielle, contrôle de projet. Zero Delta.": "Geozey operates on major infrastructure, energy and heavy industry projects. PMO, industrial planning, project control. Zero Delta.",
@@ -488,7 +488,80 @@
   "Configuration indisponible, depot impossible.": "Configuration unavailable, upload not possible.",
   "Nouveau brief de mission": "New assignment brief",
   "Nouvelle candidature expert": "New expert application",
-  "Zéro dérive, zéro variance, zéro compromis, zéro écart.": "Zero drift, zero variance, zero compromise, zero deviation."
+  "Zéro dérive, zéro variance, zéro compromis, zéro écart.": "Zero drift, zero variance, zero compromise, zero deviation.",
+  "La cellule d'élite pour les projets": "The elite unit for projects",
+  "qui ne pardonnent pas.": "that don't forgive.",
+  "Nous n'envoyons pas de masse.": "We don't send numbers.",
+  "Nous engageons un expert.": "We engage an expert.",
+  "Le bon.": "The right one.",
+  "Le consulting s'est industrialisé.": "Consulting has become industrialized.",
+  "Il a transformé l'expertise en volume,": "It turned expertise into volume,",
+  "les consultants en profils,": "consultants into profiles,",
+  "les clients en comptes à facturer.": "clients into accounts to bill.",
+  "Nucléaire - Fusion": "Nuclear - Fusion",
+  "Oil & Gas - Renouvelables": "Oil & Gas - Renewables",
+  "Grands projets de génie civil": "Major civil engineering",
+  "& de transport": "& transport projects",
+  "Réindustrialisation - Gigafactories": "Reindustrialization - Gigafactories",
+  "en quelques chiffres": "in a few figures",
+  "en quelques interventions": "in a few assignments",
+  "en quelques visages": "in a few faces",
+  "Projets suivis": "Projects tracked",
+  "cumulés": "to date",
+  "cumulée": "to date",
+  "43 ans": "43 years",
+  "Projets industriels": "Critical industrial",
+  "critiques": "projects",
+  "Profil proposé": "Profile proposed",
+  "par mission": "per assignment",
+  "Zéro dérive.": "Zero drift.",
+  "Zéro variance.": "Zero variance.",
+  "Zéro compromis.": "Zero compromise.",
+  "Cellule d'élite": "Elite unit",
+  "pour les projets": "for critical",
+  "industriels critiques.": "industrial projects.",
+  "Site industriel du secteur énergie, illustrant les projets nucléaires et pétroliers de Geozey": "Industrial energy site, illustrating Geozey's nuclear and oil and gas projects",
+  "Chantier d'infrastructure de transport et de génie civil suivi par Geozey": "Transport and civil engineering infrastructure project overseen by Geozey",
+  "Site de production industrielle lourde en réindustrialisation": "Heavy industrial production site undergoing reindustrialization",
+  "Expert Geozey, Méthodes & OPC": "Geozey expert, Methods & Construction Coordination",
+  "Expert Geozey, Planning EPC": "Geozey expert, Planning EPC",
+  "Manifeste Geozey : cellule d'élite en pilotage de projets": "Geozey Manifesto: an elite unit in project management",
+  "La structure est sélective. L'exigence est élevée. Le reste, on s'en occupe.": "The structure is selective. The bar is high. The rest, we take care of.",
+  "Experts Geozey : PMO, planification industrielle, qualité": "Geozey Experts: PMO, industrial planning, quality",
+  "Infra IA souveraine": "Sovereign AI infrastructure",
+  "moyennes / expert": "on average, per expert",
+  "Secteurs industriels": "Industrial sectors",
+  "couverts": "covered",
+  "Profils sélectionnés": "Profiles selected",
+  "en direct": "directly",
+  "GC nucléaire": "Nuclear civil works",
+  "GC nucléaire, Ferroviaire, Batterie": "Nuclear civil works, Rail, Battery",
+  "EPC, Militaire, Drones, Pétrochimie": "EPC, Defense, Drones, Petrochemicals",
+  "Interventions Geozey : PMO, planification et contrôle projet": "Geozey Track Record: PMO, planning and project control",
+  "Éolien offshore flottant": "Floating offshore wind",
+  "Base navale de Toulon": "Toulon naval base",
+  "Avant de travailler ensemble,": "Before we work together,",
+  "on a besoin de quelques précisions.": "we need a few details.",
+  "Grands comptes": "Active key",
+  "actifs": "accounts",
+  "Projet Arianeo": "Arianeo project",
+  "Zones": "Operating",
+  "d'intervention": "regions",
+  "Engagement": "Response",
+  "de réponse": "commitment",
+  "Ne pas remplir": "Do not fill in",
+  "01 · Votre identité": "01 · Your identity",
+  "02 · Votre statut": "02 · Your status",
+  "03 · Votre expertise": "03 · Your expertise",
+  "04 · Autorisation de travail": "04 · Work permit",
+  "Déposer votre CV": "Upload your CV",
+  "Format PDF ou Word, 8 Mo maximum. Le lien ci-dessus reste possible si vous préférez.": "PDF or Word format, 8 MB maximum. You can still use the link above if you prefer.",
+  "linkedin.com/in/votre-profil, facultatif": "linkedin.com/in/your-profile, optional",
+  "Geozey contractualise via une société française et ne prend en charge": "Geozey contracts through a French company and does not handle",
+  "aucune démarche de visa ni d'autorisation de travail": "any visa or work permit process",
+  ". Vos réponses sont enregistrées au fur et à mesure : si vous vous interrompez, nous pouvons reprendre contact avec ce que vous avez saisi.": ". Your answers are saved as you go: if you stop partway through, we can follow up using what you have already entered.",
+  "Un seul profil proposé. Pertinent.": "Only one profile proposed. Relevant.",
+  "Ou pas de réponse.": "Or no answer at all."
   };
 
   // Balises dont le contenu ne doit jamais etre parcouru ni traduit.
