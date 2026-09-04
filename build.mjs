@@ -6,7 +6,11 @@
 // build suivant. Les images ont ete rapatriees, la circularite est supprimee.
 import { mkdir, copyFile, readdir, readFile, cp } from "fs/promises";
 
-const pages = ["index.html", "manifeste.html", "experts.html", "interventions.html", "styles.css", "candidature.html", "supabase-config.js", "mentions-legales.html", "politique-rgpd.html", "favicon.svg", "robots.txt", "sitemap.xml"];
+// i18n.js et i18n-en.js portent le selecteur de langue et la version anglaise.
+// Ils manquaient dans cette liste jusqu au 04/09/2026 : presents dans le depot,
+// jamais copies vers public/, donc jamais servis. Le selecteur n apparaissait
+// sur aucune page parce que le navigateur ne trouvait pas le script.
+const pages = ["index.html", "manifeste.html", "experts.html", "interventions.html", "styles.css", "candidature.html", "supabase-config.js", "i18n.js", "i18n-en.js", "mentions-legales.html", "politique-rgpd.html", "favicon.svg", "robots.txt", "sitemap.xml"];
 
 await mkdir("public/assets", { recursive: true });
 
