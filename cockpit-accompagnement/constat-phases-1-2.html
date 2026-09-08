@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Constat de fin des sprints 1 et 2, et ouverture du sprint 3 · GEOZEY SASU et ALVO</title>
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
+<style>
+/* Coque du hub : le bouton de navigation reste atteignable sur les
+   formats reduits, ce document ne portant pas de barre superieure. */
+@media(max-width:1100px){
+  #gzburger{position:fixed;top:14px;left:14px;z-index:160;margin:0;
+    background:rgba(19,19,19,.86);}
+  #gzburger:hover{background:rgba(19,19,19,1);}
+}
+@media print{#gzburger{display:none !important;}}
+</style>
+<style>
+/* ---------------------------------------------------------------
+   Surcouche document contractuel, charte Geozey (Louise Lenepveu).
+   Reprend les variables du site : ember, dark, gray, card, ash.
+   Coins arrondis 13px, pilules 27px, titres en graisse 400.
+   --------------------------------------------------------------- */
+:root{
+  --ember:#FF4512; --dark:#1e1e1e; --gray:#3b3b3b; --card:#e0e0e0; --ash:#575756;
+  --vert:#0F5132; --ambre:#7A4B00; --ligne:rgba(30,30,30,.22);
+}
+body{background:#fff;color:var(--dark);}
+
+/* En-tete ember plein */
+.doc-hero{background:var(--ember);color:#fff;padding:64px 140px 56px;}
+.doc-hero .logo-doc{height:44px;width:auto;max-width:60vw;margin-bottom:34px;}
+.doc-hero h1{font-size:44px;line-height:1.18;font-weight:400;max-width:900px;margin:0;}
+.doc-hero .sous{font-size:19px;line-height:1.6;margin-top:22px;max-width:780px;}
+.doc-hero hr{border:0;border-top:1px solid rgba(255,255,255,.75);margin:32px 0 26px;width:100%;}
+.doc-meta{display:flex;flex-wrap:wrap;gap:12px;}
+.doc-meta .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--dark);
+  font-size:14px;line-height:1.3;padding:9px 18px;border-radius:27px;}
+.doc-meta .pill b{font-weight:500;}
+.champ{display:inline-block;min-width:190px;border-bottom:1px solid var(--ash);}
+
+/* Sections */
+.doc-sec{padding:76px 140px;}
+.doc-sec.claire{background:#fff;}
+.doc-sec.grise{background:#ececec;}
+.doc-sec.sombre{background:var(--dark);color:#fff;}
+.doc-sec.braise{background:var(--ember);color:#fff;}
+.doc-kicker{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;
+  text-transform:uppercase;display:block;margin-bottom:20px;color:var(--ash);}
+.doc-sec.sombre .doc-kicker,.doc-sec.braise .doc-kicker{color:rgba(255,255,255,.9);}
+.doc-sec h2{font-size:34px;line-height:1.25;font-weight:400;margin:0 0 26px;max-width:900px;}
+.doc-sec p{font-size:17px;line-height:1.7;max-width:860px;margin:0 0 16px;}
+.doc-sec p .intitule{font-weight:500;}
+
+/* Cartes, coins 13px */
+.bloc{background:#fff;color:var(--dark);border-radius:13px;padding:34px 36px;
+  box-shadow:0 4px 4px rgba(0,0,0,.08);}
+.bloc + .bloc{margin-top:24px;}
+.bloc h3{font-size:22px;font-weight:400;line-height:1.35;margin:0 0 14px;color:var(--dark);}
+.bloc p{color:var(--dark);font-size:17px;line-height:1.7;max-width:900px;}
+.bloc p:last-child{margin-bottom:0;}
+.bloc ul{margin:0;padding-left:22px;}
+.bloc li{font-size:17px;line-height:1.75;color:var(--dark);margin-bottom:10px;}
+.bloc li:last-child{margin-bottom:0;}
+
+/* Tableaux : coeur du document, texte sombre pose sur les cellules elles-memes */
+.tbl-wrap{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.08);}
+table.doc-tbl{width:100%;border-collapse:collapse;background:#fff;table-layout:fixed;}
+table.doc-tbl th,
+table.doc-tbl td{color:var(--dark);background:#fff;text-align:left;vertical-align:top;
+  padding:16px 20px;border-bottom:1px solid var(--ligne);font-size:15.5px;line-height:1.6;}
+table.doc-tbl thead th{background:var(--dark);color:#fff;font-weight:500;font-size:12px;
+  letter-spacing:1.6px;text-transform:uppercase;font-family:'Roboto Mono',monospace;
+  border-bottom:0;padding:15px 20px;}
+table.doc-tbl tbody tr:last-child td{border-bottom:0;}
+table.doc-tbl td.livrable{font-weight:500;width:27%;}
+table.doc-tbl td.etat{width:23%;}
+table.doc-tbl td.produit{color:var(--dark);}
+
+/* Pilules de statut, 27px, contrastes eleves */
+.statut{display:inline-block;border-radius:27px;padding:6px 15px;font-size:13px;line-height:1.35;
+  color:#fff;white-space:normal;}
+.statut.livre{background:var(--vert);}
+.statut.encours{background:var(--ambre);}
+.statut.finaliser{background:var(--ambre);}
+
+/* Encart de mise en valeur pose sur la bande ember */
+.encart{background:#fff;color:var(--dark);border-radius:13px;padding:32px 36px;max-width:900px;}
+.encart p{color:var(--dark);margin-bottom:0;}
+.encart .ordre{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.encart .ordre span{background:var(--dark);color:#fff;border-radius:27px;padding:8px 16px;
+  font-size:13.5px;line-height:1.3;}
+
+/* Reste a finaliser */
+.reste{background:#fff;color:var(--dark);border-radius:13px;padding:26px 30px;margin-top:24px;
+  border-left:6px solid var(--ember);box-shadow:0 4px 4px rgba(0,0,0,.06);}
+.reste .titre{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--ash);display:block;margin-bottom:12px;}
+.reste p{margin-bottom:0;color:var(--dark);font-size:16.5px;line-height:1.7;}
+
+/* Signatures */
+.sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:12px;}
+.sign{background:#fff;color:var(--dark);border-radius:13px;padding:32px 34px;
+  box-shadow:0 4px 4px rgba(0,0,0,.08);}
+.sign .partie{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--ash);display:block;margin-bottom:12px;}
+.sign .nom{font-size:22px;font-weight:400;line-height:1.35;}
+.sign .qualite{font-size:15.5px;line-height:1.6;color:var(--dark);margin-top:6px;}
+.sign hr{border:0;border-top:1px solid var(--ligne);margin:24px 0 20px;}
+.sign .ligne{font-size:15.5px;line-height:2.6;color:var(--dark);}
+.sign .cadre-sign{margin-top:14px;height:110px;border:1px dashed var(--ash);border-radius:13px;}
+
+/* Pied */
+.doc-pied{background:#fff;color:var(--ash);padding:34px 140px 60px;font-size:13.5px;line-height:1.7;}
+
+@media(max-width:1100px){
+  .doc-hero,.doc-sec,.doc-pied{padding-left:24px;padding-right:24px;}
+  .doc-hero h1{font-size:30px;}
+  .doc-sec h2{font-size:26px;}
+  .sign-grid{grid-template-columns:1fr;}
+  table.doc-tbl,table.doc-tbl tbody,table.doc-tbl tr,table.doc-tbl td{display:block;width:100%;}
+  table.doc-tbl thead{display:none;}
+  table.doc-tbl td{border-bottom:0;padding:6px 20px;}
+  table.doc-tbl tr{border-bottom:1px solid var(--ligne);padding:14px 0;}
+  table.doc-tbl td.livrable{width:100%;padding-top:14px;}
+}
+
+/* ------------------ Impression A4, noir sur blanc ------------------ */
+@media print{
+  @page{size:A4;margin:14mm 12mm;}
+  html,body{background:#fff !important;color:#000 !important;}
+  *{box-shadow:none !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .doc-hero,.doc-sec,.doc-sec.sombre,.doc-sec.braise,.doc-sec.grise{
+    background:#fff !important;color:#000 !important;padding:0 0 18pt !important;}
+  .doc-hero{border-bottom:2pt solid #000;margin-bottom:16pt;}
+  .doc-hero h1,.doc-hero .sous,.doc-sec h2,.doc-sec p,.bloc,.bloc p,.bloc li,
+  .encart,.encart p,.reste,.reste p,.sign,.sign .qualite,.sign .ligne{color:#000 !important;}
+  .doc-kicker,.reste .titre,.sign .partie,.doc-pied{color:#000 !important;}
+  .doc-meta .pill,.encart .ordre span{background:#fff !important;color:#000 !important;
+    border:1pt solid #000;}
+  .bloc,.encart,.reste,.sign,.tbl-wrap{border:1pt solid #000;border-radius:13px;background:#fff !important;}
+  .reste{border-left:3pt solid #000;}
+  .doc-hero h1{font-size:22pt;}
+  .doc-sec h2{font-size:15pt;}
+  .doc-sec p,.bloc p,.bloc li,.reste p{font-size:10.5pt;line-height:1.55;}
+  table.doc-tbl th,table.doc-tbl td{font-size:9.5pt;line-height:1.45;padding:6pt 8pt;
+    background:#fff !important;color:#000 !important;border-bottom:0.5pt solid #000;}
+  table.doc-tbl thead th{background:#fff !important;color:#000 !important;
+    border-bottom:1pt solid #000;font-size:8pt;}
+  .statut{background:#fff !important;color:#000 !important;border:1pt solid #000;
+    padding:2pt 8pt;font-size:9pt;}
+  .sign .cadre-sign{border:1pt dashed #000;height:80pt;}
+  /* Pas de coupure au milieu des tableaux ni des blocs */
+  .tbl-wrap,table.doc-tbl,.bloc,.encart,.reste,.sign,.sign-grid{page-break-inside:avoid;break-inside:avoid;}
+  table.doc-tbl tr,table.doc-tbl td{page-break-inside:avoid;break-inside:avoid;}
+  thead{display:table-header-group;}
+  .doc-sec{page-break-inside:auto;}
+  .doc-sec h2{page-break-after:avoid;break-after:avoid;}
+  .sign-grid{page-break-before:avoid;}
+}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est réservé à Geozey et à egery. Saisissez le code communiqué.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<!-- 1. En-tete -->
+<header class="doc-hero">
+  <img class="logo-doc" src="https://geozey.com/assets/logo.png" alt="GEOZEY">
+  <h1>Constat de fin des sprints 1 et 2, et ouverture du sprint 3</h1>
+  <p class="sous">Programme d’accompagnement pré-cession · GEOZEY SASU et ALVO</p>
+  <hr>
+  <div class="doc-meta">
+    <span class="pill"><b>Contrat</b> du 19 février 2026</span>
+    <span class="pill"><b>Annexe 1</b> · programme en cinq sprints</span>
+    <span class="pill"><b>Constat établi le</b> <span class="champ">&nbsp;</span></span>
+  </div>
+</header>
+
+<!-- 2. Objet et cadre -->
+<section class="doc-sec claire">
+  <span class="doc-kicker">Objet et cadre</span>
+  <h2>Objet du présent constat</h2>
+  <p><span class="intitule">Objet.</span> Le présent constat formalise, à la demande du Client, l’état des livrables des sprints 1 et 2 du programme d’accompagnement, identifie ce qui reste à finaliser et sous quel délai, et acte l’ouverture du sprint 3.</p>
+  <p><span class="intitule">Cadre.</span> Le programme comporte cinq sprints définis à l’annexe 1 du contrat. Le sprint 1 couvre les mois 1 et 2, le sprint 2 les mois 3 à 6, le sprint 3 les mois 5 à 9.</p>
+</section>
+
+<!-- Bande ember : le chevauchement des sprints -->
+<section class="doc-sec braise">
+  <span class="doc-kicker">Point de cadrage</span>
+  <h2>Les sprints se chevauchent par construction contractuelle</h2>
+  <div class="encart">
+    <p>Le calendrier de l’annexe 1 prévoit un recouvrement des périodes : le sprint 3 s’ouvre au mois 5, c’est-à-dire avant la clôture du sprint 2. L’ouverture du sprint 3 et la poursuite des travaux de finalisation du sprint 2 sont donc concomitantes, conformément au contrat.</p>
+    <div class="ordre">
+      <span>Sprint 1 · mois 1 et 2</span>
+      <span>Sprint 2 · mois 3 à 6</span>
+      <span>Sprint 3 · mois 5 à 9</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Sprint 1 -->
+<section class="doc-sec grise">
+  <span class="doc-kicker">Sprint 1</span>
+  <h2>Diagnostic et structuration</h2>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead>
+        <tr>
+          <th scope="col">Livrable prévu au contrat</th>
+          <th scope="col">État</th>
+          <th scope="col">Élément produit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="livrable">Rapport d’audit financier détaillé</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Analyse des trois exercices sur la base des FEC 2023, 2024 et 2025. Rapport externe Reggio Partners du 24 avril 2026, en version provisoire.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Rapport de valorisation, trois méthodes</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Actualisation des flux, multiples et patrimoniale. 24 sources et 8 opérations sectorielles.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Rapport de due diligence interne</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Quatre axes, financier, juridique, fiscal et social. Points durs identifiés et pièces manquantes listées.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Modèle financier Excel dynamique</td>
+          <td class="etat"><span class="statut encours">En cours</span></td>
+          <td class="produit">Accès bancaire disponible. Livraison attendue au cours du sprint 3.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reste">
+    <span class="titre">Reste à finaliser sur le sprint 1</span>
+    <p>La version définitive du rapport d’audit externe, actuellement en version provisoire du fait du cabinet, attendue avant le 30 septembre 2026. Le modèle financier dynamique, dont la livraison est rattachée au sprint 3.</p>
+  </div>
+</section>
+
+<!-- 4. Sprint 2 -->
+<section class="doc-sec claire">
+  <span class="doc-kicker">Sprint 2</span>
+  <h2>Réduction de la dépendance au dirigeant</h2>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead>
+        <tr>
+          <th scope="col">Livrable prévu au contrat</th>
+          <th scope="col">État</th>
+          <th scope="col">Élément produit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="livrable">Playbook commercial opérationnel</td>
+          <td class="etat"><span class="statut finaliser">Livré, à approfondir</span></td>
+          <td class="produit">Onze sections, scripts d’appel, questions de qualification. Approfondissement et validation client au sprint 3.</td>
+        </tr>
+        <tr>
+          <td class="livrable">CRM paramétré</td>
+          <td class="etat"><span class="statut livre">Livré pour la part prestataire</span></td>
+          <td class="produit">Référentiel reconstitué depuis 195 documents, 22 sociétés dont 17 SIRET vérifiés, 18 contacts. La finalisation dépend d’arbitrages du Client.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Identité visuelle complète</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Charte graphique, papeterie de marque, gabarits.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Site web responsive et optimisé</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Sept pages publiques en ligne, sécurité, affichage mobile, version anglaise à 469 clés.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Page LinkedIn entreprise</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Créée depuis le compte du Client, propriétaire dès l’origine. Animation éditoriale au sprint 3.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Six agents IA métier</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Agents développés et opérationnels. La création se poursuit au fil de l’eau, sans limite de nombre, selon accord commun.</td>
+        </tr>
+        <tr>
+          <td class="livrable">Gouvernance IA globale</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td class="produit">Neuf sections, cartographie des usages, registre des traitements, position réglementaire. Validation client au sprint 3.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="reste">
+    <span class="titre">Reste à finaliser sur le sprint 2</span>
+    <p>L’approfondissement et la validation du playbook, la finalisation du CRM qui dépend d’arbitrages du Client, l’animation de la page LinkedIn, la validation du cadre de gouvernance IA, et la vérification de l’affichage de la version anglaise. Ces cinq points sont inscrits au sprint 3 et suivis dans le programme.</p>
+  </div>
+</section>
+
+<!-- 5. Travaux au-dela du perimetre contractuel -->
+<section class="doc-sec sombre">
+  <span class="doc-kicker">Mention d’exhaustivité</span>
+  <h2>Travaux réalisés au-delà du périmètre contractuel</h2>
+  <div class="bloc">
+    <p>Les éléments ci-dessous ne figurent pas parmi les livrables définis à l’annexe 1. Ils sont mentionnés pour l’exhaustivité du constat.</p>
+    <ul>
+      <li>Chaîne de candidature complète, formulaire de trente-neuf champs avec écriture en base et dépôt de CV.</li>
+      <li>Délivrabilité des courriels, domaine authentifié et enregistrements DNS posés.</li>
+      <li>Blog éditorial de trois articles sourcés.</li>
+      <li>Socle de sourcing de 370 contacts, dont 244 prospects et 126 profils.</li>
+      <li>Infrastructure technique autonome permettant au Client de déployer par lui-même.</li>
+      <li>Application métier, premier palier.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. Ouverture du sprint 3 -->
+<section class="doc-sec grise">
+  <span class="doc-kicker">Sprint 3</span>
+  <h2>Ouverture du sprint 3, optimisation de la rentabilité</h2>
+  <div class="bloc">
+    <h3>Livrables contractuels du sprint 3</h3>
+    <ul>
+      <li>Plan de développement commercial détaillé.</li>
+      <li>Plan d’optimisation des marges.</li>
+      <li>Stratégie de diversification client documentée.</li>
+    </ul>
+  </div>
+  <div class="bloc">
+    <h3>Reprise des points de finalisation</h3>
+    <p>Le sprint 3 est engagé conformément au calendrier contractuel. Les points de finalisation des sprints 1 et 2 listés ci-dessus y sont intégrés et suivis.</p>
+    <p>Le programme de suivi détaillé, comportant les quarante-cinq éléments avec leur statut, leur période et leur commentaire, est accessible au Client dans l’espace de suivi partagé.</p>
+  </div>
+</section>
+
+<!-- 7. Signatures -->
+<section class="doc-sec claire">
+  <span class="doc-kicker">Signatures</span>
+  <h2>Établi contradictoirement entre les parties</h2>
+  <div class="sign-grid">
+    <div class="sign">
+      <span class="partie">Pour GEOZEY SASU</span>
+      <div class="nom">Monsieur Yacine Djebrouni</div>
+      <div class="qualite">Qualité <span class="champ">&nbsp;</span></div>
+      <hr>
+      <div class="ligne">Fait à <span class="champ">&nbsp;</span></div>
+      <div class="ligne">Le <span class="champ">&nbsp;</span></div>
+      <div class="ligne">Mention « lu et approuvé », puis signature</div>
+      <div class="cadre-sign"></div>
+    </div>
+    <div class="sign">
+      <span class="partie">Pour ALVO</span>
+      <div class="nom">Monsieur Aurélien Queroy</div>
+      <div class="qualite">Qualité <span class="champ">&nbsp;</span></div>
+      <hr>
+      <div class="ligne">Fait à <span class="champ">&nbsp;</span></div>
+      <div class="ligne">Le <span class="champ">&nbsp;</span></div>
+      <div class="ligne">Mention « lu et approuvé », puis signature</div>
+      <div class="cadre-sign"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-pied">
+  Constat de fin des sprints 1 et 2, et ouverture du sprint 3 · Programme d’accompagnement pré-cession · GEOZEY SASU et ALVO · Contrat du 19 février 2026.
+</footer>
+
+<script src="/cockpit-accompagnement/assets/shell.js"></script>
+</body>
+</html>
