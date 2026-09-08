@@ -15,6 +15,11 @@
       ['programme',       'Programme et Gantt',          '45 éléments · 5 sprints'],
       ['ressources',      'Livrables et ressources',     'Inventaire complet']
     ]},
+    { t:'Suivi de mission', i:[
+      ['constat-phases-1-2',    'Constat des phases 1 et 2', 'Phases 1 et 2 · ouverture de la 3'],
+      ['reporting-juillet-2026','Rapport mensuel juillet',   'Juillet 2026 · six rubriques'],
+      ['reporting-aout-2026',   'Rapport mensuel août',      'Août 2026 · six rubriques']
+    ]},
     { t:'Documents', i:[
       ['proposition',     'Proposition de collaboration','01 · Collaboration'],
       ['cdc-application', 'Cahier des charges application','02 · Application'],
