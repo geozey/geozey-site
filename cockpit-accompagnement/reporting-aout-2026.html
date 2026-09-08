@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rapport mensuel d’avancement · Août 2026 · GEOZEY SASU et ALVO</title>
+<link rel="stylesheet" href="https://geozey.com/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
+<style>
+/* Coque du hub : le bouton de navigation reste atteignable sur les
+   formats reduits, ce document ne portant pas de barre superieure. */
+@media(max-width:1100px){
+  #gzburger{position:fixed;top:14px;left:14px;z-index:160;margin:0;
+    background:rgba(19,19,19,.86);}
+  #gzburger:hover{background:rgba(19,19,19,1);}
+}
+@media print{#gzburger{display:none !important;}}
+</style>
+<style>
+/* ---------------------------------------------------------------
+   Surcouche document contractuel, charte Geozey (Louise Lenepveu).
+   Variables reprises du site : ember, dark, gray, card, ash.
+   Coins arrondis 13px, pilules 27px, titres en graisse 400,
+   bandes ember pleines.
+   Piege connu : styles.css pose du texte blanc sur les sections
+   sombres. Tout tableau ou bloc a fond clair porte donc sa propre
+   couleur de texte sombre SUR SES CELLULES.
+   --------------------------------------------------------------- */
+:root{
+  --ember:#FF4512; --dark:#1e1e1e; --gray:#3b3b3b; --card:#e0e0e0; --ash:#575756;
+  --vert:#0F5132; --ambre:#7A4B00; --ardoise:#22415C; --ligne:rgba(30,30,30,.22);
+}
+body{background:#fff;color:var(--dark);}
+
+/* En-tete ember plein */
+.doc-hero{background:var(--ember);color:#fff;padding:64px 140px 56px;}
+.doc-hero .logo-doc{height:44px;width:auto;max-width:60vw;margin-bottom:34px;}
+.doc-hero h1{font-size:44px;line-height:1.18;font-weight:400;max-width:900px;margin:0;}
+.doc-hero .sous{font-size:19px;line-height:1.6;margin-top:22px;max-width:820px;color:#fff;}
+.doc-hero hr{border:0;border-top:1px solid rgba(255,255,255,.75);margin:32px 0 26px;width:100%;}
+.doc-meta{display:flex;flex-wrap:wrap;gap:12px;}
+.doc-meta .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--dark);
+  font-size:14px;line-height:1.3;padding:9px 18px;border-radius:27px;}
+.doc-meta .pill b{font-weight:500;}
+
+/* Sommaire des six rubriques */
+.doc-somm{background:var(--dark);color:#fff;padding:40px 140px 44px;}
+.doc-somm .doc-kicker{color:rgba(255,255,255,.9);}
+.doc-somm ol{margin:0;padding:0;list-style:none;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:14px;}
+.doc-somm li{background:#fff;color:var(--dark);border-radius:13px;padding:16px 20px;
+  font-size:15px;line-height:1.55;}
+.doc-somm li b{display:block;font-family:'Roboto Mono',monospace;font-size:10.5px;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--ash);font-weight:400;margin-bottom:8px;}
+
+/* Sections */
+.doc-sec{padding:76px 140px;}
+.doc-sec.claire{background:#fff;}
+.doc-sec.grise{background:#ececec;}
+.doc-sec.sombre{background:var(--dark);color:#fff;}
+.doc-sec.braise{background:var(--ember);color:#fff;}
+.doc-kicker{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;
+  text-transform:uppercase;display:block;margin-bottom:20px;color:var(--ash);}
+.doc-sec.sombre .doc-kicker,.doc-sec.braise .doc-kicker{color:rgba(255,255,255,.9);}
+.doc-sec h2{font-size:34px;line-height:1.25;font-weight:400;margin:0 0 26px;max-width:920px;}
+.doc-sec h3.sur{font-size:21px;font-weight:400;line-height:1.35;margin:44px 0 18px;max-width:900px;}
+.doc-sec.sombre h3.sur,.doc-sec.braise h3.sur{color:#fff;}
+.doc-sec p{font-size:17px;line-height:1.7;max-width:880px;margin:0 0 16px;}
+.doc-sec p .intitule{font-weight:500;}
+
+/* Cartes, coins 13px, encre sombre imposee sur leurs propres contenus */
+.bloc{background:#fff;color:var(--dark);border-radius:13px;padding:32px 34px;
+  box-shadow:0 4px 4px rgba(0,0,0,.08);}
+.bloc + .bloc{margin-top:22px;}
+.bloc h3{font-size:21px;font-weight:400;line-height:1.35;margin:0 0 14px;color:var(--dark);}
+.bloc p{color:var(--dark);font-size:16.5px;line-height:1.7;max-width:900px;}
+.bloc p:last-child{margin-bottom:0;}
+.bloc ul{margin:0;padding-left:22px;}
+.bloc li{font-size:16.5px;line-height:1.75;color:var(--dark);margin-bottom:10px;}
+.bloc li:last-child{margin-bottom:0;}
+.bloc li b{font-weight:500;}
+
+/* Tableaux : encre sombre posee sur les cellules elles-memes */
+.tbl-wrap{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.08);}
+.tbl-wrap + .tbl-wrap{margin-top:22px;}
+table.doc-tbl{width:100%;border-collapse:collapse;background:#fff;table-layout:fixed;}
+table.doc-tbl th,
+table.doc-tbl td{color:var(--dark);background:#fff;text-align:left;vertical-align:top;
+  padding:15px 20px;border-bottom:1px solid var(--ligne);font-size:15.5px;line-height:1.6;}
+table.doc-tbl thead th{background:var(--dark);color:#fff;font-weight:500;font-size:12px;
+  letter-spacing:1.6px;text-transform:uppercase;font-family:'Roboto Mono',monospace;
+  border-bottom:0;padding:15px 20px;}
+table.doc-tbl tbody tr:last-child td{border-bottom:0;}
+table.doc-tbl td.quand{width:15%;font-family:'Roboto Mono',monospace;font-size:13.5px;
+  letter-spacing:.4px;color:var(--dark);}
+table.doc-tbl td.intit{width:29%;font-weight:500;color:var(--dark);}
+table.doc-tbl td.val{width:22%;font-weight:500;color:var(--dark);}
+table.doc-tbl td.etat{width:22%;}
+
+/* Pilules de statut, 27px */
+.statut{display:inline-block;border-radius:27px;padding:6px 15px;font-size:13px;line-height:1.35;
+  color:#fff;white-space:normal;}
+.statut.livre{background:var(--vert);}
+.statut.encours{background:var(--ambre);}
+.statut.ouvert{background:var(--ardoise);}
+
+/* Encart pose sur bande ember */
+.encart{background:#fff;color:var(--dark);border-radius:13px;padding:32px 36px;max-width:920px;}
+.encart h3{color:var(--dark);font-size:21px;font-weight:400;margin:0 0 14px;}
+.encart p{color:var(--dark);margin-bottom:14px;font-size:16.5px;line-height:1.7;}
+.encart p:last-child{margin-bottom:0;}
+.encart + .encart{margin-top:22px;}
+
+/* Filet ember, points de vigilance */
+.vig{background:#fff;color:var(--dark);border-radius:13px;padding:26px 30px;
+  border-left:6px solid var(--ember);box-shadow:0 4px 4px rgba(0,0,0,.06);}
+.vig + .vig{margin-top:20px;}
+.vig .titre{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--ash);display:block;margin-bottom:12px;}
+.vig h3{font-size:19px;font-weight:400;line-height:1.4;margin:0 0 10px;color:var(--dark);}
+.vig p{margin-bottom:0;color:var(--dark);font-size:16.5px;line-height:1.7;}
+
+/* Pied */
+.doc-pied{background:#fff;color:var(--ash);padding:34px 140px 60px;font-size:13.5px;line-height:1.7;}
+
+@media(max-width:1100px){
+  .doc-hero,.doc-sec,.doc-somm,.doc-pied{padding-left:24px;padding-right:24px;}
+  .doc-hero h1{font-size:30px;}
+  .doc-sec h2{font-size:26px;}
+  .doc-somm ol{grid-template-columns:1fr;}
+  table.doc-tbl,table.doc-tbl tbody,table.doc-tbl tr,table.doc-tbl td{display:block;width:100%;}
+  table.doc-tbl thead{display:none;}
+  table.doc-tbl td{border-bottom:0;padding:5px 20px;}
+  table.doc-tbl tr{border-bottom:1px solid var(--ligne);padding:14px 0;}
+  table.doc-tbl td.quand{padding-top:14px;color:var(--ash);}
+}
+
+/* ------------------ Impression A4, noir sur blanc ------------------ */
+@media print{
+  @page{size:A4;margin:14mm 12mm;}
+  html,body{background:#fff !important;color:#000 !important;}
+  *{box-shadow:none !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .doc-hero,.doc-somm,.doc-sec,.doc-sec.sombre,.doc-sec.braise,.doc-sec.grise{
+    background:#fff !important;color:#000 !important;padding:0 0 18pt !important;}
+  .doc-hero{border-bottom:2pt solid #000;margin-bottom:14pt;}
+  .doc-hero .logo-doc{height:30pt;}
+  .doc-hero h1,.doc-hero .sous,.doc-sec h2,.doc-sec h3.sur,.doc-sec p,
+  .bloc,.bloc p,.bloc li,.encart,.encart h3,.encart p,.vig,.vig h3,.vig p{color:#000 !important;}
+  .doc-kicker,.vig .titre,.doc-somm li b,.doc-pied{color:#000 !important;}
+  .doc-meta .pill,.doc-somm li{background:#fff !important;color:#000 !important;
+    border:1pt solid #000;}
+  .doc-somm ol{grid-template-columns:1fr 1fr;gap:6pt;}
+  .bloc,.encart,.vig,.tbl-wrap{border:1pt solid #000;border-radius:13px;background:#fff !important;}
+  .vig{border-left:3pt solid #000;}
+  .doc-hero h1{font-size:22pt;}
+  .doc-sec h2{font-size:15pt;}
+  .doc-sec h3.sur{font-size:12pt;}
+  .doc-sec p,.bloc p,.bloc li,.encart p,.vig p{font-size:10pt;line-height:1.55;}
+  table.doc-tbl th,table.doc-tbl td{font-size:9pt;line-height:1.45;padding:5pt 7pt;
+    background:#fff !important;color:#000 !important;border-bottom:0.5pt solid #000;}
+  table.doc-tbl thead th{background:#fff !important;color:#000 !important;
+    border-bottom:1pt solid #000;font-size:7.5pt;}
+  .statut{background:#fff !important;color:#000 !important;border:1pt solid #000;
+    padding:2pt 8pt;font-size:8.5pt;}
+  .tbl-wrap,.bloc,.encart,.vig{page-break-inside:avoid;break-inside:avoid;}
+  table.doc-tbl tr,table.doc-tbl td{page-break-inside:avoid;break-inside:avoid;}
+  thead{display:table-header-group;}
+  .doc-sec{page-break-inside:auto;}
+  .doc-sec h2,.doc-sec h3.sur{page-break-after:avoid;break-after:avoid;}
+}
+</style>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est réservé à Geozey et à egery. Saisissez le code communiqué.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
+
+<!-- En-tete -->
+<header class="doc-hero">
+  <img class="logo-doc" src="https://geozey.com/assets/logo.png" alt="GEOZEY">
+  <h1>Rapport mensuel d’avancement</h1>
+  <p class="sous">Août 2026 · Programme d’accompagnement pré-cession · GEOZEY SASU et ALVO</p>
+  <hr>
+  <div class="doc-meta">
+    <span class="pill"><b>Période</b> du 1<sup>er</sup> au 31 août 2026</span>
+    <span class="pill"><b>Contrat</b> du 19 février 2026</span>
+    <span class="pill"><b>Format</b> six rubriques contractuelles</span>
+  </div>
+</header>
+
+<!-- Sommaire -->
+<nav class="doc-somm">
+  <span class="doc-kicker">Structure du rapport</span>
+  <ol>
+    <li><b>Rubrique 1</b>Les actions réalisées au cours de la période considérée</li>
+    <li><b>Rubrique 2</b>L’état d’avancement des travaux et les résultats intermédiaires</li>
+    <li><b>Rubrique 3</b>Les prochaines étapes envisagées</li>
+    <li><b>Rubrique 4</b>Les alertes et points de vigilance</li>
+    <li><b>Rubrique 5</b>Les indicateurs de performance applicables</li>
+    <li><b>Rubrique 6</b>L’analyse des résultats et les recommandations</li>
+  </ol>
+</nav>
+
+<!-- RUBRIQUE 1 -->
+<section class="doc-sec claire">
+  <span class="doc-kicker">Rubrique 1</span>
+  <h2>Les actions réalisées au cours de la période considérée</h2>
+  <p>Les actions sont présentées dans l’ordre chronologique, avec leur date d’exécution. Le mois se répartit en quatre séquences : la mise en service du référentiel commercial, la livraison du premier palier de l’application métier, la constitution du socle de sourcing et la production des livrables d’analyse du sprint 1.</p>
+
+  <h3 class="sur">Référentiel commercial et campagnes</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Date</th><th>Action</th><th>Contenu</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="quand">03.08</td>
+          <td class="intit">Six campagnes créées</td>
+          <td>Les six campagnes existent désormais dans l’outil d’envoi, au statut brouillon, avec le contenu de deuxième version injecté et la convention de nommage par segment et par jour de séquence. Aucun envoi n’est possible sans validation.</td>
+        </tr>
+        <tr>
+          <td class="quand">03.08</td>
+          <td class="intit">Tableau de bord de pilotage remis à jour</td>
+          <td>Correction d’un horodatage qui affichait la date de consultation et non celle des données, ce qui donnait une fausse impression de fraîcheur. Contenu et compteurs repris, redéploiement vérifié.</td>
+        </tr>
+        <tr>
+          <td class="quand">04.08</td>
+          <td class="intit">Chargement initial du référentiel</td>
+          <td>Import du référentiel reconstitué en juillet. Dix neuf sociétés chargées, la base passe à vingt deux fiches. Six contacts chargés, la base passe à dix huit fiches. Import par fichier plutôt que par interface applicative, pour préserver le quota d’appels.</td>
+        </tr>
+        <tr>
+          <td class="quand">04.08</td>
+          <td class="intit">Enrichissement des fiches sociétés</td>
+          <td>Interrogation d’une source légale externe. Dix sept fiches enrichies de leur identifiant d’établissement, de leur adresse et de leur commune, avec une note de provenance datée. Vérification faite fiche par fiche après enregistrement.</td>
+        </tr>
+        <tr>
+          <td class="quand">04.08</td>
+          <td class="intit">Enrichissement du vivier</td>
+          <td>Recherche de coordonnées sur cinq profils sans contact. Un profil retrouvé avec sa source tracée, quatre restent sans coordonnées après épuisement des sources disponibles.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sur">Application métier, premier palier</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Date</th><th>Action</th><th>Contenu</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="quand">04.08</td>
+          <td class="intit">Cadrage de l’application métier</td>
+          <td>Quatre arbitrages rendus : source de vérité unique, mode d’authentification, obligation d’un mécanisme de cache imposée par le quota d’appels, périmètre du premier palier.</td>
+        </tr>
+        <tr>
+          <td class="quand">04.08</td>
+          <td class="intit">Premier palier livré et en ligne</td>
+          <td>Application à trois rôles. Six tables et onze règles d’accès posées en base, trois fonctions de résolution de rôle. Vivier lu depuis le cache. Exclusion des moteurs de recherche vérifiée des deux côtés, balise de page et en tête de réponse.</td>
+        </tr>
+        <tr>
+          <td class="quand">05.08</td>
+          <td class="intit">Première mission réelle passée au moteur</td>
+          <td>Mission de planification en région marseillaise, démarrage septembre, outil de planification imposé. Le classement obtenu s’est révélé faux. Cause identifiée : des libellés de spécialité non normalisés, et non le barème.</td>
+        </tr>
+        <tr>
+          <td class="quand">05.08</td>
+          <td class="intit">Dossier du point d’avancement publié</td>
+          <td>Espace livrables mis à jour et fiche de mission publiée, vérifiés en ligne par appel réel.</td>
+        </tr>
+        <tr>
+          <td class="quand">05.08</td>
+          <td class="intit">Décisions attendues du Client publiées</td>
+          <td>Six décisions portées dans l’espace livrables avec leur durée annoncée, pour être traitées pendant le point d’avancement.</td>
+        </tr>
+        <tr>
+          <td class="quand">06.08</td>
+          <td class="intit">Correction du moteur de rapprochement</td>
+          <td>Mission insérée en base et dix libellés de spécialité normalisés sur un référentiel fermé. Contrôle de cohérence rendu par requête.</td>
+        </tr>
+        <tr>
+          <td class="quand">06.08</td>
+          <td class="intit">Notification de candidature</td>
+          <td>Journal des envois, fonction de notification et modèle de courriel à la charte. Chaque candidature complète déclenche un message vers l’adresse du dirigeant.</td>
+        </tr>
+        <tr>
+          <td class="quand">06.08</td>
+          <td class="intit">Ouverture des accès à l’application</td>
+          <td>Cause racine identifiée : l’adresse de retour du service d’authentification pointait sur un poste local. Correction faite, rôles administrateurs attribués et actifs.</td>
+        </tr>
+        <tr>
+          <td class="quand">06.08</td>
+          <td class="intit">Aperçus des trois espaces</td>
+          <td>Trois aperçus en ligne dont une version navigable permettant de basculer d’un rôle à l’autre, avec le détail des axes de rapprochement et la provenance de chaque donnée.</td>
+        </tr>
+        <tr>
+          <td class="quand">06.08</td>
+          <td class="intit">Vivier porté à douze profils</td>
+          <td>Trois candidats créés depuis la messagerie professionnelle du dirigeant, chacun avec un commentaire de source daté. Un profil converti de candidat en ressource, avec import de son curriculum vitae et de ses pièces jointes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sur">Socle de sourcing et fiabilisation du site</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Date</th><th>Action</th><th>Contenu</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="quand">13.08</td>
+          <td class="intit">Cadrage du sourcing</td>
+          <td>Deux cibles simultanées arrêtées, les maîtres d’œuvre qui viennent de gagner un projet et les profils du métier. Objectif fixé à trois cents prospects et cent cinquante profils avant lancement.</td>
+        </tr>
+        <tr>
+          <td class="quand">13.08</td>
+          <td class="intit">Cadrage de l’outil de pilotage financier</td>
+          <td>Trois briques retenues pour le premier palier : prévisionnel d’exploitation et de trésorerie, suivi de trésorerie, marge réelle par mission. Hébergement en onglet dédié de l’application, en lecture seule, réservé au rôle administrateur.</td>
+        </tr>
+        <tr>
+          <td class="quand">13.08</td>
+          <td class="intit">Socle de sourcing posé en base</td>
+          <td>Deux tables créées avec contrainte de source et de date de collecte obligatoires, bornes de score, listes de statuts fermées, index et règles d’accès. La contrainte interdit d’écarter un profil sans motif écrit.</td>
+        </tr>
+        <tr>
+          <td class="quand">13.08</td>
+          <td class="intit">Registre de conformité du sourcing</td>
+          <td>Document de traçabilité remis au dossier, avec les listes de diffusion correspondantes.</td>
+        </tr>
+        <tr>
+          <td class="quand">14.08</td>
+          <td class="intit">Import vérifié</td>
+          <td>Comptage lu par interface de programmation. Deux cent quarante quatre prospects et cent vingt six profils, autant d’adresses uniques, aucune ligne sans source ni date de collecte.</td>
+        </tr>
+        <tr>
+          <td class="quand">15.08</td>
+          <td class="intit">Déblocage du formulaire de candidature</td>
+          <td>Trois champs numériques rejetaient les saisies valides. L’un d’eux étant obligatoire, son rejet rendait toute candidature impossible à envoyer. Correction déployée.</td>
+        </tr>
+        <tr>
+          <td class="quand">15.08</td>
+          <td class="intit">Cinq retours du Client livrés</td>
+          <td>Trois anomalies corrigées, dépôt de curriculum vitae mis en place avec un espace de stockage privé et des règles de dépôt sans lecture, site rendu bilingue français et anglais.</td>
+        </tr>
+        <tr>
+          <td class="quand">15.08</td>
+          <td class="intit">Audit complet du site puis correctifs</td>
+          <td>Audit remis au dossier, correctifs déployés et vérifiés en ligne sur trois axes : conversion, sécurité et référencement.</td>
+        </tr>
+        <tr>
+          <td class="quand">15.08</td>
+          <td class="intit">Cadrage puis mise en ligne du blog</td>
+          <td>Cible arrêtée sur les donneurs d’ordre. Trois articles fondateurs sourcés, signés du dirigeant, vérifiés en production.</td>
+        </tr>
+        <tr>
+          <td class="quand">15.08</td>
+          <td class="intit">Adresses sans extension et illustration</td>
+          <td>Onze pages traitées, cent quatre vingt deux liens internes repris et passés en chemin absolu. Adresses canoniques et plan de site alignés, articles illustrés.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sur">Livrables d’analyse et outils de pilotage de la mission</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Date</th><th>Action</th><th>Contenu</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="quand">17.08</td>
+          <td class="intit">Trois livrables d’analyse produits</td>
+          <td>Benchmark de comparables appuyé sur vingt quatre sources et huit opérations sectorielles nommées, note de retraitements du résultat d’exploitation, rapport de valorisation multi méthodes. Le fichier des écritures comptables 2023, jamais exploité jusque là, a été analysé.</td>
+        </tr>
+        <tr>
+          <td class="quand">17.08</td>
+          <td class="intit">Correction de la codification de la charte</td>
+          <td>Le référentiel graphique interne codifiait des règles absentes de la charte réelle. Il a été réécrit depuis la feuille de style du site. Principe retenu : la charte s’importe, elle ne se reproduit pas.</td>
+        </tr>
+        <tr>
+          <td class="quand">18.08</td>
+          <td class="intit">Playbook commercial</td>
+          <td>Onze sections, scripts d’appel et questions de qualification. Version soumise à approfondissement et à validation.</td>
+        </tr>
+        <tr>
+          <td class="quand">18.08</td>
+          <td class="intit">Cadre de gouvernance de l’intelligence artificielle</td>
+          <td>Neuf sections, cartographie des usages, registre des traitements et position réglementaire.</td>
+        </tr>
+        <tr>
+          <td class="quand">18.08</td>
+          <td class="intit">Plan de marges et de diversification</td>
+          <td>Document remis au dossier, au titre des livrables du sprint 3.</td>
+        </tr>
+        <tr>
+          <td class="quand">19.08</td>
+          <td class="intit">Programme de suivi construit</td>
+          <td>Tableau de suivi partagé alimenté par interface de programmation : quarante cinq éléments, cinq groupes correspondant aux cinq sprints avec leurs dates, sept colonnes de suivi, deux vues filtrées. Aucun doublon créé.</td>
+        </tr>
+        <tr>
+          <td class="quand">19.08</td>
+          <td class="intit">Dépouillement des pièces contractuelles</td>
+          <td>Lecture intégrale des pièces contractuelles, conditions générales et deux annexes comprises. Onze points structurants relevés et consignés, ils ne figuraient dans aucun document produit jusque là.</td>
+        </tr>
+        <tr>
+          <td class="quand">19.08</td>
+          <td class="intit">Inventaire du dû contre le livré</td>
+          <td>Croisement du contrat, de la mémoire de projet, des pages du hub et d’une vérification en ligne de quinze adresses. Inventaire remis au dossier.</td>
+        </tr>
+        <tr>
+          <td class="quand">19.08</td>
+          <td class="intit">Reprise d’ergonomie du hub</td>
+          <td>Neuf pages traitées et vérifiées en production. Correction d’un défaut de contraste réel, création d’encres dédiées pour les petits textes, réaccentuation de trois pages.</td>
+        </tr>
+        <tr>
+          <td class="quand">20.08</td>
+          <td class="intit">Hub de pilotage en ligne</td>
+          <td>Le hub devient une application à navigation latérale de douze pages : vue d’ensemble avec avancement calculé sur les quarante cinq éléments, diagramme de Gantt sur quatre cent vingt trois jours avec marqueur du jour et filtres, ressources, et restitution intégrale du rapport d’audit externe du 24 avril 2026.</td>
+        </tr>
+        <tr>
+          <td class="quand">20.08</td>
+          <td class="intit">Socle de l’application métier en production</td>
+          <td>Trois espaces cloisonnés. Le cloisonnement a été éprouvé rôle par rôle au niveau de la base, sept mesures sur sept conformes, deux tentatives de contournement volontaires ayant échoué comme prévu.</td>
+        </tr>
+        <tr>
+          <td class="quand">20.08</td>
+          <td class="intit">Fermeture d’une exposition de données</td>
+          <td>Trois tables étaient lisibles et modifiables avec la clé publique du site. Mesure faite, correction posée, vérification par création puis suppression d’une ligne de test.</td>
+        </tr>
+        <tr>
+          <td class="quand">20.08</td>
+          <td class="intit">Six correctifs sur le hub</td>
+          <td>Dont deux tableaux dont le texte était invisible à l’écran, par héritage d’une encre claire sur un fond clair. Cause systémique comprise et traitée sur l’ensemble des pages concernées.</td>
+        </tr>
+        <tr>
+          <td class="quand">21.08</td>
+          <td class="intit">Réparation des formulaires publics</td>
+          <td>Trois causes empilées identifiées et corrigées. Les formulaires enregistrent en base et la notification part vers les adresses du Client. Résultat prouvé par test réel et non par lecture d’écran.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RUBRIQUE 2 -->
+<section class="doc-sec grise">
+  <span class="doc-kicker">Rubrique 2</span>
+  <h2>L’état d’avancement des travaux et les résultats intermédiaires</h2>
+  <p>Le programme est suivi depuis le 19 août dans un tableau partagé de quarante cinq éléments répartis sur les cinq sprints, avec leur statut, leur période et leur commentaire. Le sprint 3 y est ouvert au 19 août, conformément au calendrier contractuel selon lequel les sprints se chevauchent.</p>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Chantier</th><th>État au 31.08</th><th>Résultat intermédiaire</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="intit">Analyse financière et valorisation</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>Benchmark de comparables, note de retraitements et rapport de valorisation multi méthodes produits le 17 août. Les trois exercices ont été analysés, le fichier comptable 2023 pour la première fois.</td>
+        </tr>
+        <tr>
+          <td class="intit">Due diligence interne</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>Synthèse remise au dossier, quatre axes couverts, points durs identifiés et pièces manquantes listées.</td>
+        </tr>
+        <tr>
+          <td class="intit">Modèle financier dynamique</td>
+          <td class="etat"><span class="statut encours">En cours</span></td>
+          <td>Chantier ouvert au programme de suivi sur la période du 19 août au 31 octobre. Les moyens d’accès aux données bancaires sont disponibles. Un premier prévisionnel a été mis au dossier le 13 août.</td>
+        </tr>
+        <tr>
+          <td class="intit">Playbook commercial</td>
+          <td class="etat"><span class="statut encours">Livré, à approfondir</span></td>
+          <td>Onze sections produites le 18 août. L’approfondissement et la validation sont inscrits au sprint 3.</td>
+        </tr>
+        <tr>
+          <td class="intit">Gouvernance de l’intelligence artificielle</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>Neuf sections produites le 18 août. La validation par le Client reste à recueillir.</td>
+        </tr>
+        <tr>
+          <td class="intit">Référentiel commercial</td>
+          <td class="etat"><span class="statut encours">Livré pour la part prestataire</span></td>
+          <td>Vingt deux sociétés dont dix sept avec identifiant d’établissement vérifié, dix huit contacts, vivier porté à douze profils. La suite dépend d’arbitrages et de coordonnées à fournir.</td>
+        </tr>
+        <tr>
+          <td class="intit">Application métier, palier A</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>En production, trois espaces cloisonnés, cloisonnement éprouvé par test. Le parcours documentaire n’a pas encore été éprouvé contre le stockage réel.</td>
+        </tr>
+        <tr>
+          <td class="intit">Socle de sourcing</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>Deux cent quarante quatre prospects et cent vingt six profils en base, avec source et date de collecte obligatoires. Objectif de trois cents et cent cinquante non encore atteint.</td>
+        </tr>
+        <tr>
+          <td class="intit">Blog et référencement</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>Trois articles fondateurs sourcés en ligne, adresses sans extension, articles illustrés, site bilingue.</td>
+        </tr>
+        <tr>
+          <td class="intit">Hub de pilotage de la mission</td>
+          <td class="etat"><span class="statut livre">Livré</span></td>
+          <td>Douze pages en ligne, diagramme de Gantt et avancement calculé sur les quarante cinq éléments du programme, rapport d’audit externe intégré.</td>
+        </tr>
+        <tr>
+          <td class="intit">Rapprochement des missions ouvertes</td>
+          <td class="etat"><span class="statut ouvert">Ouvert</span></td>
+          <td>Trois missions ouvertes depuis le 6 août, aucun rapprochement posé et aucun contact engagé à la mi août. Point repris en rubrique 4.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RUBRIQUE 3 -->
+<section class="doc-sec claire">
+  <span class="doc-kicker">Rubrique 3</span>
+  <h2>Les prochaines étapes envisagées</h2>
+  <div class="bloc">
+    <h3>Priorité immédiate</h3>
+    <ul>
+      <li><b>Poser les rapprochements sur les trois missions ouvertes</b> et engager les prises de contact. L’une d’elles démarre en septembre, elle commande le calendrier.</li>
+      <li><b>Rétablir l’accès applicatif à l’outil de gestion des ressources.</b> Le serveur refuse actuellement la clé d’agence. L’application métier fonctionne sur cache en attendant.</li>
+      <li><b>Régénérer le jeton d’accès applicatif</b> de cet outil, un identifiant ayant transité par un fil de discussion le 19 août.</li>
+    </ul>
+  </div>
+  <div class="bloc">
+    <h3>Sprint 1, achèvement</h3>
+    <ul>
+      <li><b>Produire le modèle financier dynamique et le prévisionnel</b>, chantier inscrit au programme sur la période du 19 août au 31 octobre. Il lui manque une échéance technique nommée et un responsable désigné.</li>
+      <li><b>Obtenir la version définitive du rapport d’audit externe</b>, aujourd’hui qualifié de provisoire par ses auteurs, et faire trancher une incohérence interne relevée à sa lecture.</li>
+    </ul>
+  </div>
+  <div class="bloc">
+    <h3>Sprint 2, finalisation, et sprint 3</h3>
+    <ul>
+      <li><b>Approfondir le playbook commercial</b> et le soumettre à validation.</li>
+      <li><b>Finaliser le référentiel commercial</b>, ce qui dépend d’arbitrages et de coordonnées manquantes sur quatre profils.</li>
+      <li><b>Engager l’animation de la page LinkedIn</b>, les contenus étant prêts et les articles du blog disponibles comme matière.</li>
+      <li><b>Recueillir la validation du cadre de gouvernance</b> de l’intelligence artificielle.</li>
+      <li><b>Vérifier l’affichage de la version anglaise</b> du site.</li>
+      <li><b>Éprouver le parcours documentaire</b> de l’application métier contre le stockage réel.</li>
+      <li><b>Traiter les cinq sujets restés ouverts</b> à la revue du 19 août, en leur affectant une date et un responsable.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- RUBRIQUE 4 -->
+<section class="doc-sec sombre">
+  <span class="doc-kicker">Rubrique 4</span>
+  <h2>Les alertes et les points de vigilance</h2>
+  <p>Ces points sont présentés tels qu’ils ont été mesurés, y compris ceux qui relèvent du prestataire. Ils appellent une résolution conjointe et sont repris au suivi de la période suivante.</p>
+
+  <div class="vig">
+    <span class="titre">Alerte 1</span>
+    <h3>Trois missions ouvertes sans rapprochement posé</h3>
+    <p>Trois missions sont ouvertes en base depuis le 6 août, dont une mission de planification en région marseillaise qui démarre en septembre et une mission de génie civil et planning sur un projet de tour de grande hauteur. À la mi août, aucun rapprochement n’avait été posé et aucun contact engagé. C’est le point le plus important du mois. L’effort a été recentré sur ce sujet, qui reste ouvert à la clôture de la période.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Alerte 2</span>
+    <h3>Accès applicatif à l’outil de gestion des ressources indisponible</h3>
+    <p>Les identifiants existent sur le compte et l’autorisation d’appel est activée, mais le serveur répond une erreur de chargement de clé d’agence. Le point est bloquant pour l’alimentation automatique de l’application métier, qui fonctionne sur cache en attendant. Sa résolution suppose une intervention conjointe avec l’éditeur.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Alerte 3</span>
+    <h3>Panne silencieuse des formulaires du 3 au 21 août</h3>
+    <p>Aucun dépôt effectué depuis le site n’est arrivé complet en base pendant cette période et aucun courriel de notification n’est parti. Trois causes empilées, toutes silencieuses, dont un mécanisme de mise à jour qui renvoyait un code de succès sans écrire aucune ligne. Le défaut a été trouvé, corrigé et prouvé le 21 août. Conséquence tenue depuis : toute écriture publique passe par une fonction qui renvoie l’identifiant de la ligne créée, et l’interface refuse d’afficher un succès sans cet identifiant.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Alerte 4</span>
+    <h3>Exposition de données du vivier, corrigée le 20 août</h3>
+    <p>Trois tables, dont le fichier de candidats, étaient lisibles et modifiables avec la clé publique présente dans le code du site. Le fait est porté à la connaissance du Client parce qu’il porte sur ses données. La correction a été posée et vérifiée le jour même.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Alerte 5</span>
+    <h3>Parcours documentaire non éprouvé</h3>
+    <p>Le cloisonnement des trois espaces de l’application métier est prouvé, sept mesures sur sept conformes. Le parcours documentaire de bout en bout, en revanche, n’a jamais tourné contre le stockage réel. C’est le seul morceau du produit sans preuve d’exécution, et il est signalé comme tel avant toute démonstration.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Point de vigilance 6</span>
+    <h3>Serveur dédié historique en mode secours</h3>
+    <p>Le serveur dédié du Client est indisponible depuis le 4 août au soir, à la suite d’un défaut de configuration réseau. L’hébergeur l’a redémarré en mode secours et renvoie la correction au Client. Aucun livrable de la mission n’en dépend. Un arbitrage sur son usage futur reste à rendre.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Point de vigilance 7</span>
+    <h3>Cinq sujets ouverts à la revue du 19 août</h3>
+    <p>Cinq sujets ont été évoqués en revue sans être tranchés, chacun sans date ni responsable désigné : la résolution de l’accès applicatif, l’animation de la page LinkedIn, et trois autres points de pilotage. Leur affectation est proposée au point d’avancement suivant.</p>
+  </div>
+
+  <div class="vig">
+    <span class="titre">Point de vigilance 8</span>
+    <h3>Rythme du reporting mensuel</h3>
+    <p>Le rapport mensuel prévu au contrat n’avait pas été remis au format des six rubriques imposées. Le présent document, remis avec celui du mois de juillet, ouvre la reprise de ce rythme pour les périodes suivantes.</p>
+  </div>
+</section>
+
+<!-- RUBRIQUE 5 -->
+<section class="doc-sec claire">
+  <span class="doc-kicker">Rubrique 5</span>
+  <h2>Les indicateurs de performance applicables</h2>
+  <p>Les valeurs ci dessous sont issues de mesures faites sur les environnements du Client ou de comptages sur les livrables. Lorsqu’une donnée n’a pas pu être établie de manière fiable, elle est signalée comme étant à consolider plutôt qu’estimée.</p>
+
+  <h3 class="sur">Pilotage du programme</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Indicateur</th><th>Valeur</th><th>Source de la mesure</th></tr></thead>
+      <tbody>
+        <tr><td class="intit">Éléments au programme de suivi</td><td class="val">45</td><td>Tableau de suivi construit le 19 août.</td></tr>
+        <tr><td class="intit">Sprints datés au programme</td><td class="val">5</td><td>Tableau de suivi, groupes datés.</td></tr>
+        <tr><td class="intit">Colonnes de suivi et vues filtrées</td><td class="val">7 colonnes, 2 vues</td><td>Tableau de suivi, 19 août.</td></tr>
+        <tr><td class="intit">Répartition des 45 éléments par statut</td><td class="val">À consolider</td><td>Le statut est renseigné élément par élément dans le tableau de suivi. La répartition consolidée n’a pas été arrêtée à la clôture de la période.</td></tr>
+        <tr><td class="intit">Pages du hub de pilotage</td><td class="val">12</td><td>Vérification en ligne, 20 août.</td></tr>
+        <tr><td class="intit">Amplitude du diagramme de Gantt</td><td class="val">423 jours</td><td>Page du programme, 20 août.</td></tr>
+        <tr><td class="intit">Missions ouvertes en base</td><td class="val">3</td><td>Lecture directe de la base, mi août.</td></tr>
+        <tr><td class="intit">Rapprochements posés sur ces missions</td><td class="val">0</td><td>Lecture directe de la base, mi août.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sur">Matière commerciale</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Indicateur</th><th>Valeur</th><th>Source de la mesure</th></tr></thead>
+      <tbody>
+        <tr><td class="intit">Prospects en base de sourcing</td><td class="val">244</td><td>Comptage par interface de programmation, 14 août.</td></tr>
+        <tr><td class="intit">Profils en base de sourcing</td><td class="val">126</td><td>Comptage par interface de programmation, 14 août.</td></tr>
+        <tr><td class="intit">Lignes sans source ni date de collecte</td><td class="val">0</td><td>Comptage par interface de programmation, 14 août.</td></tr>
+        <tr><td class="intit">Score moyen, prospects et profils</td><td class="val">91 et 88</td><td>Comptage par interface de programmation, 14 août.</td></tr>
+        <tr><td class="intit">Cible de sourcing fixée au cadrage</td><td class="val">300 prospects, 150 profils</td><td>Cadrage du 13 août.</td></tr>
+        <tr><td class="intit">Sociétés au référentiel</td><td class="val">22, dont 17 avec identifiant vérifié</td><td>Chargement du 4 août et enrichissement du même jour.</td></tr>
+        <tr><td class="intit">Contacts au référentiel</td><td class="val">18</td><td>Chargement du 4 août.</td></tr>
+        <tr><td class="intit">Profils au vivier</td><td class="val">12</td><td>Relevé du 6 août.</td></tr>
+        <tr><td class="intit">Profils sans coordonnées</td><td class="val">4</td><td>Recherche du 4 août, sources épuisées.</td></tr>
+        <tr><td class="intit">Campagnes préparées</td><td class="val">6, au statut brouillon</td><td>Compte d’envoi du Client, 3 août.</td></tr>
+        <tr><td class="intit">Performance des campagnes</td><td class="val">Sans objet</td><td>Aucun envoi n’a été réalisé au cours de la période.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sur">Produit et présence en ligne</h3>
+  <div class="tbl-wrap">
+    <table class="doc-tbl">
+      <thead><tr><th>Indicateur</th><th>Valeur</th><th>Source de la mesure</th></tr></thead>
+      <tbody>
+        <tr><td class="intit">Rôles de l’application métier</td><td class="val">3</td><td>Palier A livré le 4 août.</td></tr>
+        <tr><td class="intit">Tables et règles d’accès posées</td><td class="val">6 tables, 11 règles</td><td>Socle du 4 août.</td></tr>
+        <tr><td class="intit">Mesures de cloisonnement conformes</td><td class="val">7 sur 7</td><td>Test rôle par rôle en base, 20 août.</td></tr>
+        <tr><td class="intit">Articles de blog en ligne</td><td class="val">3</td><td>Vérification en production, 15 août.</td></tr>
+        <tr><td class="intit">Volume des articles</td><td class="val">1 428, 1 476 et 1 439 mots</td><td>Comptage sur les articles publiés.</td></tr>
+        <tr><td class="intit">Sources citées par article</td><td class="val">6, 2 et 5</td><td>Comptage sur les articles publiés.</td></tr>
+        <tr><td class="intit">Pages reprises pour les adresses propres</td><td class="val">11</td><td>Chantier du 15 août.</td></tr>
+        <tr><td class="intit">Liens internes repris</td><td class="val">182</td><td>Chantier du 15 août.</td></tr>
+        <tr><td class="intit">Clés de traduction de la version anglaise</td><td class="val">469</td><td>Dictionnaire de traduction du site.</td></tr>
+        <tr><td class="intit">Sources du benchmark de comparables</td><td class="val">24 sources, 8 opérations</td><td>Livrable du 17 août.</td></tr>
+        <tr><td class="intit">Sections du playbook et de la gouvernance</td><td class="val">11 et 9</td><td>Livrables du 18 août.</td></tr>
+        <tr><td class="intit">Qualifications reçues au 15 août</td><td class="val">5, toutes à l’état de brouillon</td><td>Lecture directe de la base. Taux de complétion entre 8 et 17 pour cent, aucune adresse renseignée.</td></tr>
+        <tr><td class="intit">Candidatures complètes sur la période</td><td class="val">À consolider</td><td>La chaîne d’enregistrement était en panne silencieuse du 3 au 21 août, le comptage de la période n’est pas fiable.</td></tr>
+        <tr><td class="intit">Audience du site</td><td class="val">À consolider</td><td>Aucun outil de mesure d’audience n’était installé sur la période.</td></tr>
+        <tr><td class="intit">Consommation du quota d’appels applicatifs</td><td class="val">0 sur 500</td><td>Espace développeur. L’accès applicatif n’a jamais pu être établi.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RUBRIQUE 6 -->
+<section class="doc-sec braise">
+  <span class="doc-kicker">Rubrique 6</span>
+  <h2>L’analyse des résultats et les recommandations relatives aux étapes ultérieures</h2>
+
+  <div class="encart">
+    <h3>Ce que le mois établit</h3>
+    <p>Août fait passer la mission de la construction d’outils à la production d’analyse. Trois livrables du sprint 1 ont été produits le 17 août, dont un rapport de valorisation multi méthodes appuyé sur vingt quatre sources, et le fichier comptable 2023 a été exploité pour la première fois. Le programme dispose désormais d’un suivi formalisé de quarante cinq éléments, daté par sprint, et d’un hub de douze pages qui en restitue l’avancement.</p>
+    <p>Le référentiel commercial est passé de fichiers préparés à des données en service : vingt deux sociétés dont dix sept vérifiées, dix huit contacts, un vivier de douze profils, et un socle de sourcing de trois cent soixante dix lignes dont aucune n’existe sans sa source et sa date de collecte. C’est la première fois du mandat que la matière commerciale est mesurable.</p>
+  </div>
+
+  <div class="encart">
+    <h3>Ce que le mois révèle</h3>
+    <p>Deux constats appellent une lecture franche. Le premier est la panne silencieuse des formulaires entre le 3 et le 21 août : pendant dix huit jours, un visiteur pouvait lire un message de confirmation sans que rien n’arrive en base. Le défaut a été trouvé, corrigé et prouvé, et la méthode de contrôle a été durcie en conséquence.</p>
+    <p>Le second est plus structurant. Trois missions réelles sont ouvertes depuis le 6 août sans rapprochement posé, alors que l’outillage nécessaire pour les traiter existe. La contrainte n’est plus la disponibilité des outils, elle est l’allocation du temps entre la construction du produit et l’exploitation commerciale.</p>
+  </div>
+
+  <h3 class="sur">Recommandations</h3>
+  <div class="encart">
+    <p><span class="intitule">Faire des trois missions ouvertes la priorité de septembre.</span> Une mission qui démarre en septembre et pour laquelle aucun profil n’a été proposé est une opportunité qui se referme d’elle même. Le moteur de rapprochement est corrigé et opérationnel depuis le 6 août, il n’y a pas d’obstacle technique.</p>
+    <p><span class="intitule">Traiter l’accès applicatif comme un point bloquant conjoint.</span> Tant qu’il n’est pas rétabli, l’application métier reste alimentée par un cache et le référentiel se met à jour à la main. Sa résolution suppose une démarche commune auprès de l’éditeur, et la régénération du jeton d’accès dans la foulée.</p>
+    <p><span class="intitule">Nommer un responsable et une échéance sur le modèle financier.</span> Le chantier est inscrit au programme jusqu’au 31 octobre et les moyens d’accès aux données existent. Il lui manque un pilote désigné, ce qui est le premier facteur de dérive sur ce type de livrable.</p>
+    <p><span class="intitule">Installer une mesure d’audience et une preuve d’écriture.</span> Deux indicateurs manquent aujourd’hui pour piloter autrement qu’à l’intuition : la fréquentation du site et un contrôle de bout en bout de la chaîne de candidature. Le second est désormais couvert par la règle posée le 21 août, le premier reste à installer.</p>
+    <p><span class="intitule">Trancher les cinq sujets laissés ouverts.</span> Chacun d’eux attend une date et un responsable. Les affecter au point d’avancement suivant coûte peu et referme un angle mort de pilotage.</p>
+  </div>
+</section>
+
+<footer class="doc-pied">
+  Rapport mensuel d’avancement, période du 1<sup>er</sup> au 31 août 2026. Programme d’accompagnement pré-cession GEOZEY SASU et ALVO, contrat du 19 février 2026.
+  Document établi au format des six rubriques prévues au contrat. Les valeurs chiffrées proviennent de mesures effectuées sur les environnements du Client ou de comptages sur les livrables. Les données non établies de manière fiable sont signalées comme étant à consolider.
+</footer>
+
+<script src="/cockpit-accompagnement/assets/shell.js"></script>
+</body>
+</html>
