@@ -18,7 +18,8 @@
     { t:'Suivi de mission', i:[
       ['constat-phases-1-2',    'Constat des phases 1 et 2', 'Phases 1 et 2 · ouverture de la 3'],
       ['reporting-juillet-2026','Rapport mensuel juillet',   'Juillet 2026 · six rubriques'],
-      ['reporting-aout-2026',   'Rapport mensuel août',      'Août 2026 · six rubriques']
+      ['reporting-aout-2026',   'Rapport mensuel août',      'Août 2026 · six rubriques'],
+      ['satisfaction',          'Questionnaire de satisfaction', 'Sprints 1 et 2 · dix-neuf livrables']
     ]},
     { t:'Documents', i:[
       ['proposition',     'Proposition de collaboration','01 · Collaboration'],
