@@ -77,10 +77,10 @@
     var boite = document.createElement("div");
     boite.id = "gz-consent";
     boite.setAttribute("role", "dialog");
-    boite.setAttribute("aria-label", "Consentement aux cookies de mesure");
+    boite.setAttribute("aria-label", "Consentement à la mesure d'audience");
     boite.innerHTML =
       "<p>Nous utilisons un outil de mesure d'audience pour comprendre comment ce site est " +
-      "consulte. Aucune donnee n'est collectee tant que vous n'avez pas accepte. " +
+      "consulté. Aucune donnée n'est collectée tant que vous n'avez pas accepté. " +
       "<a href=\"/politique-rgpd\">En savoir plus</a></p>" +
       "<div class=\"gz-actions\">" +
       "<button type=\"button\" class=\"gz-non\">Refuser</button>" +
