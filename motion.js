@@ -143,7 +143,7 @@
   ------------------------------------------------------------- */
   function animerChiffre(el) {
     var original = el.textContent;
-    var trouve = original.match(/^(\D*?)(\d[\d  .,]*)(.*)$/);
+    var trouve = original.match(/^(\D*?)(\d[\d  .,]*)(.*)$/);
     if (!trouve) return;
 
     var prefixe = trouve[1];
@@ -152,7 +152,7 @@
 
     if (/^0\d/.test(nombreEcrit)) return;
 
-    var normalise = nombreEcrit.replace(/[  ]/g, "").replace(",", ".");
+    var normalise = nombreEcrit.replace(/[  ]/g, "").replace(",", ".");
     var cible = parseFloat(normalise);
     if (!isFinite(cible) || cible <= 0) return;
 
