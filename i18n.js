@@ -45,17 +45,20 @@
   function injecterStyleSelecteur() {
     var style = document.createElement("style");
     style.textContent =
-      "nav .gz-lang{margin-left:22px;display:flex;align-items:center;gap:9px;" +
-      "font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:2.3px;" +
-      "text-transform:uppercase;flex:none}" +
-      "nav .gz-lang button{background:none;border:0;padding:4px 2px;margin:0;" +
-      "cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;" +
-      "color:var(--ash)}" +
-      "nav .gz-lang button.gz-actif{color:var(--ember);font-weight:700}" +
-      "nav .gz-lang button.gz-en-chargement{opacity:.5;cursor:wait}" +
-      "nav .gz-lang .gz-sep{color:var(--ash);opacity:.5}" +
+      "nav .gz-lang{margin-left:22px;display:inline-flex;align-items:center;" +
+      "background:rgba(255,255,255,.92);border-radius:27px;padding:3px;gap:2px;" +
+      "flex:none;box-shadow:0 1px 2px rgba(0,0,0,.12)}" +
+      "nav .gz-lang button{background:none;border:0;margin:0;padding:6px 13px;" +
+      "border-radius:27px;cursor:pointer;font-family:'Roboto Mono',monospace;" +
+      "font-size:10.5px;letter-spacing:2px;text-transform:uppercase;line-height:1;" +
+      "color:#575756;transition:background .15s ease,color .15s ease}" +
+      "nav .gz-lang button:hover{color:#1e1e1e}" +
+      "nav .gz-lang button.gz-actif{background:var(--dark,#1e1e1e);color:#fff}" +
+      "nav .gz-lang button.gz-actif:hover{color:#fff}" +
+      "nav .gz-lang button.gz-en-chargement{opacity:.55;cursor:wait}" +
       "@media(max-width:1100px){nav .gz-lang{margin-left:12px}}" +
-      "@media(max-width:620px){nav .gz-lang{margin-left:8px;gap:6px;font-size:9.5px}}";
+      "@media(max-width:620px){nav .gz-lang{margin-left:8px}" +
+      "nav .gz-lang button{padding:5px 10px;font-size:9.5px;letter-spacing:1.6px}}";
     document.head.appendChild(style);
   }
 
@@ -72,18 +75,12 @@
     boutonFr.textContent = "FR";
     boutonFr.setAttribute("aria-label", "Passer le site en francais");
 
-    var separateur = document.createElement("span");
-    separateur.className = "gz-sep";
-    separateur.textContent = "|";
-    separateur.setAttribute("aria-hidden", "true");
-
     var boutonEn = document.createElement("button");
     boutonEn.type = "button";
     boutonEn.textContent = "EN";
     boutonEn.setAttribute("aria-label", "Switch the site to English");
 
     conteneur.appendChild(boutonFr);
-    conteneur.appendChild(separateur);
     conteneur.appendChild(boutonEn);
     nav.appendChild(conteneur);
 
@@ -107,7 +104,6 @@
     if (!boutonsSelecteur) return;
     boutonsSelecteur.en.classList.toggle("gz-en-chargement", actif);
     boutonsSelecteur.en.disabled = actif;
-    boutonsSelecteur.en.textContent = actif ? "EN..." : "EN";
   }
 
   // Charge le moteur de traduction (dictionnaire + application sur le DOM)
