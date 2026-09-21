@@ -10,7 +10,7 @@ import { mkdir, copyFile, readdir, readFile, cp } from "fs/promises";
 // Ils manquaient dans cette liste jusqu au 04/09/2026 : presents dans le depot,
 // jamais copies vers public/, donc jamais servis. Le selecteur n apparaissait
 // sur aucune page parce que le navigateur ne trouvait pas le script.
-const pages = ["index.html", "manifeste.html", "experts.html", "interventions.html", "styles.css", "candidature.html", "supabase-config.js", "i18n.js", "i18n-en.js", "motion.js", "mentions-legales.html", "politique-rgpd.html", "favicon.svg", "robots.txt", "sitemap.xml"];
+const pages = ["index.html", "manifeste.html", "experts.html", "interventions.html", "styles.css", "candidature.html", "supabase-config.js", "i18n.js", "i18n-en.js", "motion.js", "consent.js", "mentions-legales.html", "politique-rgpd.html", "favicon.svg", "robots.txt", "sitemap.xml"];
 
 await mkdir("public/assets", { recursive: true });
 
