@@ -1,12 +1,17 @@
-<!DOCTYPE html><html lang="fr"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Questionnaire de satisfaction et de priorisation, Geozey</title>
+<title>Questionnaire de satisfaction et de priorisation · Hub d'accompagnement Geozey</title>
+<link rel="icon" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://geozey.com/styles.css">
+<link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
 <style>
-.page-hero{padding:150px 140px 80px}
-.txt{padding:70px 140px}
+.page-hero{padding:150px 90px 80px}
+.txt{padding:70px 90px}
 .qcard{background:#fff;border-radius:13px;padding:30px 32px;margin-bottom:18px;box-shadow:0 4px 4px rgba(0,0,0,.06);color:var(--dark,#1e1e1e)}
 .qcard h3{font-size:20px;font-weight:400;margin:10px 0 6px;color:var(--dark,#1e1e1e)}
 .qcard .desc{font-size:14px;line-height:1.55;color:var(--ash,#575756);margin:0 0 14px}
@@ -32,87 +37,113 @@
 #outbox{display:none;margin-top:26px}
 #outtext{width:100%;min-height:340px;border:1px solid rgba(30,30,30,.22);border-radius:13px;padding:18px;font-family:'Roboto Mono',monospace;font-size:12px;line-height:1.6;color:var(--dark,#1e1e1e);background:#fff}
 @media(max-width:900px){.page-hero{padding:110px 24px 50px}.txt{padding:44px 24px}.qcard{padding:22px 20px}}
+nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.62);color:#fff;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
+footer .copy{color:#cfcfcf}
+@media(max-width:1100px){nav .doc-now{display:none}}
 </style>
-</head><body>
+</head>
+<body>
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#1e1e1e;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:420px;padding:40px">
+    <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
+    <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Cet espace est réservé à Geozey et à Alvo. Saisissez le code communiqué.</p>
+    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
+    <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var K='GEOZEY-2026';
+  var g=document.getElementById('gate');
+  function ok(){ try{sessionStorage.setItem('gz_ok','1')}catch(e){} g.remove(); }
+  try{ if(sessionStorage.getItem('gz_ok')==='1'){ ok(); return; } }catch(e){}
+  function t(){ if(document.getElementById('gc').value.trim().toUpperCase()===K){ ok(); } else { document.getElementById('ge').textContent='Code incorrect.'; } }
+  document.getElementById('gb').addEventListener('click',t);
+  document.getElementById('gc').addEventListener('keydown',function(e){ if(e.key==='Enter') t(); });
+})();
+</script>
 
-<nav><a class="logo" href="https://geozey.com"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a></nav>
+<nav>
+  <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
+  <span class="doc-now">Questionnaire de satisfaction</span>
+  <div class="doc-steps"><a href="https://drive.google.com/drive/folders/1PTrtBbeqwjaO-qmLXxMkCz0aStZXH2SN" target="_blank" rel="noopener">Data room ↗</a></div>
+</nav>
 
 <section class="page-hero ph-dark">
-  <span class="kicker">ACCOMPAGNEMENT PRE-CESSION , SPRINTS 1 ET 2</span>
+  <span class="kicker">Accompagnement Geozey x Alvo · Sprints 1 et 2</span>
   <h1>Questionnaire de satisfaction et de priorisation</h1>
-  <p class="lead">Dix-neuf livrables, classes par ordre de priorite pour ton activite. Pour chacun, tu dis ce que tu en as recu, ce qu il vaut pour toi, ce qui manque, et si on continue dessus. Tes reponses deviennent le cahier des charges de la suite.</p>
+  <p class="lead">Dix-neuf livrables, classés par ordre de priorité pour ton activité. Pour chacun, tu dis ce que tu en as reçu, ce qu'il vaut pour toi, ce qui manque, et si on continue dessus. Tes réponses deviennent le cahier des charges de la suite.</p>
 </section>
-
 <section class="txt bg-white">
   <h2>Comment le remplir</h2>
-  <p>Rien n est obligatoire. Ce qui compte le plus est la derniere colonne de chaque bloc, la priorite : c est elle qui decide de ce sur quoi nous passons du temps dans les mois qui viennent. Quand tu as fini, le bouton en bas de page genere une synthese que tu peux copier ou telecharger.</p>
-  <p class="progress" id="prog">0 livrable renseigne sur 19</p>
+  <p>Rien n'est obligatoire. Ce qui compte le plus est la priorité que tu donnes à chaque livrable : c'est elle qui décide de ce sur quoi nous passons du temps dans les mois qui viennent. Quand tu as fini, le bouton en bas de page génère une synthèse que tu peux copier ou télécharger. Chaque lien ouvre la pièce correspondante dans la data room.</p>
+  <p class="progress" id="prog">0 livrable renseigné sur 19</p>
 </section>
-
 <div id="blocs"></div>
-
 <section class="txt bg-light">
   <div class="blocklabel"><span class="blocknum">05</span><h2>Ta trajectoire</h2></div>
-  <p class="bloclead">Ces questions ne portent pas sur nos livrables mais sur toi. Elles preparent le point avec le cabinet d audit et orientent tout le reste.</p>
+  <p class="bloclead">Ces questions ne portent pas sur nos livrables mais sur toi. Elles préparent la suite avec le cabinet d'audit et orientent tout le reste.</p>
   <div id="traj"></div>
 </section>
-
 <section class="txt bg-white">
-  <h2>Ta synthese</h2>
-  <p>Elle reprend tout ce que tu as renseigne, dans l ordre de priorite que tu as donne.</p>
+  <h2>Ta synthèse</h2>
+  <p>Elle reprend tout ce que tu as renseigné, dans l'ordre de priorité que tu as donné.</p>
   <div class="actionbar">
-    <button class="zbtn primary" onclick="gen()">Generer la synthese</button>
+    <button class="zbtn primary" onclick="gen()">Générer la synthèse</button>
     <button class="zbtn ghost" onclick="cp()">Copier</button>
-    <button class="zbtn ghost" onclick="dl()">Telecharger</button>
+    <button class="zbtn ghost" onclick="dl()">Télécharger</button>
   </div>
   <div id="outbox"><textarea id="outtext" readonly></textarea></div>
 </section>
-
 <footer>
-  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey"><hr>
-  <p class="copy">Geozey x egery , questionnaire de satisfaction et de priorisation , septembre 2026 , Confidentiel</p>
+  <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
+  <hr>
+  <p class="copy">Geozey x Alvo · Questionnaire de satisfaction et de priorisation · Mis à jour le 16 octobre 2026 · Confidentiel</p>
 </footer>
-
 <script>
-var HUB="https://geozey.com/cockpit-accompagnement/";
 var BLOCS=[
-{n:"01",t:"Ce qui fait entrer de l argent",lead:"Le pipeline commercial et tout ce qui le nourrit. C est ce qui pese le plus lourd sur la valeur de la societe, donc on commence par la.",items:[
- {id:"crm",t:"CRM et referentiel clients",d:"Vingt-deux societes dont dix-sept SIRET verifies, dix-huit contacts. Paramétrage, reprise des donnees, qualification, et trente jours de support a compter de la mise en service.",l:"",ln:"Acces a confirmer ensemble"},
- {id:"sourcing",t:"Socle de sourcing, 370 contacts",d:"Deux cent quarante-quatre prospects et cent vingt-six profils, contre onze contacts au depart.",l:"",ln:"Base de sourcing, acces a confirmer"},
- {id:"playbook",t:"Playbook commercial",d:"Onze sections, process de prospection et de qualification, argumentaires, negociation, suivi client. Grille tarifaire et politique de remise restent a ecrire ensemble.",l:HUB+"playbook",ln:"Voir le playbook"},
- {id:"site",t:"Site web et referencement",d:"Sept pages publiques en ligne, responsive, securise. Plan de referencement et mesure d audience a cadrer.",l:"https://geozey.com",ln:"Voir le site"}]},
-{n:"02",t:"Ce qui prepare la cession",lead:"Les pieces financieres qui serviront de base a toute discussion avec un repreneur. Elles sont produites, la question est de savoir si leur forme te convient.",items:[
- {id:"audit",t:"Rapport d audit financier",d:"Analyse des trois exercices sur la base des FEC 2023, 2024 et 2025. Retraitements de normalisation, rentabilite, besoin en fonds de roulement, tresorerie, endettement.",l:HUB,ln:"Voir dans le hub"},
- {id:"valo",t:"Rapport de valorisation",d:"Trois methodes croisees, flux actualises, multiples comparables et patrimoniale. Vingt-quatre sources et huit operations sectorielles.",l:HUB+"valorisation",ln:"Voir la valorisation"},
- {id:"dd",t:"Rapport de due diligence",d:"Quatre axes, financier, juridique, fiscal et social. Points durs identifies et pieces manquantes listees.",l:HUB+"due-diligence",ln:"Voir la due diligence"},
- {id:"modele",t:"Modele financier Excel dynamique",d:"Onze onglets, base clients et missions, pipeline, chiffre d affaires securise et previsionnel, tableaux de bord, tresorerie. Concu pour se brancher sur ton export bancaire.",l:"",ln:"Fichier transmis par mail"},
- {id:"reggio",t:"Audit externe du cabinet",d:"Rapport independant d avril 2026, encore en version provisoire du fait du cabinet. Version definitive en cours.",l:HUB+"audit-externe",ln:"Voir l audit externe"}]},
-{n:"03",t:"Ce qui reduit ta dependance",lead:"Tout ce qui permet a l activite de tourner sans toi. C est le critere que regarde en premier un repreneur, et c est l objet meme du sprint 2.",items:[
- {id:"candidature",t:"Chaine de candidature",d:"Formulaire de trente-neuf champs, ecriture en base, depot de CV, notification par mail, attribution de la source.",l:"https://geozey.com/candidature",ln:"Voir le formulaire"},
- {id:"app",t:"Application metier",d:"Trois roles cloisonnes, moteur de matching explicable sur dix axes. Produit hors du perimetre contractuel.",l:"https://geozey.com/app",ln:"Voir l application"},
- {id:"agents",t:"Agents IA metier",d:"Six agents prevus au contrat, identification des cas d usage, developpement, parametrage, mise en production et formation.",l:"",ln:"Demonstration en visio"},
- {id:"gouvia",t:"Gouvernance IA",d:"Neuf sections, cartographie des usages, registre des traitements, position reglementaire, standards techniques.",l:HUB+"gouvernance-ia",ln:"Voir la gouvernance IA"},
- {id:"suivi",t:"Points de suivi et reporting mensuel",d:"Points hebdomadaires avec compte rendu ecrit, et rapport mensuel en six rubriques dans les huit jours suivant la fin de chaque mois.",l:HUB+"reporting-aout-2026",ln:"Voir le rapport d aout"}]},
-{n:"04",t:"Ce qui construit ton image",lead:"Ce que voient tes clients, tes candidats et tes futurs repreneurs avant meme de te parler.",items:[
- {id:"identite",t:"Identite visuelle et papeterie",d:"Logo, charte graphique, gabarits, carte de visite, papier a en-tete et signature de courriel.",l:"",ln:"Dossier partage, lien a confirmer"},
- {id:"linkedin",t:"Page LinkedIn entreprise",d:"Page creee depuis ton compte, donc ta propriete des l origine. Strategie de contenus et animation a lancer.",l:"https://www.linkedin.com/company/geozey",ln:"Voir la page"},
- {id:"blog",t:"Blog editorial",d:"Trois articles fondateurs sources et illustres, heberges sur ton domaine. Produit hors du perimetre contractuel.",l:"https://geozey.com/blog",ln:"Voir le blog"},
- {id:"anglais",t:"Version anglaise du site",d:"Quatre cent soixante-neuf cles de traduction. Le contraste du selecteur de langue est en cours de correction.",l:"https://geozey.com",ln:"Voir le site"},
- {id:"deliv",t:"Delivrabilite des courriels",d:"Domaine authentifie, six enregistrements DNS poses, SPF corrige et DMARC cree. Produit hors du perimetre contractuel.",l:"",ln:"Verifiable publiquement sur mxtoolbox.com"}]}
+{n:"01",t:"Ce qui fait entrer de l'argent",lead:"Le pipeline commercial et tout ce qui le nourrit. C'est ce qui pèse le plus lourd sur la valeur de la société, donc on commence par là.",items:[
+ {id:"crm",t:"CRM et référentiel clients",d:"Vingt-deux sociétés dont dix-sept SIRET vérifiés, dix-huit contacts. Paramétrage, reprise des données, qualification, et trente jours de support à compter de la mise en service.",l:"",ln:"Accès à confirmer ensemble"},
+ {id:"sourcing",t:"Socle de sourcing, 370 contacts",d:"Deux cent quarante-quatre prospects et cent vingt-six profils, contre onze contacts au départ.",l:"https://drive.google.com/file/d/13rYzOBoRdCDNDZjmcMh5W2c7ibxIBWIL/view",ln:"Voir le rapport de sourcing, pièce 5.1"},
+ {id:"playbook",t:"Playbook commercial",d:"Douze sections : cibles, scripts mot pour mot, qualification, grille tarifaire, politique de remise, process de la détection à la facturation, objections, suivi hebdomadaire.",l:"https://drive.google.com/file/d/1XaTuUjXZ8Mfo04mz68_TNAQYue-ylaoJ/view",ln:"Ouvrir le playbook, pièce 2.1"},
+ {id:"site",t:"Site web et référencement",d:"Sept pages publiques en ligne, responsive, sécurisé. Plan de référencement et mesure d'audience à cadrer.",l:"https://geozey.com",ln:"Voir le site"}]},
+{n:"02",t:"Ce qui prépare la cession",lead:"Les pièces financières qui serviront de base à toute discussion avec un repreneur. Elles sont produites, la question est de savoir si leur forme te convient.",items:[
+ {id:"audit",t:"Audit financier et retraitements de l'EBITDA",d:"Analyse des trois exercices sur la base des FEC 2023, 2024 et 2025 : retraitements de normalisation, rentabilité, besoin en fonds de roulement, trésorerie, endettement.",l:"https://drive.google.com/file/d/1EwBSC_YZQAO0P0jrdihKjk7fHHlqLh1C/view",ln:"Ouvrir la pièce 1.2"},
+ {id:"valo",t:"Rapport de valorisation",d:"Trois méthodes croisées, multiples, flux actualisés et approche patrimoniale, pour une fourchette finale raisonnée.",l:"https://drive.google.com/file/d/1DMv62_y2X99U5xmtaO5ka2zCcIoFdtrN/view",ln:"Ouvrir la pièce 1.3"},
+ {id:"dd",t:"Rapport de due diligence",d:"Quatre axes, financier, juridique, fiscal et social. Points durs identifiés, recommandations classées par urgence et pièces manquantes listées.",l:"https://drive.google.com/file/d/11hYgTZnBtfNIj3grTaV_ARFdFcpIhzwY/view",ln:"Ouvrir la pièce 1.5"},
+ {id:"modele",t:"Modèle financier Excel dynamique",d:"Onze onglets, base clients et missions, pipeline, chiffre d'affaires sécurisé et prévisionnel, tableau de bord, trésorerie. Conçu pour se brancher sur ton export bancaire, avec sa notice en pièce 1.7.",l:"https://drive.google.com/file/d/1UffG82evrpfK7B5dq3qJZ5s4r6AwRSGK/view",ln:"Ouvrir la pièce 1.6"},
+ {id:"reggio",t:"Audit externe du cabinet Reggio Partners",d:"Rapport indépendant d'avril 2026 sur les comptes de Geozey, versé tel que remis par le cabinet.",l:"https://drive.google.com/file/d/1ZTIFvNPTE8DGUTqQVdncVZVur0V43-Xh/view",ln:"Ouvrir la pièce 1.1"}]},
+{n:"03",t:"Ce qui réduit ta dépendance",lead:"Tout ce qui permet à l'activité de tourner sans toi. C'est le critère que regarde en premier un repreneur, et c'est l'objet même du sprint 2.",items:[
+ {id:"candidature",t:"Chaîne de candidature",d:"Formulaire de trente-neuf champs, écriture en base, dépôt de CV, notification par mail, attribution de la source.",l:"https://geozey.com/candidature",ln:"Voir le formulaire"},
+ {id:"app",t:"Application métier",d:"Trois rôles cloisonnés, moteur de matching explicable sur dix axes. Produit hors du périmètre contractuel.",l:"https://geozey.com/app",ln:"Voir l'application"},
+ {id:"agents",t:"Agents IA métier",d:"Six agents prévus au contrat : identification des cas d'usage, développement, paramétrage, mise en production et formation. Leur mode d'emploi figure dans le guide de lecture.",l:"https://drive.google.com/file/d/1w3mqWqpP54wKjTR3yFSfwKhNdPfRbi_o/view",ln:"Ouvrir le guide, pièce 0.2"},
+ {id:"gouvia",t:"Gouvernance IA",d:"Les six agents en service, leur position au regard du règlement européen sur l'IA, le registre RGPD, le registre des incidents et les règles d'usage au quotidien.",l:"https://drive.google.com/file/d/1ASA_QLOo-Herv8ZBpGBtwj0E6UtjAQIe/view",ln:"Ouvrir la pièce 2.5"},
+ {id:"suivi",t:"Points de suivi et reporting mensuel",d:"Les réunions de suivi et les séances IA, consignées au registre de la pièce 2.6, et un rapport mensuel en six rubriques.",l:"https://drive.google.com/file/d/1iRhggWSL-rqwJsWF6Y-k_QhwNQ6JhQeI/view",ln:"Ouvrir le rapport de septembre, pièce 4.3"}]},
+{n:"04",t:"Ce qui construit ton image",lead:"Ce que voient tes clients, tes candidats et tes futurs repreneurs avant même de te parler.",items:[
+ {id:"identite",t:"Identité visuelle et papeterie",d:"La charte de Louise Lenepveu et ses fichiers sources : logos, cartes de visite, bannières LinkedIn, éléments graphiques et iconographie.",l:"https://drive.google.com/drive/folders/1ioUFffZf5zAlI7wvxyg5BAowpXE_LEN2",ln:"Ouvrir le kit de marque, pièce 2.7"},
+ {id:"linkedin",t:"Page LinkedIn entreprise",d:"Page créée depuis ton compte, donc ta propriété dès l'origine. Le pack éditorial prêt à publier est en pièce 2.4.",l:"https://www.linkedin.com/company/geozey",ln:"Voir la page"},
+ {id:"blog",t:"Blog éditorial",d:"Trois articles fondateurs, sourcés et illustrés, hébergés sur ton domaine. Produit hors du périmètre contractuel.",l:"https://geozey.com/blog/",ln:"Voir le blog"},
+ {id:"anglais",t:"Version anglaise du site",d:"Quatre cent soixante-neuf clés de traduction. Le contraste du sélecteur de langue est en cours de correction.",l:"https://geozey.com",ln:"Voir le site"},
+ {id:"deliv",t:"Délivrabilité des courriels",d:"Domaine authentifié, six enregistrements DNS posés, SPF corrigé et DMARC créé. Produit hors du périmètre contractuel.",l:"",ln:"Vérifiable publiquement sur mxtoolbox.com"}]}
 ];
 var TRAJ=[
- {id:"t_horizon",q:"A quelle echeance veux-tu ceder, et que veux-tu faire apres ?"},
- {id:"t_sortie",q:"Tu sors completement, ou tu accompagnes la transition ? Pendant combien de temps ?"},
- {id:"t_clients",q:"Quels clients consideres-tu comme acquis pour les deux ans qui viennent, et lesquels sont fragiles ?"},
- {id:"t_concentration",q:"Sur la concentration client, quel chiffre te parait juste, et pourquoi ?"},
- {id:"t_dependance",q:"Qu est-ce qui s arrete si tu t arretes un mois ? Qui sait faire quoi aujourd hui ?"},
- {id:"t_ambition",q:"Quel niveau d activite vises-tu au moment de la cession ?"},
- {id:"t_refus",q:"Sur quelles missions refuses-tu du travail aujourd hui, faute de ressource ou de competence ?"},
- {id:"t_recrutement",q:"Veux-tu recruter, et sur quels profils en priorite ?"},
- {id:"t_inquietude",q:"Qu est-ce qui t inquiete le plus dans la trajectoire actuelle ?"},
- {id:"t_decisions",q:"Quelles decisions n arrives-tu pas a prendre seul en ce moment ?"}
+ {id:"t_horizon",q:"À quelle échéance veux-tu céder, et que veux-tu faire après ?"},
+ {id:"t_sortie",q:"Tu sors complètement, ou tu accompagnes la transition ? Pendant combien de temps ?"},
+ {id:"t_clients",q:"Quels clients considères-tu comme acquis pour les deux ans qui viennent, et lesquels sont fragiles ?"},
+ {id:"t_concentration",q:"Sur la concentration client, quel chiffre te paraît juste, et pourquoi ?"},
+ {id:"t_dependance",q:"Qu'est-ce qui s'arrête si tu t'arrêtes un mois ? Qui sait faire quoi aujourd'hui ?"},
+ {id:"t_ambition",q:"Quel niveau d'activité vises-tu au moment de la cession ?"},
+ {id:"t_refus",q:"Sur quelles missions refuses-tu du travail aujourd'hui, faute de ressource ou de compétence ?"},
+ {id:"t_recrutement",q:"Veux-tu recruter, et sur quels profils en priorité ?"},
+ {id:"t_inquietude",q:"Qu'est-ce qui t'inquiète le plus dans la trajectoire actuelle ?"},
+ {id:"t_decisions",q:"Quelles décisions n'arrives-tu pas à prendre seul en ce moment ?"}
 ];
-var STATUTS=["Recu et conforme","Recu mais incomplet","Jamais recu","Pas encore regarde"];
+var STATUTS=["Reçu et conforme","Reçu mais incomplet","Jamais reçu","Pas encore regardé"];
 var NOTES=["1","2","3","4","5"];
 var PRIOS=["Critique","Important","Plus tard","On abandonne"];
 var R={};
@@ -128,10 +159,10 @@ function card(it){
   var h='<div class="qcard"><span class="tag">'+it.id.toUpperCase()+'</span><h3>'+it.t+'</h3><p class="desc">'+it.d+'</p>';
   if(it.l){h+='<a class="golink" href="'+it.l+'" target="_blank" rel="noopener">'+it.ln+'</a>';}
   else{h+='<span class="golink" style="color:var(--ash,#575756);border:none">'+it.ln+'</span>';}
-  h+=grp(it.id,"statut","Ce que tu en as recu",STATUTS,false);
-  h+=grp(it.id,"note","Son utilite pour ton activite, de 1 a 5",NOTES,false);
-  h+=grp(it.id,"prio","Priorite pour la suite",PRIOS,true);
-  h+='<div class="qrow"><span class="qlabel">Ce qui manque, ou ce que tu veux changer</span><textarea class="qtext" data-t="'+it.id+'" placeholder="Dis-le avec tes mots, meme en une ligne"></textarea></div>';
+  h+=grp(it.id,"statut","Ce que tu en as reçu",STATUTS,false);
+  h+=grp(it.id,"note","Son utilité pour ton activité, de 1 à 5",NOTES,false);
+  h+=grp(it.id,"prio","Priorité pour la suite",PRIOS,true);
+  h+='<div class="qrow"><span class="qlabel">Ce qui manque, ou ce que tu veux changer</span><textarea class="qtext" data-t="'+it.id+'" placeholder="Dis-le avec tes mots, même en une ligne"></textarea></div>';
   return h+'</div>';
 }
 var html="";
@@ -145,7 +176,7 @@ document.getElementById("blocs").innerHTML=html;
 
 var th="";
 for(var j=0;j<TRAJ.length;j++){
-  th+='<div class="qcard"><h3 style="font-size:17px">'+TRAJ[j].q+'</h3><textarea class="qtext" data-t="'+TRAJ[j].id+'" placeholder="Reponse libre"></textarea></div>';
+  th+='<div class="qcard"><h3 style="font-size:17px">'+TRAJ[j].q+'</h3><textarea class="qtext" data-t="'+TRAJ[j].id+'" placeholder="Réponse libre"></textarea></div>';
 }
 document.getElementById("traj").innerHTML=th;
 
@@ -168,30 +199,30 @@ function count(){
     var id=BLOCS[b].items[i].id;
     if(R[id+"_statut"]||R[id+"_note"]||R[id+"_prio"]||R[id]){n++;}
   }}
-  document.getElementById("prog").textContent=n+" livrable"+(n>1?"s":"")+" renseigne"+(n>1?"s":"")+" sur 19";
+  document.getElementById("prog").textContent=n+" livrable"+(n>1?"s":"")+" renseigné"+(n>1?"s":"")+" sur 19";
 }
 function gen(){
   var L=[];
   L.push("QUESTIONNAIRE DE SATISFACTION ET DE PRIORISATION");
-  L.push("Geozey x egery , sprints 1 et 2");
+  L.push("Geozey x Alvo · sprints 1 et 2");
   L.push("Rempli le "+new Date().toLocaleDateString("fr-FR"));
   L.push("");
-  var buckets={"Critique":[],"Important":[],"Plus tard":[],"On abandonne":[],"Non classe":[]};
+  var buckets={"Critique":[],"Important":[],"Plus tard":[],"On abandonne":[],"Non classé":[]};
   for(var b=0;b<BLOCS.length;b++){for(var i=0;i<BLOCS[b].items.length;i++){
     var it=BLOCS[b].items[i];
-    var p=R[it.id+"_prio"]||"Non classe";
+    var p=R[it.id+"_prio"]||"Non classé";
     var line="  "+it.t;
     var det=[];
     if(R[it.id+"_statut"])det.push(R[it.id+"_statut"]);
-    if(R[it.id+"_note"])det.push("utilite "+R[it.id+"_note"]+" sur 5");
+    if(R[it.id+"_note"])det.push("utilité "+R[it.id+"_note"]+" sur 5");
     if(det.length)line+=" ("+det.join(", ")+")";
-    if(R[it.id])line+="\n     A faire : "+R[it.id];
+    if(R[it.id])line+="\n     À faire : "+R[it.id];
     buckets[p].push(line);
   }}
-  var order=["Critique","Important","Plus tard","On abandonne","Non classe"];
+  var order=["Critique","Important","Plus tard","On abandonne","Non classé"];
   for(var k=0;k<order.length;k++){
     if(buckets[order[k]].length===0)continue;
-    L.push("--- PRIORITE : "+order[k].toUpperCase()+" ---");
+    L.push("--- PRIORITÉ : "+order[k].toUpperCase()+" ---");
     L.push(buckets[order[k]].join("\n"));
     L.push("");
   }
@@ -216,5 +247,8 @@ function dl(){
   a.download="satisfaction-geozey.txt";
   a.click();
 }
+
 </script>
-</body></html>
+<script src="/cockpit-accompagnement/assets/shell.js"></script>
+</body>
+</html>

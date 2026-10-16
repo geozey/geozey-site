@@ -1,41 +1,27 @@
-/* ══════════════════════════════════════════════════════════════
-   HUB PRÉ-CESSION ALVO x GEOZEY
-   Injection de la navigation latérale sur toutes les pages.
-   Aucun secret, aucune clé, aucun appel réseau : ce fichier ne
-   fait que construire une navigation à partir de liens absolus.
-   ══════════════════════════════════════════════════════════════ */
+/* \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+   HUB D\u2019ACCOMPAGNEMENT GEOZEY x ALVO
+   Injection de la navigation lat\u00e9rale sur toutes les pages.
+   Aucun secret, aucune cl\u00e9, aucun appel r\u00e9seau : ce fichier ne
+   fait que construire une navigation \u00e0 partir de liens absolus.
+   \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 */
 (function(){
   'use strict';
   var B = '/cockpit-accompagnement/';
   var LOGO = 'https://geozey.com/assets/logo.png';
 
+  var DR = 'https://drive.google.com/drive/folders/1PTrtBbeqwjaO-qmLXxMkCz0aStZXH2SN';
+
   var GROUPS = [
     { t:'Pilotage', i:[
-      ['',                'Vue d’ensemble',              'Tableau de bord'],
-      ['programme',       'Programme et Gantt',          '45 éléments · 5 sprints'],
-      ['ressources',      'Livrables et ressources',     'Inventaire complet']
-    ]},
-    { t:'Suivi de mission', i:[
-      ['constat-phases-1-2',    'Constat des phases 1 et 2', 'Phases 1 et 2 · ouverture de la 3'],
-      ['reporting-juillet-2026','Rapport mensuel juillet',   'Juillet 2026 · six rubriques'],
-      ['reporting-aout-2026',   'Rapport mensuel août',      'Août 2026 · six rubriques'],
-      ['satisfaction',          'Questionnaire de satisfaction', 'Sprints 1 et 2 · dix-neuf livrables']
-    ]},
-    { t:'Documents', i:[
-      ['proposition',     'Proposition de collaboration','01 · Collaboration'],
-      ['cdc-application', 'Cahier des charges application','02 · Application'],
-      ['cdc-infra-ia',    'Cahier des charges infra IA', '03 · Infra IA'],
-      ['valorisation',    'Rapport de valorisation',     'Sprint 1 · trois méthodes'],
-      ['due-diligence',   'Synthèse de due diligence',   'Sprint 1 · quatre axes'],
-      ['audit-externe',   'Audit externe Reggio',        'Rapport provisoire · avril 2026'],
-      ['plan-marges',     'Plan d’optimisation des marges','Sprint 3 · leviers chiffrés'],
-      ['playbook',        'Playbook commercial',         'Sprint 2 · scripts et qualification'],
-      ['gouvernance-ia',  'Gouvernance IA',              'Sprint 2 · registre et conformité']
+      ['',             'Vue d\u2019ensemble',               'Tous les livrables, par sprint'],
+      ['satisfaction', 'Questionnaire de satisfaction', 'Votre avis, livrable par livrable']
     ]}
   ];
 
   var EXT = [
-    ['https://egery-company.monday.com/boards/5101980426', 'Tableau Monday du programme'],
+    [DR, 'Data room de livraison'],
+    ['https://drive.google.com/file/d/1w3mqWqpP54wKjTR3yFSfwKhNdPfRbi_o/view', 'Guide de lecture et de reprise'],
+    ['https://drive.google.com/file/d/1Tulpktp_e5KMFeQCklWULclyo5qBt4-X/view', 'Bordereau de validation'],
     ['https://geozey.com', 'Site geozey.com']
   ];
 
@@ -52,7 +38,7 @@
     var h = [];
     h.push('<a class="gz-brand" href="' + B + '">');
     h.push('<img src="' + LOGO + '" alt="Geozey">');
-    h.push('<span class="gz-app">Hub pré-cession<br>Alvo x Geozey</span></a>');
+    h.push('<span class="gz-app">Hub d\u2019accompagnement<br>Geozey x Alvo</span></a>');
     h.push('<div class="gz-band">Espace confidentiel</div>');
 
     for (var g = 0; g < GROUPS.length; g++){
@@ -68,12 +54,12 @@
       h.push('</div>');
     }
 
-    h.push('<div class="gz-foot"><div class="gz-grp">Hors du hub</div>');
+    h.push('<div class="gz-foot"><div class="gz-grp">Documents de r\u00e9f\u00e9rence</div>');
     for (var e = 0; e < EXT.length; e++){
       h.push('<a class="gz-x" href="' + EXT[e][0] + '" target="_blank" rel="noopener">' +
              EXT[e][1] + '<span>&#8599;</span></a>');
     }
-    h.push('<p class="gz-conf">Réservé à Aurélien Queroy et Yacine Djebrouni. Ne pas diffuser.</p>');
+    h.push('<p class="gz-conf">R\u00e9serv\u00e9 \u00e0 Yacine Djebrouni et \u00e0 l\u2019\u00e9quipe Alvo. Ne pas diffuser.</p>');
     h.push('</div>');
 
     var aside = document.createElement('aside');

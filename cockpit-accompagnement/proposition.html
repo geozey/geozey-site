@@ -4,65 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Proposition de collaboration et d’apport d’affaires · egery Tech x Geozey</title>
+<title>Proposition de collaboration · Hub d'accompagnement Geozey</title>
+<link rel="icon" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://geozey.com/styles.css">
 <link rel="stylesheet" href="/cockpit-accompagnement/assets/shell.css">
 <style>
 :root{--ember-ink:#C42F09}
-.doc-table{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 4px rgba(0,0,0,.06);margin:28px 0}
-.doc-table table{width:100%;border-collapse:collapse;font-size:15px}
-.doc-table thead tr{background:var(--dark);color:#fff}
-.doc-table thead th{padding:14px 18px;text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;font-weight:500}
-.doc-table tbody tr{border-bottom:1px solid rgba(30,30,30,.12)}
-.doc-table tbody td{padding:14px 18px;vertical-align:top;line-height:1.55}
-.doc-table tbody tr:last-child{border-bottom:none}
-.doc-table.on-dark{background:var(--gray)}
-.doc-table.on-dark table{color:#e7e7e7}
-.doc-table.on-dark tbody tr{border-bottom:1px solid rgba(255,255,255,.12)}
-.badge{display:inline-flex;padding:6px 13px;border-radius:14px;font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
-.badge.ok{background:#DDEBD9;color:#1A5E3A}
-.badge.warn{background:#F6E7C6;color:#8a5200}
-.badge.ko{background:#F4D7D3;color:#AA1C00}
-.badge.off{background:#DCE7F5;color:#003E8A}
-.badge.ember{background:var(--ember);color:#fff}
-.badge.neutre{background:var(--card);color:var(--ash)}
-.page-hero{padding:130px 140px 70px}
-.txt{padding:60px 140px}
-.etage-head{display:flex;align-items:baseline;gap:16px;margin-bottom:6px;flex-wrap:wrap}
-.etage-head .num{font-family:'Roboto Mono',monospace;font-size:13px;letter-spacing:2px;color:var(--ember-ink)}
-.bg-gray .etage-head .num{color:#FF9C85}
-.etage-head h2{margin:0}
-.prix-box{background:#fff;border-radius:13px;padding:28px 32px;margin:20px 0;box-shadow:0 4px 4px rgba(0,0,0,.06)}
-.prix-box .v{font-family:'Roboto Mono',monospace;font-size:34px;color:var(--dark)}
-.prix-box .l{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash)}
-.not-included{border-left:3px solid var(--ember);padding:14px 20px;background:rgba(255,69,18,.05);border-radius:0 13px 13px 0;margin-top:18px}
-.not-included .k{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ember-ink);display:block;margin-bottom:6px}
-.bg-gray .not-included .k{color:#FF9C85}
-.sym-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
-@media (max-width:900px){.sym-grid{grid-template-columns:1fr}}
-.sym-card{background:#fff;border-radius:13px;padding:28px;box-shadow:0 4px 4px rgba(0,0,0,.06)}
-.sym-card h4{font-weight:400;font-size:19px;margin:0 0 10px}
-.sym-card .arrow{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--ember-ink);text-transform:uppercase;display:block;margin-bottom:8px}
-.rituel-row{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-top:1px solid rgba(255,255,255,.18)}
-.rituel-row:first-of-type{border-top:none}
-.rituel-row .when{font-family:'Roboto Mono',monospace;font-size:12px;letter-spacing:1px;color:#FF9C85;min-width:190px}
-.checklist{list-style:none;padding:0;margin:20px 0}
-.checklist li{padding:12px 0 12px 30px;border-top:1px solid rgba(30,30,30,.12);position:relative}
-.checklist li:first-child{border-top:none}
-.checklist li::before{content:"→";position:absolute;left:0;color:var(--ember-ink)}
-.fiche-box{background:var(--dark);color:#e7e7e7;border-radius:13px;padding:32px;margin:24px 0}
-.fiche-box h4{color:#fff;font-weight:400;margin-top:0}
-.fiche-box .champ{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#FF9C85;display:block;margin:14px 0 4px}
-.recap-total{background:var(--dark);color:#fff;border-radius:13px;padding:30px 34px;margin:24px 0;text-align:center}
-.recap-total .v{font-family:'Roboto Mono',monospace;font-size:40px}
-.recap-total .l{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#bbb;margin-top:6px}
+.page-hero{padding:150px 90px 80px}
+.txt{padding:70px 90px}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.pill{display:inline-flex;align-items:center;padding:14px 26px;border-radius:27px;font-size:15px;line-height:1.2;transition:transform .18s ease,background .18s ease}
+.pill:hover{transform:translateY(-1px)}
+.pill.ember{background:var(--ember);color:#fff}
+.pill.light{background:#fff;color:var(--dark)}
+.pill.dark{background:var(--dark);color:#fff}
+.sec-kick{color:var(--ember-ink)}
+.dr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-top:30px}
+.dr-card{display:flex;flex-direction:column;background:#fff;border-radius:13px;padding:24px 24px 22px;color:var(--dark);box-shadow:0 4px 4px rgba(0,0,0,.06);transition:transform .18s ease,box-shadow .18s ease;min-height:150px}
+.dr-card:hover{transform:translateY(-2px);box-shadow:0 8px 14px rgba(0,0,0,.08)}
+.dr-card .n{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:var(--ember-ink)}
+.dr-card .t{font-size:18px;line-height:1.35;margin-top:12px;font-weight:400;color:var(--dark)}
+.dr-card .s{font-family:'Roboto Mono',monospace;font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:#4a4a49;margin-top:auto;padding-top:16px;line-height:1.6}
+.dr-card .s::after{content:"  ↗";color:var(--ember-ink)}
+.note-box{background:#fff;border-radius:13px;padding:20px 24px;margin-top:22px;font-size:15px;line-height:1.6;color:#2b2b2b;box-shadow:0 4px 4px rgba(0,0,0,.06)}
+.note-box a{color:var(--ember-ink);border-bottom:1px solid rgba(196,47,9,.35)}
 nav .doc-now{margin-left:18px;padding-left:18px;border-left:1px solid rgba(255,255,255,.35);color:#fff;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:2.3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 nav .doc-steps{margin-left:auto;display:flex;gap:8px;align-items:center}
-nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.5);color:#f1f1f1;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
+nav .doc-steps a{display:inline-flex;align-items:center;background:rgba(19,19,19,.62);color:#fff;font-size:13px;padding:8px 16px;border-radius:27px;white-space:nowrap;transition:background .18s ease,transform .18s ease}
 nav .doc-steps a:hover{background:var(--ember);color:#fff;transform:translateY(-1px)}
-footer .copy{color:rgba(255,255,255,.72)}
-@media(max-width:900px){nav .doc-now{display:none}}
+footer .copy{color:#cfcfcf}
+@media(max-width:1100px){nav .doc-now{display:none}.page-hero{padding:130px 24px 60px}.txt{padding:56px 24px}}
 </style>
 </head>
 <body>
@@ -70,7 +42,7 @@ footer .copy{color:rgba(255,255,255,.72)}
   <div style="text-align:center;max-width:420px;padding:40px">
     <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
     <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
-    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Ce dossier est réservé à Geozey et à egery. Saisissez le code communiqué.</p>
+    <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Cet espace est réservé à Geozey et à Alvo. Saisissez le code communiqué.</p>
     <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
     <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
     <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
@@ -90,204 +62,21 @@ footer .copy{color:rgba(255,255,255,.72)}
 
 <nav>
   <a class="logo" href="/cockpit-accompagnement/"><img src="https://geozey.com/assets/logo.png" alt="Geozey"></a>
-  <span class="doc-now">01 · Proposition de collaboration</span>
-  <div class="doc-steps">
-    <a href="/cockpit-accompagnement/" title="Tableau de bord">← Précédent</a>
-    <a href="/cockpit-accompagnement/cdc-application" title="Cahier des charges de l’application métier">Suivant →</a>
-  </div>
+  <span class="doc-now">Proposition de collaboration</span>
+  <div class="doc-steps"><a href="https://drive.google.com/drive/folders/1PTrtBbeqwjaO-qmLXxMkCz0aStZXH2SN" target="_blank" rel="noopener">Data room ↗</a></div>
 </nav>
 
-<section class="page-hero ph-ember">
-  <span class="kicker">Séance du mercredi 19 août 2026, 14h30</span>
-  <h1>Proposition de collaboration et d’apport d’affaires</h1>
-  <p class="lead">egery Tech et Geozey. Présentée par Benjamin Queroy, directeur général d’egery Tech, à Yacine Djebrouni.</p>
-</section>
-
-<section class="txt bg-white">
-  <span class="kicker">Ouverture</span>
-  <h2>Ce qu’on vient faire aujourd’hui</h2>
-  <p>Nommer ce qui existe déjà de fait, le cadrer proprement, et poser une relation qui tient dans la durée, y compris après la cession de Geozey. Trois choses distinctes se sont installées depuis le début de l’accompagnement : un mandat de cession, un rôle d’infrastructure IA et de direction growth externalisée tenu au quotidien sans facturation dédiée, et des travaux ponctuels qui débordent du périmètre initial. Ce document sépare les trois, pose le périmètre de chacune, et propose un dispositif d’apport d’affaires réciproque entre les deux structures. Les montants seront précisés après validation du périmètre.</p>
-  <p>Rien de ce qui suit ne remet en cause le contrat Alvo signé. Il est honoré intégralement. Le sujet du jour est ce qui vient à côté, et ce qui vient après.</p>
-</section>
-
-<section class="txt bg-light">
-  <div class="etage-head"><span class="num">ÉTAGE 1</span><h2>Le contrat Alvo d’accompagnement pré-cession</h2></div>
-  <p>Ce contrat n’est pas rouvert. Il est rappelé ici pour poser le cadre complet de la relation, pas pour en rediscuter les termes.</p>
-  <div class="prix-box">
-    <span class="v">À définir</span>
-    <span class="l">Douze mensualités, mandat exclusif, commission au succès</span>
-  </div>
-  <p>Tous les livrables de ce contrat seront honorés, sans exception. C’est le socle sur lequel repose tout le reste de cette proposition.</p>
-  <div class="not-included">
-    <span class="k">Ce que l’étage 1 n’inclut pas</span>
-    L’infrastructure IA et le rôle de direction growth externalisée au quotidien, qui survivent à la cession et sont facturés séparément. Les travaux hors périmètre initial, facturés au forfait par livrable. Le mandat de cession s’éteint le jour de la vente, ce qui suit ne s’éteint pas.
-  </div>
-</section>
-
-<section class="txt bg-white">
-  <div class="etage-head"><span class="num">ÉTAGE 2</span><h2>L’abonnement CAIO externalisé et head of growth</h2></div>
-  <p>Facturé par egery Tech, distinct du contrat Alvo. Ce rôle est déjà tenu de fait depuis plusieurs mois : infrastructure d’agents IA, pilotage du sourcing, du site, du blog, des campagnes, du radar de matching. Il n’a pas été facturé jusqu’ici, faute de date de départ formelle pour en cadrer le démarrage. Ce document nomme ce rôle et le facture à partir de maintenant, avec une période offerte pour que la bascule soit propre.</p>
-
-  <div class="doc-table">
-    <table>
-      <thead><tr><th>Élément</th><th>Valeur</th></tr></thead>
-      <tbody>
-        <tr><td>Prix de référence egery Tech</td><td>À définir</td></tr>
-        <tr><td>Tarif Geozey, client fondateur</td><td>À définir</td></tr>
-        <tr><td>Période offerte</td><td>Du 19 août au 30 septembre 2026</td></tr>
-        <tr><td>Première facturation</td><td>1er octobre 2026</td></tr>
-        <tr><td>Engagement</td><td>Trois mois, puis résiliable à trente jours</td></tr>
-        <tr><td>Valeur offerte sur la période, à titre indicatif</td><td>À définir</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>Cette valeur offerte s’ajoute au rôle déjà tenu de fait et non facturé depuis plusieurs mois, dont le montant n’est pas chiffré ici faute de date de départ formelle. Elle ne le remplace pas.</p>
-
-  <h3>L’argument central : ce rôle survit à la cession</h3>
-  <p>Le jour où Geozey se vend, l’accompagnement Alvo s’éteint avec la transaction. L’infrastructure IA, elle, continue de tourner pour l’acquéreur. Ce n’est pas une charge qui pèse sur la valorisation, c’est un actif transmissible qui la soutient : un repreneur qui rachète Geozey rachète aussi un outil de pilotage opérationnel déjà en place, déjà utilisé, déjà producteur de résultats mesurables. C’est un argument de valorisation à faire valoir dans le dossier de cession, pas une ligne de coût à justifier à part.</p>
-
-  <div class="not-included">
-    <span class="k">Ce que l’étage 2 n’inclut pas</span>
-    Les travaux hors périmètre courant, qui relèvent de l’étage 3 au forfait. Le forfait outils growth de sourcing et d’enrichissement, qui est optionnel et distinct, voir plus bas. L’intéressement sur apport d’affaires, qui est un dispositif à part, voir plus bas.
-  </div>
-</section>
-
-<section class="txt bg-gray">
-  <div class="etage-head"><span class="num">ÉTAGE 3</span><h2>Les travaux supplémentaires, DTS, au forfait par livrable</h2></div>
-  <p>Référence interne de calcul : à définir, elle sera précisée après validation du périmètre. Cette référence sert uniquement à bâtir le chiffrage, elle n’apparaît pas comme engagement contractuel : c’est le forfait qui engage les deux parties. Procédure proposée par Yacine lui-même le 13 août : toute tâche hors périmètre initial fait l’objet d’une fiche de cadrage, validée par écrit par les deux parties avant tout démarrage.</p>
-
-  <div class="doc-table on-dark">
-    <table>
-      <thead><tr><th>DTS</th><th>Objet</th><th>Forfait</th><th>Statut</th></tr></thead>
-      <tbody>
-        <tr><td>DTS 1</td><td>Application palier B, espace client maître d’œuvre</td><td>À définir</td><td><span class="badge warn">à définir</span></td></tr>
-        <tr><td>DTS 2</td><td>Application palier C, espace freelance et agent</td><td>À définir</td><td><span class="badge warn">à définir</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="not-included">
-    <span class="k">Ce que l’étage 3 n’inclut pas</span>
-    Aucun démarrage sans fiche de cadrage validée par écrit par les deux parties. Un livrable non chiffré par une fiche n’est pas engagé, quelle que soit la référence jour.
-  </div>
-</section>
-
-<section class="txt bg-white">
-  <span class="kicker">Le point nouveau et central</span>
-  <h2>L’apport d’affaires réciproque</h2>
-  <p>Le principe est la symétrie. Même taux, mêmes règles, dans les deux sens. C’est ce qui le rend acceptable des deux côtés.</p>
-
-  <div class="sym-grid">
-    <div class="sym-card">
-      <span class="arrow">egery vers Geozey</span>
-      <h4>Nous apportons des affaires à Geozey</h4>
-      <p>Matière réelle déjà constituée : 244 prospects maîtres d’œuvre et 126 profils PMO sourcés et tracés, les campagnes, le site, le radar de matching, le blog. Une mission signée issue de ce dispositif donne lieu à une commission.</p>
-    </div>
-    <div class="sym-card">
-      <span class="arrow">Geozey vers Alvo et egery</span>
-      <h4>Yacine nous apporte des affaires</h4>
-      <p>Cas réel déjà identifié : Selman, AI Consulting, cinq salariés. Un mandat de cession ou un contrat d’infrastructure IA signé grâce à lui donne lieu à une commission.</p>
-    </div>
-  </div>
-
-  <div class="doc-table">
-    <table>
-      <thead><tr><th>Règle</th><th>Contenu, identique dans les deux sens</th></tr></thead>
-      <tbody>
-        <tr><td>Taux</td><td>À définir, appliqué au chiffre d’affaires facturé la première année de la relation apportée</td></tr>
-        <tr><td>Attribution</td><td>Est attribuable une affaire dont le premier contact est tracé et documenté</td></tr>
-        <tr><td>Preuve</td><td>Liste partagée, consultable, contestable à tout moment. En cas de doute, la partie qui réclame la commission apporte la preuve du premier contact</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>Ce dispositif ne concurrence pas le commercial que Yacine recrute, il alimente son pipeline. Les deux intéressements portent sur des actes différents : le commercial vend, ce dispositif source et introduit.</p>
-
-  <div class="not-included">
-    <span class="k">Le forfait outils growth, optionnel et distinct</span>
-    À définir. Ce forfait couvre le sourcing, l’enrichissement, le routage et l’entretien des listes. Il n’est pas une condition de l’intéressement ni l’inverse : les deux dispositifs sont indépendants, Geozey peut prendre l’un sans l’autre.
-  </div>
-</section>
-
-<section class="txt bg-light">
-  <span class="kicker">Vision d’ensemble</span>
-  <h2>Ce que Geozey paie, quand, et à qui, sur douze mois glissants</h2>
-  <p>En une phrase : Alvo continue de facturer ses mensualités jusqu’au terme des douze mensualités en cours, et à compter du 1er octobre 2026 egery Tech facture en plus l’abonnement CAIO, les deux courant alors en parallèle jusqu’à l’échéance du mandat Alvo, après quoi seul l’abonnement CAIO subsiste, hors DTS et hors options activées. Les montants sont à définir et seront précisés après validation du périmètre.</p>
-
-  <div class="doc-table">
-    <table>
-      <thead><tr><th>Poste</th><th>À qui</th><th>Montant</th><th>Quand</th></tr></thead>
-      <tbody>
-        <tr><td>Accompagnement pré-cession</td><td>Alvo</td><td>À définir</td><td>Chaque mois, douze mensualités en cours</td></tr>
-        <tr><td>Abonnement CAIO et head of growth</td><td>egery Tech</td><td>Offert du 19/08 au 30/09/2026, puis À définir</td><td>Première facture le 1er octobre 2026</td></tr>
-        <tr><td>DTS 1, application palier B</td><td>egery Tech</td><td>À définir</td><td>À la validation de la fiche de cadrage</td></tr>
-        <tr><td>DTS 2, application palier C</td><td>egery Tech</td><td>À définir</td><td>À la validation de la fiche de cadrage</td></tr>
-        <tr><td>Forfait outils growth, optionnel</td><td>egery Tech</td><td>À définir</td><td>Si activé, dès le mois d’activation</td></tr>
-        <tr><td>Intéressement apport d’affaires</td><td>Alvo ou egery Tech, selon le cas</td><td>À définir</td><td>À la facturation de l’affaire attribuée</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="recap-total">
-    <span class="v">À définir</span>
-    <span class="l">Nouveau socle facturé par egery Tech à partir du 1er octobre 2026, hors DTS, hors forfait outils optionnel, hors intéressement</span>
-  </div>
-  <p>Ce socle s’ajoute aux mensualités déjà dues à Alvo au titre du contrat pré-cession en cours, le temps que les deux engagements courent en parallèle. Le montant cumulé sera précisé après validation du périmètre. Les DTS, le forfait outils et l’intéressement sont variables, activés à la demande, et s’ajoutent à ce socle quand ils sont déclenchés.</p>
-</section>
-
-<section class="txt bg-white">
-  <span class="kicker">Procédure</span>
-  <h2>Le forfait par livrable, DTS</h2>
-  <p>Procédure proposée par Yacine lui-même le 13 août, devenue la règle commune pour tout ce qui sort du périmètre courant. Aucun démarrage sans fiche validée par écrit par les deux parties.</p>
-
-  <div class="fiche-box">
-    <h4>Modèle de fiche de cadrage DTS</h4>
-    <span class="champ">Périmètre</span>
-    Description précise du livrable, ce qui est inclus, ce qui ne l’est pas.
-    <span class="champ">Temps estimé</span>
-    En jours, converti selon la référence interne de calcul, à définir.
-    <span class="champ">Planning</span>
-    Date de démarrage, date de livraison.
-    <span class="champ">Coût</span>
-    Forfait ferme, seul montant qui engage les deux parties, à définir.
-    <span class="champ">Validation</span>
-    Signature écrite des deux parties avant tout démarrage.
-  </div>
-</section>
-
-<section class="txt bg-gray">
-  <span class="kicker">Rythme de travail</span>
-  <h2>Les rituels</h2>
-  <div class="rituel-row">
-    <span class="when">Lundi 11h30</span>
-    <div>Atelier technique, infrastructure et support.</div>
-  </div>
-  <div class="rituel-row">
-    <span class="when">Mercredi 14h30</span>
-    <div>Point livrables et business, avec compte rendu systématique.</div>
-  </div>
-  <div class="rituel-row">
-    <span class="when">Chaque mois, sous huit jours</span>
-    <div>Reporting écrit. Le premier reporting, celui d’août, avant le 8 septembre 2026.</div>
-  </div>
-</section>
-
-<section class="txt bg-white">
-  <span class="kicker">Conditions de réussite</span>
-  <h2>Ce qui est attendu de Geozey</h2>
-  <ul class="checklist">
-    <li>Les accès nécessaires au périmètre en cours, maintenus à jour.</li>
-    <li>La clé Boond, pour le suivi commercial et le matching.</li>
-    <li>La clé Qonto, posée par Yacine lui-même : c’est un geste humain, jamais saisie ni manipulée par un tiers.</li>
-    <li>Les validations attendues sur les fiches de cadrage DTS, avant tout démarrage de travaux hors périmètre.</li>
-  </ul>
+<section class="page-hero ph-dark">
+  <span class="kicker">Hub d'accompagnement · Document contractuel</span>
+  <h1>Proposition de collaboration.</h1>
+  <p class="lead">Ce document contractuel n'est plus publié en ligne. Alvo vous le transmet sur simple demande.</p>
+  <div class="btn-row"><a class="pill ember" href="https://drive.google.com/drive/folders/1PTrtBbeqwjaO-qmLXxMkCz0aStZXH2SN" target="_blank" rel="noopener">Ouvrir la data room</a><a class="pill light" href="/cockpit-accompagnement/">Retour à la vue d'ensemble</a></div>
 </section>
 
 <footer>
   <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
   <hr>
-  <p class="copy">Geozey x egery Tech, proposition de collaboration et d’apport d’affaires, séance du 19 août 2026, confidentiel</p>
+  <p class="copy">Geozey x Alvo · Hub d'accompagnement · Mis à jour le 16 octobre 2026 · Confidentiel</p>
 </footer>
 
 <script src="/cockpit-accompagnement/assets/shell.js"></script>
