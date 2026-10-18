@@ -21,7 +21,9 @@
 .opts{display:flex;flex-wrap:wrap;gap:8px}
 .opt{display:inline-flex;align-items:center;padding:8px 16px;border-radius:27px;border:1px solid rgba(30,30,30,.22);background:#fff;font-size:13px;cursor:pointer;color:var(--dark,#1e1e1e);user-select:none;transition:.12s}
 .opt:hover{border-color:rgba(30,30,30,.5)}
-.opt input{display:none}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt{position:relative}
+.opt:focus-within{outline:2px solid #FF4512;outline-offset:2px}
 .opt.sel{background:var(--dark,#1e1e1e);color:#fff;border-color:var(--dark,#1e1e1e)}
 .opt.sel.ember{background:var(--ember,#FF4512);border-color:var(--ember,#FF4512)}
 .qtext{width:100%;min-height:74px;border:1px solid rgba(30,30,30,.22);border-radius:13px;padding:13px 15px;font-family:inherit;font-size:14.5px;line-height:1.55;color:var(--dark,#1e1e1e);background:#fff;resize:vertical}
@@ -51,7 +53,7 @@ footer .copy{color:#cfcfcf}
     <img src="https://geozey.com/assets/logo.png" alt="Geozey" style="height:26px;margin-bottom:40px">
     <p style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:2.3px;text-transform:uppercase;color:#FF4512;margin-bottom:18px">Espace confidentiel</p>
     <p style="color:#f1f1f1;font-size:16px;line-height:1.5;margin-bottom:28px">Cet espace est réservé à Geozey et à Alvo. Saisissez le code communiqué.</p>
-    <input id="gc" type="password" placeholder="Code" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
+    <input id="gc" type="password" placeholder="Code" aria-label="Code d'accès" style="width:100%;padding:13px 16px;border-radius:27px;border:0;font-size:16px;text-align:center;margin-bottom:14px">
     <button id="gb" style="width:100%;padding:13px 16px;border-radius:27px;border:0;background:#FF4512;color:#fff;font-size:16px;cursor:pointer">Entrer</button>
     <p id="ge" style="color:#FF9C85;font-size:14px;margin-top:14px;min-height:20px"></p>
   </div>
@@ -98,20 +100,20 @@ footer .copy{color:#cfcfcf}
     <button class="zbtn ghost" onclick="cp()">Copier</button>
     <button class="zbtn ghost" onclick="dl()">Télécharger</button>
   </div>
-  <div id="outbox"><textarea id="outtext" readonly></textarea></div>
+  <div id="outbox"><textarea id="outtext" readonly aria-label="Synthèse de tes réponses"></textarea></div>
 </section>
 <footer>
   <img class="logo-foot" src="https://geozey.com/assets/logo.png" alt="Geozey">
   <hr>
-  <p class="copy">Geozey x Alvo · Questionnaire de satisfaction et de priorisation · Mis à jour le 16 octobre 2026 · Confidentiel</p>
+  <p class="copy">Geozey x Alvo · Questionnaire de satisfaction et de priorisation · Mis à jour le 18 octobre 2026 · Confidentiel</p>
 </footer>
 <script>
 var BLOCS=[
 {n:"01",t:"Ce qui fait entrer de l'argent",lead:"Le pipeline commercial et tout ce qui le nourrit. C'est ce qui pèse le plus lourd sur la valeur de la société, donc on commence par là.",items:[
- {id:"crm",t:"CRM et référentiel clients",d:"Vingt-deux sociétés dont dix-sept SIRET vérifiés, dix-huit contacts. Paramétrage, reprise des données, qualification, et trente jours de support à compter de la mise en service.",l:"",ln:"Accès à confirmer ensemble"},
+ {id:"crm",t:"CRM et référentiel clients",d:"Vingt-deux sociétés dont dix-sept SIRET vérifiés, dix-huit contacts. Paramétrage, reprise des données, qualification, et trente jours de support à compter de la formation, semaine du 2 novembre.",l:"",ln:"Accès à confirmer ensemble"},
  {id:"sourcing",t:"Socle de sourcing, 370 contacts",d:"Deux cent quarante-quatre prospects et cent vingt-six profils, contre onze contacts au départ.",l:"https://drive.google.com/file/d/13rYzOBoRdCDNDZjmcMh5W2c7ibxIBWIL/view",ln:"Voir le rapport de sourcing, pièce 5.1"},
- {id:"playbook",t:"Playbook commercial",d:"Douze sections : cibles, scripts mot pour mot, qualification, grille tarifaire, politique de remise, process de la détection à la facturation, objections, suivi hebdomadaire.",l:"https://drive.google.com/file/d/1XaTuUjXZ8Mfo04mz68_TNAQYue-ylaoJ/view",ln:"Ouvrir le playbook, pièce 2.1"},
- {id:"site",t:"Site web et référencement",d:"Sept pages publiques en ligne, responsive, sécurisé. Plan de référencement et mesure d'audience à cadrer.",l:"https://geozey.com",ln:"Voir le site"}]},
+ {id:"playbook",t:"Playbook commercial",d:"Treize sections : cibles, scripts mot pour mot, qualification, grille tarifaire, politique de remise, négociation et fidélisation, process de la détection à la facturation, objections, suivi hebdomadaire.",l:"https://drive.google.com/file/d/1XaTuUjXZ8Mfo04mz68_TNAQYue-ylaoJ/view",ln:"Ouvrir le playbook, pièce 2.1"},
+ {id:"site",t:"Site web et référencement",d:"Sept pages publiques en ligne, responsive, sécurisé. Mesure d'audience et Search Console installées le 21 septembre ; plan de référencement à cadrer.",l:"https://geozey.com",ln:"Voir le site"}]},
 {n:"02",t:"Ce qui prépare la cession",lead:"Les pièces financières qui serviront de base à toute discussion avec un repreneur. Elles sont produites, la question est de savoir si leur forme te convient.",items:[
  {id:"audit",t:"Audit financier et retraitements de l'EBITDA",d:"Analyse des trois exercices sur la base des FEC 2023, 2024 et 2025 : retraitements de normalisation, rentabilité, besoin en fonds de roulement, trésorerie, endettement.",l:"https://drive.google.com/file/d/1EwBSC_YZQAO0P0jrdihKjk7fHHlqLh1C/view",ln:"Ouvrir la pièce 1.2"},
  {id:"valo",t:"Rapport de valorisation",d:"Trois méthodes croisées, multiples, flux actualisés et approche patrimoniale, pour une fourchette finale raisonnée.",l:"https://drive.google.com/file/d/1DMv62_y2X99U5xmtaO5ka2zCcIoFdtrN/view",ln:"Ouvrir la pièce 1.3"},
@@ -121,14 +123,14 @@ var BLOCS=[
 {n:"03",t:"Ce qui réduit ta dépendance",lead:"Tout ce qui permet à l'activité de tourner sans toi. C'est le critère que regarde en premier un repreneur, et c'est l'objet même du sprint 2.",items:[
  {id:"candidature",t:"Chaîne de candidature",d:"Formulaire de trente-neuf champs, écriture en base, dépôt de CV, notification par mail, attribution de la source.",l:"https://geozey.com/candidature",ln:"Voir le formulaire"},
  {id:"app",t:"Application métier",d:"Trois rôles cloisonnés, moteur de matching explicable sur dix axes. Produit hors du périmètre contractuel.",l:"https://geozey.com/app",ln:"Voir l'application"},
- {id:"agents",t:"Agents IA métier",d:"Six agents prévus au contrat : identification des cas d'usage, développement, paramétrage, mise en production et formation. Leur mode d'emploi figure dans le guide de lecture.",l:"https://drive.google.com/file/d/1w3mqWqpP54wKjTR3yFSfwKhNdPfRbi_o/view",ln:"Ouvrir le guide, pièce 0.2"},
- {id:"gouvia",t:"Gouvernance IA",d:"Les six agents en service, leur position au regard du règlement européen sur l'IA, le registre RGPD, le registre des incidents et les règles d'usage au quotidien.",l:"https://drive.google.com/file/d/1ASA_QLOo-Herv8ZBpGBtwj0E6UtjAQIe/view",ln:"Ouvrir la pièce 2.5"},
+ {id:"agents",t:"Agents IA métier",d:"Six agents prévus au contrat, conçus et documentés ; recette avec toi sur données fictives, semaine du 19 octobre. Leur mode d'emploi figure dans le guide de lecture.",l:"https://drive.google.com/file/d/1w3mqWqpP54wKjTR3yFSfwKhNdPfRbi_o/view",ln:"Ouvrir le guide, pièce 0.2"},
+ {id:"gouvia",t:"Gouvernance IA",d:"Les six agents conçus pour Geozey, leur position au regard du règlement européen sur l'IA, le registre RGPD, le registre des incidents, le plan d'actions et les règles d'usage au quotidien.",l:"https://drive.google.com/file/d/1ASA_QLOo-Herv8ZBpGBtwj0E6UtjAQIe/view",ln:"Ouvrir la pièce 2.5"},
  {id:"suivi",t:"Points de suivi et reporting mensuel",d:"Les réunions de suivi et les séances IA, consignées au registre de la pièce 2.6, et un rapport mensuel en six rubriques.",l:"https://drive.google.com/file/d/1iRhggWSL-rqwJsWF6Y-k_QhwNQ6JhQeI/view",ln:"Ouvrir le rapport de septembre, pièce 4.3"}]},
 {n:"04",t:"Ce qui construit ton image",lead:"Ce que voient tes clients, tes candidats et tes futurs repreneurs avant même de te parler.",items:[
- {id:"identite",t:"Identité visuelle et papeterie",d:"La charte de Louise Lenepveu et ses fichiers sources : logos, cartes de visite, bannières LinkedIn, éléments graphiques et iconographie.",l:"https://drive.google.com/drive/folders/1ioUFffZf5zAlI7wvxyg5BAowpXE_LEN2",ln:"Ouvrir le kit de marque, pièce 2.7"},
- {id:"linkedin",t:"Page LinkedIn entreprise",d:"Page créée depuis ton compte, donc ta propriété dès l'origine. Le pack éditorial prêt à publier est en pièce 2.4.",l:"https://www.linkedin.com/company/geozey",ln:"Voir la page"},
+ {id:"identite",t:"Identité visuelle et papeterie",d:"La charte de Louise Lenepveu et ses fichiers sources : logos, cartes de visite, bannières LinkedIn, éléments graphiques, iconographie, et depuis le 17 octobre papier à en-tête, modèles de document et de présentation, signature de courriel.",l:"https://drive.google.com/drive/folders/1ioUFffZf5zAlI7wvxyg5BAowpXE_LEN2",ln:"Ouvrir le kit de marque, pièce 2.7"},
+ {id:"linkedin",t:"Page LinkedIn entreprise",d:"Page créée le 27 juillet depuis ton compte, donc ta propriété dès l'origine. Le pack éditorial, à valider avant publication, est en pièce 2.4.",l:"https://www.linkedin.com/company/geozey",ln:"Voir la page"},
  {id:"blog",t:"Blog éditorial",d:"Trois articles fondateurs, sourcés et illustrés, hébergés sur ton domaine. Produit hors du périmètre contractuel.",l:"https://geozey.com/blog/",ln:"Voir le blog"},
- {id:"anglais",t:"Version anglaise du site",d:"Quatre cent soixante-neuf clés de traduction. Le contraste du sélecteur de langue est en cours de correction.",l:"https://geozey.com",ln:"Voir le site"},
+ {id:"anglais",t:"Version anglaise du site",d:"Quatre cent soixante-neuf clés de traduction. Le sélecteur de langue est lisible sur tous les fonds depuis le 21 septembre.",l:"https://geozey.com",ln:"Voir le site"},
  {id:"deliv",t:"Délivrabilité des courriels",d:"Domaine authentifié, six enregistrements DNS posés, SPF corrigé et DMARC créé. Produit hors du périmètre contractuel.",l:"",ln:"Vérifiable publiquement sur mxtoolbox.com"}]}
 ];
 var TRAJ=[
@@ -162,7 +164,7 @@ function card(it){
   h+=grp(it.id,"statut","Ce que tu en as reçu",STATUTS,false);
   h+=grp(it.id,"note","Son utilité pour ton activité, de 1 à 5",NOTES,false);
   h+=grp(it.id,"prio","Priorité pour la suite",PRIOS,true);
-  h+='<div class="qrow"><span class="qlabel">Ce qui manque, ou ce que tu veux changer</span><textarea class="qtext" data-t="'+it.id+'" placeholder="Dis-le avec tes mots, même en une ligne"></textarea></div>';
+  h+='<div class="qrow"><span class="qlabel">Ce qui manque, ou ce que tu veux changer</span><textarea class="qtext" data-t="'+it.id+'" aria-label="Ce qui manque, ou ce que tu veux changer : '+it.t+'" placeholder="Dis-le avec tes mots, même en une ligne"></textarea></div>';
   return h+'</div>';
 }
 var html="";
@@ -176,7 +178,7 @@ document.getElementById("blocs").innerHTML=html;
 
 var th="";
 for(var j=0;j<TRAJ.length;j++){
-  th+='<div class="qcard"><h3 style="font-size:17px">'+TRAJ[j].q+'</h3><textarea class="qtext" data-t="'+TRAJ[j].id+'" placeholder="Réponse libre"></textarea></div>';
+  th+='<div class="qcard"><h3 style="font-size:17px">'+TRAJ[j].q+'</h3><textarea class="qtext" data-t="'+TRAJ[j].id+'" aria-label="'+TRAJ[j].q+'" placeholder="Réponse libre"></textarea></div>';
 }
 document.getElementById("traj").innerHTML=th;
 
@@ -188,6 +190,17 @@ document.addEventListener("click",function(e){
   for(var i=0;i<all.length;i++){all[i].classList.remove("sel");}
   lab.classList.add("sel");
   R[g]=lab.querySelector("input").value;
+  count();
+});
+document.addEventListener("change",function(e){
+  var inp=e.target;
+  if(!inp.matches||!inp.matches(".opt input"))return;
+  var lab=inp.closest(".opt");
+  var g=lab.getAttribute("data-g");
+  var all=document.querySelectorAll('[data-g="'+g+'"]');
+  for(var i=0;i<all.length;i++){all[i].classList.remove("sel");}
+  lab.classList.add("sel");
+  R[g]=inp.value;
   count();
 });
 document.addEventListener("input",function(e){
